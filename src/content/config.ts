@@ -19,4 +19,20 @@ const blog = defineCollection({
 		})
 })
 
-export const collections = { blog }
+const app = defineCollection({
+	// Type-check frontmatter using a schema
+	schema: ({ image }) =>
+		z.object({
+			name: z.string().max(80),
+			description: z.string(),
+			// Transform string to Date object
+			pubDate: z
+				.string()
+				.or(z.date())
+				.transform((val) => new Date(val)),
+			icon: image(),
+			draft: z.boolean().default(false)
+		})
+})
+
+export const collections = { blog, app }

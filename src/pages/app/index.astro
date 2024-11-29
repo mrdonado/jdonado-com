@@ -1,7 +1,6 @@
 ---
 import ListCategories from '@/components/ListCategories'
-import { Image } from 'astro:assets'
-import ListPosts from '@/components/ListPosts'
+import ListApps from '@/components/ListApps'
 import TitlePage from '@/components/TitlePage'
 import BaseLayout from '@/layouts/BaseLayout'
 import { getApps } from '@/utils'
@@ -15,10 +14,7 @@ const apps = await getApps(MAX_POSTS)
 	<TitlePage title={siteConfig.title} />
 	<ListCategories />
 
-	<div>
-		<h2 class='text-lg font-medium tracking-wide text-end'>Latest Posts</h2>
-		<ListPosts FirstBig={true} posts={apps} />
-	</div>
+	<ListApps apps={apps} />
 </BaseLayout>
 
 <script>
