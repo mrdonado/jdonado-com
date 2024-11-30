@@ -1,17 +1,23 @@
 ---
 import ListCategories from '@/components/ListCategories'
-import ListApps from '@/components/ListApps'
+import ListPosts from '@/components/ListPosts'
 import TitlePage from '@/components/TitlePage'
 import BaseLayout from '@/layouts/BaseLayout'
-import { getApps } from '@/utils'
+import { getPosts } from '@/utils'
+import { siteConfig } from '@/site-config'
 
 const MAX_POSTS = 5 // max number of posts to show on the home page
-const apps = await getApps(MAX_POSTS)
+const posts = await getPosts(MAX_POSTS)
 ---
 
-<BaseLayout title='Apps'>
-	<TitlePage title='Apps' />
-	<ListApps apps={apps} />
+<BaseLayout title='Blog'>
+	<TitlePage title='Blog' />
+	<ListCategories />
+
+	<div>
+		<h2 class='text-lg font-medium tracking-wide text-end'>Latest Posts</h2>
+		<ListPosts FirstBig={true} posts={posts} />
+	</div>
 </BaseLayout>
 
 <script>
