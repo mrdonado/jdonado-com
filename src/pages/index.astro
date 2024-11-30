@@ -1,14 +1,16 @@
 ---
 import ListPosts from '@/components/ListPosts'
+import ListApps from '@/components/ListApps'
 import TitlePage from '@/components/TitlePage'
 import BaseLayout from '@/layouts/BaseLayout'
-import { getPosts, getDoc } from '@/utils'
+import { getPosts, getApps, getDoc } from '@/utils'
 import Code from '@/components/mdx/Code'
 import SButton from '@/components/mdx/SButton'
 
-const MAX_POSTS = 3
+const MAX_ITEMS = 3
 
-const posts = await getPosts(MAX_POSTS)
+const posts = await getPosts(MAX_ITEMS)
+const apps = await getApps(2)
 
 const doc = await getDoc('intro.md')
 const { Content } = await doc.render()
@@ -19,6 +21,11 @@ const { Content } = await doc.render()
 
 	<div class='prose prose-lg md:prose-xl dark:prose-invert mb-12 min-w-full text-end'>
 		<Content components={{ pre: Code, SButton }} />
+	</div>
+
+	<div>
+		<h2 class='text-lg font-medium tracking-wide text-start'>Newest Apps!</h2>
+		<ListApps FirstBig={true} apps={apps} />
 	</div>
 
 	<div>
