@@ -4,8 +4,6 @@ import ListApps from '@/components/ListApps'
 import TitlePage from '@/components/TitlePage'
 import BaseLayout from '@/layouts/BaseLayout'
 import { getPosts, getApps, getDoc } from '@/utils'
-import Code from '@/components/mdx/Code'
-import SButton from '@/components/mdx/SButton'
 
 const MAX_ITEMS = 3
 
@@ -20,7 +18,7 @@ const { Content } = await doc.render()
 	<TitlePage title='Hola Amigos!' />
 
 	<div class='prose prose-lg md:prose-xl dark:prose-invert mb-12 min-w-full text-end'>
-		<Content components={{ pre: Code, SButton }} />
+		<Content />
 	</div>
 
 	<div>

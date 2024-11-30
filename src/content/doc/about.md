@@ -3,8 +3,6 @@ title: 'About Me'
 description: 'About me section'
 ---
 
-## About Me
-
 Welcome to my website, amigos! My name is F. Javier R. Donado, I was born in Madrid (Spain), and I moved to Stuttgart (Germany) in September 2012.
 
 I’ve been [writing software](https://www.youtube.com/watch?v=9LfmrkyP81M) since the early 2000s. My favorite programming languages are TypeScript, Python, and Kotlin, although I’ve used many more over the years, including Java, JavaScript, C++, Clojure, PHP, and Perl. My focus is web development (full-stack) and mobile apps using React Native.

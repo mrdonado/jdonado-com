@@ -1,15 +1,17 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
 import { getDoc } from '@/utils'
-import Code from '@/components/mdx/Code'
-import SButton from '@/components/mdx/SButton'
+import TitlePage from '@/components/TitlePage'
 
 const doc = await getDoc('about.md')
 const { Content } = await doc.render()
 ---
 
 <BaseLayout title='About Me'>
+	<div class='w-[800px] mx-auto'>
+		<TitlePage title='About Me' />
+	</div>
 	<div class='prose prose-lg md:prose-xl dark:prose-invert mb-12 w-[800px] mx-auto'>
-		<Content components={{ pre: Code, SButton }} />
+		<Content />
 	</div>
 </BaseLayout>
