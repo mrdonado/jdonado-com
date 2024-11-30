@@ -1,13 +1,11 @@
 ---
 import { type CollectionEntry, getCollection } from 'astro:content'
-import BlogPost from '@/layouts/BlogPost'
+import App from '@/layouts/App'
 import Code from '@/components/mdx/Code'
-import ListRelatedPosts from '@/components/ListRelatedPosts'
 import Share from '@/components/Share'
 import TableOfContents from '@/components/TableOfContents'
 import { getApps } from '@/utils'
 import SButton from '@/components/mdx/SButton'
-import Disqus from '@/components/Disqus'
 import { disqusConfig } from '@/data/disqus.config'
 
 const apps = await getCollection('app')
@@ -28,12 +26,7 @@ const { Content, headings, remarkPluginFrontmatter } = await app.render()
 const disqusEnabled = disqusConfig.enabled
 ---
 
-<BlogPost
-	id={app.id}
-	data={app.data}
-	headings={headings}
-	readTime={remarkPluginFrontmatter.minutesRead}
->
+<App id={app.id} data={app.data} headings={headings} readTime={remarkPluginFrontmatter.minutesRead}>
 	<div class='grid grid-cols-1 md:grid-cols-[20%_auto] gap-10 mt-8'>
 		<!-- aside  -->
 		<aside class='md:flex flex-col gap-8 hidden'>
@@ -50,6 +43,4 @@ const disqusEnabled = disqusConfig.enabled
 			</div>
 		</article>
 	</div>
-
-	{disqusEnabled && <Disqus />}
-</BlogPost>
+</App>

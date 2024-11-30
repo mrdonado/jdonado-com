@@ -5,7 +5,7 @@ import ArrowUp from '@/components/icons/ArrowUp'
 
 let {
 	id,
-	data: { name, description, pubDate, icon },
+	data: { name, description, pubDate, icon, heroImage },
 	readTime,
 	slug
 } = Astro.props
@@ -14,7 +14,7 @@ let {
 <article class='grid grid-rows-[300px_auto] md:grid-rows-[300px_220px] min-h-full group'>
 	<a class='relative overflow-hidden' href={`/apps/${slug}/`}>
 		<Image
-			src={icon}
+			src={heroImage}
 			width={600}
 			height={200}
 			format='webp'

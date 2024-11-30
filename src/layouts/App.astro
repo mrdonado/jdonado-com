@@ -2,68 +2,53 @@
 import type { CollectionEntry } from 'astro:content'
 import FormattedDate from '@/components/FormattedDate'
 import BaseLayout from '@/layouts/BaseLayout'
-import Tag from '@/components/Tag'
 import type { MarkdownHeading } from 'astro'
 import { Image } from 'astro:assets'
 
 type Props = {
-	id: CollectionEntry<'blog'>['id']
-	data: CollectionEntry<'blog'>['data']
+	id: CollectionEntry<'app'>['id']
+	data: CollectionEntry<'app'>['data']
 	headings: MarkdownHeading[]
 	readTime: string
 }
 
-const { data, readTime, headings, id } = Astro.props
-const { title, description, pubDate, heroImage, tags = [] } = data
+const { data } = Astro.props
+const { name, description, pubDate, heroImage, icon } = data
 
 const articleDate = pubDate.toISOString()
 ---
 
-<BaseLayout
-	title={title}
-	description={description}
-	image={heroImage?.src}
-	articleDate={articleDate}
->
+<BaseLayout title={name} description={description} image={heroImage?.src} articleDate={articleDate}>
 	<article class='min-w-full md:py-4 sm:max-w-none md:max-w-none'>
-		<header class='mb-3 flex flex-col justify-center items-center gap-6'>
-			<div class='flex flex-col gap-2'>
-				<div class='flex items-center justify-center gap-x-1'>
-					<p class='text-center text-sm text-opacity-50'>
-						Published <FormattedDate date={pubDate} />
-					</p>
-					<p class='text-center text-sm text-opacity-50 font-bold'>
-						- {readTime}
-					</p>
-				</div>
-				<h1 class='text-center text-4xl md:text-6xl md:pb-2.5 font-semibold'>
-					{title}
-				</h1>
-			</div>
-
-			<div class='flex flex-wrap justify-center items-center gap-2 gap-y-4 md:gap-5'>
-				{tags.map((tag) => <Tag tag={tag} />)}
-			</div>
-		</header>
-
 		<>
 			{
-				heroImage && (
+				icon && (
 					<Image
-						src={heroImage}
-						width={1000}
-						height={500}
+						src={icon}
+						width={200}
+						height={200}
 						quality={100}
 						format='jpg'
 						loading='eager'
-						class='rounded-md w-full max-h-[300px]  md:max-h-[500px] my-8 object-cover'
-						alt={`img of ${title}`}
+						class='rounded-xl w-[200px] max-h-[200px]  object-cover mx-auto mb-3'
+						alt={`img of ${name}`}
 					/>
 				)
 			}
 		</>
 
-		<hr />
+		<header class='mb-3 flex flex-col justify-center items-center gap-6'>
+			<div class='flex flex-col gap-2'>
+				<div class='flex items-center justify-center gap-x-1 mb-6'>
+					<p class='text-center text-sm text-opacity-50'>
+						Available since <FormattedDate date={pubDate} />
+					</p>
+				</div>
+				<h1 class='text-center text-5xl md:pb-2.5 font-semibold'>
+					{name}
+				</h1>
+			</div>
+		</header>
 
 		<div>
 			<slot />
