@@ -13,10 +13,57 @@ const posts = await getPosts(MAX_POSTS)
 	<TitlePage title='Hola Amigos!' />
 
 	<p class='text-lg font-medium tracking-wide text-end'>
-		My name is Javier Donado, and I like to create stuff. I'm a software engineer, and I'm
-		passionate about web development, cloud computing, and open-source software. I'm currently
-		working at <a href='https://www.porsche.digital/en'>Porsche Digital</a> as a Solution Architect.
-		I also write music and take pictures.
+		My name is <strong>Javier Donado</strong>, and I’m a
+
+		<a class='link' href='/about' aria-label='Apps'>
+			full-stack web developer and Solution Architect
+		</a>
+
+		who has been writing code since the early 2000s. I create
+		<a class='link' href='/apps' aria-label='Apps'> apps for iOS and Android</a>
+		using React Native, and I’m passionate about
+		<a
+			class='link'
+			href='https://github.com/mrdonado'
+			target='_blank'
+			rel='noopener noreferrer'
+			aria-label='Visit my GitHub profile'>open-source</a
+		>. Beyond coding, I’m a passionate
+		<a
+			href='https://instagram.com/jdonadolens'
+			class='link'
+			target='_blank'
+			rel='noopener noreferrer'
+			aria-label='View my travel photography on Instagram'>travel photographer</a
+		>
+		and a lifelong musician,
+		<a
+			href='https://jdonado.bandcamp.com'
+			target='_blank'
+			class='link'
+			rel='noopener noreferrer'
+			aria-label='Listen to my music on Bandcamp'
+			>composing and playing guitar for most of my life</a
+		>.
+	</p>
+
+	<p class='text-lg font-medium tracking-wide text-end'>
+		Welcome to my website! Feel free to reach out anytime on
+		<a
+			href='https://linkedin.com/in/jdonado'
+			target='_blank'
+			class='link'
+			rel='noopener noreferrer'
+			aria-label='Connect with me on LinkedIn'>LinkedIn</a
+		>
+		or
+		<a
+			href='https://twitter.com/jdonado'
+			target='_blank'
+			class='link'
+			rel='noopener noreferrer'
+			aria-label='Follow me on X, formerly Twitter'>X</a
+		>!
 	</p>
 
 	<div>
@@ -24,22 +71,3 @@ const posts = await getPosts(MAX_POSTS)
 		<ListPosts FirstBig={false} posts={posts} />
 	</div>
 </BaseLayout>
-
-<script>
-	import { animate } from 'motion'
-	//const showAnimations = localStorage.getItem('animations') === 'true'
-	const showAnimations = true
-
-	if (showAnimations) {
-		animate(
-			'.title',
-			{ y: [80, 0], opacity: [0, 1] },
-			{
-				duration: 2.5,
-				opacity: { duration: 3 },
-
-				offset: [0, 0.55, 0.75]
-			}
-		)
-	}
-</script>
