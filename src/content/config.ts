@@ -1,6 +1,15 @@
 import { defineCollection, z } from 'astro:content'
 import { CATEGORIES } from '@/data/categories'
 
+const doc = defineCollection({
+	// Type-check frontmatter using a schema
+	schema: () =>
+		z.object({
+			title: z.string().max(80),
+			description: z.string()
+		})
+})
+
 const blog = defineCollection({
 	// Type-check frontmatter using a schema
 	schema: ({ image }) =>
@@ -35,4 +44,4 @@ const app = defineCollection({
 		})
 })
 
-export const collections = { blog, app }
+export const collections = { blog, app, doc }
