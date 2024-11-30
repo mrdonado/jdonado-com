@@ -2,69 +2,24 @@
 import ListPosts from '@/components/ListPosts'
 import TitlePage from '@/components/TitlePage'
 import BaseLayout from '@/layouts/BaseLayout'
-import { getPosts } from '@/utils'
+import { getPosts, getDoc } from '@/utils'
+import Code from '@/components/mdx/Code'
+import SButton from '@/components/mdx/SButton'
 
 const MAX_POSTS = 3
 
 const posts = await getPosts(MAX_POSTS)
+
+const doc = await getDoc('intro.md')
+const { Content } = await doc.render()
 ---
 
 <BaseLayout title='Home'>
 	<TitlePage title='Hola Amigos!' />
 
-	<p class='text-lg font-medium tracking-wide text-end'>
-		My name is <strong>Javier Donado</strong>, and I’m a
-
-		<a class='link' href='/about' aria-label='Apps'>
-			full-stack web developer and Solution Architect
-		</a>
-
-		who has been writing code since the early 2000s. I create
-		<a class='link' href='/apps' aria-label='Apps'> apps for iOS and Android</a>
-		using React Native, and I’m passionate about
-		<a
-			class='link'
-			href='https://github.com/mrdonado'
-			target='_blank'
-			rel='noopener noreferrer'
-			aria-label='Visit my GitHub profile'>open-source</a
-		>. Beyond coding, I’m a passionate
-		<a
-			href='https://instagram.com/jdonadolens'
-			class='link'
-			target='_blank'
-			rel='noopener noreferrer'
-			aria-label='View my travel photography on Instagram'>travel photographer</a
-		>
-		and a lifelong musician,
-		<a
-			href='https://jdonado.bandcamp.com'
-			target='_blank'
-			class='link'
-			rel='noopener noreferrer'
-			aria-label='Listen to my music on Bandcamp'
-			>composing and playing guitar for most of my life</a
-		>.
-	</p>
-
-	<p class='text-lg font-medium tracking-wide text-end'>
-		Welcome to my website! Feel free to reach out anytime on
-		<a
-			href='https://linkedin.com/in/jdonado'
-			target='_blank'
-			class='link'
-			rel='noopener noreferrer'
-			aria-label='Connect with me on LinkedIn'>LinkedIn</a
-		>
-		or
-		<a
-			href='https://twitter.com/jdonado'
-			target='_blank'
-			class='link'
-			rel='noopener noreferrer'
-			aria-label='Follow me on X, formerly Twitter'>X</a
-		>!
-	</p>
+	<div class='prose prose-lg md:prose-xl dark:prose-invert mb-12 min-w-full text-end'>
+		<Content components={{ pre: Code, SButton }} />
+	</div>
 
 	<div>
 		<h2 class='text-lg font-medium tracking-wide text-end'>Latest Posts</h2>
