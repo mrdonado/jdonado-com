@@ -22,12 +22,16 @@ const { Content } = await doc.render()
 	</div>
 
 	<div>
-		<h2 class='text-lg font-medium tracking-wide text-start'>Newest Apps!</h2>
+		<a href='/apps'>
+			<h2 class='text-lg font-medium tracking-wide text-start'>Newest Apps!</h2>
+		</a>
 		<ListApps FirstBig={true} apps={apps} />
 	</div>
 
 	<div>
-		<h2 class='text-lg font-medium tracking-wide text-end'>Latest Posts</h2>
+		<a href='/blog'>
+			<h2 class='text-lg font-medium tracking-wide text-end'>Latest Posts</h2>
+		</a>
 		<ListPosts FirstBig={false} posts={posts} />
 	</div>
 </BaseLayout>
