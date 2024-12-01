@@ -42,3 +42,18 @@
 a.link {
 	text-decoration: underline;
 }
+
+@keyframes appear {
+	0% {
+		scale: 0.95;
+		opacity: 0;
+	}
+	100% {
+		scale: 1;
+		opacity: 1;
+	}
+}
+
+.appear-smoothly {
+	animation: appear 0.5s ease;
+}
