@@ -1,0 +1,17 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import { getDoc } from '@/utils'
+import TitlePage from '@/components/TitlePage'
+
+const doc = await getDoc('support.md')
+const { Content } = await doc.render()
+---
+
+<BaseLayout title='Support'>
+	<div class='max-w-[800px] mx-auto'>
+		<TitlePage title='Support' />
+	</div>
+	<div class='prose prose-lg md:prose-xl dark:prose-invert mb-12 max-w-[800px] mx-auto'>
+		<Content />
+	</div>
+</BaseLayout>
