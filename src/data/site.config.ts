@@ -16,6 +16,6 @@ export const siteConfig: SiteConfig = {
 	description: 'Javier Donado - Web and mobile apps (iOS and Android). Photos and music too.', // Description to display in the meta tags
 	lang: 'en-GB',
 	ogLocale: 'en_GB',
-	shareMessage: 'Share this post', // Message to share a post on social media
+	shareMessage: 'Sharing this with you:', // Message to share a post on social media
 	paginationSize: 9 // Number of posts per page
 }
