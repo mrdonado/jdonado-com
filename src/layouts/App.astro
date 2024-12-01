@@ -23,6 +23,10 @@ const articleDate = pubDate.toISOString()
 
 <BaseLayout title={name} description={description} image={heroImage?.src} articleDate={articleDate}>
 	<article class='md:py-4 mx-auto max-w-[1000px]'>
+		<h1 class='text-center text-5xl md:pb-2.5 font-semibold'>
+			{name}
+		</h1>
+		<hr class='mb-6 mt-3' />
 		<header class='mb-3 flex flex-col justify-center items-center gap-6'>
 			<div class='flex flex-col gap-1'>
 				<Image
@@ -37,12 +41,10 @@ const articleDate = pubDate.toISOString()
 				/>
 
 				<div class='flex items-center justify-center gap-x-1 mb-6'>
-					<p class='text-center text-sm text-opacity-50'>
-						Available since <FormattedDate date={pubDate} />
-					</p>
+					<span class='font-bold'>Share: </span><Share message=`Check out this app: ${name}` />
 				</div>
 
-				<div class='mb-6 flex items-center justify-center gap-x-4 w-[380px] mx-auto'>
+				<div class='mb-6 flex items-center justify-center gap-x-4 max-w-[420px] mx-auto'>
 					<a
 						href='https://apps.apple.com/de/app/astrobrain-space-program/id6737922303?l=en-GB'
 						target='_blank'
@@ -58,12 +60,7 @@ const articleDate = pubDate.toISOString()
 					>
 						<GooglePlayIcon />
 					</a>
-					<Share message=`Check out this app: ${name}` />
 				</div>
-
-				<h1 class='text-center text-5xl md:pb-2.5 font-semibold'>
-					{name}
-				</h1>
 			</div>
 		</header>
 		<hr />
