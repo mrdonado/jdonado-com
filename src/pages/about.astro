@@ -8,10 +8,10 @@ const { Content } = await doc.render()
 ---
 
 <BaseLayout title='About Me'>
-	<div class='w-[800px] mx-auto'>
+	<div class='max-w-[800px] mx-auto'>
 		<TitlePage title='About Me' />
 	</div>
-	<div class='prose prose-lg md:prose-xl dark:prose-invert mb-12 w-[800px] mx-auto'>
+	<div class='prose prose-lg md:prose-xl dark:prose-invert mb-12 max-w-[800px] mx-auto'>
 		<Content />
 	</div>
 </BaseLayout>
