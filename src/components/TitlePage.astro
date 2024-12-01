@@ -3,12 +3,13 @@ import Title from './Title.astro'
 import Shape from './icons/Shape.astro'
 type Props = {
 	title: string
+	isTag?: boolean
 }
 
-const { title } = Astro.props
+const { title, isTag } = Astro.props
 ---
 
 <div class='flex justify-start items-center gap-2 title mb-12'>
 	<Shape />
-	<Title>{title}</Title>
+	<Title isTag={isTag}>{title}</Title>
 </div>
