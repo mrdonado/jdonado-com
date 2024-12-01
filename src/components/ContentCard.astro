@@ -14,14 +14,14 @@ title = isPost ? title : name
 const itemUrl = `/${isPost ? 'post' : 'apps'}/${slug}/`
 ---
 
-<article class='grid grid-rows-[300px_auto] group'>
+<article class='appear-smoothly grid grid-rows-[300px_auto] group'>
 	<a class='relative overflow-hidden rounded-xl' href={itemUrl}>
 		<Image
 			src={heroImage}
 			width={600}
 			height={200}
 			format='webp'
-			class='appear-smoothly h-full min-w-full object-cover hover:scale-[103%] transition-all duration-200 rounded-[2px]'
+			class='h-full min-w-full object-cover hover:scale-[103%] transition-all duration-200 rounded-[2px]'
 			alt={`img of ${title}`}
 		/>
 
@@ -39,7 +39,7 @@ const itemUrl = `/${isPost ? 'post' : 'apps'}/${slug}/`
 						</>
 					) : (
 						<div class='flex flex-col gap-1 items-center justify-center'>
-							<span class='text-sm'> {description}</span>
+							<span class='text-sm line-clamp-2'> {description}</span>
 						</div>
 					)
 				}
