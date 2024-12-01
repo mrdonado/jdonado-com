@@ -4,7 +4,7 @@ description: 'Explore the balance between software quality, startup agility, and
 pubDate: 'Jun 05 2021'
 heroImage: '../../assets/images/yin-yang.jpeg'
 category: 'Writing Software'
-tags: ['software-quality', 'startup', 'product-development']
+tags: ['software-quality', 'startup', 'product-development', 'architecture']
 ---
 
 ## What Is Software Development All About?

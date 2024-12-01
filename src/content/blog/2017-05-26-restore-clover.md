@@ -4,7 +4,7 @@ description: 'Learn how to restore the Clover bootloader using Windows. A guide 
 pubDate: 'May 26 2017'
 heroImage: '../../assets/images/restore-clover.jpg'
 category: 'Misc'
-tags: ['hackintosh', 'clover', 'windows']
+tags: ['hackintosh', 'clover', 'windows', 'macosx']
 ---
 
 # Restore Your \`config.plist\`

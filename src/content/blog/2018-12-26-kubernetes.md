@@ -4,7 +4,7 @@ description: 'Explore how Kubernetes extends the capabilities of Docker Compose 
 pubDate: 'Dec 26 2018'
 heroImage: '../../assets/images/kubernetes.jpeg'
 category: 'Writing Software'
-tags: ['kubernetes', 'docker', 'docker-compose', 'linux']
+tags: ['kubernetes', 'docker', 'docker-compose', 'linux', 'architecture']
 ---
 
 Here’s a revised version of your text with improved flow, clarity, and grammatical accuracy:
