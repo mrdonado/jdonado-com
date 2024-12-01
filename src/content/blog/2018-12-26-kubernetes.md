@@ -2,86 +2,109 @@
 title: 'Kubernetes: Beyond Docker Compose'
 description: 'Explore how Kubernetes extends the capabilities of Docker Compose for managing containerized applications at scale.'
 pubDate: 'Dec 26 2018'
-heroImage: '../../assets/images/kubernetes-logo.jpg'
+heroImage: '../../assets/images/kubernetes.jpeg'
 category: 'Writing Software'
 tags: ['kubernetes', 'docker', 'docker-compose', 'linux']
 ---
 
-# Beyond docker compose
+Here’s a revised version of your text with improved flow, clarity, and grammatical accuracy:
 
-Right after I started using docker to containerize my applications, I used to include a `docker-compose.yml` file together with them (sometimes in a separate repository) in order to illustrate how a local deployment could work. With [docker-compose](https://docs.docker.com/compose/) you can:
+---
 
-- Define which services and applications are necessary to run a specific solution
-- Detail how they may interact with each other
-- Specify in which order they should start
-- Describe the network in which the containers are going to be deployed
-- Setup the environment for everything to work in harmony
+# Beyond Docker Compose
 
-After a while I got used to the simplicity and usefulness of docker compose. However, deploying services with docker compose like this (that is: without [swarm mode](https://docs.docker.com/engine/swarm/)) had an important limitation: **you could only deploy to a single machine**.
+When I first started using Docker to containerize my applications, I often included a `docker-compose.yml` file alongside them (sometimes in a separate repository) to illustrate how local deployment could work. With [docker-compose](https://docs.docker.com/compose/), you can:
 
-If you have more advanced deployment needs, e.g.:
+- Define the services and applications required to run a specific solution.
+- Detail how these services interact with one another.
+- Specify the order in which they should start.
+- Describe the network where the containers will be deployed.
+- Set up the environment to ensure everything works seamlessly.
 
-- Deployment of services on a cluster with various nodes
-- Need of a scaling strategy
-- Coordinate updates with zero-downtime deployment
+I quickly grew accustomed to the simplicity and utility of Docker Compose. However, deploying services with Docker Compose in this way (without [Swarm mode](https://docs.docker.com/engine/swarm/)) has a significant limitation: **it only supports deployment to a single machine**.
 
-then you need a container orchestrator. There are a number of solutions for orchestration of containers in the cloud: Docker Swarm, Kubernetes, Apache Mesos, CloudFoundry's Diego...
+For more advanced deployment scenarios, such as:
 
-Depending on your needs, the right tool might vary. For me, Kubernetes seemed like a very good compromise between features and ease of use. Some of the reasons why I think it's a good choice are:
+- Deploying services on a cluster with multiple nodes.
+- Implementing a scaling strategy.
+- Coordinating updates with zero-downtime deployment.
 
-- It's perfectly integrated with docker. If you're already using docker containers, then you're halfway there
-- It is open source. That means (among other things) that you're not attached to a specific provider. There are currently a number of providers of Kubernetes as a service in the cloud and you're always free to deploy Kubernetes clusters yourself on whichever your cloud infrastructure is
-- The [documentation](https://kubernetes.io/docs/home/?path=users&persona=app-developer&level=foundational) is very good
-- It's currently [by far the most popular](https://thenewstack.io/data-says-kubernetes-deployment-patterns/) container orchestration technology. If you have any problem, there's a good chance that you'll find help on [StackOverflow](https://stackoverflow.com/questions/tagged/kubernetes)
-- You can install minikube on your machine and test your complete solution even before it reaches the cloud. If something goes wrong, you can try to find out what's happening directly on your machine without having to wait for things to upload and deploy to the cloud
+...you need a container orchestrator. Several options exist for container orchestration in the cloud, including Docker Swarm, Kubernetes, Apache Mesos, and Cloud Foundry's Diego.
 
-For me this last point is a game changer as compared to other cloud technologies. The ability to try and run everything locally makes everything easier. Forget about small changes on a `yml` file and trigger the CI pipelines to (pray and) see if a deployment works. Instead of that just make sure that your configuration is up and running locally on your minikube and chances are everything will work out just like that on the cloud.
+The right tool depends on your specific needs. For me, Kubernetes struck an excellent balance between features and ease of use. Here’s why I believe Kubernetes is a great choice:
+
+- **Seamless integration with Docker:** If you’re already using Docker containers, you’re halfway there.
+- **Open-source flexibility:** You’re not locked into a single provider. Kubernetes is supported by multiple cloud providers, and you can deploy clusters on virtually any infrastructure.
+- **Comprehensive documentation:** The [official documentation](https://kubernetes.io/docs/home/?path=users&persona=app-developer&level=foundational) is excellent.
+- **Popularity and community support:** Kubernetes is currently [the most widely used container orchestration technology](https://thenewstack.io/data-says-kubernetes-deployment-patterns/). If you encounter a problem, there’s a high likelihood of finding help on [Stack Overflow](https://stackoverflow.com/questions/tagged/kubernetes).
+- **Local testing with Minikube:** You can install Minikube on your machine to test your solution end-to-end before deploying it to the cloud. If something goes wrong, debugging locally is far quicker than dealing with cloud deployments.
+
+This last point is a game-changer compared to other cloud technologies. The ability to run everything locally simplifies the development process significantly. Instead of making small changes to a `.yml` file, triggering CI pipelines, and hoping for the best during deployment, you can ensure everything works locally with Minikube—greatly improving the odds of a smooth deployment in the cloud.
+
+---
 
 ## Learn Kubernetes
 
-If you want to learn Kubernetes, the [tutorials](https://kubernetes.io/docs/tutorials/) section of the official Kubernetes website is a great starting point. I myself followed it and then I completed a couple of the [online training](https://kubernetes.io/docs/tutorials/online-training/overview/) courses that they link to.
+To learn Kubernetes, the [tutorials](https://kubernetes.io/docs/tutorials/) section of the official website is an excellent starting point. I followed it myself and later completed a couple of [online training courses](https://kubernetes.io/docs/tutorials/online-training/overview/) linked there.
 
-What follows are the notes I took while learning about it.
+Here are some notes I took during my learning journey.
 
-# Kubernetes: a quick overview for developers
+---
 
-Kubernetes is an open source container orchestrator created by Google and now maintained by the [Cloud Native Computing Foundation](https://en.wikipedia.org/wiki/Linux_Foundation#Cloud_Native_Computing_Foundation).
+## Kubernetes: A Quick Overview for Developers
 
-Every Kubernetes infrastructure has the following components:
+Kubernetes is an open-source container orchestrator originally developed by Google and now maintained by the [Cloud Native Computing Foundation](https://en.wikipedia.org/wiki/Linux_Foundation#Cloud_Native_Computing_Foundation).
 
-- Master: it coordinates all activities in the cluster (scheduling, apps maintenance, scaling, updating...)
-- Nodes: workers that run applications. They have:
-  - A Kubelet: an agent responsible for communication between the node and the Kubernetes Master (communicating via the Kubernetes API). It manages the pods and the containers running on a machine
-  - A container runtime, such as docker or rkt, responsible for pulling container images, unpacking the container and running an application
+### Core Components
 
-The minimum of nodes in a production infrastructure is 3.
+Every Kubernetes infrastructure includes the following:
 
-You can run Kubernetes locally on your machine by installing **minikube**. Minikube is a lightweight Kubernetes implementation that creates a VM on your local machine and deploys a simple cluster containing only one node.
+- **Master Node:** Coordinates all cluster activities, including scheduling, application maintenance, scaling, and updates.
+- **Worker Nodes:** Execute applications and include:
+  - A **Kubelet:** An agent that communicates with the Kubernetes Master via the Kubernetes API. It manages pods and the containers running on the machine.
+  - A **container runtime:** Responsible for pulling container images, unpacking them, and running applications (e.g., Docker, rkt).
 
-**Kubectl** is the Kubernetes CLI, that uses the Kubernetes API in order to interact with the cluster. You can use it to connect to your minikube and handle your deployments locally, and you can also connect to your cloud provider and handle your deployments remotely. It is kind of an equivalent to the `docker` command for docker.
+A production infrastructure requires at least three nodes.
 
-In order to deploy an application in Kubernetes, you can define a deployment configuration in a `yml` (preferred) or in a `json` file. A deployment configuration instructs Kubernetes how to create and update instances of an application. The Kubernetes Deployment Controller (KDC) makes sure that the instances are up an running. NOTE: my next blog post will show a simple example of a microservices deployment in kubernetes. Here I will continue defining the basic concepts and commands for future quick reference.
+To run Kubernetes locally, install **Minikube**, a lightweight Kubernetes implementation that creates a virtual machine on your local machine. Minikube deploys a simple cluster containing only one node.
 
-In case a node goes down, the KDC will start the required containers in the remaining working nodes (self-healing mechanism).
+### Kubectl
 
-**Pods** are the smallest deployable units of computing that can be created and managed in Kubernetes. Pods are in an private, isolated network. They are visible from other pods and services within the same cluster, but not from outside. A pod is an abstraction that represents a group of one or more containers and some shared resources for those containers, such as volumes, networking and container specific information (image version or ports).
+**Kubectl** is Kubernetes’ CLI tool that uses the Kubernetes API to interact with the cluster. You can use it to manage local deployments via Minikube or remote deployments in the cloud. It is functionally similar to the `docker` command in Docker.
 
-- There's one IP per pod
-- Pods share namespaces
-- Pods may have one or more containers and volumes
+---
 
-A **service** defines a logical set of pods and a policy to determine how to access them. It is defined by `yaml` or `json`. Services allow applications to receive traffic. You can define the following types of services (in the `type` field of the `yaml` file):
+### Deploying Applications
 
-- **ClusterIP** (default): it makes the service only reachable within the cluster.
-- **NodePort**: it exposes the service on the same port of each selected node in the cluster using NAT, making thus the service accessible from outide the cluster via `<NodeIP>:<NodePort>`.
-- **LoadBalancer**
-- **ExternalName**: it exposes the service using an arbitrary name via `externalName` by returning a CNAME record. `kube-dns` v1.7 or higher is required.
+To deploy an application in Kubernetes, define a deployment configuration in a `.yml` (preferred) or `.json` file. The configuration tells Kubernetes how to create and manage instances of the application. The Kubernetes Deployment Controller (KDC) ensures instances remain up and running.
 
-A service routes traffic across a set of Pods. They allow pods to die and replicate without impacting the application. Kubernetes Services handle discovery and routing. In order to match a set of pods, services use labels and selectors.
+If a node fails, the KDC automatically starts the required containers on the remaining functional nodes (self-healing).
 
-In this image you can see a representation of the aforementioned elements: nodes, pods, services and how they relate to each other.
+---
 
-![Architecture Diagram](https://blog.jdonado.com/assets/images/pods-nodes-services.png 'Architecture Diagram')
+### Pods and Services
+
+- **Pods:** The smallest deployable units in Kubernetes, representing a group of one or more containers with shared resources like volumes and networking.
+
+  - Pods share namespaces and have a single IP.
+  - Pods are private and isolated within the cluster but can communicate with other pods and services in the same cluster.
+
+- **Services:** Provide a stable network endpoint for pods, enabling traffic routing even as pods die and are replaced. Services are defined in `yaml` or `json` files and use labels and selectors to route traffic to the correct pods.
+
+#### Types of Services:
+
+- **ClusterIP** (default): Accessible only within the cluster.
+- **NodePort:** Exposes the service on each node’s IP at a specified port, making it accessible outside the cluster via `<NodeIP>:<NodePort>`.
+- **LoadBalancer:** Integrates with cloud provider load balancers.
+- **ExternalName:** Maps a service to an external DNS name using a `CNAME` record (`kube-dns` v1.7+ required).
+
+---
+
+### Diagram
+
+Below is a representation of nodes, pods, services, and their relationships:
+
+![Architecture Diagram](/assets/images/pods-nodes-services.png 'Architecture Diagram')
 
 ## Kubectl quick reference
 
