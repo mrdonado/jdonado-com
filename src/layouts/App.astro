@@ -1,6 +1,5 @@
 ---
 import type { CollectionEntry } from 'astro:content'
-import FormattedDate from '@/components/FormattedDate'
 import BaseLayout from '@/layouts/BaseLayout'
 import type { MarkdownHeading } from 'astro'
 import { Image } from 'astro:assets'
@@ -88,5 +87,8 @@ const articleDate = pubDate.toISOString()
 				</section>
 			)
 		}
+		<a href='#top' class='underline text-sm text-gray-500 dark:text-gray-400 mt-4 block'
+			>Back to top</a
+		>
 	</article>
 </BaseLayout>
