@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout'
-import ListPosts from '@/components/ListPosts'
+import ListItems from '@/components/ListItems'
 import TitlePage from '@/components/TitlePage'
 import { getTags, getPostByTag } from '@/utils'
 
@@ -20,5 +20,5 @@ const posts = await getPostByTag(tag)
 
 <BaseLayout title={tag}>
 	<TitlePage title={tag} />
-	<ListPosts posts={posts} />
+	<ListItems items={posts} />
 </BaseLayout>

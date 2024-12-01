@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout'
-import ListPosts from '@/components/ListPosts'
+import ListItems from '@/components/ListItems'
 import ListCategories from '@/components/ListCategories'
 import TitlePage from '@/components/TitlePage'
 import { sluglify, unsluglify, getCategories, getPosts } from '@/utils'
@@ -35,6 +35,6 @@ const posts = page.data
 <BaseLayout title={params.category}>
 	<TitlePage title={unsluglifyNameCategory} />
 	<ListCategories activeCategory={params.category} />
-	<ListPosts posts={posts} />
+	<ListItems items={posts} />
 	<Pagination page={page} />
 </BaseLayout>

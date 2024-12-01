@@ -1,6 +1,5 @@
 ---
-import ListPosts from '@/components/ListPosts'
-import ListApps from '@/components/ListApps'
+import ListItems from '@/components/ListItems'
 import TitlePage from '@/components/TitlePage'
 import BaseLayout from '@/layouts/BaseLayout'
 import { getPosts, getApps, getDoc } from '@/utils'
@@ -23,15 +22,15 @@ const { Content } = await doc.render()
 
 	<div>
 		<a href='/apps'>
-			<h2 class='text-lg font-medium tracking-wide text-start'>Newest Apps!</h2>
+			<h2 class='text-lg font-medium tracking-wide text-start'>New apps available!</h2>
 		</a>
-		<ListApps FirstBig={true} apps={apps} />
+		<ListItems FirstBig={true} items={apps} />
 	</div>
 
 	<div>
 		<a href='/blog'>
 			<h2 class='text-lg font-medium tracking-wide text-end'>Latest Posts</h2>
 		</a>
-		<ListPosts FirstBig={false} posts={posts} />
+		<ListItems FirstBig={false} items={posts} />
 	</div>
 </BaseLayout>
