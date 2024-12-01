@@ -1,5 +1,5 @@
 ---
-title: 'Self-hosting behind a NAT'
+title: 'Self-Hosting Behind a NAT'
 description: 'Learn how to set up and manage self-hosted solutions behind a NAT, with tips for cloud and Linux users.'
 pubDate: 'Nov 16 2019'
 heroImage: '../../assets/images/behind-a-nat.jpeg'
