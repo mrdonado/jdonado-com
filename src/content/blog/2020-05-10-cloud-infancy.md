@@ -3,7 +3,7 @@ title: 'The Infancy of the Cloud'
 description: 'Dive into the early days of cloud computing, exploring AWS, Kubernetes, and Cloud Foundry.'
 pubDate: 'May 10 2020'
 heroImage: '../../assets/images/cloud.jpg'
-category: 'Category 1'
+category: 'Writing Software'
 tags: ['cloud', 'aws', 'kubernetes', 'cloudfoundry']
 ---
 

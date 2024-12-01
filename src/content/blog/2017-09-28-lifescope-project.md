@@ -3,7 +3,7 @@ title: 'Lifescope Project'
 description: 'Explore the Lifescope project, a multi-faceted application utilizing AI, NLP, and modern web technologies.'
 pubDate: 'Sep 27 2017'
 heroImage: '../../assets/images/lifescope.jpg'
-category: 'Category 1'
+category: 'Projects'
 tags: ['python', 'ai', 'nlp', 'nodejs', 'docker', 'architecture', 'reactjs', 'redux']
 ---
 

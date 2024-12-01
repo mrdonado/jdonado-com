@@ -3,7 +3,7 @@ title: 'Restore Clover Using Windows'
 description: 'Learn how to restore the Clover bootloader using Windows, a crucial step for Hackintosh users.'
 pubDate: 'May 26 2017'
 heroImage: '../../assets/images/clover.png'
-category: 'Category 1'
+category: 'Misc'
 tags: ['hackintosh', 'clover', 'windows']
 ---
 

@@ -3,7 +3,7 @@ title: 'Useful npm Commands'
 description: 'Discover some of the most useful npm commands for managing JavaScript projects and dependencies.'
 pubDate: 'Jun 18 2017'
 heroImage: '../../assets/images/npm-icon.svg'
-category: 'Category 1'
+category: 'Writing Software'
 tags: ['npm', 'nodejs']
 ---
 

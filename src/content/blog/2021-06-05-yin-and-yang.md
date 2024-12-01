@@ -3,7 +3,7 @@ title: 'The Yin and Yang of Software Development'
 description: 'Explore the balance between software quality, startup agility, and product development.'
 pubDate: 'Jun 05 2021'
 heroImage: '../../assets/images/temple.jpg'
-category: 'Category 1'
+category: 'Writing Software'
 tags: ['software-quality', 'startup', 'product-development']
 ---
 

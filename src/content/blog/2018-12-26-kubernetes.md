@@ -3,7 +3,7 @@ title: 'Kubernetes: Beyond Docker Compose'
 description: 'Explore how Kubernetes extends the capabilities of Docker Compose for managing containerized applications at scale.'
 pubDate: 'Dec 26 2018'
 heroImage: '../../assets/images/kubernetes-logo.jpg'
-category: 'Category 1'
+category: 'Writing Software'
 tags: ['kubernetes', 'docker', 'docker-compose', 'linux']
 ---
 
