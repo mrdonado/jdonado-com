@@ -41,6 +41,7 @@ const app = defineCollection({
 				.transform((val) => new Date(val)),
 			icon: image(),
 			heroImage: image(),
+			screenShots: z.array(image()),
 			draft: z.boolean().default(false)
 		})
 })

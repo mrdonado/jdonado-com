@@ -4,6 +4,11 @@ description: Inspired by the rigorous cognitive tests astronauts undergo, this g
 pubDate: 'Dec 06 2024'
 icon: '../../assets/images/astrobrain-icon.jpg'
 heroImage: '../../assets/images/astrobrain-hero.jpg'
+screenShots:
+  - '../../assets/images/astrobrain-1.jpg'
+  - '../../assets/images/astrobrain-2.jpg'
+  - '../../assets/images/astrobrain-3.jpg'
+  - '../../assets/images/astrobrain-4.jpg'
 ---
 
 > Think you have what it takes to be an astronaut? Memorize and recall sequences in normal, reversed, or random order. Train your brain and aim for the stars!
