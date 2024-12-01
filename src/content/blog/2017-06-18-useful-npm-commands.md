@@ -1,65 +1,110 @@
 ---
 title: 'Useful npm Commands'
-description: 'Discover some of the most useful npm commands for managing JavaScript projects and dependencies.'
+description: 'Discover some of the most useful npm commands for managing dependencies in JavaScript projects.'
 pubDate: 'Jun 18 2017'
-heroImage: '../../assets/images/npm-icon.svg'
+heroImage: '../../assets/images/npm-commands.jpg'
 category: 'Writing Software'
 tags: ['npm', 'nodejs']
 ---
 
-# Quick reference of some useful commands
+# Quick Reference of Useful Commands
 
-## Avoid conflicts
+## Avoiding Dependency Conflicts
 
-If you've been using nodeJS npm package manager, chances are, sooner or later you will get conflicts within your dependencies. Maybe you're cloning an old project or maybe you just updated your environment and your `node_modules` folder must be regenerated.
+If you've been using Node.js and its npm package manager, chances are you'll eventually encounter dependency conflicts. This might happen when cloning an old project, updating your environment, or regenerating the `node_modules` folder.
 
-Sometimes after running `npm install` you don't get exactly the modules that you need and suddenly things don't work as expected anymore.
+Sometimes, running `npm install` doesn't provide the exact modules you need, and suddenly things break. This issue often arises when there are [non-specific versions](https://docs.npmjs.com/misc/semver) defined for some dependencies in your `package.json`. For instance, approximate versions using a tilde (`~1.2.3`) or a caret (`^1.2.3`) may cause unexpected issues.
 
-This might happen when there's [no specific version](https://docs.npmjs.com/misc/semver) defined of some dependencies in your `package.json`, but rather an approximate one (e.g.: using a tilde, as in `~1.2.3` or a caret, as in `^1.2.3`).
+While tildes and carets are useful for automatically pulling newer versions, they can break your project if the updates are incompatible with your code. To prevent this, specify a fixed version (e.g., `1.2.3`) for each dependency in your `package.json`.
 
-While tildes and carets can be useful if you want to automatically use more recent versions when available, they can sometimes break your project if anything new isn't compatible with your current code.
+---
 
-By just specifying a version number without carets and tildes (as in `1.2.3`), you fix the specific version of each dependency you need.
+### Locking Dependency Versions
 
-### Lock down dependency versions
+Even using specific module versions may not fully prevent conflicts. Locking down all dependencies and their sub-dependencies can be a lifesaver.
 
-Sometimes using specific module versions is not enough. Saving a list with the specific versions of all your dependencies might save your day.
+#### Using npm-shrinkwrap
 
-Use the [npm-shrinkwrap](https://docs.npmjs.com/cli/shrinkwrap) command in order to create an `npm-shrinkwrap.json` file that [locks](https://docs.npmjs.com/files/package-locks) all the npm dependencies:
+Run the [npm-shrinkwrap](https://docs.npmjs.com/cli/shrinkwrap) command to generate an `npm-shrinkwrap.json` file. This file [locks](https://docs.npmjs.com/files/package-locks) all the npm dependencies to specific versions:
 
-`npm shrinkwrap`
+```bash
+npm shrinkwrap
+```
 
-Another (even better) alternative is to use [Yarn](https://yarnpkg.com/en/docs/yarn-lock) to create a `yarn.lock` file, which has the same goal as the `npm-shrinkwrap.json`, but it seems to follow a more deterministic approach, being therefore safer.
+#### Using Yarn
 
-Yarn is compatible with the same `package.json` of npm, so you can just install it globally (`npm install -g yarn`) and try it out right away by simply running `yarn` on your project's root folder, which will generate the `yarn.lock`.
+A more modern alternative is [Yarn](https://yarnpkg.com/en/docs/yarn-lock), which creates a `yarn.lock` file. This achieves the same goal as `npm-shrinkwrap.json` but is more deterministic and, therefore, safer. Yarn is fully compatible with npm's `package.json`.
 
-It is a very good idea to add this `yarn.lock` to your version control.
+1. Install Yarn globally:
 
-## Remove unneeded dependencies
+   ```bash
+   npm install -g yarn
+   ```
 
-If you want to remove modules from your `node_modules` directory that you once installed, but that are not required anymore by your project, you can use [prune](https://docs.npmjs.com/cli/prune):
+2. Run Yarn in your project's root directory:
+   ```bash
+   yarn
+   ```
 
-`npm prune`
+This generates a `yarn.lock` file. Be sure to commit the `yarn.lock` file to your version control system.
 
-`npm prune --production` will also remove the _devDependencies_.
+---
 
-This is particularly useful before running `npm shrinkwrap` if you manually removed dependencies from your `package.json`.
+## Removing Unneeded Dependencies
 
-## List outdated dependencies
+To clean up your `node_modules` directory by removing modules no longer required, use the [prune](https://docs.npmjs.com/cli/prune) command:
 
-If you want to check out which dependencies within your project are outdated, you can use the [npm-outdated](https://docs.npmjs.com/cli/outdated) command:
+```bash
+npm prune
+```
 
-`npm outdated`
+To remove unnecessary _devDependencies_ as well, use:
 
-## Update dependencies
+```bash
+npm prune --production
+```
 
-With the module `npm-check-updates`, you can automatically update your dependencies to the latest versions (be careful when doing this, since modifying various depencencies at once might break things down).
+This is especially useful before running `npm shrinkwrap` if you’ve manually removed dependencies from your `package.json`.
 
-- `npm i -g npm-check-updates` Install the [npm-check-updates](https://www.npmjs.com/package/npm-check-updates) module globally
-- `npm-check-updates -u` the option -u upgrades your `package.json` automatically
-- `npm install` in order to install the new versions of the dependencies (you might need to remove the `node_modules` directory first)
+---
 
-## Some other useful commands
+## Listing Outdated Dependencies
 
-- `npm ls` list the installed packages
-- `npm dedupe` reduce duplication
+To check for outdated dependencies in your project, use the [npm-outdated](https://docs.npmjs.com/cli/outdated) command:
+
+```bash
+npm outdated
+```
+
+---
+
+## Updating Dependencies
+
+The `npm-check-updates` module helps you automatically update your dependencies to their latest versions. Be cautious, as updating multiple dependencies simultaneously can introduce breaking changes.
+
+1. Install `npm-check-updates` globally:
+
+   ```bash
+   npm install -g npm-check-updates
+   ```
+
+2. Update your `package.json` with the `-u` option:
+
+   ```bash
+   npm-check-updates -u
+   ```
+
+3. Install the updated dependencies:
+
+   ```bash
+   npm install
+   ```
+
+   _Tip: You may need to delete the `node_modules` folder first to ensure a clean installation._
+
+---
+
+## Additional Useful Commands
+
+- `npm ls` – List all installed packages.
+- `npm dedupe` – Reduce duplication in your `node_modules` folder.
