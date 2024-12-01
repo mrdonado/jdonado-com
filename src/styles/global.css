@@ -54,7 +54,7 @@ a.link {
 
 @keyframes fade-and-grow {
 	0% {
-		scale: 0.95;
+		scale: 0.97;
 		opacity: 0.6;
 	}
 	100% {
