@@ -2,15 +2,18 @@
 
 - Proofread articles
 - Coming soon
+- Underline current path
+- Burger menu
 - Add support and privacy policy pages for apps
 - Link to old web
 - Link to CV
 - Integration with GA
 - Cookie consent
-- Animations
 
 ## DONE
 
+- Table of contents
+- Animations
 - Media Links
   - LinkedIn
   - Instagram
