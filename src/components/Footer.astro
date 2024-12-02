@@ -15,7 +15,28 @@ const today = new Date()
 		<div class='flex gap-6 justify-center md:justify-end text-sm md:text-base'>
 			<a class='underline' href='/privacy'>Privacy Policy</a>
 			<a class='underline' href='/support'>Support</a>
+			<!-- Open Banner again -->
+			<div
+				class='underline cookie cursor-pointer'
+				aria-label='Show Cookie Consent Settings'
+				id='show-cookie-banner'
+				role='button'
+			>
+				Show Cookie Consent Settings
+			</div>
 		</div>
 		<div class='text-sm md:text-base mt-4 md:mt-0'>All rights reserved.</div>
 	</div>
 </footer>
+
+<script>
+	// Show cookie banner listener
+	const showCookieBanner = document.getElementById('show-cookie-banner')
+	const cookieBanner = document.getElementById('cookie-banner')
+
+	if (showCookieBanner && cookieBanner) {
+		showCookieBanner.addEventListener('click', () => {
+			cookieBanner.classList.remove('hidden')
+		})
+	}
+</script>

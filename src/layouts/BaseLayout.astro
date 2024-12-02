@@ -5,7 +5,11 @@ import Footer from '@/components/Footer'
 import ProviderTheme from '@/components/ProviderTheme'
 import ProviderAnimations from '@/components/ProviderAnimations'
 import TwSizeIndicator from '@/components/TwSizeIndicator'
+import CookieConsent from '@/components/CookieConsent'
+import { siteConfig } from '@/data/site.config'
+
 const { title, description, image, articleDate } = Astro.props
+const gtmId = siteConfig.gtmId
 ---
 
 <html lang='en' class='scroll-smooth'>
@@ -16,6 +20,15 @@ const { title, description, image, articleDate } = Astro.props
 	</head>
 
 	<body class='bg-white text-stone-950 dark:bg-[#0a0910] dark:text-white'>
+		<!-- GTM -->
+		<noscript
+			><iframe
+				src=`https://www.googletagmanager.com/ns.html?id=${gtmId}`
+				height='0'
+				width='0'
+				style='display:none;visibility:hidden'></iframe></noscript
+		>
+
 		<main
 			class='px-5 sm:mx-auto sm:max-w-2xl sm:px-8 lg:px-0 antialiased md:max-w-6xl grid gap-12 mt-4 overflow-hidden md:overflow-visible'
 		>
@@ -31,5 +44,6 @@ const { title, description, image, articleDate } = Astro.props
 				margin-left: calc(100vw - 100%); /* prevent layout shift */
 			}
 		</style>
+		<CookieConsent />
 	</body>
 </html>

@@ -1,0 +1,116 @@
+---
+import { siteConfig } from '@/data/site.config'
+const gtmId = siteConfig.gtmId
+---
+
+<div
+	id='cookie-banner'
+	class='bg-[#0a0910] border-t border-t-gray-600 text-white fixed bottom-0 left-0 w-full text-white p-4 flex flex-col md:flex-row items-center justify-between gap-4 shadow-lg z-50 hidden'
+>
+	<div class='text-sm md:text-base'>
+		We use cookies to enhance your browsing experience. Read our <a
+			href='/cookie-policy'
+			class='underline'>Cookie Policy</a
+		>.
+	</div>
+	<div class='flex gap-4'>
+		<button
+			class='bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 rounded-md text-sm md:text-base'
+			id='accept-only-required'
+		>
+			Accept Required Only
+		</button>
+		<button
+			class='hover:bg-blue-100 bg-white text-stone-950 py-2 px-4 rounded-md text-sm md:text-base'
+			id='accept-all-cookies'
+		>
+			Accept All Cookies
+		</button>
+	</div>
+</div>
+
+<script define:vars={{ gtmId: gtmId }}>
+	function gtm(w, d, s, l, i) {
+		console.log('go go gtm')
+		w[l] = w[l] || []
+		w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' })
+		var f = d.getElementsByTagName(s)[0],
+			j = d.createElement(s),
+			dl = l != 'dataLayer' ? '&l=' + l : ''
+		j.async = true
+		j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl
+		f.parentNode.insertBefore(j, f)
+	}
+
+	const startGtm = () => {
+		gtm(window, document, 'script', 'dataLayer', gtmId)
+	}
+
+	const setCookie = (name, value, days) => {
+		const expires = new Date(Date.now() + days * 24 * 60 * 60 * 1000).toUTCString()
+		document.cookie = `${name}=${value}; expires=${expires}; path=/; SameSite=Lax`
+	}
+
+	const hideBanner = () => {
+		const cookieBanner = document.getElementById('cookie-banner')
+		if (cookieBanner) {
+			cookieBanner.classList.add('hidden')
+		}
+	}
+
+	const showBanner = () => {
+		const cookieBanner = document.getElementById('cookie-banner')
+		if (cookieBanner) {
+			cookieBanner.classList.remove('hidden')
+		}
+	}
+
+	const acceptOnlyRequired = () => {
+		const cookiesChanged = document.cookie.includes('cookies_accepted')
+		setCookie('cookies_accepted', 'required', 365)
+		hideBanner()
+		if (cookiesChanged) {
+			location.reload()
+		}
+	}
+
+	const acceptAllCookies = () => {
+		setCookie('cookies_accepted', 'all', 365)
+		startGtm()
+		hideBanner()
+	}
+
+	const checkCookieConsent = () => {
+		const cookiesReviewed = document.cookie.includes('cookies_accepted')
+
+		if (!cookiesReviewed) {
+			showBanner()
+			return
+		}
+
+		const cookieValue = (document.cookie || '')
+			.split(';')
+			.find((cookie) => cookie.includes('cookies_accepted'))
+
+		const allCookiesAccepted = (cookieValue || '').includes('all')
+
+		if (allCookiesAccepted) {
+			startGtm()
+		}
+
+		hideBanner()
+	}
+
+	const addEventListeners = () => {
+		const acceptOnlyRequiredButton = document.getElementById('accept-only-required')
+		const acceptAllCookiesButton = document.getElementById('accept-all-cookies')
+
+		if (acceptOnlyRequiredButton && acceptAllCookiesButton) {
+			acceptOnlyRequiredButton.addEventListener('click', acceptOnlyRequired)
+			acceptAllCookiesButton.addEventListener('click', acceptAllCookies)
+		}
+	}
+
+	addEventListeners()
+	checkCookieConsent()
+</script>
