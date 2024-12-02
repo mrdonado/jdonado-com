@@ -1,14 +1,14 @@
 # TODO
 
-- Coming soon
-
-- Link to old web
-- Link to CV
-- Integration with GA
-- Cookie consent
+- Make cookie consent persistent on navigation
 
 ## DONE
 
+- Cookie consent
+- Integration with GA
+- Link to old web
+- Link to CV
+- Coming soon
 - Add support and privacy policy pages for apps
   - https://www.jdonado.com/apps/astrobrain
   - https://www.jdonado.com/support
