@@ -42,6 +42,8 @@ const app = defineCollection({
 			icon: image(),
 			heroImage: image(),
 			screenShots: z.array(image()),
+			appStore: z.string().optional(),
+			playStore: z.string().optional(),
 			draft: z.boolean().default(false)
 		})
 })

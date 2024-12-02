@@ -4,6 +4,8 @@ description: Inspired by the rigorous cognitive tests astronauts undergo, this g
 pubDate: 'Dec 06 2024'
 icon: '../../assets/images/astrobrain-icon.jpg'
 heroImage: '../../assets/images/astrobrain-hero.jpg'
+appStore: 'https://apps.apple.com/de/app/astrobrain-space-program/id6737922303?l=en-GB'
+pplayStore: 'remove p when url is available'
 screenShots:
   - '../../assets/images/astrobrain-1.jpg'
   - '../../assets/images/astrobrain-2.jpg'
