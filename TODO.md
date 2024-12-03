@@ -1,9 +1,12 @@
 # TODO
 
-- Make cookie consent persistent on navigation
+- Add a cookie policy
+- Optimize for performance and accessibility
+- Animate cookie banner
 
 ## DONE
 
+- Make cookie consent persistent on navigation
 - Cookie consent
 - Integration with GA
 - Link to old web

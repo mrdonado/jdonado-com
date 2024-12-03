@@ -43,15 +43,6 @@ a.link {
 	text-decoration: underline;
 }
 
-@keyframes fade-in {
-	0% {
-		opacity: 0.5;
-	}
-	100% {
-		opacity: 1;
-	}
-}
-
 @keyframes fade-and-grow {
 	0% {
 		scale: 0.97;
@@ -61,10 +52,6 @@ a.link {
 		scale: 1;
 		opacity: 1;
 	}
-}
-
-.fade-in {
-	animation: fade-in 0.3s ease;
 }
 
 .appear-smoothly {

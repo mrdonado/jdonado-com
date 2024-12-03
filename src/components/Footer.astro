@@ -30,13 +30,15 @@ const today = new Date()
 </footer>
 
 <script>
-	// Show cookie banner listener
-	const showCookieBanner = document.getElementById('show-cookie-banner')
-	const cookieBanner = document.getElementById('cookie-banner')
+	document.addEventListener('astro:page-load', () => {
+		// Show cookie banner listener
+		const showCookieBanner = document.getElementById('show-cookie-banner')
+		const cookieBanner = document.getElementById('cookie-banner')
 
-	if (showCookieBanner && cookieBanner) {
-		showCookieBanner.addEventListener('click', () => {
-			cookieBanner.classList.remove('hidden')
-		})
-	}
+		if (showCookieBanner && cookieBanner) {
+			showCookieBanner.addEventListener('click', () => {
+				cookieBanner.classList.remove('hidden')
+			})
+		}
+	})
 </script>
