@@ -3,8 +3,6 @@ title: 'Support Page'
 description: 'Support for Apps Published by Jdonado'
 ---
 
-## Support for Apps Published by Jdonado
-
 **Introduction**
 
 Welcome to the support page for apps published by Jdonado. If you are experiencing issues with any of our apps or need assistance, you have come to the right place. Below are resources and contact information to help you resolve any problems quickly.
