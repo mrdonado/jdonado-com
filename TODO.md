@@ -1,13 +1,14 @@
 # TODO
 
-- Latest posts instead of "See all" (not all)
 - Add a cookie policy
+- App banner
 - Review text of the cookie banner
 - Optimize for performance and accessibility
-- Animate cookie banner
 
 ## DONE
 
+- Animate cookie banner
+- Latest posts instead of "See all" (not all)
 - Make cookie consent persistent on navigation
 - Cookie consent
 - Integration with GA

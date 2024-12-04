@@ -2,18 +2,18 @@
 import TagIcon from '@/components/icons/TagIcon'
 import { cn, sluglify } from '@/utils'
 
-const { name = 'See All', activeCategory } = Astro.props
+const { name = 'Latest Posts', activeCategory } = Astro.props
 const currentPath = Astro.url.pathname
 const unsluglifyNameCategory = sluglify(name.toLowerCase())
 
 const isActive =
 	activeCategory?.toLocaleLowerCase() === unsluglifyNameCategory ||
-	(currentPath === '/blog' && name === 'See All') ||
+	(currentPath === '/blog' && name === 'Latest Posts') ||
 	(currentPath === '/category/tags' && name === 'Tags')
 
 let href = sluglify(`/category/${unsluglifyNameCategory}/1`)
 
-if (name === 'See All') {
+if (name === 'Latest Posts') {
 	href = '/blog'
 } else if (name === 'Tags') {
 	href = '/tags'
