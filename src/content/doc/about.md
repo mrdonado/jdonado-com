@@ -3,16 +3,19 @@ title: 'About Me'
 description: 'About me section'
 ---
 
-Welcome to my website, amigos! My name is F. Javier R. Donado, I was born in Madrid (Spain), and I moved to Stuttgart (Germany) in September 2012.
+My name is **Javier Donado**. I’m a [solution architect and full-stack developer](https://linkedin.com/in/jdonado), [writing code](https://github.com/mrdonado) since the early 2000s.
 
-I’ve been [writing software](https://www.youtube.com/watch?v=9LfmrkyP81M) since the early 2000s. My favorite programming languages are TypeScript, Python, and Kotlin, although I’ve used many more over the years, including Java, JavaScript, C++, Clojure, PHP, and Perl. My focus is web development (full-stack) and mobile apps using React Native.
+Beyond coding, I’m a passionate [travel photographer](https://instagram.com/jdonadolens), and a longtime [guitarist and composer](https://jdonado.bandcamp.com).
 
-I hold a master's degree in [Telecommunications Engineering](https://www.uc3m.es/master/telecommunication-engineering) and currently work as a [Solution Architect](https://scaledagileframework.com/solution-architect/) at [Porsche Digital](https://porsche.digital/) in Ludwigsburg. You can find my [CV here](https://docs.google.com/file/d/0B2hOO8PX6CgfamxFMUo3SmF4S2M) (Google Docs).
+Welcome to my website! Feel free to reach out anytime on [LinkedIn](https://linkedin.com/in/jdonado) or [X.com](https://twitter.com/jdonado)!
 
-I’m passionate about flexible and scalable architectures, DDD, functional programming, AWS, Docker, VIM, Visual Studio Code, and the satisfying look and feel of my custom mechanical keyboard (with silent switches!).
+---
 
-In addition to writing software, I’m an [avid photographer](https://instagram.com/jdonadolens), guitar collector, and [music composer in my home studio](https://jdonado.bandcamp.com).
-
-Auf Wiedersehen!
-
-P.d.: were you looking for my old website? It's still online at [https://old-www.jdonado.com](https://old-www.jdonado.com)
+- **Spanish**, living in **Germany** since 2012
+- M.Sc. in [Telecommunications Engineering](https://www.uc3m.es/master/telecommunication-engineering)
+- I speak 🇪🇸 Spanish, 🇬🇧 English, 🇩🇪 German, and 🇬🇷 Greek (a little bit)
+- I prefer TypeScript, Python, Kotlin, AWS, React.js, and React Native
+- I ❤️ Vim, Git, Obsidian, DDD, Product Development, Anki, the CLI...
+- [Porsche employee](https://docs.google.com/file/d/0B2hOO8PX6CgfamxFMUo3SmF4S2M) since 2018
+- I've been to 🇪🇪 🇫🇮 🇸🇪 🇩🇰 🇯🇵 🇰🇷 🇮🇹 🇨🇦 🇺🇸 🇵🇹 🇳🇴 🇴🇲 🇦🇪 🇦🇹 🇸🇰 🇭🇺 🇻🇳 🇬🇷 🇭🇰 🇨🇴 🇨🇷 🇨🇿 🇭🇷 🇧🇦 🇬🇧 🇳🇱 🇩🇪 🇫🇷 🇹🇳 🇨🇺 🇪🇸
+- Old website [still available](https://old-www.jdonado.com)
