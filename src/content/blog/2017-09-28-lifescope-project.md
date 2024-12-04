@@ -4,7 +4,7 @@ description: 'Explore the Lifescope project, a multi-faceted application utilizi
 pubDate: 'Sep 27 2017'
 heroImage: '../../assets/images/lifescope.jpg'
 category: 'Projects'
-tags: ['python', 'ai', 'nlp', 'nodejs', 'docker', 'architecture', 'reactjs', 'redux']
+tags: ['python', 'ai', 'architecture']
 ---
 
 # An AI Software Searching for Solutions to Healthcare Problems

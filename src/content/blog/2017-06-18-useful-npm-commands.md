@@ -4,7 +4,7 @@ description: 'Discover some of the most useful npm commands for managing depende
 pubDate: 'Jun 18 2017'
 heroImage: '../../assets/images/npm-commands.jpg'
 category: 'Writing Software'
-tags: ['npm', 'nodejs']
+tags: ['javascript']
 ---
 
 # Quick Reference of Useful Commands

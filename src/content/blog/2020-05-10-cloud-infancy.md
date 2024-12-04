@@ -4,7 +4,7 @@ description: 'Where are we today in our journey towards cloud development?'
 pubDate: 'May 10 2020'
 heroImage: '../../assets/images/cloud.jpg'
 category: 'Writing Software'
-tags: ['cloud', 'aws', 'kubernetes', 'cloudfoundry', 'architecture']
+tags: ['cloud', 'architecture']
 ---
 
 ## The Heterogeneous World of IT Job Titles
