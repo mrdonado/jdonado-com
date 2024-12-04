@@ -45,7 +45,7 @@ a.link {
 
 @keyframes fade-and-grow {
 	0% {
-		scale: 0.97;
+		scale: 0.985;
 		opacity: 0.6;
 	}
 	100% {
@@ -56,4 +56,17 @@ a.link {
 
 .appear-smoothly {
 	animation: fade-and-grow 0.6s ease;
+}
+
+@keyframes fadein {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+.fadein {
+	animation: fadein 0.6s ease;
 }

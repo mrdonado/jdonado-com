@@ -1,6 +1,8 @@
 # TODO
 
+- Latest posts instead of "See all" (not all)
 - Add a cookie policy
+- Review text of the cookie banner
 - Optimize for performance and accessibility
 - Animate cookie banner
 
