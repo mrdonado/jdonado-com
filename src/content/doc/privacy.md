@@ -5,7 +5,7 @@ description: 'Privacy Policy'
 
 **Introduction**
 
-At Jdonado, we are committed to protecting the privacy of our users. This Privacy Policy outlines how we handle any user data in relation to the mobile applications published under the name Jdonado, developed by F. Javier R. Donado. Our apps are designed to provide services primarily offline and do not aim to collect or process user data beyond what is necessary for functionality, advertising, or in-app purchases.
+At jdonado, we are committed to protecting the privacy of our users. This Privacy Policy outlines how we handle any user data in relation to the mobile applications published under the name jdonado, developed by F. Javier R. Donado. Our apps are designed to provide services primarily offline and do not aim to collect or process user data beyond what is necessary for functionality, advertising, or in-app purchases.
 
 **1. Data Collection and Usage**
 
