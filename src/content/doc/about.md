@@ -3,11 +3,11 @@ title: 'About Me'
 description: 'About me section'
 ---
 
-My name is **Javier Donado**. I’m a [solution architect and full-stack developer](https://linkedin.com/in/jdonado), [writing code](https://github.com/mrdonado) since the early 2000s.
+My name is **Javier Donado**. I’m a [solution architect and full-stack developer](https://www.linkedin.com/in/f-javier-r-donado), [writing code](https://github.com/mrdonado) since the early 2000s.
 
 Beyond coding, I’m a passionate [travel photographer](https://instagram.com/jdonadolens), and a longtime [guitarist and composer](https://jdonado.bandcamp.com).
 
-Welcome to my website! Feel free to reach out anytime on [LinkedIn](https://linkedin.com/in/jdonado) or [X.com](https://twitter.com/jdonado)!
+Welcome to my website! Feel free to reach out anytime on [LinkedIn](https://www.linkedin.com/in/f-javier-r-donado) or [X.com](https://twitter.com/jdonado)!
 
 ---
 
