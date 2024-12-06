@@ -1,13 +1,22 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
 import TitlePage from '@/components/TitlePage'
-import { Content } from '../content/doc/about.md'
+import { Content } from '../content/doc/about.mdx'
+import { Image } from 'astro:assets'
+import nerdAvatarMini from '../assets/images/nerd-avatar-mini.png'
 ---
 
 <BaseLayout title='About Me'>
 	<div class='max-w-[800px] mx-auto'>
 		<TitlePage title='Hola Amigos!' />
+		<Image
+			width='130'
+			class='float-right mr-4 ml-4 rounded appear-smoothly'
+			src={nerdAvatarMini}
+			alt='This is me reviewing code'
+		/>
 	</div>
+
 	<div class='fadein prose prose-lg md:prose-xl dark:prose-invert mb-12 max-w-[800px] mx-auto'>
 		<Content />
 	</div>
