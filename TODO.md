@@ -1,13 +1,12 @@
 # TODO
 
-- Add a cookie policy
 - App banner
-- Review text of the cookie banner
 - Optimize for performance and accessibility
 - Engage in conversation Twitter LinkedIn
 
 ## DONE
 
+- Add a cookie policy
 - Open md links in new tab
 - Animate cookie banner
 - Latest posts instead of "See all" (not all)
