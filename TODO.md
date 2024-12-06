@@ -4,9 +4,11 @@
 - App banner
 - Review text of the cookie banner
 - Optimize for performance and accessibility
+- Engage in conversation Twitter LinkedIn
 
 ## DONE
 
+- Open md links in new tab
 - Animate cookie banner
 - Latest posts instead of "See all" (not all)
 - Make cookie consent persistent on navigation
