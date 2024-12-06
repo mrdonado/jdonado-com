@@ -1,11 +1,11 @@
 # TODO
 
-- App banner
-- Optimize for performance and accessibility
-- Engage in conversation Twitter LinkedIn
+- Buttons to engage in conversation - Twitter LinkedIn
 
 ## DONE
 
+- Optimize for performance and accessibility
+- App banner
 - Add a cookie policy
 - Open md links in new tab
 - Animate cookie banner

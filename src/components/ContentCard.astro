@@ -20,9 +20,9 @@ const itemUrl = `/${isPost ? 'post' : 'apps'}/${slug}/`
 			src={heroImage}
 			width={600}
 			height={200}
-			format='webp'
 			class='h-full min-w-full object-cover hover:scale-[106%] transition-all duration-[600ms] rounded-[2px]'
 			alt={`img of ${title}`}
+			loading='eager'
 		/>
 
 		<div class='z-30 absolute bottom-0 w-full h-20'>
