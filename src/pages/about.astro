@@ -1,10 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
-import { getDoc } from '@/utils'
 import TitlePage from '@/components/TitlePage'
-
-const doc = await getDoc('about.md')
-const { Content } = await doc.render()
+import { Content } from '../content/doc/about.md'
 ---
 
 <BaseLayout title='About Me'>
