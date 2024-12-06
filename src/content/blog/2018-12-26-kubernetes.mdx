@@ -7,9 +7,8 @@ category: 'Writing Software'
 tags: ['linux', 'architecture', 'cloud']
 ---
 
-Here’s a revised version of your text with improved flow, clarity, and grammatical accuracy:
-
----
+import { Image } from 'astro:assets'
+import architectureDiagram from '../../assets/images/pods-nodes-services.png'
 
 # Beyond Docker Compose
 
@@ -104,7 +103,7 @@ If a node fails, the KDC automatically starts the required containers on the rem
 
 Below is a representation of nodes, pods, services, and their relationships:
 
-![Architecture Diagram](/assets/images/pods-nodes-services.png 'Architecture Diagram')
+<Image src={architectureDiagram} alt='Architecture Diagram' />
 
 ## Kubectl quick reference
 

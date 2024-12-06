@@ -7,6 +7,9 @@ category: 'Projects'
 tags: ['python', 'ai', 'architecture']
 ---
 
+import { Image } from 'astro:assets'
+import architectureDiagram from '../../assets/images/lifescope-architecture.png'
+
 # An AI Software Searching for Solutions to Healthcare Problems
 
 ## Some History
@@ -32,7 +35,7 @@ After experimenting with Flask, I decided it was best to separate the analyzer f
 - [Firebase DB](https://firebase.google.com), which serves the analyzed messages in real time to the frontend.
 - A [ReactJS + Redux](https://github.com/mrdonado/health-nlp-react)-based frontend, which showcases the project with an introduction, a link to [the project's blog](http://lifescope-insights.jdonado.com/), and a real-time timeline of analyzed messages.
 
-![Architecture Diagram](/assets/images/lifescope-architecture.png 'Architecture Diagram')
+<Image src={architectureDiagram} alt='Architecture Diagram' />
 
 ---
 

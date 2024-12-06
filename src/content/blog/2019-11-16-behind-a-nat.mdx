@@ -7,6 +7,9 @@ category: 'Projects'
 tags: ['cloud', 'self-hosting', 'linux']
 ---
 
+import { Image } from 'astro:assets'
+import laptop from '../../assets/images/laptop.jpeg'
+
 > No one knows what it's like to be a bad man, to be a sad man... behind a NAT.
 
 Said [a famous song](https://www.youtube.com/watch?v=dMrImMedYRo) (more or less...)
@@ -45,7 +48,7 @@ You also need a machine (or more!) that is always running at home, where you'll 
 
 Take a look at mine; isn't it beautiful?
 
-![laptop for self-hosting](/assets/images/laptop.jpeg "My good'ol Thinkpad")
+<Image src={laptop} alt='laptop for self-hosting' />
 
 A Raspberry Pi will do the trick too.
 
