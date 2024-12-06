@@ -7,6 +7,9 @@ category: 'Writing Software'
 tags: ['software-quality', 'product-development', 'architecture']
 ---
 
+import { Image } from 'astro:assets'
+import graph from '../../assets/images/speed-time-chart.png'
+
 ## What Is Software Development All About?
 
 Depending on who you ask, even if you ask professionals with many years of experience in the industry, you'll get very different answers. In my experience, there are two clear trends:
@@ -54,7 +57,7 @@ A good CTO in a startup will constantly try to answer the question: **"How much 
 - You need more time to manually test your product with each release.
 - Your customers start complaining about the quality of the service.
 
-![Development speed vs. time since project start](/assets/images/speed-time-chart.png)
+<Image src={graph} alt='Development speed vs. time since project start' />
 
 The team and its stakeholders should recognize that the insane speed of the initial phases is not sustainable over time. At some point, enough resources should be spent to continuously refactor the codebase before it’s too late. If the goal is to achieve the highest development speed possible, there's a moment when software quality principles stop being an obstacle and become a crucial part of [a virtuous circle](https://www.youtube.com/watch?v=ZmgbjaRfp_Q) where you build better software, faster. In other words, if you don’t care about the quality of your software soon enough, it’s only a matter of time before it becomes unmaintainable, and that will slow you down.
 
