@@ -18,7 +18,7 @@ const { posts } = Astro.props
 			<section class={cn(`flex flex-col md:flex-row sm:justify-between gap-8`)}>
 				{posts.map((post) => {
 					return (
-						<div class='flex flex-wrap gap-2'>
+						<a href={`/post/${post.slug}/`} class='flex flex-wrap gap-2'>
 							<div class='min-h-full'>
 								<Image
 									src={post.data.heroImage}
@@ -30,11 +30,9 @@ const { posts } = Astro.props
 								/>
 							</div>
 							<header class='flex justify-center items-center'>
-								<a class='font-medium  hover:underline' href={`/post/${post.slug}/`}>
-									{post.data.title}
-								</a>
+								<span class='font-medium  hover:underline'>{post.data.title}</span>
 							</header>
-						</div>
+						</a>
 					)
 				})}
 			</section>
