@@ -3,6 +3,7 @@ import HeaderLink from '@/components/HeaderLink'
 import TwitterIcon from '@/components/icons/TwitterIcon'
 import GithubIcon from '@/components/icons/GithubIcon'
 import MusicIcon from '@/components/icons/MusicIcon'
+import SpotifyIcon from '@/components/icons/SpotifyIcon'
 import MenuIcon from '@/components/icons/MenuIcon'
 import InstagramIcon from '@/components/icons/InstagramIcon'
 import LinkedInIcon from '@/components/icons/LinkedInIcon'
@@ -32,9 +33,15 @@ const SOCIALNETWORKS = [
 		icon: InstagramIcon
 	},
 	{
-		name: 'My Music',
+		name: 'My Music on Spotify',
+		url: 'https://open.spotify.com/artist/60ICs7yKs1yRwW1ZVIJzYV',
+		icon: SpotifyIcon
+	},
+	{
+		name: 'My Music on Bandcamp',
 		url: 'https://jdonado.bandcamp.com',
-		icon: MusicIcon
+		icon: MusicIcon,
+		hidden: true
 	}
 ]
 
@@ -59,7 +66,7 @@ const isBlog = currentPath === '/blog'
 				class='social-networks flex justify-center items-center md:justify-end gap-3 md:p-0 md:flex-row'
 			>
 				{
-					SOCIALNETWORKS.map((network) => (
+					SOCIALNETWORKS.filter((network) => !network.hidden).map((network) => (
 						<HeaderLink class='' href={network.url} target='_blank' aria-label={network.name}>
 							<span>{<network.icon />} </span>
 						</HeaderLink>
