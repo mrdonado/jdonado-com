@@ -14,12 +14,24 @@ importers:
       '@astrojs/rss':
         specifier: 4.0.9
         version: 4.0.9
+      '@astropub/md':
+        specifier: ^1.0.0
+        version: 1.0.0(@astrojs/markdown-remark@6.0.0)
       astro:
         specifier: 5.0.1
         version: 5.0.1(jiti@1.21.6)(rollup@4.27.4)(typescript@5.7.2)(yaml@2.6.1)
       astro-font:
         specifier: ^0.1.81
         version: 0.1.81
+      rehype-raw:
+        specifier: ^7.0.0
+        version: 7.0.0
+      remark-rehype:
+        specifier: ^11.1.1
+        version: 11.1.1
+      unist-util-visit:
+        specifier: ^5.0.0
+        version: 5.0.0
     devDependencies:
       '@astrojs/mdx':
         specifier: 4.0.1
@@ -131,6 +143,11 @@ packages:
   '@astrojs/telemetry@3.2.0':
     resolution: {integrity: sha512-wxhSKRfKugLwLlr4OFfcqovk+LIFtKwLyGPqMsv+9/ibqqnW3Gv7tBhtKEb0gAyUAC4G9BTVQeQahqnQAhd6IQ==}
     engines: {node: ^18.17.1 || ^20.3.0 || >=22.0.0}
+
+  '@astropub/md@1.0.0':
+    resolution: {integrity: sha512-++urcyulQogbLAF0VC2rEp6qLUfnRX9iaDREAkN1su9fF8V84DVaMHbQXn7qqQ27wYT5AVVeoK+4+vggYYVbQg==}
+    peerDependencies:
+      '@astrojs/markdown-remark': ^5
 
   '@babel/helper-string-parser@7.25.9':
     resolution: {integrity: sha512-4A/SCr/2KLd5jrtOMFzaKjVtAei3+2r/NChoBNoZ3EyP/+GlhoaEGoWOZUmFmoITP7zOJyHIMm+DYRd8o3PvHA==}
@@ -3123,6 +3140,10 @@ snapshots:
       which-pm-runs: 1.1.0
     transitivePeerDependencies:
       - supports-color
+
+  '@astropub/md@1.0.0(@astrojs/markdown-remark@6.0.0)':
+    dependencies:
+      '@astrojs/markdown-remark': 6.0.0
 
   '@babel/helper-string-parser@7.25.9': {}
 
