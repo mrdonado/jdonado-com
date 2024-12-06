@@ -5,7 +5,7 @@ description: 'Support for Apps Published by Jdonado'
 
 **Introduction**
 
-Welcome to the support page for apps published by Jdonado. If you are experiencing issues with any of our apps or need assistance, you have come to the right place. Below are resources and contact information to help you resolve any problems quickly.
+Welcome to the support page for apps published by F. Javier R. Donado (jdonado). If you are experiencing issues with any of our apps or need assistance, you have come to the right place. Below are resources and contact information to help you resolve any problems quickly.
 
 **1. Frequently Asked Questions (FAQ)**
 
@@ -65,4 +65,4 @@ We value your feedback! If you encounter bugs or want to suggest improvements, p
 
 **Conclusion**
 
-Thank you for using apps published by Jdonado. We are committed to providing the best possible user experience, and we are here to assist you. If you have any questions or need support, feel free to contact us at any time.
+Thank you for using apps published by jdonado. We are committed to providing the best possible user experience, and we are here to assist you. If you have any questions or need support, feel free to contact us at any time.
