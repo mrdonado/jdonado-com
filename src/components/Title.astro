@@ -6,6 +6,8 @@ type Props = {
 const { isTag } = Astro.props
 ---
 
-<h1 class=`text-5xl font-bold ${isTag ? '' : 'first-letter:uppercase'}`>
+<h1
+	class=`text-3xl md:text-5xl font-bold ${isTag ? '' : 'first-letter:uppercase'} md:leading-[1.1] max-w-[69vw] truncate`
+>
 	<slot />
 </h1>
