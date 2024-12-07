@@ -5,6 +5,10 @@ import TitlePage from '@/components/TitlePage'
 import ListCategories from '@/components/ListCategories'
 import { getTags, getPostByTag } from '@/utils'
 
+type Props = {
+	tag: string
+}
+
 export async function getStaticPaths() {
 	const tags = await getTags()
 
