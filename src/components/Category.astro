@@ -9,7 +9,7 @@ const unsluglifyNameCategory = sluglify(name.toLowerCase())
 const isActive =
 	activeCategory?.toLocaleLowerCase() === unsluglifyNameCategory ||
 	(currentPath === '/blog' && name === 'Latest Posts') ||
-	(currentPath === '/category/tags' && name === 'Tags')
+	(currentPath === '/tags' && name === 'Tags')
 
 let href = sluglify(`/category/${unsluglifyNameCategory}/1`)
 
