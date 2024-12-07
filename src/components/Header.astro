@@ -47,9 +47,9 @@ const SOCIALNETWORKS = [
 
 const currentPath = Astro.url.pathname
 
-const isHome = currentPath === '/'
-const isApps = currentPath === '/apps'
-const isBlog = currentPath === '/blog'
+const isHome = currentPath === '/' || currentPath === ''
+const isApps = currentPath.startsWith('/apps')
+const isBlog = currentPath.startsWith('/blog') || currentPath.startsWith('/post')
 
 const translateClass = 'translate-y-[-10em]'
 const topClass = 'top-[calc(3.5em)]'
