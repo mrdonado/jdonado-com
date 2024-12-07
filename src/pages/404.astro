@@ -1,0 +1,15 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import TitlePage from '@/components/TitlePage'
+import { Content } from '../content/doc/404.mdx'
+---
+
+<BaseLayout title='404 - Page Not Found'>
+	<div class='max-w-[800px] mx-auto'>
+		<TitlePage title='404 - Page Not Found' />
+	</div>
+
+	<div class='fadein prose prose-lg md:prose-xl dark:prose-invert mb-12 max-w-[800px] mx-auto'>
+		<Content />
+	</div>
+</BaseLayout>
