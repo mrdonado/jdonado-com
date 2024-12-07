@@ -97,11 +97,11 @@ const topClass = 'top-[calc(3.5em)]'
 </header>
 
 <script>
-	const headerDrawer = document.getElementById('astro-header-drawer')
-	const headerDrawerButton = document.getElementById('astro-header-drawer-button')
-	const translateClass = headerDrawerButton?.dataset.translateClass || ''
-
 	document.addEventListener('click', (event) => {
+		const headerDrawer = document.getElementById('astro-header-drawer')
+		const headerDrawerButton = document.getElementById('astro-header-drawer-button')
+		const translateClass = headerDrawerButton?.dataset.translateClass || ''
+
 		const menu = headerDrawer
 		const menuButton = headerDrawerButton
 		const isClickInside =
