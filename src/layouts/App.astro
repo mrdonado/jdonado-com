@@ -46,11 +46,11 @@ const articleDate = pubDate.toISOString()
 				</div>
 
 				<div
-					class='mb-6 flex items-center justify-center gap-y-4 gap-x-4 max-w-[420px] mx-auto flex-col sm:flex-row'
+					class='mb-6 flex items-center justify-center gap-y-4 gap-x-4 mx-auto flex-col max-w-[180px] md:max-w-[420px] md:flex-row'
 				>
 					{
 						appStore ? (
-							<a href={appStore} target='_blank' rel='noopener'>
+							<a href={appStore} class='max-w-[420px]' target='_blank' rel='noopener'>
 								<AppStoreIcon />
 							</a>
 						) : (
@@ -61,11 +61,11 @@ const articleDate = pubDate.toISOString()
 					}
 					{
 						playStore ? (
-							<a class='md:w-[330px] sm:w-34' href={playStore} target='_blank' rel='noopener'>
+							<a class='sm:w-34 md:w-[330px] ' href={playStore} target='_blank' rel='noopener'>
 								<GooglePlayIcon />
 							</a>
 						) : (
-							<div class='md:w-[330px]  sm:w-34'>
+							<div class='sm:w-34 md:w-[330px]'>
 								<GooglePlayIconComing />
 							</div>
 						)
