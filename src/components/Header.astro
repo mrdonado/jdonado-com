@@ -50,6 +50,9 @@ const currentPath = Astro.url.pathname
 const isHome = currentPath === '/'
 const isApps = currentPath === '/apps'
 const isBlog = currentPath === '/blog'
+
+const translateClass = 'translate-y-[-10em]'
+const topClass = 'top-[calc(3.5em)]'
 ---
 
 <header class='relative flex items-center h-12 font-semibold'>
@@ -59,7 +62,7 @@ const isBlog = currentPath === '/blog'
 
 	<div
 		id='astro-header-drawer'
-		class='shadow rounded-l-lg md:bg-transparent dark:md:bg-transparent bg-white dark:bg-[#0a0910] md:shadow-none md:rounded-none md:border-none md:h-auto md:static absolute transition-transform duration-300 ease-in md:translate-x-0 top-12 -right-5 pl-4 pt-6 pb-4 md:p-0 h-[5.5em] w-[70%] z-50 translate-x-96'
+		class={`shadow rounded-lg md:bg-transparent dark:md:bg-transparent bg-white dark:bg-[#0a0910] bg-opacity-80 md:shadow-none backdrop-blur-sm md:border-none md:h-auto md:static absolute transition-transform duration-300 ease-in md:translate-y-0 ${topClass} left-0 right-0 pl-4 pt-6 pb-4 md:p-0 h-[5.5em] w-auto z-50 ${translateClass}`}
 	>
 		<nav class='flex h-full flex-col justify-between gap-12 text-left md:w-full md:gap-5'>
 			<div
@@ -81,24 +84,34 @@ const isBlog = currentPath === '/blog'
 			<Search />
 		</div>
 		<ToggleTheme />
-		<button id='astro-header-drawer-button' type='button' class='md:ml-6 md:hidden'>
+		<button
+			id='astro-header-drawer-button'
+			type='button'
+			class='md:ml-6 md:hidden'
+			data-translate-class={translateClass}
+		>
 			<MenuIcon />
 			<span class='sr-only'>Show Menu</span>
 		</button>
 	</div>
 </header>
+
 <script>
+	const headerDrawer = document.getElementById('astro-header-drawer')
+	const headerDrawerButton = document.getElementById('astro-header-drawer-button')
+	const translateClass = headerDrawerButton?.dataset.translateClass || ''
+
 	document.addEventListener('click', (event) => {
-		const menu = document.getElementById('astro-header-drawer')
-		const menuButton = document.getElementById('astro-header-drawer-button')
+		const menu = headerDrawer
+		const menuButton = headerDrawerButton
 		const isClickInside =
 			menu?.contains(event.target as HTMLDivElement) ||
 			menuButton?.contains(event.target as HTMLButtonElement)
 
 		if (isClickInside) {
-			menu?.classList.toggle('translate-x-96')
+			menu?.classList.toggle(translateClass)
 		} else {
-			menu?.classList.add('translate-x-96')
+			menu?.classList.add(translateClass)
 		}
 	})
 </script>
