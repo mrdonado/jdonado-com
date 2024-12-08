@@ -7,6 +7,7 @@ const gtmId = siteConfig.gtmId
 	id='cookie-banner'
 	class='fadein bg-[#0a0910] bg-opacity-80 backdrop-blur-sm border-t border-t-gray-600 text-white fixed bottom-0 left-0 w-full text-white p-4 flex flex-col md:flex-row items-center justify-between gap-4 shadow-lg z-50 hidden'
 	data-gtm-id={gtmId}
+	transition:persist='ignore-transitions'
 >
 	<div class='text-sm md:text-base'>
 		We use cookies to enhance your browsing experience. Read our <a
@@ -31,24 +32,51 @@ const gtmId = siteConfig.gtmId
 </div>
 
 <script>
-	function gtm(w, d, s, l, i) {
-		w[l] = w[l] || []
-		w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' })
-		var f = d.getElementsByTagName(s)[0],
-			j = d.createElement(s),
-			dl = l != 'dataLayer' ? '&l=' + l : ''
-		j.async = true
-		j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl
-		f.parentNode.insertBefore(j, f)
+	function sendAllowAndPageView() {
+		const path = window.location.pathname
+		const title = document.title
+
+		window.dataLayer = window.dataLayer || []
+
+		window.dataLayer.push({
+			event: 'gtm.init_consent',
+			default: {
+				analytics_storage: 'granted', // Example value
+				ad_storage: 'granted', // Example value
+				functionality_storage: 'granted',
+				personalization_storage: 'granted',
+				security_storage: 'granted'
+			}
+		})
+
+		window.dataLayer.push({
+			event: 'gtm.js',
+			timestamp: new Date().getTime() // Optional: Add a timestamp for debugging
+		})
+
+		window.dataLayer.push({
+			event: 'gtm.init'
+		})
+
+		window.dataLayer.push({
+			event: 'pageview',
+			page: {
+				path,
+				title
+			}
+		})
 	}
 
 	const startGtm = () => {
 		const cookieBanner = document.getElementById('cookie-banner')
 		const gtmId = cookieBanner ? cookieBanner.dataset.gtmId : ''
-		gtm(window, document, 'script', 'dataLayer', gtmId)
+		if (!gtmId) {
+			return
+		}
+		sendAllowAndPageView()
 	}
 
-	const setCookie = (name, value, days) => {
+	const setCookie = (name: string, value: string, days: number) => {
 		const expires = new Date(Date.now() + days * 24 * 60 * 60 * 1000).toUTCString()
 		document.cookie = `${name}=${value}; expires=${expires}; path=/; SameSite=Lax`
 	}
