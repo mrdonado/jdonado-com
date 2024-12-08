@@ -32,34 +32,108 @@ const gtmId = siteConfig.gtmId
 </div>
 
 <script>
-	function sendAllowAndPageView() {
-		const path = window.location.pathname
-		const title = document.title
+	///////////////////////////////////////////////////
+	////////// COOKIE UTILS //////////
+	const setCookie = (name: string, value: string, days: number) => {
+		const expires = new Date(Date.now() + days * 24 * 60 * 60 * 1000).toUTCString()
+		document.cookie = `${name}=${value}; expires=${expires}; path=/; SameSite=Lax`
+	}
 
+	function deleteAllCookies() {
+		// Get all cookies for the current domain
+		const cookies = document.cookie.split(';')
+
+		// Loop through cookies and delete each one
+		cookies.forEach((cookie) => {
+			const eqPos = cookie.indexOf('=')
+			const name = eqPos > -1 ? cookie.substring(0, eqPos) : cookie
+
+			// Set the cookie's expiration date to the past to delete it
+			document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/`
+		})
+
+		console.log('All cookies have been deleted.')
+	}
+
+	///////////////////////////////////////////////////
+	////////// GTM //////////
+	const gtagFun = function () {
+		window.dataLayer.push(arguments)
+	}
+
+	function getConsentStatus(consentType: string) {
+		// Check if the dataLayer exists
+		if (!window.dataLayer || !Array.isArray(window.dataLayer)) return null
+
+		// Loop through dataLayer entries to find consent information
+		for (let i = window.dataLayer.length - 1; i >= 0; i--) {
+			const event = window.dataLayer[i]
+			if (event['0'] === 'consent' && !!event['2'] && event['2']['ad_storage'] === 'granted') {
+				return true
+			}
+		}
+		return false
+	}
+
+	function injectGtmScript(containerId: string) {
+		if (!containerId) return
+
+		// Inject GTM script tag
+		var script = document.createElement('script')
+		script.async = true
+		script.src = `https://www.googletagmanager.com/gtm.js?id=${containerId}`
+		document.head.appendChild(script)
+	}
+
+	function grantGtmConsents() {
+		window.gtag = window.gtag || gtagFun
 		window.dataLayer = window.dataLayer || []
 
-		window.dataLayer.push({
-			event: 'gtm.init_consent',
-			default: {
-				analytics_storage: 'granted', // Example value
-				ad_storage: 'granted', // Example value
-				functionality_storage: 'granted',
-				personalization_storage: 'granted',
-				security_storage: 'granted'
-			}
+		window.gtag('js', new Date())
+		window.gtag('consent', 'default', {
+			analytics_storage: 'granted',
+			ad_storage: 'granted',
+			functionality_storage: 'granted',
+			personalization_storage: 'granted',
+			security_storage: 'granted'
+			// ad_personalization: 'granted',
+			// ad_user_data: 'granted',
 		})
 
 		window.dataLayer.push({
 			event: 'gtm.js',
-			timestamp: new Date().getTime() // Optional: Add a timestamp for debugging
+			timestamp: new Date().getTime()
 		})
 
 		window.dataLayer.push({
 			event: 'gtm.init'
 		})
+	}
+
+	const setupGtm = () => {
+		const cookieBanner = document.getElementById('cookie-banner')
+		const gtmId = cookieBanner ? cookieBanner.dataset.gtmId : ''
+		if (!gtmId) {
+			return
+		}
+		injectGtmScript(gtmId)
+	}
+
+	function registerPageView() {
+		const alreadyInitialized = getConsentStatus('analytics_storage')
+
+		if (!alreadyInitialized) {
+			grantGtmConsents()
+		}
+
+		const path = window.location.pathname
+		const title = document.title
+
+		window.gtag = window.gtag || gtagFun
+		window.dataLayer = window.dataLayer || []
 
 		window.dataLayer.push({
-			event: 'pageview',
+			event: 'page_view',
 			page: {
 				path,
 				title
@@ -67,20 +141,8 @@ const gtmId = siteConfig.gtmId
 		})
 	}
 
-	const startGtm = () => {
-		const cookieBanner = document.getElementById('cookie-banner')
-		const gtmId = cookieBanner ? cookieBanner.dataset.gtmId : ''
-		if (!gtmId) {
-			return
-		}
-		sendAllowAndPageView()
-	}
-
-	const setCookie = (name: string, value: string, days: number) => {
-		const expires = new Date(Date.now() + days * 24 * 60 * 60 * 1000).toUTCString()
-		document.cookie = `${name}=${value}; expires=${expires}; path=/; SameSite=Lax`
-	}
-
+	///////////////////////////////////////////////////
+	////////// COOKIE BANNER //////////
 	const hideBanner = () => {
 		const cookieBanner = document.getElementById('cookie-banner')
 		if (cookieBanner) {
@@ -95,19 +157,18 @@ const gtmId = siteConfig.gtmId
 		}
 	}
 
-	const acceptOnlyRequired = () => {
-		const cookiesChanged = document.cookie.includes('cookies_accepted')
+	const clickedOnOnlyRequired = () => {
+		deleteAllCookies()
 		setCookie('cookies_accepted', 'required', 365)
 		hideBanner()
-		if (cookiesChanged) {
-			location.reload()
-		}
+		location.reload()
 	}
 
-	const acceptAllCookies = () => {
+	const clickedOnAcceptAll = () => {
 		setCookie('cookies_accepted', 'all', 365)
-		startGtm()
+		setupGtm()
 		hideBanner()
+		location.reload()
 	}
 
 	const checkCookieConsent = () => {
@@ -125,19 +186,22 @@ const gtmId = siteConfig.gtmId
 		const allCookiesAccepted = (cookieValue || '').includes('all')
 
 		if (allCookiesAccepted) {
-			startGtm()
+			setupGtm()
+			registerPageView()
 		}
 
 		hideBanner()
 	}
 
+	///////////////////////////////////////////////////
+	////////// EVENT LISTENERS //////////
 	const addEventListeners = () => {
 		const acceptOnlyRequiredButton = document.getElementById('accept-only-required')
 		const acceptAllCookiesButton = document.getElementById('accept-all-cookies')
 
 		if (acceptOnlyRequiredButton && acceptAllCookiesButton) {
-			acceptOnlyRequiredButton.addEventListener('click', acceptOnlyRequired)
-			acceptAllCookiesButton.addEventListener('click', acceptAllCookies)
+			acceptOnlyRequiredButton.addEventListener('click', clickedOnOnlyRequired)
+			acceptAllCookiesButton.addEventListener('click', clickedOnAcceptAll)
 		}
 	}
 
