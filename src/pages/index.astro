@@ -3,6 +3,7 @@ import ListItems from '@/components/ListItems'
 import TitlePage from '@/components/TitlePage'
 import BaseLayout from '@/layouts/BaseLayout'
 import { getPosts, getApps, getDoc } from '@/utils'
+import SunIcon from '@/components/icons/SunIcon'
 
 const MAX_ITEMS = 3
 
@@ -12,12 +13,13 @@ const apps = await getApps(2)
 
 <BaseLayout title='Home'>
 	<p class='text-4xl font-large text-end mt-4 mb-4 font-bold'>
-		Welcome to <a class='underline' href='/about'>my website,</a> lovely visitor
+		Welcome to <a class='underline' href='/about'>my website,</a> fellow explorer!
 	</p>
 	<p class='text-2xl font-large text-end mb-9 leading-normal'>
-		Make yourself comfortable, enjoy your stay, and <span class='font-bold'
-			>have a fantastic day</span
-		>!
+		<span class='font-bold'
+			>Have a lovely day <span class='dark:text-[#FFC107]'><SunIcon class='inline w-6 h-6' /></span
+			></span
+		>
 	</p>
 
 	<div>
