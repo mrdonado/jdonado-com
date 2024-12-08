@@ -85,6 +85,20 @@ const gtmId = siteConfig.gtmId
 		document.head.appendChild(script)
 	}
 
+	function denyGtmConsents() {
+		window.gtag = window.gtag || gtagFun
+		window.dataLayer = window.dataLayer || []
+
+		window.gtag('js', new Date())
+		window.gtag('consent', 'default', {
+			analytics_storage: 'denied',
+			ad_storage: 'denied',
+			functionality_storage: 'denied',
+			personalization_storage: 'denied',
+			security_storage: 'denied'
+		})
+	}
+
 	function grantGtmConsents() {
 		window.gtag = window.gtag || gtagFun
 		window.dataLayer = window.dataLayer || []
@@ -158,6 +172,7 @@ const gtmId = siteConfig.gtmId
 	}
 
 	const clickedOnOnlyRequired = () => {
+		denyGtmConsents()
 		deleteAllCookies()
 		setCookie('cookies_accepted', 'required', 365)
 		hideBanner()
