@@ -50,6 +50,9 @@ const gtmId = siteConfig.gtmId
 
 			// Set the cookie's expiration date to the past to delete it
 			document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/`
+
+			document.cookie =
+				name + '=; Path=/; Domain=.jdonado.com; Expires=Thu, 01 Jan 1970 00:00:01 GMT;'
 		})
 	}
 
@@ -75,6 +78,16 @@ const gtmId = siteConfig.gtmId
 
 	function injectGtmScript(containerId: string) {
 		if (!containerId) return
+
+		const iframe = document.createElement('iframe')
+		iframe.src = 'https://www.googletagmanager.com/ns.html?id=' + containerId
+		iframe.height = '0'
+		iframe.width = '0'
+		iframe.style.display = 'none'
+		iframe.style.visibility = 'hidden'
+
+		// Append the iframe to the body or another appropriate location
+		document.body.appendChild(iframe)
 
 		// Inject GTM script tag
 		var script = document.createElement('script')
