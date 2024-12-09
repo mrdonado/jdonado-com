@@ -11,21 +11,21 @@ const message = Astro.props.message || siteConfig.shareMessage
 
 <div class='flex flex-col gap-2'>
 	{showTitle && <span class='mb-1 font-bold text-2xl'>Share</span>}
-	<ul class='flex gap-3 text-black dark:text-white items-center'>
+	<div class='flex gap-3 text-black dark:text-white items-center'>
 		<b>Share: </b>
-		<li>
+		<div>
 			<a
 				href={`https://twitter.com/intent/tweet?text=${message + ' ' + URL}`}
 				aria-label='Share on Twitter'><TwitterIcon /></a
 			>
-		</li>
-		<li>
+		</div>
+		<div>
 			<a
 				href={`https://www.linkedin.com/shareArticle?mini=true&url=${URL}`}
 				aria-label='Share on LinkedIn'
 			>
 				<LinkedinIcon /></a
 			>
-		</li>
-	</ul>
+		</div>
+	</div>
 </div>
