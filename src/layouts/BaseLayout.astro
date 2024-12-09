@@ -20,11 +20,27 @@ const gtmId = siteConfig.gtmId
 ---
 
 <html lang='en' class='scroll-smooth'>
-	<head>
-		<BaseHead title={title} description={description} ogImage={image} articleDate={articleDate} />
-		<ProviderTheme />
-		<ProviderAnimations />
-	</head>
+	<!-- Avoid FOUC -->
+	<style is:inline>
+		body {
+			visibility: hidden;
+			opacity: 0;
+		}
+	</style>
+
+	<style is:global>
+		body {
+			visibility: visible;
+			opacity: 1;
+			transition:
+				visibility 0.2s linear,
+				opacity 0.2s linear;
+		}
+	</style>
+
+	<BaseHead title={title} description={description} ogImage={image} articleDate={articleDate} />
+	<ProviderTheme />
+	<ProviderAnimations />
 
 	<body class='bg-white text-stone-950 dark:bg-[#0a0910] dark:text-white mx-5'>
 		<!-- Google Tag Manager (noscript) -->
