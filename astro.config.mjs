@@ -10,7 +10,8 @@ import { visit } from 'unist-util-visit'
 // https://astro.build/config
 export default defineConfig({
 	image: {
-    service: passthroughImageService()
+		// Uncomment to disable the built-in image optimization service
+    // service: passthroughImageService()
   },
 	site: siteConfig.site,
 	markdown: {
