@@ -20,9 +20,26 @@ const gtmId = siteConfig.gtmId
 ---
 
 <html lang='en' class='scroll-smooth'>
-	<BaseHead title={title} description={description} ogImage={image} articleDate={articleDate} />
-	<ProviderTheme />
-	<ProviderAnimations />
+	<head>
+		<style type='text/css'>
+			.fouc-fix {
+				display: none;
+			}
+		</style>
+		<script type='text/javascript'>
+			try {
+				const elm = document.getElementsByTagName('html')[0]
+				const old = elm.class || ''
+				elm.class = old + ' fouc-fix'
+				document.addEventListener('DOMContentLoaded', function (event) {
+					elm.class = old
+				})
+			} catch (thr) {}
+		</script>
+		<BaseHead title={title} description={description} ogImage={image} articleDate={articleDate} />
+		<ProviderTheme />
+		<ProviderAnimations />
+	</head>
 
 	<body class='bg-white text-stone-950 dark:bg-[#0a0910] dark:text-white mx-5'>
 		<!-- Google Tag Manager (noscript) -->
