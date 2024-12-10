@@ -69,7 +69,7 @@ const gtmId = siteConfig.gtmId
 		// Loop through dataLayer entries to find consent information
 		for (let i = window.dataLayer.length - 1; i >= 0; i--) {
 			const event = window.dataLayer[i]
-			if (event['0'] === 'consent' && !!event['2'] && event['2']['ad_storage'] === 'granted') {
+			if (event['0'] === 'consent' && !!event['2'] && event['2'][consentType] === 'granted') {
 				return true
 			}
 		}
@@ -106,7 +106,9 @@ const gtmId = siteConfig.gtmId
 			ad_storage: 'denied',
 			functionality_storage: 'denied',
 			personalization_storage: 'denied',
-			security_storage: 'denied'
+			security_storage: 'denied',
+			ad_personalization: 'denied',
+			ad_user_data: 'denied'
 		})
 	}
 
@@ -120,9 +122,9 @@ const gtmId = siteConfig.gtmId
 			ad_storage: 'granted',
 			functionality_storage: 'granted',
 			personalization_storage: 'granted',
-			security_storage: 'granted'
-			// ad_personalization: 'granted',
-			// ad_user_data: 'granted',
+			security_storage: 'granted',
+			ad_personalization: 'denied',
+			ad_user_data: 'denied'
 		})
 
 		window.dataLayer.push({
@@ -187,14 +189,13 @@ const gtmId = siteConfig.gtmId
 		deleteAllCookies()
 		setCookie('cookies_accepted', 'required', 365)
 		hideBanner()
-		location.reload()
 	}
 
 	const clickedOnAcceptAll = () => {
 		setCookie('cookies_accepted', 'all', 365)
 		setupGtm()
+		grantGtmConsents()
 		hideBanner()
-		location.reload()
 	}
 
 	const checkCookieConsent = () => {
