@@ -9,8 +9,8 @@ const MAX_POSTS = 5 // max number of posts to show on the home page
 const posts = await getPosts(MAX_POSTS)
 ---
 
-<BaseLayout title='Blog'>
-	<TitlePage title='Blog' />
+<BaseLayout title='Pulse'>
+	<TitlePage title='Pulse' />
 	<ListCategories />
 	<div>
 		<ListItems FirstBig={true} items={posts} />
