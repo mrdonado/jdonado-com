@@ -49,7 +49,11 @@ const currentPath = Astro.url.pathname
 
 const isHome = currentPath === '/' || currentPath === ''
 const isApps = currentPath.startsWith('/apps')
-const isPulse = currentPath.startsWith('/pulse') || currentPath.startsWith('/post')
+const isPulse =
+	currentPath.startsWith('/pulse') ||
+	currentPath.startsWith('/post') ||
+	currentPath.startsWith('/category') ||
+	currentPath.startsWith('/tags')
 
 const translateClass = 'translate-y-[-10em]'
 const topClass = 'top-[calc(3.5em)]'
