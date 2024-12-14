@@ -11,7 +11,7 @@ const posts = await getPosts(MAX_ITEMS)
 const apps = await getApps(2)
 ---
 
-<BaseLayout title='Home'>
+<BaseLayout title='JDonado Home: Apps – Music - Posts'>
 	<p class='text-4xl font-large text-end mt-4 mb-4 font-bold'>
 		Welcome to <a class='underline' href='/about'>my website,</a> fellow explorer!
 	</p>
@@ -30,8 +30,8 @@ const apps = await getApps(2)
 	</div>
 
 	<div>
-		<a href='/blog'>
-			<h2 class='text-lg font-medium tracking-wide text-end'>Latest Posts</h2>
+		<a href='/pulse'>
+			<h2 class='text-lg font-medium tracking-wide text-end'>Pulse – Recent Updates</h2>
 		</a>
 		<ListItems FirstBig={false} items={posts} />
 	</div>
