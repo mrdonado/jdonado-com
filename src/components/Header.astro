@@ -49,7 +49,7 @@ const currentPath = Astro.url.pathname
 
 const isHome = currentPath === '/' || currentPath === ''
 const isApps = currentPath.startsWith('/apps')
-const isBlog = currentPath.startsWith('/blog') || currentPath.startsWith('/post')
+const isPulse = currentPath.startsWith('/pulse') || currentPath.startsWith('/post')
 
 const translateClass = 'translate-y-[-10em]'
 const topClass = 'top-[calc(3.5em)]'
@@ -57,7 +57,7 @@ const topClass = 'top-[calc(3.5em)]'
 
 <header class='relative flex items-center h-12 font-semibold'>
 	<a class=`text-lg mr-5 ${isHome ? 'underline' : ''}` href='/'>Home</a>
-	<a class=`text-lg mr-5 ${isBlog ? 'underline' : ''}` href='/blog'>Pulse</a>
+	<a class=`text-lg mr-5 ${isPulse ? 'underline' : ''}` href='/pulse'>Pulse</a>
 	<a class=`text-lg mr-auto ${isApps ? 'underline' : ''}` href='/apps'>Apps</a>
 
 	<div
