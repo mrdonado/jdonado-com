@@ -43,6 +43,10 @@ a.link {
 	text-decoration: underline;
 }
 
+a {
+  touch-action: manipulation;
+}
+
 @keyframes fade-and-grow {
 	0% {
 		scale: 0.985;
