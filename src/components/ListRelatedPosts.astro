@@ -29,8 +29,11 @@ const { posts } = Astro.props
 									alt={`img of ${post.data.title}`}
 								/>
 							</div>
+
 							<header class='flex justify-center items-center'>
-								<span class='font-medium  hover:underline'>{post.data.title}</span>
+								<span class='pl-3 max-w-[15em] font-medium line-clamp-1 overflow-hidden hover:underline'>
+									{post.data.title}
+								</span>
 							</header>
 						</a>
 					)
