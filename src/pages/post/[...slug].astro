@@ -7,8 +7,9 @@ import Share from '@/components/Share'
 import TableOfContents from '@/components/TableOfContents'
 import { getPosts } from '@/utils'
 import SButton from '@/components/mdx/SButton'
-import Disqus from '@/components/Disqus'
 import { disqusConfig } from '@/data/disqus.config'
+import TwitterIcon from '@/components/icons/TwitterIcon'
+import LinkedinIcon from '@/components/icons/LinkedInIcon'
 
 const posts = await getCollection('blog')
 export async function getStaticPaths() {
@@ -59,6 +60,35 @@ const disqusEnabled = disqusConfig.enabled
 				<Content components={{ pre: Code, SButton }} />
 				<a href='#top' class='text-sm text-gray-500 dark:text-gray-400 mt-4 block'>Back to top</a>
 			</div>
+			{
+				(post.data.xComThread || post.data.linkedInThread) && (
+					<div>
+						<div class='flex flex-col gap-2 mb-6 '>
+							<div class='flex gap-3 text-black items-center dark:text-white '>
+								<span class='font-bold text-m'>Continue the conversation on:</span>
+								{post.data.xComThread && (
+									<div>
+										<a href={post.data.xComThread} aria-label='Continue the conversation on X.com'>
+											<TwitterIcon />
+										</a>
+									</div>
+								)}
+
+								{post.data.linkedInThread && (
+									<div>
+										<a
+											href={post.data.linkedInThread}
+											aria-label='Continue the conversation on LinkedIn'
+										>
+											<LinkedinIcon />
+										</a>
+									</div>
+								)}
+							</div>
+						</div>
+					</div>
+				)
+			}
 			<!-- related posts -->
 			<footer>
 				<ListRelatedPosts posts={relatedPosts} />
