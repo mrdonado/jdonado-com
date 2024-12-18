@@ -68,7 +68,12 @@ const disqusEnabled = disqusConfig.enabled
 								<span class='font-bold text-m'>Continue the conversation on:</span>
 								{post.data.xComThread && (
 									<div>
-										<a href={post.data.xComThread} aria-label='Continue the conversation on X.com'>
+										<a
+											href={post.data.xComThread}
+											target='_blank'
+											rel='noopener noreferrer'
+											aria-label='Continue the conversation on X.com'
+										>
 											<TwitterIcon />
 										</a>
 									</div>
@@ -78,6 +83,8 @@ const disqusEnabled = disqusConfig.enabled
 									<div>
 										<a
 											href={post.data.linkedInThread}
+											target='_blank'
+											rel='noopener noreferrer'
 											aria-label='Continue the conversation on LinkedIn'
 										>
 											<LinkedinIcon />

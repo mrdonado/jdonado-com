@@ -15,12 +15,16 @@ const message = Astro.props.message || siteConfig.shareMessage
 		<b>Share: </b>
 		<div>
 			<a
+				target='_blank'
+				rel='noopener noreferrer'
 				href={`https://twitter.com/intent/tweet?text=${message + ' ' + URL}`}
 				aria-label='Share on Twitter'><TwitterIcon /></a
 			>
 		</div>
 		<div>
 			<a
+				target='_blank'
+				rel='noopener noreferrer'
 				href={`https://www.linkedin.com/shareArticle?mini=true&url=${URL}`}
 				aria-label='Share on LinkedIn'
 			>
