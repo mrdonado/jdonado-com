@@ -26,7 +26,8 @@ const blog = defineCollection({
 			tags: z.array(z.string()),
 			draft: z.boolean().default(false),
 			xComThread: z.string().optional(),
-			linkedInThread: z.string().optional()
+			linkedInThread: z.string().optional(),
+			youTubeThread: z.string().optional()
 		})
 })
 

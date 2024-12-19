@@ -10,6 +10,7 @@ import SButton from '@/components/mdx/SButton'
 import { disqusConfig } from '@/data/disqus.config'
 import TwitterIcon from '@/components/icons/TwitterIcon'
 import LinkedinIcon from '@/components/icons/LinkedInIcon'
+import YouTubeIcon from '@/components/icons/YouTubeIcon'
 
 const posts = await getCollection('blog')
 export async function getStaticPaths() {
@@ -58,7 +59,7 @@ const disqusEnabled = disqusConfig.enabled
 		<article class='max-w-full w-full'>
 			<div class='prose prose-lg md:prose-xl dark:prose-invert mb-12 min-w-full'>
 				<Content components={{ pre: Code, SButton }} />
-				<a href='#top' class='text-xl text-gray-500 dark:text-gray-400 mt-4 block'
+				<a href='#top' class='text-base text-gray-600 dark:text-gray-300 mt-4 block'
 					>Back to the top ↑</a
 				>
 			</div>
@@ -67,7 +68,7 @@ const disqusEnabled = disqusConfig.enabled
 					<div>
 						<div class='flex flex-col gap-2 mb-6 '>
 							<div class='flex gap-3 text-black items-center dark:text-white '>
-								<h2 class='font-bold text-lg dark:text-white'>Continue the conversation</h2>
+								<h2 class='font-bold text-lg dark:text-white'>Join the discussion</h2>
 								{post.data.xComThread && (
 									<div>
 										<a
@@ -90,6 +91,18 @@ const disqusEnabled = disqusConfig.enabled
 											aria-label='Continue the conversation on LinkedIn'
 										>
 											<LinkedinIcon />
+										</a>
+									</div>
+								)}
+								{post.data.youTubeThread && (
+									<div>
+										<a
+											href={post.data.youTubeThread}
+											target='_blank'
+											rel='noopener noreferrer'
+											aria-label='Continue the conversation on YouTube'
+										>
+											<YouTubeIcon />
 										</a>
 									</div>
 								)}
