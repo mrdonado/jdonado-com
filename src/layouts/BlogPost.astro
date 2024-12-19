@@ -31,18 +31,14 @@ const articleDate = pubDate.toISOString()
 	<article class='min-w-full md:py-4 sm:max-w-none md:max-w-none'>
 		<header class='mb-3 flex flex-col justify-center items-center gap-6'>
 			<div class='flex flex-col gap-2'>
-				<div class='flex items-center justify-center gap-x-1'>
-					<p class='text-center text-sm text-opacity-50'>
-						Published <FormattedDate date={pubDate} />
-					</p>
-					<p class='text-center text-sm text-opacity-50 font-bold'>
-						- {readTime}
-					</p>
-				</div>
 				<h1 class='text-center text-4xl md:text-6xl md:pb-2.5 font-semibold'>
 					{title}
 				</h1>
-				<p class='text-center md:text-xl italic'>{description}</p>
+				<p
+					class='text-center text-gray-600 dark:text-gray-300 md:text-xl italic max-w-[80%] mx-auto'
+				>
+					{description}
+				</p>
 			</div>
 
 			<div class='flex flex-wrap justify-center items-center gap-2 gap-y-4 md:gap-5'>
@@ -82,11 +78,19 @@ const articleDate = pubDate.toISOString()
 						quality={100}
 						format='jpg'
 						loading='eager'
-						class='fadein rounded-md w-full max-h-[300px]  md:max-h-[500px] my-8 object-cover'
+						class='fadein rounded-md w-full max-h-[300px]  md:max-h-[500px] my-4 object-cover'
 						alt={`img of ${title}`}
 					/>
 				)
 			}
+			<div class='flex items-center justify-center gap-x-1 my-4'>
+				<p class='text-center text-sm text-opacity-50'>
+					Published <FormattedDate date={pubDate} />
+				</p>
+				<p class='text-center text-sm text-opacity-50 font-bold'>
+					- {readTime}
+				</p>
+			</div>
 		</>
 
 		<hr />
