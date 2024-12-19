@@ -6,6 +6,7 @@ import Tag from '@/components/Tag'
 import type { MarkdownHeading } from 'astro'
 import { Image } from 'astro:assets'
 import { getApps } from '@/utils'
+import YouTubeIcon from '@/components/icons/YouTubeIcon'
 
 const lastApp = (await getApps(1))[0]
 
@@ -68,22 +69,23 @@ const articleDate = pubDate.toISOString()
 			</div>
 		</header>
 
-		<>
-			{
-				heroImage && (
-					<Image
-						src={heroImage}
-						width={1000}
-						height={500}
-						quality={100}
-						format='jpg'
-						loading='eager'
-						class='fadein rounded-md w-full max-h-[300px]  md:max-h-[500px] my-4 object-cover'
-						alt={`img of ${title}`}
-					/>
-				)
-			}
-			<div class='flex items-center justify-center gap-x-1 my-4'>
+		{
+			heroImage && (
+				<Image
+					src={heroImage}
+					width={1000}
+					height={500}
+					quality={100}
+					format='jpg'
+					loading='eager'
+					class='fadein rounded-md w-full max-h-[300px]  md:max-h-[500px] my-4 object-cover'
+					alt={`img of ${title}`}
+				/>
+			)
+		}
+
+		<div class='flex items-center justify-center gap-x-1 my-4 flex-wrap'>
+			<div class='flex items-center justify-center w-full sm:w-auto gap-x-1'>
 				<p class='text-center text-sm text-opacity-50'>
 					Published <FormattedDate date={pubDate} />
 				</p>
@@ -91,7 +93,38 @@ const articleDate = pubDate.toISOString()
 					- {readTime}
 				</p>
 			</div>
-		</>
+			{
+				data.youTubeThread && (
+					<>
+						{/* Inline for larger screens */}
+						<p class='hidden sm:block text-center text-sm text-opacity-50 font-bold'>
+							<a
+								href={data.youTubeThread}
+								target='_blank'
+								rel='noopener noreferrer'
+								aria-label='Available as a podcast on YouTube'
+								class='inline-flex items-center gap-x-1'
+							>
+								- <YouTubeIcon /> Listen to this story
+							</a>
+						</p>
+
+						{/* New line for smaller screens */}
+						<p class='block sm:hidden text-center text-sm text-opacity-50 font-bold w-full'>
+							<a
+								href={data.youTubeThread}
+								target='_blank'
+								rel='noopener noreferrer'
+								aria-label='Available as a podcast on YouTube'
+								class='inline-flex items-center gap-x-1 justify-center'
+							>
+								<YouTubeIcon /> Listen to this story
+							</a>
+						</p>
+					</>
+				)
+			}
+		</div>
 
 		<hr />
 
