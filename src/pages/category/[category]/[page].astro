@@ -7,6 +7,8 @@ import { sluglify, unsluglify, getCategories, getPosts } from '@/utils'
 import { siteConfig } from '@/data/site.config'
 import Pagination from '@/components/Pagination'
 
+const originalCategories = await getCategories()
+
 export async function getStaticPaths({ paginate }: any) {
 	const categories = await getCategories()
 	const allPosts = await getPosts()
@@ -28,12 +30,17 @@ export async function getStaticPaths({ paginate }: any) {
 const params = Astro.params
 const { page } = Astro.props
 
-const unsluglifyNameCategory = unsluglify(params.category!.toLowerCase())
+// The original category name is the one that matches the case
+const categoryIndex = originalCategories.findIndex(
+	(c) => sluglify(c).toLowerCase() === params.category
+)
+const originalCategory = originalCategories[categoryIndex]
+
 const posts = page.data
 ---
 
 <BaseLayout title={params.category}>
-	<TitlePage title={unsluglifyNameCategory} />
+	<TitlePage title={originalCategory} />
 	<ListCategories activeCategory={params.category} />
 	<ListItems items={posts} />
 	<Pagination page={page} />
