@@ -1,2 +1,2 @@
 // List of categories for blog posts
-export const CATEGORIES = ['Projects', 'Writing Software', 'Productivity', 'Misc'] as const
+export const CATEGORIES = ['Focus & Tools', 'Writing Software', 'Projects', 'Music'] as const
