@@ -11,6 +11,7 @@ import { disqusConfig } from '@/data/disqus.config'
 import TwitterIcon from '@/components/icons/TwitterIcon'
 import LinkedinIcon from '@/components/icons/LinkedInIcon'
 import YouTubeIcon from '@/components/icons/YouTubeIcon'
+import InstagramIcon from '@/components/icons/InstagramIcon'
 
 const posts = await getCollection('blog')
 export async function getStaticPaths() {
@@ -103,6 +104,18 @@ const disqusEnabled = disqusConfig.enabled
 											aria-label='Continue the conversation on YouTube'
 										>
 											<YouTubeIcon />
+										</a>
+									</div>
+								)}
+								{post.data.instagramThread && (
+									<div>
+										<a
+											href={post.data.instagramThread}
+											target='_blank'
+											rel='noopener noreferrer'
+											aria-label='Continue the conversation on Instagram'
+										>
+											<InstagramIcon />
 										</a>
 									</div>
 								)}
