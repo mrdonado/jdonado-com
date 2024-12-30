@@ -1,6 +1,7 @@
 ---
 import Title from './Title.astro'
-import Shape from './icons/Shape.astro'
+import JDonadoIcon from '@/components/icons/JDonadoIcon'
+
 type Props = {
 	title: string
 	isTag?: boolean
@@ -10,6 +11,6 @@ const { title, isTag } = Astro.props
 ---
 
 <div class='flex justify-start items-center gap-2 title mb-12'>
-	<Shape />
+	<JDonadoIcon />
 	<Title isTag={isTag}>{title}</Title>
 </div>
