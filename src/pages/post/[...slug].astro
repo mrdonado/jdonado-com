@@ -65,7 +65,10 @@ const disqusEnabled = disqusConfig.enabled
 				>
 			</div>
 			{
-				(post.data.xComThread || post.data.linkedInThread) && (
+				(post.data.xComThread ||
+					post.data.linkedInThread ||
+					post.data.youTubeThread ||
+					post.data.instagramThread) && (
 					<div>
 						<div class='flex flex-col gap-2 mb-6 '>
 							<div class='flex gap-3 text-black items-center dark:text-white '>
