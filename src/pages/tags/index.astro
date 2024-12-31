@@ -11,7 +11,7 @@ const tags = await getTags()
 	<ListCategories />
 	<div class='flex justify-center flex-wrap gap-4 mt-6 appear-smoothly'>
 		{
-			tags.map((tag) => (
+			tags.sort().map((tag) => (
 				<a
 					href={`/tags/${tag}`}
 					class='inline-block bg-gray-200  rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2'
