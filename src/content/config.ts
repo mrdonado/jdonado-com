@@ -28,6 +28,7 @@ const blog = defineCollection({
 			xComThread: z.string().optional(),
 			linkedInThread: z.string().optional(),
 			youTubeThread: z.string().optional(),
+			tikTokThread: z.string().optional(),
 			instagramThread: z.string().optional()
 		})
 })
