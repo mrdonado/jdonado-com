@@ -1,0 +1,63 @@
+---
+title: 'From Luck to Skill: Randomness and Product Development'
+description: 'The influence of randomness in product development and how to build reliable feedback systems'
+pubDate: 'Jan 20 2025'
+heroImage: '../../assets/images/from-luck-to-skill.jpg'
+category: 'Writing Software'
+tags: ['product-development', 'forever-learning', 'reflections']
+youTubeThread: 'https://youtu.be/LksTfD-ZYNU?utm_source=comment&utm_medium=jdonado-com'
+1xComThread: 'https://x.com/jdonado/status/1874513600712454506?utm_source=comment&utm_medium=jdonado-com'
+1linkedInThread: 'https://www.linkedin.com/posts/f-javier-r-donado_building-a-second-brain-activity-7282818806937255936-ofX9?utm_source=comment&utm_medium=jdonado-com'
+1instagramThread: 'https://www.instagram.com/reel/DESpO0bvpth/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==?utm_source=comment&utm_medium=jdonado-com'
+1tikTokThread: 'https://www.tiktok.com/@javierdonado/video/7455007266689813793?utm_source=comment&utm_medium=jdonado-com'
+---
+
+In [Fooled by Randomness](https://www.goodreads.com/book/show/38315.Fooled_by_Randomness), Nassim N. Taleb presents an idea that has stuck with me ever since I read it: in some professions, success is inherently determined by luck, while in others, it's primarily driven by skill.
+
+His example was clear: **a trader versus a pianist**. The chances that a pianist will have a good performance by pure chance are almost zero. On the other hand, as he puts it, "at any point in time, the richest traders are often the worst traders." The reason is that more often than not, success in trading is directly linked to luck.
+
+Our brains, however, tend to believe otherwise. Taleb's work is also referenced in Daniel Kahneman's ["Thinking, Fast and Slow,"](https://www.goodreads.com/book/show/11468377-thinking-fast-and-slow) with Kahneman noting that Taleb could "also be considered a psychologist" due to his notion of a _narrative fallacy_ ("The Black Swan").
+
+The _narrative fallacy_ relates to our "continuous attempt to make sense of the world." **We have a tendency to create simplistic, coherent stories**. We like to rationalize outcomes, giving a disproportionate weight to talent, actions, and intentions. The world, however, is much more chaotic than we'd like to believe, and randomness plays an undeniable role.
+
+Kahneman also mentioned a study by Terry Odean, a finance professor who, after analyzing trading records of 10,000 broker accounts over seven years, showed how **traders consistently underperformed**, selling stocks that on average outperformed those that they later bought.
+
+But why is it that a pianist can be trained to become good, while a trader cannot really? **The answer lies in having a reliable and fast feedback cycle**.
+
+---
+
+_Please, note that I'm talking about a trader and not an investor. A trader is someone who buys and sells financial instruments in the short term, while an investor buys and holds assets for the long term, and that's a different story._
+
+---
+
+## Deliberate Practice and High-Quality Feedback
+
+Most likely you've already heard about the 10,000-hour rule, popularized by psychologist Anders Ericsson (and others) in ["The Role of Deliberate Practice in the Acquisition of Expert Performance."](https://www.goodreads.com/book/show/48581741-the-role-of-deliberate-practice-in-the-acquisition-of-expert-performance) Often, this idea is is misinterpreted, leading to the belief that 10,000 hours are required to become an expert in something. The key, however, is the concept of _deliberate practice_ and high-quality feedback.
+
+For example, **after 10,000 hours of practice on a slot machine in a casino, you won't increase your chances of winning**, even though in many cases your brain will lead you to believe otherwise. Most people engaging in this kind of game tend to believe that inserting the coin in a certain way or pressing the buttons following a particular pattern will increase their chances of winning. This is, of course, just an illusion.
+
+A pianist, on the other hand, receives **immediate high-quality feedback on each note they play**, allowing them to refine their technique. However, this feedback must be interpreted correctly. If the pianist mindlessly repeats the same piece without striving for perfection or progressing to more challenging pieces, they won't improve either.
+
+## The Role of Metrics in Product Development
+
+This connection between feedback quality and skill development has profound implications for product development. While we often rely on data and metrics to guide our decisions, we must remain aware of how our brains naturally seek patterns and meaning, even in random events.
+
+KPIs are essential in product development, but **we're really good at fooling ourselves with numbers too**. I'd venture to say that more often than not, KPIs in product development lead more to pseudoscience and false confidence than to solid data-based decision making. For KPIs to be valuable, **we need to interpret them critically and ensure that they're tied to actionable insights**.
+
+How many times have we implemented changes, seen our metrics improve, and automatically attributed these improvements to our modifications? The same applies when metrics decline. The fact is that there's often a myriad of factors that can influence these results, many of which are entirely unrelated to our changes.
+
+## Moving from Gambling to Expertise: Creating Reliable Feedback Systems
+
+In my view, the single best thing we can do is to **try our best to be aware of our biases** and always play "devil's advocate" with ourselves, explaining data in different ways to obtain a richer understanding of what's going on. This is, by the way, a very healthy practice to adopt in general, even outside product development.
+
+Instead of accepting simple explanations, be wary of misleading correlations. Try to consider factors such as seasonal trends, external events, and market conditions. Also, focus on statistical significance, using tools like hypothesis testing and confidence intervals, and make sure that your sample size is large enough.
+
+Then, it's very important to carefully select relevant metrics and review them as often as possible. Favor _actionable metrics_ such as Conversion Rate (showing direct user engagement), Customer Lifetime Value (CLV, measuring long-term business health), and Net Promoter Score (NPS, indicating customer satisfaction) over _vanity metrics_ such as social media followers, page views, or email list size. For a deeper understanding of actionable metrics and their implementation, Eric Ries's ["The Lean Startup"](https://www.goodreads.com/book/show/10127019-the-lean-startup) provides excellent frameworks for measuring real business progress.
+
+Automate data collection to reduce friction and integrate it into a dashboard. Review this dashboard daily, and ensure that the collected data are reliable and up to date.
+
+Make sure to run as many A/B tests as possible, integrating them with fast and reliable feedback loops. For example, when testing a new checkout flow, measure not just overall conversion rates but also step-by-step dropoff rates, average time spent, and user satisfaction scores. This comprehensive approach mirrors the deliberate practice of a musician when practicing an instrument.
+
+Furthermore, your feedback cycle needs to be quick. The longer it takes between feature experiments and data collection, the less reliably you can connect both. Today's systems allow almost instant changes and data collection. For you to be able to implement these changes effectively, your teams need to score high in the [Dora Metrics](https://cloud.google.com/blog/products/devops-sre/using-the-four-keys-to-measure-your-devops-performance) (industry-standard metrics for measuring software delivery performance, including deployment frequency, lead time for changes, mean time to recovery, and change failure rate). These can create a more predictable and responsive system, reducing randomness in product development.
+
+I'd love to hear your thoughts on this topic. How do you manage randomness in your daily work, and what are your strategies for building reliable feedback systems that help you make more informed decisions?
