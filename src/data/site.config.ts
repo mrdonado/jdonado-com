@@ -13,7 +13,7 @@ interface SiteConfig {
 export const siteConfig: SiteConfig = {
 	site: 'https://www.jdonado.com/', // Write here your website url
 	author: 'Javier Donado', // Site author
-	title: 'Javier Donado', // Site title.
+	title: 'Javier Donado - Product Engineering - Apps | Posts | Music', // Site title.
 	description: 'Javier Donado - Web and mobile apps (iOS and Android) - Photos - Music', // Description to display in the meta tags
 	lang: 'en-GB',
 	ogLocale: 'en_GB',
