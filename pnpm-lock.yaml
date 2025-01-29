@@ -21,8 +21,8 @@ importers:
         specifier: 5.1.10
         version: 5.1.10(jiti@2.4.2)(rollup@4.32.1)(typescript@5.7.2)(yaml@2.7.0)
       astro-font:
-        specifier: ^0.1.81
-        version: 0.1.81
+        specifier: ^1.0.0
+        version: 1.0.0
       rehype-raw:
         specifier: ^7.0.0
         version: 7.0.0
@@ -864,8 +864,8 @@ packages:
     resolution: {integrity: sha512-F6NW1RJo5pp2kPnnM97M5Ohw8zAGjv83MpxHqfAochH68n/kiXN57+hYaNUCA7XkScoVNr6yzvly3hsY34TGfQ==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  astro-font@0.1.81:
-    resolution: {integrity: sha512-rbrv/+ZSYdgyjBlhkAqfCjMxqqo6iEwnSo/rAdDt/POILsF0ChxMFhefIIzKEukrRGtVjEj1lrLRYk+AdV9scQ==}
+  astro-font@1.0.0:
+    resolution: {integrity: sha512-g0Oobl1oBg/GHaAzA2HdIWjbQic19wfSswHvBO+N+wKgWCfCjh0ANiOA3UBzMgUHJ67wqfoM4NZTq9+parkhOw==}
 
   astro@5.1.10:
     resolution: {integrity: sha512-qFu4jC7BRlhwHgk9Pa1sTQWw60zYWlriNTt6bMGMKkPxCd4Dd84fGn+NjbrJ/JeKwF7YXX0gY1saDF/RS6TMVA==}
@@ -3790,7 +3790,7 @@ snapshots:
       - supports-color
       - typescript
 
-  astro-font@0.1.81: {}
+  astro-font@1.0.0: {}
 
   astro@5.1.10(jiti@2.4.2)(rollup@4.32.1)(typescript@5.7.2)(yaml@2.7.0):
     dependencies:
