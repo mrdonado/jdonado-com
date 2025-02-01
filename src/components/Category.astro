@@ -1,10 +1,12 @@
 ---
 import TagIcon from '@/components/icons/TagIcon'
+import ArchiveIcon from '@/components/icons/ArchiveIcon'
 import { cn, sluglify } from '@/utils'
 
 const latestUpdates = 'Latest Updates'
 const pulseSlug = '/pulse'
 const tagsSlug = '/tags'
+const archiveSlug = '/archive'
 
 const { name = latestUpdates, activeCategory } = Astro.props
 const currentPath = Astro.url.pathname
@@ -13,7 +15,8 @@ const unsluglifyNameCategory = sluglify(name.toLowerCase())
 const isActive =
 	activeCategory?.toLocaleLowerCase() === unsluglifyNameCategory ||
 	(currentPath.startsWith(pulseSlug) && name === latestUpdates) ||
-	(currentPath.startsWith(tagsSlug) && name === 'Tags')
+	(currentPath.startsWith(tagsSlug) && name === 'Tags') ||
+	(currentPath.startsWith(archiveSlug) && name === 'Archive')
 
 let href = sluglify(`/category/${unsluglifyNameCategory}/1`)
 
@@ -21,6 +24,8 @@ if (name === latestUpdates) {
 	href = pulseSlug
 } else if (name === 'Tags') {
 	href = tagsSlug
+} else if (name === 'Archive') {
+	href = archiveSlug
 }
 ---
 
@@ -32,5 +37,9 @@ if (name === latestUpdates) {
 			`border-black border-b-2 text-black z-10 dark:border-white dark:text-white dark:border-opacity-100 border-opacity-100`
 	)}
 >
-	<span class='flex gap-1'> {name === 'Tags' && <TagIcon />} {name} </span>
+	<span class='flex gap-1'>
+		{name === 'Tags' && <TagIcon />}
+		{name === 'Archive' && <ArchiveIcon />}
+		{name}
+	</span>
 </a>

@@ -1,0 +1,25 @@
+---
+import BaseLayout from '@/layouts/BaseLayout'
+import TitlePage from '@/components/TitlePage'
+import ListCategories from '@/components/ListCategories'
+import { getPosts } from '@/utils'
+
+const posts = await getPosts()
+---
+
+<BaseLayout title='Archive'>
+	<TitlePage title='Archive' />
+	<ListCategories />
+	<div class='flex justify-center flex-wrap gap-4 mt-6 appear-smoothly'>
+		{
+			posts.sort().map((post) => (
+				<a
+					href={`/post/${post.slug}`}
+					class='inline-block bg-gray-200  rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2'
+				>
+					{post.data.title}
+				</a>
+			))
+		}
+	</div>
+</BaseLayout>
