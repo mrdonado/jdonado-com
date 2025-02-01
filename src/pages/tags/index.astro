@@ -3,22 +3,25 @@ import BaseLayout from '@/layouts/BaseLayout'
 import TitlePage from '@/components/TitlePage'
 import ListCategories from '@/components/ListCategories'
 import { getTags } from '@/utils'
+
 const tags = await getTags()
 ---
 
 <BaseLayout title='Tags'>
 	<TitlePage title='Tags' />
 	<ListCategories />
-	<div class='flex justify-center flex-wrap gap-4 mt-6 appear-smoothly'>
-		{
-			tags.sort().map((tag) => (
-				<a
-					href={`/tags/${tag}`}
-					class='inline-block bg-gray-200  rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2'
-				>
-					#{tag}
-				</a>
-			))
-		}
+	<div class='flex flex-col min-h-[45vh] justify-center items-center pt-10'>
+		<div class='flex flex-wrap justify-center gap-4 md:gap-8 max-w-3xl appear-smoothly'>
+			{
+				tags.sort().map((tag) => (
+					<a
+						href={`/tags/${tag}`}
+						class='inline-block bg-gray-200 dark:bg-gray-800 rounded-full px-6 py-3 text-sm md:text-lg font-semibold text-gray-800 dark:text-gray-200 transition-all hover:bg-gray-300 dark:hover:bg-gray-700 hover:scale-105'
+					>
+						#{tag}
+					</a>
+				))
+			}
+		</div>
 	</div>
 </BaseLayout>
