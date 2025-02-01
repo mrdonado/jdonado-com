@@ -10,7 +10,7 @@ type Props = {
 const { title, isTag } = Astro.props
 ---
 
-<div class='flex justify-start items-center gap-2 title mb-12'>
+<div class='flex justify-start items-center gap-2 title mb-6 md:mb-12'>
 	<JDonadoIcon />
 	<Title isTag={isTag}>{title}</Title>
 </div>
