@@ -1,0 +1,89 @@
+---
+title: 'Will AI Replace Us All?'
+description: 'Discover how AI is reshaping work and how you can leverage it to stay relevant, boost productivity, and enhance creativity'
+pubDate: 'Feb 05 2025'
+heroImage: '../../assets/images/japan-mech.jpg'
+category: 'Focus & Tools'
+tags: ['ai', 'productivity', 'product-development']
+youTubeThread: 'https://youtu.be/tVQ-0LHqPRw?utm_source=comment&utm_medium=jdonado-com'
+1xComThread: 'https://x.com/jdonado/status/1885025695492927635?utm_source=comment&utm_medium=jdonado-com'
+1linkedInThread: 'https://www.linkedin.com/posts/f-javier-r-donado_the-human-side-of-technical-leadership-activity-7290444350969266176-aw2l?utm_source=comment&utm_medium=jdonado-com'
+---
+
+import { Image } from 'astro:assets'
+import tyrell from '../../assets/images/tyrell.jpg'
+
+Given the level of attention Artificial Intelligence (AI) has received since the launch of ChatGPT in November 2022—particularly [large language models (LLMs)](https://en.wikipedia.org/wiki/Large_language_model) and [diffusion models](https://en.wikipedia.org/wiki/Diffusion_model)—many professionals are wondering how much longer they have until AI can replace them for good.
+
+It's a legitimate question. Plenty of tasks that required a human just a couple of years ago can now be handled by AI with ease. We've seen it in book illustrations, translations, writing, and even [music composition](https://www.udio.com). Many professionals have already seen their businesses significantly impacted by this wave of AI tools.
+
+But this fear isn't just about the possibility of losing our jobs. It goes deeper. **Will AI make us _pointless_?** If an AI can outperform me at everything, what's the point of even trying?
+
+<Image src={tyrell} alt='Eldon Tyrell' />
+
+> "Commerce is our goal here at Tyrell. ‘More human than human' is our motto."
+>
+> —Eldon Tyrell, [Blade Runner](https://www.imdb.com/title/tt0083658/)
+
+As Sally Hogshead, author of ["Fascinate: How to Make Your Brand Impossible to Resist"](https://www.goodreads.com/book/show/25816700-fascinate), puts it: _Different is better than better_. AIs are improving rapidly, but there's something they'll (probably) never do as well as you: they can't be _you_.
+
+No matter what you do, unless you're a world champion at it—which doesn't even make sense in most disciplines (e.g., can you be a world champion at guitar or at product management?)—you likely already know people on LinkedIn, YouTube, or Instagram who can do it somewhat better. Perfect technique, amazing ideas, flawless execution... So what? **That doesn't mean there's no place for you.**
+
+As [David Heinemeier Hansson (DHH)](https://en.wikipedia.org/wiki/David_Heinemeier_Hansson) once said (paraphrasing since I couldn't find the exact source), "If Microsoft tried to compete with Basecamp, they'd have a whole department with hundreds of engineers working on it. They'd come up with a product so different from Basecamp that we wouldn't even be competing in the same space."
+
+## The "AI Footprint"
+
+AI-generated illustrations have been around long enough that most of us can recognize them instantly. Sure, they'll continue to improve, but the [Pareto principle](https://en.wikipedia.org/wiki/Pareto_principle) likely applies: getting 80% close to a real illustrator might be reasonably easy, but the remaining 20% could take many more years. The same goes for [self-driving cars](https://www.verdict.co.uk/fully-self-driving-cars-unlikely-before-2035-experts-predict/).
+
+This applies to AI-generated text as well. There are services like [ZeroGPT](https://www.zerogpt.com/) that claim to identify AI-generated content, though they're often unreliable. What they seem to do is flag common AI-generated expressions. But if AI uses them, it's because humans have used them for a long time. Some argue these tools are better at identifying well-written text than distinguishing AI from human authors. Still, there's a big leap between a few well-written paragraphs and a brilliant novel.
+
+## AI's Role in the Present and Future
+
+One thing is clear: AI is here now, and it will be part of our future. If we want to remain relevant, we must learn to integrate AI tools into our daily tasks.
+
+We are in a transitional period where companies are experimenting with AI to automate various roles. Understanding what AI can and can't do helps us harness it effectively. Many designers, for instance, use AI-enhanced plugins in their workflow without AI replacing their creative vision.
+
+If you're a Product Owner (PO), Product Manager (PM), or in any management role, LLMs can dramatically improve your efficiency. Examples include:
+
+- **Writing stories in Jira**: Briefly describe the ticket, provide documentation, and specify the format. The result will likely be more polished and take far less time.
+- Proofreading, translating, answering emails, writing summaries...
+
+Ignoring these tools means falling behind, as colleagues who leverage AI will inevitably gain a competitive edge.
+
+> **Disclaimer**: Don't share company secrets or personal information with ChatGPT or similar services. This could violate [GDPR](https://gdpr-info.eu/) and your employer's policies. Instead, use tools like [LM Studio](https://lmstudio.ai/) or [Ollama](https://ollama.com/) to run LLMs locally on your PC.
+
+## AI and Software Development
+
+AI's impact on software development is undeniable. If every developer becomes 5x more productive (likely), will we still need the same number of developers?
+
+Software development is a field where there's always more to do. AI will likely lead to better products rather than fewer jobs. That said, smaller teams will be able to achieve more than ever before.
+
+My experience with AI coding assistants like [GitHub Copilot](https://github.com/features/copilot) and [Cursor](https://www.cursor.com/) has been positive, but I don't think they will replace developers anytime soon. You still _need to know_ what you're doing.
+
+[Linus Torvalds](https://www.youtube.com/watch?v=4WCTGycBceg) compared AI assistants to IDEs—useful, but not a replacement for skilled programmers.
+
+### Pros
+
+- AI excels at generating "glue code." Once you've written some functions, it can fill in multiple lines at once—like auto-complete on steroids.
+- It's great for working with unfamiliar libraries, identifying functions, and writing efficient code quickly.
+- It can help document algorithms and even explain poorly written functions as if it were a senior engineer reviewing your code.
+- It can suggest better variable names, refactor code, and even write tests.
+- It can write scripts, generate code snippets, and help with debugging.
+
+Overall, AI makes programming more productive and enjoyable.
+
+### Cons
+
+- AI can introduce subtle bugs if you're not careful, making traditional techniques from [Extreme Programming (XP)](https://en.wikipedia.org/wiki/Extreme_programming) like pair programming and TDD as relevant as ever.
+- It can be distracting when you already know what you want to do, as some AI assistants make suggestions that could disrupt your workflow.
+- Relying too much on AI for syntax and library details might slow down your growth as a programmer. Being a skilled coder means understanding these things, not just filling in the gaps with AI assistance. This is related to one of my previous articles: [What Is the Internet Doing to Our Brains](/post/2024-12-18-what-the-internet-is-doing-to-our-brains/).
+
+## Final Thoughts
+
+I don't think AI will replace _good_ software developers anytime soon (looking at you, [Devin](https://devin.ai/)), but its impact is undeniable. **To remain competitive, we must integrate AI into our daily toolset**.
+
+Programming is an area where AI can improve rapidly because it's easier to train on reliable performance data. As of today, true expertise and problem-solving still require human intuition, but I'd expect AI to improve dramatically in the next few years in this particular field. Software developers will likely still be needed in the next decade, but what it means to be a developer will change significantly.
+
+So, what's your take? Do you think AI might replace your job? How can you stay relevant? And what would happen if AI replaced _all_ jobs?
+
+Looking forward to your comments!
