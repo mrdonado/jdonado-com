@@ -6,6 +6,15 @@ module.exports = {
 	content: ['./src/**/*.{astro,html,js,md,mdx,ts}'],
 	theme: {
 		extend: {
+			typography: {
+				DEFAULT: {
+					css: {
+						blockquote: {
+							quotes: "none",
+						}
+					},
+				},
+			},
 			colors: {
 				white: '#f8f9fa'
 			},
