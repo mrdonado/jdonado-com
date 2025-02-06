@@ -39,7 +39,7 @@ const originalCategory = originalCategories[categoryIndex]
 const posts = page.data
 ---
 
-<BaseLayout title={params.category}>
+<BaseLayout title={originalCategory}>
 	<TitlePage title={originalCategory} />
 	<ListCategories activeCategory={params.category} />
 	<ListItems items={posts} />
