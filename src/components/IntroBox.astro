@@ -7,6 +7,7 @@
 		<!-- Background Rectangles -->
 		<g transform='matrix(1.13808,0,0,0.836814,-10.4928,-7.71521)'>
 			<rect
+				class='appear-later'
 				x='9.22'
 				y='9.22'
 				width='224.941'
@@ -15,6 +16,7 @@
 		</g>
 		<g transform='matrix(1.13808,0,0,0.836814,-10.4928,248.285)'>
 			<rect
+				class='appear-later'
 				x='9.22'
 				y='9.22'
 				width='224.941'
@@ -23,6 +25,7 @@
 		</g>
 		<g transform='matrix(1.13808,0,0,0.836814,245.507,248.285)'>
 			<rect
+				class='appear-later'
 				x='9.22'
 				y='9.22'
 				width='224.941'
@@ -31,6 +34,7 @@
 		</g>
 		<g transform='matrix(1.13808,0,0,0.836814,245.507,-7.71521)'>
 			<rect
+				class='appear-later'
 				x='9.22'
 				y='9.22'
 				width='224.941'
@@ -89,7 +93,7 @@
 		}
 	}
 
-	@keyframes fadeIn {
+	@keyframes transformIn {
 		0% {
 			opacity: 0;
 			transform: rotateX(90deg) rotateY(-90deg) scale(0.7);
@@ -99,6 +103,14 @@
 			opacity: 1;
 			transform: rotateX(0deg) rotateY(0deg) scale(1);
 			transform-origin: center;
+		}
+	}
+	@keyframes fadeIn {
+		0% {
+			opacity: 0;
+		}
+		100% {
+			opacity: 1;
 		}
 	}
 
@@ -116,8 +128,13 @@
 	}
 
 	.fade-in-element {
-		animation: fadeIn 0.8s ease-in forwards;
+		animation: transformIn 0.8s ease-in forwards;
 		animation-delay: 0s; /* Delay start */
+		opacity: 0;
+	}
+	.appear-later {
+		animation: fadeIn 0.8s ease-in forwards;
+		animation-delay: 1.5s;
 		opacity: 0;
 	}
 </style>
