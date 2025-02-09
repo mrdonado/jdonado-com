@@ -1,6 +1,6 @@
 <div class='flex justify-center md:justify-start items-center gap-2 title mb-6 md:mb-12'>
 	<svg
-		class='dark:invert md:mr-1 w-[100%] h-[100%] md:w-[100%] md:h-[100%]'
+		class='dark:invert md:mr-1 w-[100%] h-[100%] md:w-[100%] md:h-[100%] show-and-shrink'
 		viewBox='0 0 512 512'
 		xmlns='http://www.w3.org/2000/svg'
 	>
@@ -114,6 +114,15 @@
 		}
 	}
 
+	@keyframes shrink {
+		0% {
+			transform: scale(1);
+		}
+		100% {
+			transform: scale(0.2);
+		}
+	}
+
 	/* Apply animations to specific elements */
 	.slide-in-element {
 		opacity: 0;
@@ -136,5 +145,9 @@
 		animation: fadeIn 0.8s ease-in forwards;
 		animation-delay: 1.5s;
 		opacity: 0;
+	}
+	.show-and-shrink {
+		animation: shrink 1.1s ease-in forwards;
+		animation-delay: 1.5s;
 	}
 </style>
