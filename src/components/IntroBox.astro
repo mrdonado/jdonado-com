@@ -2,11 +2,9 @@
 	<svg
 		class='dark:invert md:mr-1 w-[17.5px] h-[17.5px] md:w-[310px] md:h-[310px]'
 		viewBox='0 0 512 512'
-		version='1.1'
 		xmlns='http://www.w3.org/2000/svg'
-		xmlns:xlink='http://www.w3.org/1999/xlink'
-		xml:space='preserve'
 	>
+		<!-- Background Rectangles -->
 		<g transform='matrix(1.13808,0,0,0.836814,-10.4928,-7.71521)'>
 			<rect
 				x='9.22'
@@ -39,12 +37,16 @@
 				height='305.922'
 				style='fill:rgb(214,212,231, 0.5);stroke:rgb(39,36,64);stroke-width:1px;'></rect>
 		</g>
+
+		<!-- Animated Darker Path -->
 		<g transform='matrix(0.586257,-0.586257,0.611603,0.611603,-46.5342,246.846)'>
 			<path
 				class='fade-in-element'
 				d='M468.549,45.527L468.549,464.099L31.88,464.099L31.88,45.527L468.549,45.527ZM400.707,110.557L99.722,110.557L99.722,399.069L400.707,399.069L400.707,110.557Z'
 				style='fill:rgb(39,36,64);'></path>
 		</g>
+
+		<!-- Animated Vertical Rectangles -->
 		<g transform='matrix(1.24559,1.1517e-16,-3.09555e-16,1.03709,-45.6984,-4.99862)'>
 			<rect
 				class='slide-in-element-2'
@@ -56,7 +58,7 @@
 		</g>
 		<g transform='matrix(0.586257,-0.586257,0.611603,0.611603,-46.5342,246.846)'>
 			<path
-				class='slide-in-element-2'
+				class='slide-in-element'
 				d='M31.88,45.527L416.615,45.527L348.774,110.557L99.722,110.557L31.88,45.527Z'
 				style='fill:rgb(214,212,231, 0.9);'></path>
 		</g>
@@ -64,6 +66,7 @@
 </div>
 
 <style>
+	/* Animations */
 	@keyframes slideInFromLeft {
 		0% {
 			transform: translateX(-100%);
@@ -78,7 +81,7 @@
 	@keyframes slideInFromBelow {
 		0% {
 			transform: translateY(-100%);
-			opacity: 0;
+			opacity: 1;
 		}
 		100% {
 			transform: translateY(0);
@@ -95,15 +98,20 @@
 		}
 	}
 
+	/* Apply animations to specific elements */
 	.slide-in-element {
-		animation: slideInFromLeft 2s ease-out forwards;
+		animation: slideInFromLeft 1s ease-out forwards;
+		animation-delay: 0s; /* Delay start */
 	}
 
 	.slide-in-element-2 {
-		animation: slideInFromBelow 2s ease-out forwards;
+		animation: slideInFromBelow 1s ease-out forwards;
+		animation-delay: 0s; /* Delay start */
 	}
 
 	.fade-in-element {
-		animation: fadeIn 1.5s ease-in forwards;
+		animation: fadeIn 0.3s ease-in forwards;
+		opacity: 0;
+		animation-delay: 1s; /* Delay start */
 	}
 </style>
