@@ -1,9 +1,5 @@
-<div class='flex justify-center md:justify-start items-center gap-2 title mb-6 md:mb-12'>
-	<svg
-		class='dark:invert md:mr-1 w-[100%] h-[100%] md:w-[100%] md:h-[100%] show-and-shrink'
-		viewBox='0 0 512 512'
-		xmlns='http://www.w3.org/2000/svg'
-	>
+<div class='intro-box'>
+	<svg class='dark:invert animated-logo' viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'>
 		<!-- Background Rectangles -->
 		<g transform='matrix(1.13808,0,0,0.836814,-10.4928,-7.71521)'>
 			<rect
@@ -67,6 +63,10 @@
 				style='fill:rgb(214,212,231, 0.9);'></path>
 		</g>
 	</svg>
+	<div class='flex flex-col j-donado'>
+		<p class='text-4xl md:text-6xl font-bold text-center md:text-left'>Javier Donado</p>
+		<p class='text-center md:text-left'>Product Engineering</p>
+	</div>
 </div>
 
 <style>
@@ -96,12 +96,12 @@
 	@keyframes transformIn {
 		0% {
 			opacity: 0;
-			transform: rotateX(90deg) rotateY(-90deg) scale(0.7);
+			transform: rotateX(90deg) rotateY(-90deg);
 			transform-origin: center;
 		}
 		100% {
 			opacity: 1;
-			transform: rotateX(0deg) rotateY(0deg) scale(1);
+			transform: rotateX(0deg) rotateY(0deg);
 			transform-origin: center;
 		}
 	}
@@ -114,25 +114,42 @@
 		}
 	}
 
-	@keyframes shrink {
+	@keyframes shrinkMe {
 		0% {
-			transform: scale(1);
 		}
 		100% {
-			transform: scale(0.2);
+			width: 10vw;
+		}
+	}
+
+	@keyframes moveLeft {
+		0% {
+			transform: translateX(-50%) translateY(-50%);
+		}
+		100% {
+			transform: translateX(calc(-100% - 2rem)) translateY(-50%);
+		}
+	}
+
+	@keyframes moveRight {
+		0% {
+			transform: translateX(-50%) translateY(-50%);
+		}
+		100% {
+			transform: translateX(0%) translateY(-50%);
 		}
 	}
 
 	/* Apply animations to specific elements */
 	.slide-in-element {
 		opacity: 0;
-		animation: slideInFromLeft 0.6s ease-out forwards;
+		animation: slideInFromLeft 0.8s ease-out forwards;
 		animation-delay: 1s; /* Delay start */
 	}
 
 	.slide-in-element-2 {
 		opacity: 0;
-		animation: slideInFromBelow 0.6s ease-out forwards;
+		animation: slideInFromBelow 0.8s ease-out forwards;
 		animation-delay: 1.4s; /* Delay start */
 	}
 
@@ -143,11 +160,42 @@
 	}
 	.appear-later {
 		animation: fadeIn 0.8s ease-in forwards;
-		animation-delay: 1.5s;
+		animation-delay: 1.6s;
 		opacity: 0;
 	}
-	.show-and-shrink {
-		animation: shrink 1.1s ease-in forwards;
-		animation-delay: 1.5s;
+
+	.j-donado {
+		position: absolute;
+		transform: translateY(-50%) translateX(-50%);
+		top: 50%;
+		left: 50%;
+		animation:
+			fadeIn 0.8s ease-in forwards,
+			moveRight 1.6s ease forwards;
+		animation-delay: 3.2s, 3.1s; /* Adjust delay to match the end of the logo animation */
+		opacity: 0;
+		z-index: 1; /* Keep this element on top */
+	}
+
+	.animated-logo {
+		width: 80vw;
+		top: 50%;
+		left: 50%;
+		transform: translateY(-50%) translateX(-50%);
+		transform-origin: center;
+		animation:
+			shrinkMe 1.3s ease forwards,
+			moveLeft 1.6s ease forwards;
+		animation-delay: 1.3s, 3.1s;
+		position: absolute;
+		z-index: 0; /* Place this element below j-donado */
+	}
+
+	.intro-box {
+		width: 100%;
+		height: calc(100vh - 10rem);
+		align-items: center;
+		justify-content: center;
+		position: relative;
 	}
 </style>
