@@ -1,9 +1,9 @@
 ---
 import ListItems from '@/components/ListItems'
-import TitlePage from '@/components/TitlePage'
 import BaseLayout from '@/layouts/BaseLayout'
 import { getPosts, getApps, getDoc } from '@/utils'
 import SunIcon from '@/components/icons/SunIcon'
+import IntroBox from '@/components/IntroBox'
 
 const MAX_ITEMS = 3
 
@@ -12,6 +12,7 @@ const apps = await getApps(2)
 ---
 
 <BaseLayout title='JDonado Home'>
+	<IntroBox />
 	<p class='text-4xl font-large text-end mt-4 mb-4 font-bold'>
 		Welcome to <a class='underline' href='/about'>my website,</a> fellow explorer!
 	</p>
