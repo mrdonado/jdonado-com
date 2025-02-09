@@ -66,8 +66,8 @@
 		</svg>
 	</a>
 	<div class='flex flex-col j-donado'>
-		<p class='name'>
-			<a href='/about'> Javier Donado </a>
+		<p class='text-3xl name'>
+			<a class='font-bold' href='/about'> Javier Donado </a>
 		</p>
 		<p class='subtitle'>
 			<a href='/pulse'> PRODUCT ENGINEERING</a>
@@ -192,12 +192,11 @@
 	}
 
 	.j-donado p.name {
-		font-size: clamp(2rem, 2.8vw, 3rem);
-		font-weight: 800;
+		font-size: clamp(2.7rem, 2.8vw, 3rem);
 	}
 
 	.j-donado p.subtitle {
-		font-size: clamp(1.25rem, 1.6vw, 1.84rem);
+		font-size: clamp(1.65rem, 1.6vw, 1.84rem);
 	}
 
 	.animated-logo {
@@ -215,11 +214,11 @@
 
 	@media (orientation: portrait) {
 		.intro-box {
-			height: min(100vh - 10rem, calc(200vw));
+			height: min(76vh, calc(200vw));
 		}
 
 		.animated-logo {
-			width: clamp(100px, 50%, 24vh);
+			width: clamp(150px, 75%, 24vh);
 			top: 20%;
 			left: 50%;
 			transform: translateX(-50%);
@@ -230,6 +229,7 @@
 		.j-donado {
 			top: 62%;
 			left: 50%;
+			width: 100%;
 			transform: translateX(-50%);
 			animation: fadeIn 0.8s ease-in forwards;
 			animation-delay: 2.2s;
@@ -237,17 +237,6 @@
 		.j-donado p {
 			text-align: center;
 			margin-bottom: 2rem;
-		}
-	}
-	@media (max-width: 480px) {
-		.animated-logo {
-			width: 60vw;
-			top: 15%;
-		}
-
-		.j-donado {
-			bottom: 10%;
-			font-size: smaller;
 		}
 	}
 </style>
