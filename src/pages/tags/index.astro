@@ -3,8 +3,23 @@ import BaseLayout from '@/layouts/BaseLayout'
 import TitlePage from '@/components/TitlePage'
 import ListCategories from '@/components/ListCategories'
 import { getTags } from '@/utils'
+import { getPosts } from '@/utils'
 
 const tags = await getTags()
+const posts = await getPosts()
+
+const tagsWithCount: { [key: string]: number } = {}
+
+// Calculate how many posts are in each tag
+tags.forEach((tag) => {
+	const count = posts.reduce((acc, post) => {
+		if (post.data.tags.includes(tag)) {
+			acc++
+		}
+		return acc
+	}, 0)
+	tagsWithCount[tag] = count
+})
 ---
 
 <BaseLayout title='Tags'>
@@ -18,7 +33,7 @@ const tags = await getTags()
 						href={`/tags/${tag}`}
 						class='inline-block bg-gray-200 dark:bg-gray-800 rounded-full px-6 py-3 text-sm md:text-lg font-semibold text-gray-800 dark:text-gray-200 transition-all hover:bg-gray-300 dark:hover:bg-gray-700 hover:scale-105'
 					>
-						#{tag}
+						#{tag} ({tagsWithCount[tag]})
 					</a>
 				))
 			}
