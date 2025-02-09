@@ -1,6 +1,6 @@
 <div class='flex justify-center md:justify-start items-center gap-2 title mb-6 md:mb-12'>
 	<svg
-		class='dark:invert md:mr-1 w-[17.5px] h-[17.5px] md:w-[310px] md:h-[310px]'
+		class='dark:invert md:mr-1 w-[100%] h-[100%] md:w-[100%] md:h-[100%]'
 		viewBox='0 0 512 512'
 		xmlns='http://www.w3.org/2000/svg'
 	>
@@ -92,26 +92,32 @@
 	@keyframes fadeIn {
 		0% {
 			opacity: 0;
+			transform: rotateX(90deg) rotateY(-90deg) scale(0.7);
+			transform-origin: center;
 		}
 		100% {
 			opacity: 1;
+			transform: rotateX(0deg) rotateY(0deg) scale(1);
+			transform-origin: center;
 		}
 	}
 
 	/* Apply animations to specific elements */
 	.slide-in-element {
-		animation: slideInFromLeft 1s ease-out forwards;
-		animation-delay: 0s; /* Delay start */
+		opacity: 0;
+		animation: slideInFromLeft 0.6s ease-out forwards;
+		animation-delay: 1s; /* Delay start */
 	}
 
 	.slide-in-element-2 {
-		animation: slideInFromBelow 1s ease-out forwards;
-		animation-delay: 0s; /* Delay start */
+		opacity: 0;
+		animation: slideInFromBelow 0.6s ease-out forwards;
+		animation-delay: 1.4s; /* Delay start */
 	}
 
 	.fade-in-element {
-		animation: fadeIn 0.3s ease-in forwards;
+		animation: fadeIn 0.8s ease-in forwards;
+		animation-delay: 0s; /* Delay start */
 		opacity: 0;
-		animation-delay: 1s; /* Delay start */
 	}
 </style>
