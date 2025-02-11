@@ -66,3 +66,115 @@ import { AstroFont } from 'astro-font'
 
 <!-- RSS auto-discovery -->
 <link rel='alternate' type='application/rss+xml' title={siteConfig.title} href='/rss.xml' />
+
+<AstroFont
+	config={[
+		{
+			preload: false,
+			display: 'swap',
+			name: 'Raleway',
+			fallback: 'sans-serif',
+			src: [
+				{
+					weight: '100',
+					style: 'normal',
+					path: join(process.cwd(), 'public', 'fonts', 'Raleway-Thin.ttf')
+				},
+				{
+					weight: '100',
+					style: 'italic',
+					path: join(process.cwd(), 'public', 'fonts', 'Raleway-ThinItalic.ttf')
+				},
+
+				{
+					weight: '200',
+					style: 'normal',
+					path: join(process.cwd(), 'public', 'fonts', 'Raleway-ExtraLight.ttf')
+				},
+				{
+					weight: '200',
+					style: 'italic',
+					path: join(process.cwd(), 'public', 'fonts', 'Raleway-ExtraLightItalic.ttf')
+				},
+
+				{
+					weight: '300',
+					style: 'normal',
+					path: join(process.cwd(), 'public', 'fonts', 'Raleway-Light.ttf')
+				},
+				{
+					weight: '300',
+					style: 'italic',
+					path: join(process.cwd(), 'public', 'fonts', 'Raleway-LightItalic.ttf')
+				},
+
+				{
+					weight: '400',
+					style: 'normal',
+					path: join(process.cwd(), 'public', 'fonts', 'Raleway-Regular.ttf')
+				},
+				{
+					weight: '400',
+					style: 'italic',
+					path: join(process.cwd(), 'public', 'fonts', 'Raleway-Italic.ttf')
+				},
+
+				{
+					weight: '500',
+					style: 'normal',
+					path: join(process.cwd(), 'public', 'fonts', 'Raleway-Medium.ttf')
+				},
+				{
+					weight: '500',
+					style: 'italic',
+					path: join(process.cwd(), 'public', 'fonts', 'Raleway-MediumItalic.ttf')
+				},
+
+				{
+					weight: '600',
+					style: 'normal',
+					path: join(process.cwd(), 'public', 'fonts', 'Raleway-SemiBold.ttf')
+				},
+				{
+					weight: '600',
+					style: 'italic',
+					path: join(process.cwd(), 'public', 'fonts', 'Raleway-SemiBoldItalic.ttf')
+				},
+
+				{
+					weight: '700',
+					preload: true,
+					style: 'normal',
+					path: join(process.cwd(), 'public', 'fonts', 'Raleway-Bold.ttf')
+				},
+				{
+					weight: '700',
+					style: 'italic',
+					path: join(process.cwd(), 'public', 'fonts', 'Raleway-BoldItalic.ttf')
+				},
+
+				{
+					weight: '800',
+					style: 'normal',
+					path: join(process.cwd(), 'public', 'fonts', 'Raleway-ExtraBold.ttf')
+				},
+				{
+					weight: '800',
+					style: 'italic',
+					path: join(process.cwd(), 'public', 'fonts', 'Raleway-ExtraBoldItalic.ttf')
+				},
+
+				{
+					weight: '900',
+					style: 'normal',
+					path: join(process.cwd(), 'public', 'fonts', 'Raleway-Black.ttf')
+				},
+				{
+					weight: '900',
+					style: 'italic',
+					path: join(process.cwd(), 'public', 'fonts', 'Raleway-BlackItalic.ttf')
+				}
+			]
+		}
+	]}
+/>
