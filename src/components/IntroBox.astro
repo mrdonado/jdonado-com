@@ -67,16 +67,18 @@
 	</a>
 	<div class='flex flex-col j-donado'>
 		<p class='text-3xl name'>
-			<a class='font-bold' aria-label='Javier Donado' href='/about'> Javier Donado </a>
+			<a class='font-bold' aria-label='Javier Donado' href='/about'>Javier Donado</a>
 		</p>
 		<p class='subtitle'>
-			<a aria-label='Product Engineering' href='/pulse'> PRODUCT ENGINEERING</a>
+			<a aria-label='Product Engineering' href='/pulse'>PRODUCT ENGINEERING</a>
 		</p>
 	</div>
 </div>
 
 <style>
-	/* Animations */
+	/* --------------------------------------------
+   Base Animations
+-------------------------------------------- */
 	@keyframes slideInFromLeft {
 		0% {
 			transform: translateX(-100%);
@@ -111,6 +113,7 @@
 			transform-origin: center;
 		}
 	}
+
 	@keyframes fadeIn {
 		0% {
 			opacity: 0;
@@ -120,14 +123,26 @@
 		}
 	}
 
+	/* “Shrink” to a smaller width on large screens */
 	@keyframes shrinkMe {
 		0% {
+			/* full size */
 		}
 		100% {
 			width: clamp(5rem, 18%, 11rem);
 		}
 	}
 
+	@keyframes shrinkMeWider {
+		0% {
+			/* full size */
+		}
+		100% {
+			width: 18rem;
+		}
+	}
+
+	/* Slide logo to the left (for large screens) */
 	@keyframes moveLeft {
 		0% {
 			transform: translate3d(-50%, -50%, 0);
@@ -137,7 +152,8 @@
 		}
 	}
 
-	@keyframes moveRight {
+	/* Slide logo back to center if needed */
+	@keyframes moveRightText {
 		0% {
 			transform: translate3d(-50%, -50%, 0);
 		}
@@ -146,15 +162,18 @@
 		}
 	}
 
-	/* Classes */
+	/* --------------------------------------------
+   Base Styling
+-------------------------------------------- */
 	.intro-box {
 		width: 100%;
-		height: 73vh;
+		min-height: 70vh;
 		align-items: center;
 		justify-content: center;
 		position: relative;
 	}
 
+	/* Slide in shapes (foreground elements) */
 	.slide-in-element {
 		opacity: 0;
 		animation: slideInFromLeft 0.8s ease-out forwards;
@@ -169,23 +188,27 @@
 		z-index: 10;
 	}
 
+	/* Fade/rotate for darker path */
 	.fade-in-element {
 		animation: transformIn 0.8s ease-in forwards;
 		animation-delay: 0s;
 		opacity: 0;
 	}
+
+	/* Fade-in background rectangles later */
 	.appear-later {
 		animation: fadeIn 0.8s ease-in forwards;
 		animation-delay: 1.6s;
 		opacity: 0;
 	}
 
+	/* The main logo on large screens → shrink and then slide left */
 	.animated-logo {
 		width: min(80vw, 80vh);
 		top: 50%;
 		left: 50%;
 		will-change: transform;
-		transform: translateY(-50%) translateX(-50%);
+		transform: translate(-50%, -50%);
 		transform-origin: center;
 		animation:
 			shrinkMe 1.3s ease forwards,
@@ -194,77 +217,98 @@
 		position: absolute;
 	}
 
+	/* “J. Donado” text: fade in and move right on large screens */
 	.j-donado {
 		position: absolute;
-		transform: translateY(-50%) translateX(-50%);
 		top: 50%;
 		left: 50%;
+		transform: translate(-50%, -50%);
 		animation:
 			fadeIn 0.8s ease-in forwards,
-			moveRight 1.6s ease forwards;
+			moveRightText 1.6s ease forwards;
 		animation-delay: 3.2s, 3.1s;
 		opacity: 0;
 	}
 	.j-donado p {
 		text-align: center;
 	}
-
 	.j-donado p a {
 		text-decoration: underline;
 		text-decoration-thickness: 1px;
 		text-underline-offset: 0.1em;
 		text-decoration-color: color-mix(in srgb, var(--pagefind-ui-text) 50%, transparent);
 	}
-
 	.j-donado p.name {
 		font-size: 3.12rem;
 	}
-
 	.j-donado p.subtitle {
 		font-size: 1.8rem;
 	}
 
-	@media (max-width: 64rem) {
-		.animated-logo {
-			width: clamp(20rem, 75%, 24vh);
+	/* --------------------------------------------
+   Overwrites for smaller screens: 
+   Logo is full width and slides UP instead of left
+-------------------------------------------- */
+	@keyframes moveUp {
+		0% {
+			transform: translate3d(-50%, -50%, 0);
 		}
-
-		.j-donado p.name {
-			font-size: clamp(1.6rem, 4.05vw, 3.12rem);
-		}
-
-		.j-donado p.subtitle {
-			font-size: clamp(0.93rem, 2.4vw, 1.8rem);
+		100% {
+			/* Slide upward to reveal text below; 
+       adjust the final Y so it’s far enough up */
+			transform: translate3d(-50%, calc(-50% - 3rem), 0);
 		}
 	}
 
-	@media (max-width: 64rem) and (orientation: portrait) {
-		.intro-box {
-			min-height: 90vh;
+	/* If you want the text to slide in from below, define a small upward “pop”: */
+	@keyframes moveDownText {
+		0% {
+			transform: translate3d(-50%, calc(-50%), 0);
 		}
-		.animated-logo {
-			max-width: 15rem;
-			top: calc(50% - 7rem);
-			left: 50%;
-			transform: translateY(-50%) translateX(-50%);
-			animation: none;
-			animation-delay: 1.3s;
+		100% {
+			transform: translate3d(-50%, calc(-50% + 3rem), 0);
 		}
+	}
 
-		.j-donado {
-			top: calc(50% + 4rem);
-			left: 50%;
-			width: 100%;
-			transform: translateX(-50%);
-			animation: fadeIn 0.8s ease-in forwards;
-			animation-delay: 2.2s;
-		}
+	@media (max-width: 64rem) and (orientation: landscape) {
 		.j-donado p.name {
-			font-size: 2.2rem;
+			font-size: clamp(1.1rem, 5vw, 3.12rem);
+		}
+		.j-donado p.subtitle {
+			font-size: clamp(0.63rem, 3vw, 1.8rem);
+		}
+	}
+
+	@media ((max-width: 64rem) and (orientation: portrait)) {
+		.intro-box {
+			min-height: max(80vh, 32rem);
+		}
+		/* Remove the large-screen “shrink & moveLeft” and use “moveUp” instead */
+		.animated-logo {
+			animation:
+				shrinkMeWider 1.3s ease forwards,
+				moveUp 1.6s ease-in forwards; /* Slide upward instead */
+			animation-delay: 1.3s, 3.1s;
+			position: absolute;
 		}
 
+		/* For the text below: simply fade in and/or slide up slightly if desired. */
+		.j-donado {
+			opacity: 0;
+			width: 100%;
+			top: calc(50% + 7rem);
+			animation:
+				fadeIn 0.8s ease-in forwards,
+				moveDownText 1.6s ease forwards;
+			animation-delay: 3.2s, 3.1s;
+		}
+
+		/* Adjust fonts */
+		.j-donado p.name {
+			font-size: 2.5rem;
+		}
 		.j-donado p.subtitle {
-			font-size: 1.29rem;
+			font-size: 1.46rem;
 		}
 	}
 </style>
