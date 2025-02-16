@@ -18,6 +18,60 @@ const titleSeparator = '•'
 
 const siteTitle = `${title} ${titleSeparator} ${siteConfig.title}`
 
+// Determine JSON-LD @type dynamically
+let pageType = 'WebPage'
+if (Astro.url.pathname === '/') {
+	pageType = 'WebSite'
+} else if (Astro.url.pathname.startsWith('/post/')) {
+	pageType = 'BlogPosting'
+} else if (Astro.url.pathname === '/pulse') {
+	pageType = 'Blog'
+} else if (Astro.url.pathname.startsWith('/apps/')) {
+	pageType = 'SoftwareApplication'
+} else if (Astro.url.pathname === '/apps') {
+	pageType = 'CollectionPage'
+} else if (Astro.url.pathname === '/archive') {
+	pageType = 'CollectionPage'
+}
+
+interface JsonLd {
+	'@context': string
+	'@type': string
+	name?: string
+	url?: string
+	headline?: string
+	description?: string
+	author?: { '@type': string; name: string }
+	datePublished?: string
+	image?: string
+	mainEntityOfPage?: { '@type': string; '@id': string }
+	publisher?: { '@type': string; name: string }
+}
+
+const jsonLdData: JsonLd = {
+	'@context': 'https://schema.org',
+	'@type': pageType,
+	name: siteTitle,
+	url: canonicalURL.href
+}
+
+// Extra fields for BlogPosting
+if (pageType === 'BlogPosting') {
+	jsonLdData.headline = title
+	jsonLdData.description = description
+	jsonLdData.author = { '@type': 'Person', name: siteConfig.author }
+	jsonLdData.datePublished = articleDate || ''
+	jsonLdData.image = socialImageURL
+	jsonLdData.mainEntityOfPage = {
+		'@type': 'WebPage',
+		'@id': canonicalURL.href
+	}
+	jsonLdData.publisher = {
+		'@type': 'Person',
+		name: siteConfig.author
+	}
+}
+
 import { join } from 'path'
 import { AstroFont } from 'astro-font'
 ---
@@ -34,6 +88,9 @@ import { AstroFont } from 'astro-font'
 <!-- Primary Meta Tags -->
 <title>{siteTitle}</title>
 
+<!-- JSON-LD Structured Data -->
+<script type='application/ld+json' set:html={JSON.stringify(jsonLdData)} />
+
 <!-- ClientRouter (formerly ViewTransitions) -->
 <ClientRouter />
 
@@ -41,6 +98,7 @@ import { AstroFont } from 'astro-font'
 <meta name='title' content={siteTitle} />
 <meta name='description' content={description} />
 <meta name='author' content={siteConfig.author} />
+<meta name='application-name' content={siteConfig.applicationName} />
 
 <!-- Open Graph / Facebook -->
 <meta property='og:type' content={articleDate ? 'article' : 'website'} />
