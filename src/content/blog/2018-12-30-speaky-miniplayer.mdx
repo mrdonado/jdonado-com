@@ -7,15 +7,19 @@ category: 'Projects'
 tags: ['product-development', 'macos', 'linux', 'javascript']
 ---
 
-![Speaky MiniPlayer's Logo](https://github.com/fjrd84/speaky-miniplayer/raw/master/resources/icon.png)
-
-# Speaky MiniPlayer
+import { Image } from 'astro:assets'
+import speakyIcon from '../../assets/images/speaky-icon.png'
+import screenshot01 from '../../assets/images/speaky-screenshot-01.png'
+import screenshot02 from '../../assets/images/speaky-screenshot-02.png'
+import screenshot03 from '../../assets/images/speaky-screenshot-03.png'
 
 > A robotic mini player for Spotify - [Available in GitHub](https://github.com/mrdonado/speaky-miniplayer)
 
+<Image src={speakyIcon} alt="Speaky MiniPlayer's Logo" />
+
 Speaky MiniPlayer is a minimalist music controller for Spotify that has an **integrated robotic radio speaker**. This robotic speaker provides information about the music you're currently listening to (such as title, artist, album...) by using a synthetic voice.
 
-![Screenshot 01](https://github.com/fjrd84/speaky-miniplayer/raw/master/resources/screenshots/screenshot-01.png)
+<Image src={screenshot01} alt='Screenshot 01' />
 
 The goal is to emulate traditional radio programs where a speaker helps you discover new music by providing some context and additional information.
 
@@ -48,39 +52,12 @@ You can keep the main Spotify player minimized however, since the miniplayer pro
 
 ## Screenshots
 
-![On Hover](https://github.com/fjrd84/speaky-miniplayer/raw/master/resources/screenshots/screenshot-02.png)
+<Image src={screenshot02} alt='On Hover' />
 
-![Configuration View](https://github.com/fjrd84/speaky-miniplayer/raw/master/resources/screenshots/screenshot-03.png)
+<Image src={screenshot03} alt='Configuration View' />
 
-# Installation
+## Installation
 
 Visit the [releases](https://github.com/fjrd84/speaky-miniplayer/releases) section, download the installer for your system and run it on your machine.
 
 If you're running MacOS X, you might get a message like this: `This app can't be opened because it is from an unidentified developer`. [Follow these instructions](https://truefire.zendesk.com/hc/en-us/articles/200200566-Open-Program-from-Unidentified-Developer-Mac-) to get the Speaky MiniPlayer up and running on your machine.
-
-# Development setup
-
-This project has been bootstrapped with [electron-react-boilerplate](https://github.com/electron-react-boilerplate/electron-react-boilerplate). Refer to their README for more information.
-
-First of all, copy the file `.env.example` to a `.env` file and fill in your `clientId` and `secret`. Visit the [spotify developer dashboard](https://developer.spotify.com/dashboard/applications) for more information.
-
-Install dependencies with `yarn`.
-
-Start development with `yarn dev`.
-
-Run the unit tests with `yarn test`
-
-# Build for production
-
-`yarn package`
-
-# Author
-
-- [**F. Javier R. Donado**](https://www.jdonado.com)
-
-# License
-
-[![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
-
-- **[MIT license](http://opensource.org/licenses/mit-license.php)**
-- Copyright 2019 © <a href="https://www.jdonado.com" target="_blank">F. Javier R. Donado</a>.
