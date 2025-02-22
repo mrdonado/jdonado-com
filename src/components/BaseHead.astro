@@ -106,6 +106,13 @@ import { AstroFont } from 'astro-font'
 <meta name='description' content={description} />
 <meta name='author' content={siteConfig.author} />
 <meta name='application-name' content={siteConfig.applicationName} />
+{
+	title === '404 - Page Not Found' ? (
+		<meta name='robots' content='noindex' />
+	) : (
+		<meta name='robots' content='index, follow' />
+	)
+}
 
 <!-- Open Graph / Facebook -->
 <meta property='og:type' content={articleDate ? 'article' : 'website'} />
