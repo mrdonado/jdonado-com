@@ -3,6 +3,7 @@ interface SiteConfig {
 	author: string
 	applicationName: string
 	title: string
+	logo: string
 	description: string
 	lang: string
 	ogLocale: string
@@ -15,6 +16,7 @@ export const siteConfig: SiteConfig = {
 	site: 'https://www.jdonado.com/', // Write here your website url
 	author: 'Javier Donado', // Site author
 	applicationName: 'Javier Donado', // Application name
+	logo: 'https://www.jdonado.com/favicon.svg', // Write here your website url
 	title: 'Javier Donado - Product Engineering - Apps | Posts | Music', // Site title.
 	description:
 		'Javier Donado - Product Engineering - Web and mobile apps (iOS and Android) - Photos - Music', // Description to display in the meta tags

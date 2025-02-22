@@ -21,7 +21,7 @@ const siteTitle = `${title} ${titleSeparator} ${siteConfig.title}`
 // Determine JSON-LD @type dynamically
 let pageType = 'WebPage'
 if (Astro.url.pathname === '/') {
-	pageType = 'WebSite'
+	pageType = 'Organization'
 } else if (Astro.url.pathname.startsWith('/post/')) {
 	pageType = 'BlogPosting'
 } else if (Astro.url.pathname === '/pulse') {
@@ -44,6 +44,7 @@ interface JsonLd {
 	author?: { '@type': string; name: string }
 	datePublished?: string
 	image?: string
+	logo?: string
 	mainEntityOfPage?: { '@type': string; '@id': string }
 	publisher?: { '@type': string; name: string }
 }
@@ -52,7 +53,13 @@ const jsonLdData: JsonLd = {
 	'@context': 'https://schema.org',
 	'@type': pageType,
 	name: siteTitle,
-	url: canonicalURL.href
+	url: canonicalURL.href,
+	logo: siteConfig.logo
+}
+
+// Extra fields for Organization
+if (pageType === 'Organization') {
+	jsonLdData.name = siteConfig.applicationName
 }
 
 // Extra fields for BlogPosting
@@ -105,6 +112,7 @@ import { AstroFont } from 'astro-font'
 <meta property='og:url' content={Astro.url} />
 <meta property='og:title' content={title} />
 <meta property='og:description' content={description} />
+<meta property='og:site_name' content={siteConfig.applicationName} />
 <meta property='og:image' content={socialImageURL} />
 {
 	articleDate && (
