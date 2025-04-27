@@ -20,12 +20,12 @@ const itemUrl = `/${isPost ? 'post' : 'apps'}/${slug}/`
 			<Picture
 				src={heroImage}
 				alt={`img of ${title}`}
-				width={800}
+				width={480}
 				sizes='(max-width: 768px) 100vw, 600px'
-				quality={80}
+				quality={75}
 				placeholder='blurred'
 				layout='fill'
-				loading='eager'
+				loading='lazy'
 			/>
 		</div>
 
