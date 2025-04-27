@@ -21,7 +21,7 @@ const siteTitle = `${title} ${titleSeparator} ${siteConfig.title}`
 // Determine JSON-LD @type dynamically
 let pageType = 'WebPage'
 if (Astro.url.pathname === '/') {
-	pageType = 'Organization'
+	pageType = 'WebSite'
 } else if (Astro.url.pathname.startsWith('/post/')) {
 	pageType = 'BlogPosting'
 } else if (Astro.url.pathname === '/pulse') {
@@ -43,6 +43,7 @@ interface JsonLd {
 	description?: string
 	author?: { '@type': string; name: string }
 	datePublished?: string
+	alternateName?: string
 	image?: string
 	logo?: string
 	mainEntityOfPage?: { '@type': string; '@id': string }
@@ -57,9 +58,19 @@ const jsonLdData: JsonLd = {
 	logo: siteConfig.logo
 }
 
-// Extra fields for Organization
-if (pageType === 'Organization') {
+const organizationJsonLd: JsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'Organization',
+	name: siteConfig.applicationName,
+	url: canonicalURL.href,
+	logo: siteConfig.logo
+}
+
+// Extra fields for WebSite
+if (pageType === 'WebSite') {
 	jsonLdData.name = siteConfig.applicationName
+	jsonLdData.alternateName = siteTitle
+	delete jsonLdData.logo
 }
 
 // Extra fields for BlogPosting
@@ -95,6 +106,9 @@ import { AstroFont } from 'astro-font'
 <!-- Primary Meta Tags -->
 <title>{siteTitle}</title>
 
+<!-- JSON-LD Structured Data: Organization (static on all pages) -->
+<script type='application/ld+json' set:html={JSON.stringify(organizationJsonLd)} />
+
 <!-- JSON-LD Structured Data -->
 <script type='application/ld+json' set:html={JSON.stringify(jsonLdData)} />
 
@@ -117,7 +131,7 @@ import { AstroFont } from 'astro-font'
 <!-- Open Graph / Facebook -->
 <meta property='og:type' content={articleDate ? 'article' : 'website'} />
 <meta property='og:url' content={Astro.url} />
-<meta property='og:title' content={title} />
+<meta property='og:title' content={siteTitle} />
 <meta property='og:description' content={description} />
 <meta property='og:site_name' content={siteConfig.applicationName} />
 <meta property='og:image' content={socialImageURL} />
