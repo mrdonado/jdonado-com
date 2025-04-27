@@ -2,7 +2,7 @@
 import type { CollectionEntry } from 'astro:content'
 import BaseLayout from '@/layouts/BaseLayout'
 import type { MarkdownHeading } from 'astro'
-import { Image } from 'astro:assets'
+import { Picture } from 'astro-imagetools/components'
 import AppStoreIcon from '@/components/icons/AppStoreIcon'
 import AppStoreComingIcon from '@/components/icons/AppStoreComingIcon'
 import GooglePlayIcon from '@/components/icons/GooglePlayIcon'
@@ -24,25 +24,25 @@ const articleDate = pubDate.toISOString()
 
 <BaseLayout title={name} description={description} image={heroImage?.src} articleDate={articleDate}>
 	<article class='md:py-4 mx-auto max-w-[1000px]'>
-		<h1 class='text-center text-4xl md:text-6xl md:pb-2.5 font-semibold'>
-			{name}
-		</h1>
+		<h1 class='text-center text-4xl md:text-6xl md:pb-2.5 font-semibold'>{name}</h1>
 		<hr class='mb-6 mt-3' />
+
 		<header class='fadein mb-3 flex flex-col justify-center items-center gap-6'>
 			<div class='flex flex-col gap-1'>
-				<Image
-					src={icon}
-					width={200}
-					height={200}
-					quality={100}
-					format='jpg'
-					loading='eager'
-					class='rounded-xl w-[120px] max-h-[120px] md:w-[200px] md:max-h-[200px] object-cover mx-auto mb-2'
-					alt={`img of ${name}`}
-				/>
+				<div class='relative w-[120px] h-[120px] md:w-[200px] md:h-[200px] mx-auto mb-2'>
+					<Picture
+						src={icon}
+						alt={`img of ${name}`}
+						width={200}
+						sizes='(max-width: 768px) 120px, 200px'
+						placeholder='blurred'
+						layout='fill'
+						loading='eager'
+					/>
+				</div>
 
 				<div class='flex items-center justify-center gap-x-1 mb-6'>
-					<Share message=`Check out this app: ${name}` />
+					<Share message={`Check out this app: ${name}`} />
 				</div>
 
 				<div
@@ -61,7 +61,7 @@ const articleDate = pubDate.toISOString()
 					}
 					{
 						playStore ? (
-							<a class='sm:w-34 md:w-[330px] ' href={playStore} target='_blank' rel='noopener'>
+							<a class='sm:w-34 md:w-[330px]' href={playStore} target='_blank' rel='noopener'>
 								<GooglePlayIcon />
 							</a>
 						) : (
@@ -73,6 +73,7 @@ const articleDate = pubDate.toISOString()
 				</div>
 			</div>
 		</header>
+
 		<hr />
 
 		<div>
@@ -84,20 +85,23 @@ const articleDate = pubDate.toISOString()
 				<section class='mb-3 flex flex-col justify-center items-center gap-6'>
 					<div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6'>
 						{screenShots.map((screenshot) => (
-							<Image
-								src={screenshot}
-								width={screenshot.width}
-								height={screenshot.height}
-								quality={70}
-								loading='eager'
-								class='rounded-3xl object-cover'
-								alt={`screenshot of ${name}`}
-							/>
+							<div class='relative w-full h-[300px]'>
+								<Picture
+									src={screenshot}
+									alt={`screenshot of ${name}`}
+									width={600}
+									sizes='(max-width: 768px) 100vw, 25vw'
+									placeholder='blurred'
+									layout='fill'
+									loading='lazy'
+								/>
+							</div>
 						))}
 					</div>
 				</section>
 			)
 		}
+
 		<a href='#top' class='underline text-sm text-gray-500 dark:text-gray-400 mt-4 block'
 			>Back to top</a
 		>

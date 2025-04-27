@@ -21,7 +21,7 @@ const blog = defineCollection({
 				.string()
 				.or(z.date())
 				.transform((val) => new Date(val)),
-			heroImage: image(),
+			heroImage: z.string(),
 			category: z.enum(CATEGORIES),
 			tags: z.array(z.string()),
 			draft: z.boolean().default(false),
@@ -44,9 +44,9 @@ const app = defineCollection({
 				.string()
 				.or(z.date())
 				.transform((val) => new Date(val)),
-			icon: image(),
-			heroImage: image(),
-			screenShots: z.array(image()),
+			icon: z.string(),
+			heroImage: z.string(),
+			screenShots: z.array(z.string()),
 			appStore: z.string().optional(),
 			playStore: z.string().optional(),
 			draft: z.boolean().default(false)

@@ -2,7 +2,7 @@
 import type { CollectionEntry } from 'astro:content'
 
 import { cn } from '@/utils'
-import { Image } from 'astro:assets'
+import { Picture } from 'astro-imagetools/components'
 
 type Props = {
 	posts: CollectionEntry<'blog'>[]
@@ -16,28 +16,27 @@ const { posts } = Astro.props
 		<>
 			<h2 class='font-bold text-lg dark:text-white mb-6'>Related Posts</h2>
 			<section class={cn(`flex flex-col md:flex-row sm:justify-between gap-8`)}>
-				{posts.map((post) => {
-					return (
-						<a href={`/post/${post.slug}/`} class='flex flex-wrap gap-2'>
-							<div class='min-h-full'>
-								<Image
-									src={post.data.heroImage}
-									width={200}
-									height={200}
-									format='webp'
-									class='w-16 h-16 object-cover rounded-full  '
-									alt={`img of ${post.data.title}`}
-								/>
-							</div>
+				{posts.map((post) => (
+					<a href={`/post/${post.slug}/`} class='flex flex-wrap gap-2'>
+						<div class='relative w-16 h-16 min-h-full rounded-full overflow-hidden'>
+							<Picture
+								src={post.data.heroImage}
+								alt={`img of ${post.data.title}`}
+								width={128}
+								sizes='64px'
+								placeholder='blurred'
+								layout='fill'
+								loading='lazy'
+							/>
+						</div>
 
-							<header class='flex justify-center items-center'>
-								<span class='pl-3 max-w-[15em] font-medium line-clamp-1 overflow-hidden hover:underline'>
-									{post.data.title}
-								</span>
-							</header>
-						</a>
-					)
-				})}
+						<header class='flex justify-center items-center'>
+							<span class='pl-3 max-w-[15em] font-medium line-clamp-1 overflow-hidden hover:underline'>
+								{post.data.title}
+							</span>
+						</header>
+					</a>
+				))}
 			</section>
 		</>
 	)

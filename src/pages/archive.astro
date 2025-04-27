@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout'
-import { Image } from 'astro:assets'
+import { Picture } from 'astro-imagetools/components'
 import TitlePage from '@/components/TitlePage'
 import ListCategories from '@/components/ListCategories'
 import FormattedDate from '@/components/FormattedDate'
@@ -20,16 +20,19 @@ const posts = await getPosts()
 					<a
 						href={`/post/${post.slug}`}
 						aria-label={`${post.data.title}`}
-						class='flex items-center gap-4 bg-gray-100 dark:bg-gray-800 p-4 rounded-lg transition-all hover:shadow-lg hover:bg-gray-200 dark:hover:bg-gray-700 appear-smoothly w-full'
+						class='flex items-center gap-4 bg-gray-100 dark:bg-gray-800 p-4 transition-all hover:shadow-lg hover:bg-gray-200 dark:hover:bg-gray-700 appear-smoothly w-full'
 					>
-						<Image
-							src={post.data.heroImage}
-							width={100}
-							height={100}
-							alt={`Image of ${post.data.title}`}
-							class='w-24 h-24 object-cover rounded-md'
-							loading='eager'
-						/>
+						<div class='relative w-24 h-20 rounded-lg overflow-hidden'>
+							<Picture
+								src={post.data.heroImage}
+								alt={`Image of ${post.data.title}`}
+								width={100}
+								sizes='96px'
+								placeholder='blurred'
+								layout='fill'
+								loading='eager'
+							/>
+						</div>
 
 						<div class='flex flex-col w-full overflow-hidden'>
 							<h2 class='text-lg font-semibold truncate'>{post.data.title}</h2>
