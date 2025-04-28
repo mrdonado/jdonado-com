@@ -85,12 +85,11 @@ const articleDate = pubDate.toISOString()
 				<section class='mb-3 flex flex-col justify-center items-center gap-6'>
 					<div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6'>
 						{screenShots.map((screenshot) => (
-							<div class='relative w-full h-[300px]'>
+							<div class='relative w-[200px]'>
 								<Picture
 									src={screenshot}
 									alt={`screenshot of ${name}`}
-									width={600}
-									sizes='(max-width: 768px) 100vw, 25vw'
+									width={200}
 									placeholder='blurred'
 									layout='fill'
 									loading='lazy'
