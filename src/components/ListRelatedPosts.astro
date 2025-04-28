@@ -17,8 +17,8 @@ const { posts } = Astro.props
 			<h2 class='font-bold text-lg dark:text-white mb-6'>Related Posts</h2>
 			<section class={cn(`flex flex-col md:flex-row sm:justify-between gap-8`)}>
 				{posts.map((post) => (
-					<a href={`/post/${post.slug}/`} class='flex flex-wrap gap-2'>
-						<div class='relative w-16 h-16 min-h-full rounded-full overflow-hidden'>
+					<a href={`/post/${post.slug}/`} class='flex flex-wrap gap-2 min-h-full'>
+						<div class='relative w-16 h-16 rounded-full overflow-hidden'>
 							<Picture
 								src={post.data.heroImage}
 								alt={`img of ${post.data.title}`}
