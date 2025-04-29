@@ -20,12 +20,13 @@ const { items, FirstBig = false } = Astro.props
 	)}
 >
 	{
-		(items || []).map(async (item) => {
+		(items || []).map(async (item, index) => {
 			const { remarkPluginFrontmatter } = await item.render()
 
 			return (
 				<ContentCard
 					id={item.id}
+					index={index}
 					data={item.data}
 					slug={item.slug}
 					readTime={remarkPluginFrontmatter.minutesRead}

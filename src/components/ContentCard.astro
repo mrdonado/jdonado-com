@@ -6,6 +6,7 @@ import ArrowUp from '@/components/icons/ArrowUp'
 let {
 	data: { title = '', name, description, pubDate, heroImage, category = '' },
 	readTime,
+	index,
 	slug
 } = Astro.props
 
@@ -24,8 +25,14 @@ const itemUrl = `/${isPost ? 'post' : 'apps'}/${slug}/`
 				sizes='(max-width: 768px) 100vw, 600px'
 				quality={75}
 				placeholder='blurred'
+				loading={index === 0 ? 'eager' : 'lazy'}
 				layout='fill'
 				loading='lazy'
+				fadeInTransition={{
+					delay: '0.0s',
+					duration: '0.2s',
+					timingFunction: 'ease-out'
+				}}
 			/>
 		</div>
 
