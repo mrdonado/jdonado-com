@@ -25,6 +25,11 @@ const { posts } = Astro.props
 								width={128}
 								sizes='64px'
 								placeholder='blurred'
+								fadeInTransition={{
+									delay: '0.0s',
+									duration: '0.2s',
+									timingFunction: 'ease-out'
+								}}
 								layout='fill'
 								loading='lazy'
 							/>

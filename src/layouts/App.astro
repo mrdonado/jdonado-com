@@ -36,6 +36,11 @@ const articleDate = pubDate.toISOString()
 						width={200}
 						sizes='(max-width: 768px) 120px, 200px'
 						placeholder='blurred'
+						fadeInTransition={{
+							delay: '0.0s',
+							duration: '0.2s',
+							timingFunction: 'ease-out'
+						}}
 						layout='fill'
 						loading='eager'
 					/>
@@ -91,6 +96,11 @@ const articleDate = pubDate.toISOString()
 									alt={`screenshot of ${name}`}
 									width={200}
 									placeholder='blurred'
+									fadeInTransition={{
+										delay: '0.0s',
+										duration: '0.2s',
+										timingFunction: 'ease-out'
+									}}
 									layout='fill'
 									loading='lazy'
 								/>
