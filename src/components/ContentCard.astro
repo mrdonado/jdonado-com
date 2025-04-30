@@ -17,11 +17,13 @@ const itemUrl = `/${isPost ? 'post' : 'apps'}/${slug}/`
 
 <article class='appear-smoothly grid grid-rows-[300px_auto] group'>
 	<a class='relative overflow-hidden rounded-xl' href={itemUrl}>
-		<div class='relative w-full h-full rounded-[2px]'>
+		<div
+			class='relative w-full h-full rounded-[2px] transform transition-transform duration-[3000ms] ease-in-out hover:scale-[1.05]'
+		>
 			<Picture
 				src={heroImage}
 				alt={`img of ${title}`}
-				width={480}
+				width={680}
 				sizes='(max-width: 768px) 100vw, 600px'
 				quality={75}
 				placeholder='blurred'
