@@ -20,7 +20,7 @@ const posts = await getPosts()
 					<a
 						href={`/post/${post.slug}`}
 						aria-label={`${post.data.title}`}
-						class='flex items-center gap-4 bg-gray-100 dark:bg-gray-800 p-4 transition-all hover:shadow-lg hover:bg-gray-200 dark:hover:bg-gray-700 appear-smoothly w-full'
+						class='flex items-center gap-4 bg-gray-200/60 dark:bg-gray-700/60 p-4 transition-all hover:shadow-lg hover:bg-gray-300/70 dark:hover:bg-gray-600/70 appear-smoothly w-full'
 					>
 						<div class='relative w-24 h-20 rounded-lg overflow-hidden'>
 							<Picture
@@ -39,7 +39,7 @@ const posts = await getPosts()
 							<p class='text-sm text-gray-600 dark:text-gray-300'>
 								<FormattedDate date={post.data.pubDate} />
 							</p>
-							<p class='text-sm text-gray-700 dark:text-gray-400 max-w-[80%] whitespace-nowrap overflow-hidden text-ellipsis'>
+							<p class='text-sm text-gray-700/90 dark:text-gray-300/80 max-w-[80%] whitespace-nowrap overflow-hidden text-ellipsis'>
 								{post.data.description}
 							</p>
 						</div>
