@@ -31,6 +31,9 @@ const today = new Date()
 
 <script>
 	document.addEventListener('astro:page-load', () => {
+		// Add transition classes to body to prevent FOUC on mobile devices
+		document.body.classList.add('transition-colors', 'duration-300', 'ease-in-out')
+
 		// Show cookie banner listener
 		const showCookieBanner = document.getElementById('show-cookie-banner')
 		const cookieBanner = document.getElementById('cookie-banner')

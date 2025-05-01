@@ -3,9 +3,6 @@
 @tailwind utilities;
 
 @layer base {
-	body {
-		transition: background-color 0.3s ease;
-	}
 
 	html {
 		font-family: 'Raleway', sans-serif;
