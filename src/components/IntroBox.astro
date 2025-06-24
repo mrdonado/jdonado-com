@@ -1,6 +1,12 @@
 <div class='intro-box'>
 	<a aria-label='JD Logo - Pulse' href='/pulse'>
-		<svg class='dark:invert animated-logo' viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'>
+		<svg
+			class='dark:invert animated-logo'
+			viewBox='0 0 512 512'
+			xmlns='http://www.w3.org/2000/svg'
+			shape-rendering='geometricPrecision'
+			style='will-change: transform;'
+		>
 			<!-- Background Rectangles -->
 			<g transform='matrix(1.13808,0,0,0.836814,-10.4928,-7.71521)'>
 				<rect
@@ -9,7 +15,8 @@
 					y='9.22'
 					width='224.941'
 					height='305.922'
-					style='fill:rgb(255,255,255, 0.5);stroke:rgb(39,36,64);stroke-width:1px;'></rect>
+					style='fill:rgb(255,255,255, 0.5);stroke:rgb(39,36,64);stroke-width:0.75;vector-effect:non-scaling-stroke;stroke-linecap:round;stroke-linejoin:round;'
+				></rect>
 			</g>
 			<g transform='matrix(1.13808,0,0,0.836814,-10.4928,248.285)'>
 				<rect
@@ -18,7 +25,8 @@
 					y='9.22'
 					width='224.941'
 					height='305.922'
-					style='fill:rgb(214,212,231, 0.5);stroke:rgb(39,36,64);stroke-width:1px;'></rect>
+					style='fill:rgb(214,212,231, 0.5);stroke:rgb(39,36,64);stroke-width:0.75;vector-effect:non-scaling-stroke;stroke-linecap:round;stroke-linejoin:round;'
+				></rect>
 			</g>
 			<g transform='matrix(1.13808,0,0,0.836814,245.507,248.285)'>
 				<rect
@@ -27,7 +35,8 @@
 					y='9.22'
 					width='224.941'
 					height='305.922'
-					style='fill:rgb(214,212,231, 0.5);stroke:rgb(39,36,64);stroke-width:1px;'></rect>
+					style='fill:rgb(214,212,231, 0.5);stroke:rgb(39,36,64);stroke-width:0.75;vector-effect:non-scaling-stroke;stroke-linecap:round;stroke-linejoin:round;'
+				></rect>
 			</g>
 			<g transform='matrix(1.13808,0,0,0.836814,245.507,-7.71521)'>
 				<rect
@@ -36,7 +45,8 @@
 					y='9.22'
 					width='224.941'
 					height='305.922'
-					style='fill:rgb(214,212,231, 0.5);stroke:rgb(39,36,64);stroke-width:1px;'></rect>
+					style='fill:rgb(214,212,231, 0.5);stroke:rgb(39,36,64);stroke-width:0.75;vector-effect:non-scaling-stroke;stroke-linecap:round;stroke-linejoin:round;'
+				></rect>
 			</g>
 
 			<!-- Animated Darker Path -->
@@ -167,7 +177,7 @@
 -------------------------------------------- */
 	.intro-box {
 		width: 100%;
-		height: 70vh;
+		height: 100%;
 		min-height: 8rem;
 		align-items: center;
 		justify-content: center;
@@ -209,13 +219,20 @@
 		top: 50%;
 		left: 50%;
 		will-change: transform;
-		transform: translate(-50%, -50%);
+		transform: translate3d(-50%, -50%, 0);
 		transform-origin: center;
 		animation:
 			shrinkMe 1.3s ease forwards,
 			moveLeft 1.6s ease forwards;
 		animation-delay: 1.3s, 3.1s;
 		position: absolute;
+		/* Enhanced rendering properties for crisp SVG */
+		image-rendering: -webkit-optimize-contrast;
+		image-rendering: crisp-edges;
+		-webkit-backface-visibility: hidden;
+		backface-visibility: hidden;
+		-webkit-perspective: 1000;
+		perspective: 1000;
 	}
 
 	/* “J. Donado” text: fade in and move right on large screens */
