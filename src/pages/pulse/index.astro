@@ -2,6 +2,7 @@
 import ListCategories from '@/components/ListCategories'
 import ListItems from '@/components/ListItems'
 import TitlePage from '@/components/TitlePage'
+import SeeAllPostsButton from '@/components/SeeAllPostsButton'
 import BaseLayout from '@/layouts/BaseLayout'
 import { getPosts } from '@/utils'
 
@@ -13,7 +14,6 @@ const posts = await getPosts(MAX_POSTS, (post) => post.data.category !== 'Music'
 <BaseLayout title='Pulse: The Feed'>
 	<TitlePage title='Pulse: The Feed' />
 	<ListCategories />
-	<div>
-		<ListItems FirstBig={true} items={posts} />
-	</div>
+	<ListItems FirstBig={true} items={posts} />
+	<SeeAllPostsButton />
 </BaseLayout>

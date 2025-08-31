@@ -3,6 +3,7 @@ import BaseLayout from '@/layouts/BaseLayout'
 import ListItems from '@/components/ListItems'
 import ListCategories from '@/components/ListCategories'
 import TitlePage from '@/components/TitlePage'
+import SeeAllPostsButton from '@/components/SeeAllPostsButton'
 import { sluglify, unsluglify, getCategories, getPosts } from '@/utils'
 import { siteConfig } from '@/data/site.config'
 import Pagination from '@/components/Pagination'
@@ -44,4 +45,5 @@ const posts = page.data
 	<ListCategories activeCategory={params.category} />
 	<ListItems items={posts} />
 	<Pagination page={page} />
+	{page.currentPage === page.lastPage && <SeeAllPostsButton text='See all posts' />}
 </BaseLayout>
