@@ -1,0 +1,53 @@
+---
+title: 'My Journey with LLMs: From Vibe Coding Hype to Practical Use'
+description: 'Large language models are quickly becoming integrated into software development tools. Here’s my experience with them, from initial hype to practical use, and what I’ve learned along the way'
+pubDate: 'Aug 31 2025'
+heroImage: '/src/assets/images/my-journey-with-llms.jpg'
+category: 'Writing Software'
+tags: ['ai', 'coding', 'productivity']
+youTubeThread: ''
+xComThread: ''
+linkedInThread: ''
+---
+
+## Introduction
+
+# My Journey with LLMs: From Vibe Coding Hype to Practical Use
+
+Large language models are quickly becoming integrated into software development tools. **CoPilot, Cursor, and Windsurf have all received a lot of attention.** Cursor’s maker Anysphere raised a \$900 million Series C in 2023 [source](https://cursor.com/blog/series-c?utm_source=chatgpt.com); Windsurf (formerly Codeium) was acquired by OpenAI for around \$3 billion [source](https://devops.com/openai-acquires-windsurf-for-3-billion/?utm_source=chatgpt.com); and GitHub Copilot continues to be heavily backed by Microsoft, which recently boosted partner funding by \~50% [source](https://www.channele2e.com/news/microsoft-leans-into-ai-boosts-copilot-funding-and-realigns-partner-focus?utm_source=chatgpt.com).
+
+Given the scale of investment behind them, **I was curious to see if they really deliver.** I’ve been experimenting with these tools in different contexts, and I’d like to share not just what I’ve learned, but also the conclusions I’ve drawn—**where they shine, when they can become dangerous, and why my approach to using them has changed over time.**
+
+### Early Attempts: Cursor and Windsurf
+
+My first experiments with LLM-powered editors were with [Cursor](https://cursor.sh/) and [Windsurf](https://windsurf.ai/). Looking back, I should say two things clearly: I was fairly new to both tools (as we all were, I guess...), and they were still in an early stage of development. I didn’t invest much time in fine-tuning their behavior. All of that undoubtedly influenced my experience. Advanced users might argue that with better configuration, my results could have been different, but I believe that my early experience would be similar to what many others initially faced.
+
+With Cursor, I tried it on a [React Native](https://reactnative.dev/) project. The main issue was that it tended to write more code than I wanted, and when I hit a simple bug, it didn’t help me much. For example, on one occasion the issue was a missing dependency in a [`useEffect`](https://react.dev/reference/react/useEffect) hook—obvious if you know React well enough, but invisible to the agent. **That mismatch between what I expected (a second pair of eyes) and what I got (verbose but shallow suggestions) left me frustrated.**
+
+With Windsurf, I set up a small experiment using [AWS CDK](https://aws.amazon.com/cdk/), TypeScript, and [Telegram bots](https://core.telegram.org/bots). At times, it was genuinely useful, especially when working with the Telegram API, which I didn’t know well. But overall, it felt intrusive: constant suggestions that broke my train of thought and actually slowed me down. Again, I realize this could have been a configuration issue rather than a fundamental flaw, but at the time I didn’t have the need or curiosity to tune it further.
+
+These early attempts left me skeptical. **I saw glimpses of value, but I also felt like the tools were pushing me off balance rather than making me faster.**
+
+### CoPilot: The Full “Agent Mode” Experiment
+
+After that, I turned to [GitHub Copilot](https://github.com/features/copilot) and explored its “Ask,” “Edit,” and “Agent” modes. The real test came when I started writing an [Obsidian plugin](https://docs.obsidian.md/Plugins/Getting+started/Build+a+plugin) from scratch ([this one](https://github.com/mrdonado/obsidian-life-grid))—something I’d never done before. This time, I deliberately tried to see how far “vibe coding” with an agent could take me.
+
+At first, **the results were impressive. Within minutes I had a prototype running, something I couldn’t have built nearly as quickly on my own.** But as the project grew, the initial speed advantage disappeared. I spent more and more time writing prompts to fix issues, only to watch the agent spin in circles. It was frustrating and unproductive.
+
+When you code yourself, there are frustrating moments too, but solving those problems is part of the fun—you learn, and the payoff is satisfying. With vibe coding, I didn’t get that.
+
+My experience after a couple of weeks of vibe-coding went something like this:
+
+- **Excitement:** _Wow, this is amazing—it almost works already._
+- **Frustration:** _I’m wasting time here. It doesn’t do exactly what I want, and I’m not learning anything._
+- **Regret:** _The result is kind of what I asked for, but it’s messy, unmaintainable, and I’d probably have been faster doing it myself._
+
+### Finding the Sweet Spot
+
+After this vibe-coded experiment, I adjusted my approach. **I came to see that pure vibe coding has its place when you want a quick-and-dirty prototype, but it’s not a path you should follow for any serious project.** Rather than letting the agent run the show, I began using LLMs more selectively—for targeted help when I could describe _exactly what I needed_. In that mode, **they’re usually faster than me and often generate code that matches, or sometimes surpasses, what I would have written myself.** I also noticed that the kind of project matters a lot: writing a quick Python script for the terminal is often surprisingly effective, while something like asking for Swift code in an iOS app apparently tends to produce weaker results. My guess is that LLMs have been trained on far more Python scripts than on professional Swift projects, which makes a difference in how well they perform. This seems to be consistent with broader usage statistics, like those reported in the [Stack Overflow Developer Survey](https://survey.stackoverflow.co/), which show Python’s dominance over Swift in terms of prevalence and community size.
+
+This has become my sweet spot: **I remain in control of the architecture and flow of the codebase, while the LLM accelerates the boring or boilerplate parts.** The moment you move to high-level prompts that touch many areas of the code at once, things quickly get out of hand.
+
+### Takeaway
+
+For me, the key is _to_ _continue using your brain_, **treat LLMs as assistants, not as autonomous agents.** They’re great for generating snippets, boilerplate, or quick experiments, but the responsibility for structure, design, and problem-solving still lies with the developer. **If you know your codebase and keep the scope of prompts narrow, LLMs can be a huge productivity boost. If you hand over the wheel entirely, you often end up with something you neither fully understand nor truly want—and that nobody else will be able to maintain either.** Looking ahead, I expect these tools to improve at handling more complex, domain-specific projects, and I’m curious to see how they will integrate into team workflows where code quality and maintainability matter even more.
