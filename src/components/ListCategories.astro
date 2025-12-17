@@ -2,7 +2,7 @@
 import { getCategories } from '@/utils'
 import Category from '@/components/Category'
 
-const categories = await getCategories()
+const categories = (await getCategories()).filter((category) => category !== 'Labs')
 
 const { activeCategory } = Astro.props
 ---

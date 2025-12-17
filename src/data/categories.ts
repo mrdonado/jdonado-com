@@ -2,7 +2,7 @@
 export const CATEGORIES = [
 	'Focus & Tools',
 	'Writing Software',
-	'Projects',
+	'Labs',
 	'Beyond Code',
 	'Music'
 ] as const

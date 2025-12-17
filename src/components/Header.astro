@@ -1,5 +1,6 @@
 ---
 import HeaderLink from '@/components/HeaderLink'
+import HomeIcon from '@/components/icons/HomeIcon'
 import TwitterIcon from '@/components/icons/TwitterIcon'
 import GithubIcon from '@/components/icons/GithubIcon'
 import MusicIcon from '@/components/icons/MusicIcon'
@@ -67,9 +68,11 @@ const topClass = 'top-[calc(3.5em)]'
 ---
 
 <header class='relative flex items-center h-12 font-semibold'>
-	<a class=`text-lg mr-5 ${isHome ? 'underline' : ''}` href='/'>Home</a>
+	<a class=`text-lg mr-5 ${isHome ? 'underline' : ''}` href='/'>
+		<HomeIcon />
+	</a>
 	<a class=`text-lg mr-5 ${isPulse ? 'underline' : ''}` href='/pulse'>Pulse</a>
-	<a class=`text-lg mr-auto ${isApps ? 'underline' : ''}` href='/apps'>Apps</a>
+	<a class=`text-lg mr-auto ${isApps ? 'underline' : ''}` href='/apps'>Apps & More</a>
 
 	<div
 		id='astro-header-drawer'

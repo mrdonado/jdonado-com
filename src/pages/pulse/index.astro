@@ -8,7 +8,10 @@ import { getPosts } from '@/utils'
 
 const MAX_POSTS = 5 // max number of posts to show on the home page
 // Music category is not shown on the home page
-const posts = await getPosts(MAX_POSTS, (post) => post.data.category !== 'Music')
+const posts = await getPosts(
+	MAX_POSTS,
+	(post) => post.data.category !== 'Music' && post.data.category !== 'Labs'
+)
 ---
 
 <BaseLayout title='Pulse: The Feed'>

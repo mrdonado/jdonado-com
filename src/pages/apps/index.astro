@@ -3,13 +3,14 @@ import ListCategories from '@/components/ListCategories'
 import ListItems from '@/components/ListItems'
 import TitlePage from '@/components/TitlePage'
 import BaseLayout from '@/layouts/BaseLayout'
-import { getApps } from '@/utils'
+import { getApps, getPosts } from '@/utils'
 
-const MAX_POSTS = 5 // max number of posts to show on the home page
-const apps = await getApps(MAX_POSTS)
+const apps = await getApps()
+const projects = await getPosts(undefined, (post) => post.data.category === 'Labs')
+const items = [...apps, ...projects]
 ---
 
-<BaseLayout title='Apps'>
-	<TitlePage title='Apps' />
-	<ListItems FirstBig={true} items={apps} />
+<BaseLayout title='Apps & More'>
+	<TitlePage title='Apps & More' />
+	<ListItems FirstBig={true} items={items} />
 </BaseLayout>
