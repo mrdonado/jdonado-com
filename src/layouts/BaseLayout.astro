@@ -21,21 +21,21 @@ const gtmId = siteConfig.gtmId
 
 <html lang='en' class='scroll-smooth'>
 	<head>
-		<script is:inline>
-			try {
-				const elm = document.documentElement
-				const old = elm.className || ''
-				elm.className = old + ' fouc-fix'
-				document.addEventListener('DOMContentLoaded', function () {
-					elm.className = old
-				})
-			} catch (e) {}
-		</script>
-		<style>
+		<style type='text/css'>
 			.fouc-fix {
-				opacity: 0;
+				display: none;
 			}
 		</style>
+		<script type='text/javascript'>
+			try {
+				const elm = document.getElementsByTagName('html')[0]
+				const old = elm.class || ''
+				elm.class = old + ' fouc-fix'
+				document.addEventListener('DOMContentLoaded', function (event) {
+					elm.class = old
+				})
+			} catch (thr) {}
+		</script>
 		<BaseHead title={title} description={description} ogImage={image} articleDate={articleDate} />
 		<ProviderTheme />
 		<ProviderAnimations />
