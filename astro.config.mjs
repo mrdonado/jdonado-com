@@ -15,6 +15,16 @@ export default defineConfig({
 		// service: passthroughImageService()
 	},
 	site: siteConfig.site,
+	build: {
+		inlineStylesheets: 'auto',
+	},
+	vite: {
+		build: {
+			cssCodeSplit: true,
+			minify: 'esbuild',
+			assetsInlineLimit: 4096,
+		}
+	},
 	markdown: {
 		remarkPlugins: [
 			remarkReadingTime,
