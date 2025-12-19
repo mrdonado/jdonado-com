@@ -1,8 +1,8 @@
 ---
-import ListCategories from '@/components/ListCategories'
 import ListItems from '@/components/ListItems'
 import TitlePage from '@/components/TitlePage'
 import BaseLayout from '@/layouts/BaseLayout'
+import SeeAllPostsButton from '@/components/SeeAllPostsButton'
 import { getApps, getPosts } from '@/utils'
 
 const apps = await getApps()
@@ -13,4 +13,5 @@ const items = [...apps, ...projects]
 <BaseLayout title='Apps & More'>
 	<TitlePage title='Apps & More' />
 	<ListItems FirstBig={true} items={items} />
+	<SeeAllPostsButton />
 </BaseLayout>
