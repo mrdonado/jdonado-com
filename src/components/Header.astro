@@ -71,7 +71,7 @@ const topClass = 'top-[calc(3.5em)]'
 ---
 
 <header
-	class='sticky top-0 flex items-center h-12 font-semibold bg-white dark:bg-[#0a0910] bg-opacity-95 dark:bg-opacity-95 backdrop-blur-sm z-40 mb-4 -mt-4'
+	class='sticky top-0 flex items-center h-12 font-semibold bg-white dark:bg-[#0a0910] bg-opacity-60 dark:bg-opacity-60 backdrop-blur-md z-40 mb-4 -mt-4 shadow-sm'
 >
 	<a class=`text-lg mr-5 ${isHome ? 'underline' : ''}` href='/'>
 		<HomeIcon />
@@ -81,7 +81,7 @@ const topClass = 'top-[calc(3.5em)]'
 
 	<div
 		id='astro-header-drawer'
-		class={`shadow rounded-lg md:bg-transparent dark:md:bg-transparent bg-white dark:bg-[#0a0910] bg-opacity-80 dark:bg-opacity-80 md:shadow-none backdrop-blur-sm md:border-none md:h-auto md:static fixed transition-transform duration-300 ease-in-out md:translate-y-0 ${topClass} left-0 right-0 px-4 py-6 md:p-0 w-auto z-50 ${translateClass}`}
+		class={`shadow rounded-lg md:bg-transparent dark:md:bg-transparent bg-white dark:bg-[#0a0910] bg-opacity-80 dark:bg-opacity-80 md:shadow-none backdrop-blur-sm md:backdrop-blur-none md:border-none md:h-auto md:static fixed transition-transform duration-300 ease-in-out md:translate-y-0 ${topClass} left-0 right-0 px-4 py-6 md:p-0 w-auto z-50 ${translateClass}`}
 	>
 		<nav class='flex flex-col md:flex-row md:items-center md:gap-5 gap-5'>
 			<!-- Search section -->
@@ -96,7 +96,7 @@ const topClass = 'top-[calc(3.5em)]'
 				{
 					SOCIALNETWORKS.filter((network) => !network.hidden).map((network) => (
 						<HeaderLink
-							class='flex items-center justify-center p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors'
+							class='flex items-center justify-center p-2 hover:bg-gray-100/30 dark:hover:bg-gray-800/30 rounded-lg transition-colors'
 							href={network.url}
 							target='_blank'
 							aria-label={network.name}
