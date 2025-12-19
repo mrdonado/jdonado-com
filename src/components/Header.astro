@@ -70,7 +70,9 @@ const translateClass = 'translate-y-[-20em]'
 const topClass = 'top-[calc(3.5em)]'
 ---
 
-<header class='relative flex items-center h-12 font-semibold'>
+<header
+	class='sticky top-0 flex items-center h-12 font-semibold bg-white dark:bg-[#0a0910] bg-opacity-95 dark:bg-opacity-95 backdrop-blur-sm z-40 mb-4 -mt-4'
+>
 	<a class=`text-lg mr-5 ${isHome ? 'underline' : ''}` href='/'>
 		<HomeIcon />
 	</a>
