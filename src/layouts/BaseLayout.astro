@@ -15,7 +15,7 @@ declare global {
 	}
 }
 
-const { title, description, image, articleDate } = Astro.props
+const { title, description, image, articleDate, activeCategory } = Astro.props
 const gtmId = siteConfig.gtmId
 ---
 
@@ -55,7 +55,7 @@ const gtmId = siteConfig.gtmId
 		<main
 			class='px-5 sm:mx-auto sm:max-w-2xl sm:px-8 lg:px-0 antialiased md:max-w-6xl grid gap-5 md:gap-12 mt-4 overflow-hidden md:overflow-visible min-h-[95vh] grid-rows-[auto_1fr_auto]'
 		>
-			<Header />
+			<Header activeCategory={activeCategory} />
 			<div>
 				<slot />
 			</div>

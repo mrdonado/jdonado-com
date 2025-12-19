@@ -52,16 +52,19 @@ const SOCIALNETWORKS = [
 	}
 ]
 
+const { activeCategory } = Astro.props
+
 const currentPath = Astro.url.pathname
 
 const isHome = currentPath === '/' || currentPath === ''
-const isApps = currentPath.startsWith('/apps')
+const isApps = currentPath.startsWith('/apps') || activeCategory === 'Labs'
 const isPulse =
-	currentPath.startsWith('/pulse') ||
-	currentPath.startsWith('/post') ||
-	currentPath.startsWith('/category') ||
-	currentPath.startsWith('/tags') ||
-	currentPath.startsWith('/archive')
+	(currentPath.startsWith('/pulse') ||
+		currentPath.startsWith('/post') ||
+		currentPath.startsWith('/category') ||
+		currentPath.startsWith('/tags') ||
+		currentPath.startsWith('/archive')) &&
+	!isApps
 
 const translateClass = 'translate-y-[-10em]'
 const topClass = 'top-[calc(3.5em)]'
@@ -78,9 +81,14 @@ const topClass = 'top-[calc(3.5em)]'
 		id='astro-header-drawer'
 		class={`shadow rounded-lg md:bg-transparent dark:md:bg-transparent bg-white dark:bg-[#0a0910] bg-opacity-80 dark:bg-opacity-80 md:shadow-none backdrop-blur-sm md:border-none md:h-auto md:static absolute transition-transform duration-300 ease-in md:translate-y-0 ${topClass} left-0 right-0 pl-4 pt-6 pb-4 md:p-0 h-[5.5em] w-auto z-50 ${translateClass}`}
 	>
-		<nav class='flex h-full flex-col justify-between gap-12 text-left md:w-full md:gap-5'>
+		<nav
+			class='flex h-full flex-col justify-center gap-12 text-left md:w-full md:gap-5 md:flex-row md:items-center md:justify-between'
+		>
+			<div class='flex justify-center w-full md:w-auto order-2 md:order-1'>
+				<Search />
+			</div>
 			<div
-				class='social-networks flex justify-center items-center md:justify-end gap-3 md:p-0 md:flex-row'
+				class='social-networks flex justify-center items-center md:justify-end gap-3 md:p-0 md:flex-row order-1 md:order-2'
 			>
 				{
 					SOCIALNETWORKS.filter((network) => !network.hidden).map((network) => (
@@ -94,10 +102,6 @@ const topClass = 'top-[calc(3.5em)]'
 	</div>
 
 	<div class='flex items-center gap-3 md:pl-3' transition:persist='navbar'>
-		<div>
-			<Search />
-		</div>
-		<ToggleTheme />
 		<button
 			id='astro-header-drawer-button'
 			type='button'
@@ -107,6 +111,7 @@ const topClass = 'top-[calc(3.5em)]'
 			<MenuIcon />
 			<span class='sr-only'>Show Menu</span>
 		</button>
+		<ToggleTheme />
 	</div>
 </header>
 
