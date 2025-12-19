@@ -16,7 +16,7 @@ export default defineConfig({
 	},
 	site: siteConfig.site,
 	build: {
-		inlineStylesheets: 'auto',
+		inlineStylesheets: 'always',
 	},
 	vite: {
 		build: {
