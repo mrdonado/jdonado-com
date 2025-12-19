@@ -66,7 +66,7 @@ const isPulse =
 		currentPath.startsWith('/archive')) &&
 	!isApps
 
-const translateClass = 'translate-y-[-10em]'
+const translateClass = 'translate-y-[-20em]'
 const topClass = 'top-[calc(3.5em)]'
 ---
 
@@ -79,21 +79,27 @@ const topClass = 'top-[calc(3.5em)]'
 
 	<div
 		id='astro-header-drawer'
-		class={`shadow rounded-lg md:bg-transparent dark:md:bg-transparent bg-white dark:bg-[#0a0910] bg-opacity-80 dark:bg-opacity-80 md:shadow-none backdrop-blur-sm md:border-none md:h-auto md:static absolute transition-transform duration-300 ease-in md:translate-y-0 ${topClass} left-0 right-0 pl-4 pt-6 pb-4 md:p-0 h-[5.5em] w-auto z-50 ${translateClass}`}
+		class={`shadow rounded-lg md:bg-transparent dark:md:bg-transparent bg-white dark:bg-[#0a0910] bg-opacity-80 dark:bg-opacity-80 md:shadow-none backdrop-blur-sm md:border-none md:h-auto md:static absolute transition-transform duration-300 ease-in-out md:translate-y-0 ${topClass} left-0 right-0 px-4 py-6 md:p-0 w-auto z-50 ${translateClass}`}
 	>
-		<nav
-			class='flex h-full flex-col justify-center gap-12 text-left md:w-full md:gap-5 md:flex-row md:items-center md:justify-between'
-		>
-			<div class='flex justify-center w-full md:w-auto order-2 md:order-1'>
+		<nav class='flex flex-col md:flex-row md:items-center md:gap-5 gap-5'>
+			<!-- Search section -->
+			<div class='flex justify-center w-full md:w-auto'>
 				<Search />
 			</div>
+
+			<!-- Social Networks Grid -->
 			<div
-				class='social-networks flex justify-center items-center md:justify-end gap-3 md:p-0 md:flex-row order-1 md:order-2'
+				class='social-networks grid grid-cols-3 gap-4 md:flex md:flex-row md:gap-3 md:justify-end'
 			>
 				{
 					SOCIALNETWORKS.filter((network) => !network.hidden).map((network) => (
-						<HeaderLink class='' href={network.url} target='_blank' aria-label={network.name}>
-							<span>{<network.icon />} </span>
+						<HeaderLink
+							class='flex items-center justify-center p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors'
+							href={network.url}
+							target='_blank'
+							aria-label={network.name}
+						>
+							<span class='flex items-center justify-center'>{<network.icon />}</span>
 						</HeaderLink>
 					))
 				}
