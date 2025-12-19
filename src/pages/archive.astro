@@ -4,9 +4,16 @@ import { Picture } from 'astro-imagetools/components'
 import TitlePage from '@/components/TitlePage'
 import ListCategories from '@/components/ListCategories'
 import FormattedDate from '@/components/FormattedDate'
-import { getPosts } from '@/utils'
+import { getApps, getPosts } from '@/utils'
 
 const posts = await getPosts()
+const apps = await getApps()
+
+// Normalize data structure - map everything to have a consistent 'title' property
+const allPosts = [
+	...posts.map((p) => ({ ...p, displayTitle: p.data.title })),
+	...apps.map((a) => ({ ...a, displayTitle: a.data.name }))
+]
 ---
 
 <BaseLayout title='Archive'>
@@ -14,18 +21,18 @@ const posts = await getPosts()
 	<ListCategories />
 	<div class='grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-8 mt-3'>
 		{
-			posts
+			allPosts
 				.sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime())
 				.map((post) => (
 					<a
 						href={`/post/${post.slug}`}
-						aria-label={`${post.data.title}`}
+						aria-label={`${post.displayTitle} - Read more`}
 						class='flex items-center gap-4 bg-gray-200/60 dark:bg-gray-700/60 p-4 transition-all hover:shadow-lg hover:bg-gray-300/70 dark:hover:bg-gray-600/70 appear-smoothly w-full'
 					>
 						<div class='relative w-24 h-20 rounded-lg overflow-hidden'>
 							<Picture
 								src={post.data.heroImage}
-								alt={`Image of ${post.data.title}`}
+								alt={`Image of ${post.displayTitle}`}
 								width={100}
 								sizes='96px'
 								placeholder='blurred'
@@ -35,7 +42,7 @@ const posts = await getPosts()
 						</div>
 
 						<div class='flex flex-col w-full overflow-hidden'>
-							<h2 class='text-lg font-semibold truncate'>{post.data.title}</h2>
+							<h2 class='text-lg font-semibold truncate'>{post.displayTitle}</h2>
 							<p class='text-sm text-gray-600 dark:text-gray-300'>
 								<FormattedDate date={post.data.pubDate} />
 							</p>
