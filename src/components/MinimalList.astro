@@ -19,6 +19,7 @@ const isRightAligned = variant === 'right-aligned'
 			const isPost = 'title' in item.data
 			const title = isPost ? item.data.title : item.data.name
 			const itemUrl = `/${isPost ? 'post' : 'apps'}/${item.slug}/`
+			const pubDate = item.data.pubDate
 
 			return (
 				<li class='group'>
@@ -30,22 +31,22 @@ const isRightAligned = variant === 'right-aligned'
 							<>
 								{/* Mobile: Standard layout */}
 								<span class='text-lg font-normal flex-1 line-clamp-1 md:hidden'>{title}</span>
-								{isPost && item.data.pubDate && (
+								{pubDate && (
 									<time
-										datetime={item.data.pubDate.toISOString()}
+										datetime={pubDate.toISOString()}
 										class='text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap md:hidden'
 									>
-										<FormattedDate date={item.data.pubDate} />
+										<FormattedDate date={pubDate} />
 									</time>
 								)}
 
 								{/* Desktop: Right-aligned layout */}
-								{isPost && item.data.pubDate ? (
+								{pubDate ? (
 									<time
-										datetime={item.data.pubDate.toISOString()}
+										datetime={pubDate.toISOString()}
 										class='text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap hidden md:block'
 									>
-										<FormattedDate date={item.data.pubDate} />
+										<FormattedDate date={pubDate} />
 									</time>
 								) : (
 									<span class='text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap invisible hidden md:block'>
@@ -59,12 +60,12 @@ const isRightAligned = variant === 'right-aligned'
 						) : (
 							<>
 								<span class='text-lg font-normal flex-1 line-clamp-1'>{title}</span>
-								{isPost && item.data.pubDate && (
+								{pubDate && (
 									<time
-										datetime={item.data.pubDate.toISOString()}
+										datetime={pubDate.toISOString()}
 										class='text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap'
 									>
-										<FormattedDate date={item.data.pubDate} />
+										<FormattedDate date={pubDate} />
 									</time>
 								)}
 							</>
