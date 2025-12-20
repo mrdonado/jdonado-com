@@ -32,6 +32,25 @@ export const getTags = async (original: boolean = false): Promise<string[]> => {
 	return Array.from(tags)
 }
 
+export const getPopularTags = async (limit?: number): Promise<string[]> => {
+	const posts = await getCollection('blog')
+	const tagCount = new Map<string, number>()
+
+	posts
+		.filter((post) => !post.data.draft)
+		.forEach((post) => {
+			post.data.tags.forEach((tag) => {
+				const count = tagCount.get(tag) || 0
+				tagCount.set(tag, count + 1)
+			})
+		})
+
+	return Array.from(tagCount.entries())
+		.sort((a, b) => b[1] - a[1])
+		.map(([tag]) => tag)
+		.slice(0, limit)
+}
+
 export const getPostByTag = async (tag: string) => {
 	const posts = await getPosts()
 	const lowercaseTag = tag.toLowerCase()
