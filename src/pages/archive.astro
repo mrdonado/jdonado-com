@@ -11,8 +11,8 @@ const apps = await getApps()
 
 // Normalize data structure - map everything to have a consistent 'title' property
 const allPosts = [
-	...posts.map((p) => ({ ...p, displayTitle: p.data.title })),
-	...apps.map((a) => ({ ...a, displayTitle: a.data.name }))
+	...posts.map((p) => ({ ...p, displayTitle: p.data.title, isApp: false })),
+	...apps.map((a) => ({ ...a, displayTitle: a.data.name, isApp: true }))
 ]
 ---
 
@@ -25,7 +25,7 @@ const allPosts = [
 				.sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime())
 				.map((post) => (
 					<a
-						href={`/post/${post.slug}`}
+						href={post.isApp ? `/apps/${post.slug}` : `/post/${post.slug}`}
 						aria-label={`${post.displayTitle} - Read more`}
 						class='flex items-center gap-4 bg-gray-200/60 dark:bg-gray-700/60 p-4 transition-all hover:shadow-lg hover:bg-gray-300/70 dark:hover:bg-gray-600/70 appear-smoothly w-full'
 					>
