@@ -5,6 +5,7 @@ import { getPosts, getApps, getPopularTags, getCategories } from '@/utils'
 import IntroBox from '@/components/IntroBox'
 import Tag from '@/components/Tag'
 import StatsHighlight from '@/components/StatsHighlight'
+import Separator from '@/components/Separator'
 
 const MAX_PULSE_POSTS = 5
 const MAX_APPS_ITEMS = 5
@@ -38,21 +39,14 @@ const stats = [
 <BaseLayout title='JDonado Home'>
 	<IntroBox />
 
-	<!-- Subtle Separator -->
-	<div
-		class='w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent my-8'
-	>
-	</div>
+	<Separator />
 
 	<!-- Stats Highlight Section -->
 	<section class='mt-8'>
 		<StatsHighlight stats={stats} />
 	</section>
 
-	<div
-		class='w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent my-8'
-	>
-	</div>
+	<Separator />
 
 	<!-- Latest from Pulse Section -->
 	<section class='mt-32'>
