@@ -6,25 +6,23 @@ import { Picture } from 'astro-imagetools/components'
 ---
 
 <BaseLayout title='About Me'>
-	<div class='max-w-[800px] mx-auto'>
-		<TitlePage title='Hola Amigos!' />
+	<TitlePage title='Hola Amigos!' />
 
-		<div
-			class='relative w-[130px] h-[130px] float-right mr-4 ml-4 rounded appear-smoothly overflow-hidden'
-		>
-			<Picture
-				src={'/src/assets/images/nerd-avatar-mini.png'}
-				alt='This is me reviewing code'
-				width={130}
-				placeholder='blurred'
-				quality={80}
-				layout='fill'
-				loading='eager'
-			/>
-		</div>
+	<div
+		class='relative w-[130px] h-[130px] float-left mr-4 ml-0 rounded appear-smoothly overflow-hidden'
+	>
+		<Picture
+			src={'/src/assets/images/nerd-avatar-mini.png'}
+			alt='This is me reviewing code'
+			width={130}
+			placeholder='blurred'
+			quality={80}
+			layout='fill'
+			loading='eager'
+		/>
 	</div>
 
-	<div class='fadein prose prose-lg md:prose-xl dark:prose-invert mb-12 max-w-[800px] mx-auto'>
+	<div class='fadein prose prose-lg md:prose-xl dark:prose-invert mb-12'>
 		<Content />
 	</div>
 </BaseLayout>
