@@ -1,16 +1,81 @@
 ---
 import ListItems from '@/components/ListItems'
 import BaseLayout from '@/layouts/BaseLayout'
-import { getPosts, getApps, getDoc } from '@/utils'
-import SunIcon from '@/components/icons/SunIcon'
+import { getPosts, getApps, getPopularTags, getCategories } from '@/utils'
 import IntroBox from '@/components/IntroBox'
+import Tag from '@/components/Tag'
+import ArrowRight from '@/components/icons/ArrowRight'
+import StatsHighlight from '@/components/StatsHighlight'
 
-const MAX_ITEMS = 3
+const MAX_PULSE_POSTS = 3
+const MAX_APPS_ITEMS = 3
+const MAX_TAGS = 15
 
-const posts = await getPosts(MAX_ITEMS)
-const apps = await getApps(2)
+// Get latest Pulse posts (excluding Labs and Music)
+const pulsePosts = await getPosts(
+	MAX_PULSE_POSTS,
+	(post) => post.data.category !== 'Music' && post.data.category !== 'Labs'
+)
+
+// Get Apps and Labs projects (apps first, then labs)
+const apps = await getApps()
+const labProjects = await getPosts(undefined, (post) => post.data.category === 'Labs')
+const appsAndMore = [...apps, ...labProjects].slice(0, MAX_APPS_ITEMS)
+
+// Get popular tags for tag cloud
+const tagCloud = await getPopularTags(MAX_TAGS)
+
+// Calculate stats
+const allPosts = await getPosts()
+const categories = await getCategories()
+const stats = [
+	{ label: 'Apps & Labs', value: apps.length + labProjects.length, href: '/apps' },
+	{ label: 'Articles', value: allPosts.length, href: '/archive' },
+	{ label: 'Categories', value: categories.length, href: '/pulse' },
+	{ label: 'Topics', value: tagCloud.length, href: '/tags' }
+]
 ---
 
 <BaseLayout title='JDonado Home'>
 	<IntroBox />
+
+	<!-- Subtle Separator -->
+	<div
+		class='w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent my-8'
+	>
+	</div>
+
+	<!-- Stats Highlight Section -->
+	<section class='mt-8'>
+		<StatsHighlight stats={stats} />
+	</section>
+
+	<!-- Latest from Pulse Section -->
+	<section class='mt-16'>
+		<h2 class='text-left text-3xl font-bold mb-6 underline'>
+			<a href='/pulse' aria-label='View all pulse posts'> Latest from Pulse </a>
+		</h2>
+		<ListItems items={pulsePosts} />
+	</section>
+
+	<!-- Featured Apps & More Section -->
+	<section class='mt-16'>
+		<h2 class='text-right text-3xl font-bold mb-6 underline'>
+			<a href='/apps' aria-label='View all apps and labs'>Apps & More</a>
+		</h2>
+		<ListItems FirstBig={false} items={appsAndMore} />
+	</section>
+
+	<!-- Tag Cloud Section -->
+	{
+		tagCloud.length > 0 && (
+			<section class='mt-16'>
+				<div class='flex flex-wrap gap-3'>
+					{tagCloud.map((tag) => (
+						<Tag tag={tag} />
+					))}
+				</div>
+			</section>
+		)
+	}
 </BaseLayout>
