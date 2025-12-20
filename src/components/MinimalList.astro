@@ -1,0 +1,77 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import FormattedDate from '@/components/FormattedDate'
+
+type item = CollectionEntry<'blog' | 'app'>
+
+type Props = {
+	items: item[]
+	variant?: 'standard' | 'right-aligned'
+}
+
+const { items, variant = 'standard' } = Astro.props
+const isRightAligned = variant === 'right-aligned'
+---
+
+<ul class='space-y-4'>
+	{
+		(items || []).map((item) => {
+			const isPost = 'title' in item.data
+			const title = isPost ? item.data.title : item.data.name
+			const itemUrl = `/${isPost ? 'post' : 'apps'}/${item.slug}/`
+
+			return (
+				<li class='group'>
+					<a
+						href={itemUrl}
+						class='flex items-baseline justify-between gap-4 hover:opacity-70 transition-opacity'
+					>
+						{isRightAligned ? (
+							<>
+								{/* Mobile: Standard layout */}
+								<span class='text-lg font-normal flex-1 line-clamp-1 md:hidden'>{title}</span>
+								{isPost && item.data.pubDate && (
+									<time
+										datetime={item.data.pubDate.toISOString()}
+										class='text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap md:hidden'
+									>
+										<FormattedDate date={item.data.pubDate} />
+									</time>
+								)}
+
+								{/* Desktop: Right-aligned layout */}
+								{isPost && item.data.pubDate ? (
+									<time
+										datetime={item.data.pubDate.toISOString()}
+										class='text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap hidden md:block'
+									>
+										<FormattedDate date={item.data.pubDate} />
+									</time>
+								) : (
+									<span class='text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap invisible hidden md:block'>
+										--
+									</span>
+								)}
+								<span class='text-lg font-normal flex-1 line-clamp-1 text-right hidden md:block'>
+									{title}
+								</span>
+							</>
+						) : (
+							<>
+								<span class='text-lg font-normal flex-1 line-clamp-1'>{title}</span>
+								{isPost && item.data.pubDate && (
+									<time
+										datetime={item.data.pubDate.toISOString()}
+										class='text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap'
+									>
+										<FormattedDate date={item.data.pubDate} />
+									</time>
+								)}
+							</>
+						)}
+					</a>
+				</li>
+			)
+		})
+	}
+</ul>

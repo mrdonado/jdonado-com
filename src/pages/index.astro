@@ -1,14 +1,13 @@
 ---
-import ListItems from '@/components/ListItems'
+import MinimalList from '@/components/MinimalList'
 import BaseLayout from '@/layouts/BaseLayout'
 import { getPosts, getApps, getPopularTags, getCategories } from '@/utils'
 import IntroBox from '@/components/IntroBox'
 import Tag from '@/components/Tag'
-import ArrowRight from '@/components/icons/ArrowRight'
 import StatsHighlight from '@/components/StatsHighlight'
 
-const MAX_PULSE_POSTS = 3
-const MAX_APPS_ITEMS = 3
+const MAX_PULSE_POSTS = 5
+const MAX_APPS_ITEMS = 5
 const MAX_TAGS = 15
 
 // Get latest Pulse posts (excluding Labs and Music)
@@ -50,29 +49,40 @@ const stats = [
 		<StatsHighlight stats={stats} />
 	</section>
 
+	<div
+		class='w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent my-8'
+	>
+	</div>
+
 	<!-- Latest from Pulse Section -->
-	<section class='mt-16'>
-		<h2 class='text-left text-3xl font-bold mb-6 underline'>
+	<section class='mt-32'>
+		<h2 class='text-center md:text-left text-3xl md:text-5xl font-light mb-6'>
 			<a href='/pulse' aria-label='View all pulse posts'> Latest from Pulse </a>
 		</h2>
-		<ListItems items={pulsePosts} />
+		<MinimalList items={pulsePosts} />
 	</section>
 
 	<!-- Featured Apps & More Section -->
-	<section class='mt-16'>
-		<h2 class='text-right text-3xl font-bold mb-6 underline'>
-			<a href='/apps' aria-label='View all apps and labs'>Apps & More</a>
+	<section class='mt-32'>
+		<h2 class='text-center md:text-right text-3xl md:text-5xl font-light mb-6'>
+			<a href='/apps' aria-label='View all apps and labs'>Recent Apps &amp; Labs</a>
 		</h2>
-		<ListItems FirstBig={false} items={appsAndMore} />
+		<MinimalList items={appsAndMore} variant='right-aligned' />
 	</section>
 
 	<!-- Tag Cloud Section -->
 	{
 		tagCloud.length > 0 && (
-			<section class='mt-16'>
-				<div class='flex flex-wrap gap-3'>
+			<section class='mt-32 mb-16'>
+				<div class='flex flex-wrap gap-x-4 gap-y-2 justify-center'>
 					{tagCloud.map((tag) => (
-						<Tag tag={tag} />
+						<a
+							href={`/tags/${encodeURIComponent(tag.toLowerCase())}`}
+							class='text-gray-600 dark:text-gray-400 hover:text-stone-950 dark:hover:text-white transition-colors text-lg m-2'
+							aria-label={tag}
+						>
+							#{tag}
+						</a>
 					))}
 				</div>
 			</section>
