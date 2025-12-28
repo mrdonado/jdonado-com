@@ -58,7 +58,9 @@ const gtmId = siteConfig.gtmId
 			<Header activeCategory={activeCategory} />
 		</div>
 		<main
-			class='px-5 sm:mx-auto sm:max-w-2xl sm:px-8 lg:px-0 antialiased md:max-w-6xl mt-12 overflow-visible min-h-[85vh] mb-16'
+			id='main-content'
+			data-category={activeCategory}
+			class='mx-auto max-w-6xl px-6 md:px-8 lg:px-10 antialiased mt-12 overflow-visible min-h-[85vh] mb-16'
 		>
 			<slot />
 		</main>
