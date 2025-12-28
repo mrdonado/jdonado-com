@@ -9,7 +9,6 @@ import MenuIcon from '@/components/icons/MenuIcon'
 import InstagramIcon from '@/components/icons/InstagramIcon'
 import LinkedInIcon from '@/components/icons/LinkedInIcon'
 import YouTubeIcon from '@/components/icons/YouTubeIcon'
-import Search from '@/components/Search'
 import ToggleTheme from './ToggleTheme.astro'
 
 // ADD YOUR SOCIAL NETWORKS HERE
@@ -71,6 +70,7 @@ const topClass = 'top-[calc(3.5em)]'
 ---
 
 <header
+	transition:persist
 	class='sticky top-0 z-50 w-full backdrop-blur-md bg-white/70 dark:bg-[#0a0910]/70 border-b border-transparent transition-colors duration-300'
 >
 	<div
