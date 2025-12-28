@@ -1,6 +1,18 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+	--color-white: #f8f9fa;
+	--font-body: Manrope, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+	--grid-template-columns-list: repeat(auto-fill, minmax(400px, max-content));
+}
+
+/* Typography overrides */
+.prose blockquote {
+	quotes: none;
+}
 
 @layer base {
 
@@ -19,13 +31,22 @@
 	h4,
 	h5,
 	h6 {
-		@apply text-zinc-800 dark:text-zinc-100 !important;
+		@apply !text-zinc-800;
+	}
+
+	html.dark .prose h1,
+	html.dark h2,
+	html.dark h3,
+	html.dark h4,
+	html.dark h5,
+	html.dark h6 {
+		@apply !text-zinc-100;
 	}
 
 	html.dark .shiki,
 	html.dark .shiki span {
 		color: var(--shiki-dark) !important;
-		background-color: theme(colors.gray.900) !important;
+		background-color: var(--color-gray-900) !important;
 	}
 }
 
