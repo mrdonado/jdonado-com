@@ -36,6 +36,7 @@
 		"astro-imagetools": "^0.9.0",
 		"rehype-raw": "^7.0.0",
 		"remark-rehype": "^11.1.2",
+		"sharp": "^0.34.5",
 		"tailwindcss": "^4.1.18",
 		"unist-util-visit": "^5.0.0"
 	},
@@ -69,7 +70,13 @@
 	},
 	"pnpm": {
 		"overrides": {
-			"mermaid": "10.9.3"
+			"mermaid": "10.9.3",
+			"sharp": "0.33.3"
+		},
+		"supportedArchitectures": {
+			"libc": [
+				"musl"
+			]
 		}
 	}
 }
