@@ -19,8 +19,11 @@ const { stats } = Astro.props
 					class='group flex flex-col items-center hover:opacity-70 transition-opacity'
 					aria-label={stat.label}
 				>
-					<span class='text-4xl md:text-5xl font-light text-stone-950 dark:text-white mb-1'>
-						{stat.value}
+					<span
+						class='js-counter text-4xl md:text-5xl font-light text-stone-950 dark:text-white mb-1'
+						data-target={stat.value}
+					>
+						0
 					</span>
 					<span class='text-sm md:text-base text-gray-500 dark:text-gray-400 font-normal group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors'>
 						{stat.label}
@@ -35,3 +38,51 @@ const { stats } = Astro.props
 		))
 	}
 </div>
+
+<script>
+	document.addEventListener('astro:page-load', () => {
+		const observerOptions = {
+			root: null,
+			rootMargin: '0px',
+			threshold: 0.1
+		}
+
+		const observer = new IntersectionObserver((entries, observer) => {
+			entries.forEach((entry) => {
+				if (entry.isIntersecting) {
+					const counter = entry.target as HTMLElement
+					const target = parseInt(counter.dataset.target || '0', 10)
+					// Random duration between 1500ms and 2500ms
+					const duration = Math.floor(Math.random() * (2500 - 1500 + 1) + 1500)
+					const start = 0
+					const startTime = performance.now()
+
+					const updateCount = (currentTime: number) => {
+						const elapsed = currentTime - startTime
+						const progress = Math.min(elapsed / duration, 1)
+
+						// Ease out function (cubic)
+						const easeOut = 1 - Math.pow(1 - progress, 3)
+
+						const current = Math.floor(start + (target - start) * easeOut)
+						counter.innerText = current.toString()
+
+						if (progress < 1) {
+							requestAnimationFrame(updateCount)
+						} else {
+							counter.innerText = target.toString()
+						}
+					}
+
+					requestAnimationFrame(updateCount)
+					observer.unobserve(counter)
+				}
+			})
+		}, observerOptions)
+
+		document.querySelectorAll('.js-counter').forEach((counter) => {
+			;(counter as HTMLElement).innerText = '0' // Reset to 0 ensuring animation plays again
+			observer.observe(counter)
+		})
+	})
+</script>
