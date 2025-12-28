@@ -51,9 +51,12 @@ const gtmId = siteConfig.gtmId
 				style='display:none;visibility:hidden'></iframe></noscript
 		>
 		<!-- End Google Tag Manager (noscript) -->
-
-		<Header activeCategory={activeCategory} />
-
+		<div
+			transition:animate='none'
+			class='sticky top-0 z-50 w-full backdrop-blur-md bg-white/70 dark:bg-[#0a0910]/70 border-b border-transparent transition-colors duration-300'
+		>
+			<Header activeCategory={activeCategory} />
+		</div>
 		<main
 			class='px-5 sm:mx-auto sm:max-w-2xl sm:px-8 lg:px-0 antialiased md:max-w-6xl mt-12 overflow-visible min-h-[85vh] mb-16'
 		>
