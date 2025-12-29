@@ -8,13 +8,21 @@ const initCounters = () => {
 	const observer = new IntersectionObserver((entries, observerRef) => {
 		entries.forEach((entry) => {
 			if (entry.isIntersecting) {
-				const counter = entry.target
+				const counter = entry.target as HTMLElement
 				const target = parseInt(counter.dataset.target || '0', 10)
 				const duration = Math.floor(Math.random() * (2500 - 1500 + 1) + 1500)
 				const start = 0
 				const startTime = performance.now()
 
-				const updateCount = (currentTime) => {
+				interface CounterAnimationState {
+					target: number
+					duration: number
+					start: number
+					startTime: number
+					counter: HTMLElement
+				}
+
+				const updateCount = (currentTime: DOMHighResTimeStamp): void => {
 					const elapsed = currentTime - startTime
 					const progress = Math.min(elapsed / duration, 1)
 					const easeOut = 1 - Math.pow(1 - progress, 3)
@@ -34,21 +42,21 @@ const initCounters = () => {
 	}, observerOptions)
 
 	document.querySelectorAll('.js-counter').forEach((counter) => {
-		const el = counter
+		const el = counter as HTMLElement
 		el.innerText = '0'
 		observer.observe(el)
 	})
 }
 
-const start = () => {
+const startStatsHighlight = () => {
 	initCounters()
 }
 
 if (document.readyState !== 'loading') {
-	start()
+	startStatsHighlight()
 } else {
-	document.addEventListener('DOMContentLoaded', start, { once: true })
+	document.addEventListener('DOMContentLoaded', startStatsHighlight, { once: true })
 }
 
-document.addEventListener('astro:page-load', start)
-document.addEventListener('astro:after-swap', start)
+document.addEventListener('astro:page-load', startStatsHighlight)
+document.addEventListener('astro:after-swap', startStatsHighlight)

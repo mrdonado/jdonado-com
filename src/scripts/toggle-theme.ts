@@ -30,16 +30,16 @@ const syncButtonPressed = () => {
 	button.setAttribute('aria-pressed', String(isDark))
 }
 
-const start = () => {
+const startThemeToggle = () => {
 	registerElement()
 	syncButtonPressed()
 }
 
 if (document.readyState === 'loading') {
-	document.addEventListener('DOMContentLoaded', start, { once: true })
+	document.addEventListener('DOMContentLoaded', startThemeToggle, { once: true })
 } else {
-	start()
+	startThemeToggle()
 }
 
-document.addEventListener('astro:page-load', start)
-document.addEventListener('astro:after-swap', start)
+document.addEventListener('astro:page-load', startThemeToggle)
+document.addEventListener('astro:after-swap', startThemeToggle)

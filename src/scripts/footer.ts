@@ -12,15 +12,14 @@ const initFooter = () => {
 	}
 }
 
-const start = () => {
+const startFooter = () => {
 	initFooter()
 }
 
 if (document.readyState !== 'loading') {
-	start()
+	startFooter()
 } else {
-	document.addEventListener('DOMContentLoaded', start, { once: true })
+	document.addEventListener('DOMContentLoaded', startFooter, { once: true })
 }
 
-document.addEventListener('astro:page-load', start)
-document.addEventListener('astro:after-swap', start)
+document.addEventListener('astro:page-load', startFooter)

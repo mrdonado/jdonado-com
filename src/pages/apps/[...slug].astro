@@ -6,7 +6,6 @@ import { getApps } from '@/utils'
 import SButton from '@/components/mdx/SButton'
 import { disqusConfig } from '@/data/disqus.config'
 
-const apps = await getCollection('app')
 export async function getStaticPaths() {
 	const apps = await getApps()
 
@@ -20,8 +19,6 @@ type Props = CollectionEntry<'app'>
 const app = Astro.props
 
 const { Content, headings, remarkPluginFrontmatter } = await app.render()
-
-const disqusEnabled = disqusConfig.enabled
 ---
 
 <App id={app.id} data={app.data} headings={headings} readTime={remarkPluginFrontmatter.minutesRead}>
