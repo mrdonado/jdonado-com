@@ -11,8 +11,16 @@ const getDrawerClasses = (btn: HTMLElement): string[] => {
 		.filter(Boolean)
 }
 
-const toggleDrawer = (drawer: HTMLElement, classes: string[]): void => {
-	classes.forEach((cls) => drawer.classList.toggle(cls))
+const closeDrawer = (drawer: HTMLElement, classes: string[]): void => {
+	classes.forEach((cls) => drawer.classList.add(cls))
+}
+
+const openDrawer = (drawer: HTMLElement, classes: string[]): void => {
+	classes.forEach((cls) => drawer.classList.remove(cls))
+}
+
+const isDrawerOpen = (drawer: HTMLElement): boolean => {
+	return !drawer.classList.contains('invisible')
 }
 
 const isMobileView = (btn: HTMLElement): boolean => {
@@ -34,18 +42,33 @@ const handleClick = (event: MouseEvent): void => {
 	const isCloseButton = closeBtn?.contains(target) ?? false
 	const isLink = target instanceof HTMLAnchorElement || (target as Element).closest?.('a')
 	const isInsideDrawer = drawer.contains(target)
-	const isDrawerOpen = !drawer.classList.contains('invisible')
+	const drawerOpen = isDrawerOpen(drawer)
+	const classes = getDrawerClasses(btn)
 
 	// Open drawer when clicking menu button
 	if (isMenuButton) {
-		toggleDrawer(drawer, getDrawerClasses(btn))
+		if (drawerOpen) {
+			closeDrawer(drawer, classes)
+		} else {
+			openDrawer(drawer, classes)
+		}
 		return
 	}
 
 	// Close drawer when clicking close button, or clicking inside drawer but not on a link
-	if (isDrawerOpen && (isCloseButton || (isInsideDrawer && !isLink))) {
-		toggleDrawer(drawer, getDrawerClasses(btn))
+	if (drawerOpen && (isCloseButton || (isInsideDrawer && !isLink))) {
+		closeDrawer(drawer, classes)
 	}
+}
+
+const ensureDrawerClosed = (): void => {
+	const drawer = document.getElementById(DRAWER_ID)
+	const btn = document.getElementById(DRAWER_BUTTON_ID)
+	if (!drawer || !btn) return
+
+	const classes = getDrawerClasses(btn)
+	// Always ensure drawer is closed after navigation
+	closeDrawer(drawer, classes)
 }
 
 const bindListeners = (): void => {
@@ -56,6 +79,7 @@ const bindListeners = (): void => {
 
 const init = (): void => {
 	bindListeners()
+	ensureDrawerClosed()
 }
 
 // Initial load

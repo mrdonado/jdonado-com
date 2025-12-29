@@ -6,14 +6,18 @@
 	view-transition-name: root;
 }
 
-::view-transition-old(root),
-::view-transition-new(root) {
-	animation-duration: 0.5s;
-	pointer-events: none;
+/* Ensure all view transition pseudo-elements don't block clicks */
+::view-transition,
+::view-transition-group(*),
+::view-transition-image-pair(*),
+::view-transition-old(*),
+::view-transition-new(*) {
+	pointer-events: none !important;
 }
 
-::view-transition-group(root) {
-	pointer-events: none;
+::view-transition-old(root),
+::view-transition-new(root) {
+	animation-duration: 0.1s;
 }
 
 /* Smooth synchronized theme transitions */
@@ -167,4 +171,5 @@ a,
 button,
 a {
 	pointer-events: auto;
+	cursor: pointer;
 }
