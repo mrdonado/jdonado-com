@@ -123,19 +123,4 @@ const translateClass = 'opacity-0 pointer-events-none scale-95 invisible'
 	</div>
 </header>
 
-<script>
-	document.addEventListener('click', (event) => {
-		const drawer = document.getElementById('astro-header-drawer')
-		const btn = document.getElementById('astro-header-drawer-button')
-		const closeBtn = document.getElementById('astro-header-drawer-close')
-		const classes = (btn?.dataset.translateClass || '').split(' ').filter(Boolean)
-
-		if (
-			btn?.contains(event.target as Node) ||
-			closeBtn?.contains(event.target as Node) ||
-			event.target === drawer
-		) {
-			classes.forEach((cls) => drawer?.classList.toggle(cls))
-		}
-	})
-</script>
+<script type='module' src='/scripts/header-drawer.js'></script>

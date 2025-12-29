@@ -21,21 +21,7 @@ const gtmId = siteConfig.gtmId
 
 <html lang='en' class='scroll-smooth'>
 	<head>
-		<style type='text/css'>
-			.fouc-fix {
-				display: none;
-			}
-		</style>
-		<script type='text/javascript'>
-			try {
-				const elm = document.getElementsByTagName('html')[0]
-				const old = elm.class || ''
-				elm.class = old + ' fouc-fix'
-				document.addEventListener('DOMContentLoaded', function (event) {
-					elm.class = old
-				})
-			} catch (thr) {}
-		</script>
+		<script type='module' src='/scripts/fouc-fix.js'></script>
 		<BaseHead title={title} description={description} ogImage={image} articleDate={articleDate} />
 		<ProviderTheme />
 		<ProviderAnimations />

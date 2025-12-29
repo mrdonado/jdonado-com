@@ -29,29 +29,4 @@ const today = new Date()
 	</div>
 </footer>
 
-<script>
-	const initFooter = () => {
-		// Add transition classes to body to prevent FOUC on mobile devices
-		document.body.classList.add('transition-colors', 'duration-300', 'ease-in-out')
-
-		// Show cookie banner listener
-		const showCookieBanner = document.getElementById('show-cookie-banner')
-		const cookieBanner = document.getElementById('cookie-banner')
-
-		if (showCookieBanner && cookieBanner && !showCookieBanner.dataset.bound) {
-			showCookieBanner.addEventListener('click', () => {
-				cookieBanner.classList.remove('hidden')
-			})
-			showCookieBanner.dataset.bound = 'true'
-		}
-	}
-
-	if (document.readyState !== 'loading') {
-		initFooter()
-	} else {
-		document.addEventListener('DOMContentLoaded', initFooter, { once: true })
-	}
-
-	document.addEventListener('astro:page-load', initFooter)
-	document.addEventListener('astro:after-swap', initFooter)
-</script>
+<script type='module' src='/scripts/footer.js'></script>

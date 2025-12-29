@@ -30,6 +30,10 @@
 		font-family: 'Raleway', sans-serif;
 	}
 
+	html.fouc-fix {
+		display: none;
+	}
+
 	.prose code {
 		@apply text-base;
 	}
