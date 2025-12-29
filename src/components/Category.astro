@@ -32,10 +32,10 @@ if (name === recentPosts) {
 <a
 	href={href}
 	class={cn(
-		'text-gray-600 dark:text-gray-300 pb-2.5 first-letter:uppercase font-medium hover:text-gray-800 transition-colors duration-150 ease-linear',
+		'text-gray-700 dark:text-gray-300 pb-2.5 first-letter:uppercase font-medium hover:text-black dark:hover:text-gray-100 transition-colors duration-150 ease-linear border-b-2 border-transparent',
 		isActive
-			? 'border-b-2 border-black text-black dark:border-white dark:text-white'
-			: 'hover:border-b-2 hover:border-black dark:hover:border-white'
+			? 'border-black text-black dark:border-white dark:text-white'
+			: 'hover:border-black dark:hover:border-gray-200'
 	)}
 >
 	<span class='flex gap-1'>
