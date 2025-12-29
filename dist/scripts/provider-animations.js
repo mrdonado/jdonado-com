@@ -1,13 +1,1 @@
-const initAnimationsPreference = () => {
-	if (!('animations' in localStorage)) {
-		localStorage.setItem('animations', 'true')
-	} else {
-		localStorage.setItem('animations', 'false')
-	}
-}
-
-if (document.readyState === 'loading') {
-	document.addEventListener('DOMContentLoaded', initAnimationsPreference, { once: true })
-} else {
-	initAnimationsPreference()
-}
+"use strict";(()=>{const e=()=>{"animations"in localStorage?localStorage.setItem("animations","false"):localStorage.setItem("animations","true")};document.readyState==="loading"?document.addEventListener("DOMContentLoaded",e,{once:!0}):e();})();
