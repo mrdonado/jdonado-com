@@ -2,50 +2,69 @@ const DRAWER_ID = 'astro-header-drawer'
 const DRAWER_BUTTON_ID = 'astro-header-drawer-button'
 const DRAWER_CLOSE_ID = 'astro-header-drawer-close'
 
-let listenersBound = false
+let headerDrawerListenersBound = false
 
-const toggleDrawerClasses = (drawer, classes) => {
+const getDrawerClasses = (btn: HTMLElement): string[] => {
+	return (btn.dataset.translateClass || '')
+		.split(' ')
+		.map((cls) => cls.trim())
+		.filter(Boolean)
+}
+
+const toggleDrawer = (drawer: HTMLElement, classes: string[]): void => {
 	classes.forEach((cls) => drawer.classList.toggle(cls))
 }
 
-const handleClick = (event) => {
+const isMobileView = (btn: HTMLElement): boolean => {
+	return window.getComputedStyle(btn).display !== 'none'
+}
+
+const handleClick = (event: MouseEvent): void => {
 	const drawer = document.getElementById(DRAWER_ID)
 	const btn = document.getElementById(DRAWER_BUTTON_ID)
 	const closeBtn = document.getElementById(DRAWER_CLOSE_ID)
 
 	if (!drawer || !btn) return
+	if (!isMobileView(btn)) return
 
-	// Only handle drawer toggle on mobile (when button is visible)
-	const isMobile = window.getComputedStyle(btn).display !== 'none'
-	if (!isMobile) return
+	const target = event.target as Node | null
+	if (!target) return
 
-	const classes = (btn.dataset.translateClass || '')
-		.split(' ')
-		.map((cls) => cls.trim())
-		.filter(Boolean)
+	const isMenuButton = btn.contains(target)
+	const isCloseButton = closeBtn?.contains(target) ?? false
+	const isLink = target instanceof HTMLAnchorElement || (target as Element).closest?.('a')
+	const isInsideDrawer = drawer.contains(target)
+	const isDrawerOpen = !drawer.classList.contains('invisible')
 
-	const target = event.target
+	// Open drawer when clicking menu button
+	if (isMenuButton) {
+		toggleDrawer(drawer, getDrawerClasses(btn))
+		return
+	}
 
-	if (btn.contains(target) || closeBtn?.contains(target)) {
-		toggleDrawerClasses(drawer, classes)
+	// Close drawer when clicking close button, or clicking inside drawer but not on a link
+	if (isDrawerOpen && (isCloseButton || (isInsideDrawer && !isLink))) {
+		toggleDrawer(drawer, getDrawerClasses(btn))
 	}
 }
 
-const addEventListeners = () => {
-	if (listenersBound) return
-	listenersBound = true
+const bindListeners = (): void => {
+	if (headerDrawerListenersBound) return
+	headerDrawerListenersBound = true
 	document.addEventListener('click', handleClick)
 }
 
-const start = () => {
-	addEventListeners()
+const init = (): void => {
+	bindListeners()
 }
 
+// Initial load
 if (document.readyState === 'loading') {
-	document.addEventListener('DOMContentLoaded', start, { once: true })
+	document.addEventListener('DOMContentLoaded', init, { once: true })
 } else {
-	start()
+	init()
 }
 
-document.addEventListener('astro:page-load', start)
-document.addEventListener('astro:after-swap', start)
+// Astro navigation events
+document.addEventListener('astro:page-load', init)
+document.addEventListener('astro:after-swap', init)
