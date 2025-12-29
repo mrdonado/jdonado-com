@@ -26,3 +26,4 @@ node_modules
 dist.zip
 *.afphoto~lock~
 *.afpub~lock~
+public/scripts/*.js

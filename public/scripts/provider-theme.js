@@ -1,47 +1,57 @@
-;(() => {
-	const getTheme = () => {
-		try {
-			const storedTheme = localStorage.getItem('theme')
-			if (storedTheme) return storedTheme
-		} catch (e) {}
-		return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'
-	}
+; (() => {
+  const getTheme = () => {
+    try {
+      const storedTheme = localStorage.getItem('theme')
+      if (storedTheme) return storedTheme
+    } catch (e) { }
+    return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'
+  }
 
-	let lastApplied = ''
-	const setTheme = (newTheme) => {
-		if (newTheme === lastApplied) return
-		const html = document.documentElement
-		const isDark = newTheme === 'dark'
+  let lastApplied = ''
+  const setTheme = (newTheme, instant = false) => {
+    if (newTheme === lastApplied) return
+    const html = document.documentElement
+    const isDark = newTheme === 'dark'
 
-		html.classList.toggle('dark', isDark)
-		html.classList.toggle('light', !isDark)
-		lastApplied = newTheme
+    if (instant) {
+      html.classList.add('theme-transitioning')
+    }
 
-		try {
-			localStorage.setItem('theme', newTheme)
-		} catch (e) {}
-	}
+    html.classList.toggle('dark', isDark)
+    html.classList.toggle('light', !isDark)
+    lastApplied = newTheme
 
-	const applyStoredTheme = () => {
-		setTheme(getTheme())
-	}
+    if (instant) {
+      // Force reflow then remove the class
+      html.offsetHeight
+      html.classList.remove('theme-transitioning')
+    }
 
-	let themeListenerBound = false
-	const bindThemeChangeListener = () => {
-		if (themeListenerBound) return
-		document.addEventListener('theme-change', (e) => {
-			setTheme(e.detail.theme)
-		})
-		themeListenerBound = true
-	}
+    try {
+      localStorage.setItem('theme', newTheme)
+    } catch (e) { }
+  }
 
-	const start = () => {
-		applyStoredTheme()
-		bindThemeChangeListener()
-	}
+  const applyStoredTheme = () => {
+    setTheme(getTheme())
+  }
 
-	start()
+  let themeListenerBound = false
+  const bindThemeChangeListener = () => {
+    if (themeListenerBound) return
+    document.addEventListener('theme-change', (e) => {
+      setTheme(e.detail.theme, true)
+    })
+    themeListenerBound = true
+  }
 
-	document.addEventListener('astro:page-load', start)
-	document.addEventListener('astro:after-swap', start)
+  const start = () => {
+    applyStoredTheme()
+    bindThemeChangeListener()
+  }
+
+  start()
+
+  document.addEventListener('astro:page-load', start)
+  document.addEventListener('astro:after-swap', start)
 })()
