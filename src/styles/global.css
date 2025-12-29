@@ -9,6 +9,11 @@
 ::view-transition-old(root),
 ::view-transition-new(root) {
 	animation-duration: 0.5s;
+	pointer-events: none;
+}
+
+::view-transition-group(root) {
+	pointer-events: none;
 }
 
 /* Smooth synchronized theme transitions */

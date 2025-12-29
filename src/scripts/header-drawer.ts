@@ -15,6 +15,10 @@ const handleClick = (event) => {
 
 	if (!drawer || !btn) return
 
+	// Only handle drawer toggle on mobile (when button is visible)
+	const isMobile = window.getComputedStyle(btn).display !== 'none'
+	if (!isMobile) return
+
 	const classes = (btn.dataset.translateClass || '')
 		.split(' ')
 		.map((cls) => cls.trim())
@@ -22,7 +26,7 @@ const handleClick = (event) => {
 
 	const target = event.target
 
-	if (btn.contains(target) || closeBtn?.contains(target) || target === drawer) {
+	if (btn.contains(target) || closeBtn?.contains(target)) {
 		toggleDrawerClasses(drawer, classes)
 	}
 }
