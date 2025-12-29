@@ -15,10 +15,10 @@ title = isPost ? title : name
 const itemUrl = `/${isPost ? 'post' : 'apps'}/${slug}/`
 ---
 
-<article class='appear-smoothly grid grid-rows-[300px_auto] group'>
-	<a class='relative overflow-hidden rounded-xl' href={itemUrl}>
+<article class='appear-smoothly grid grid-rows-[300px_auto] group isolate'>
+	<a class='relative overflow-hidden rounded-xl safari-overflow-fix' href={itemUrl}>
 		<div
-			class='relative w-full h-full rounded-[2px] transform transition-transform duration-[3000ms] ease-in-out hover:scale-[1.05]'
+			class='relative w-full h-full rounded-xs transform transition-transform duration-3000 ease-in-out hover:scale-[1.05]'
 		>
 			<Picture
 				src={heroImage}
@@ -27,9 +27,8 @@ const itemUrl = `/${isPost ? 'post' : 'apps'}/${slug}/`
 				sizes='(max-width: 768px) 100vw, 600px'
 				quality={75}
 				placeholder='blurred'
-				loading={index === 0 ? 'eager' : 'lazy'}
+				loading={index <= 1 ? 'eager' : 'lazy'}
 				layout='fill'
-				loading='lazy'
 				fadeInTransition={{
 					delay: '0.0s',
 					duration: '0.2s',
@@ -70,7 +69,7 @@ const itemUrl = `/${isPost ? 'post' : 'apps'}/${slug}/`
 
 			{
 				isPost && (
-					<p class='overflow-hidden line-clamp-3 text-gray-700 dark:text-white mb-2 font-[400] md:pr-[15%]'>
+					<p class='overflow-hidden line-clamp-3 text-gray-700 dark:text-white mb-2 font-normal md:pr-[15%]'>
 						{description}
 					</p>
 				)
@@ -84,7 +83,7 @@ const itemUrl = `/${isPost ? 'post' : 'apps'}/${slug}/`
 				aria-label={`go to ${title}`}
 			>
 				{isPost ? 'Read Post' : 'Check it out!'}
-				<span class='mt-[1px] group-hover:rotate-45 transition-transform duration-250 ease-in-out'>
+				<span class='mt-px group-hover:rotate-45 transition-transform duration-250 ease-in-out'>
 					<ArrowUp width='18' height='18' />
 				</span>
 			</a>

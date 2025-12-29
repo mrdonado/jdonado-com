@@ -60,11 +60,36 @@
 	}
 }
 
+
 .glass {
-	background: rgba(57, 56, 56, 0.52);
-	backdrop-filter: blur(13px) saturate(150%);
-	-webkit-backdrop-filter: blur(13px) saturate(150%);
-	z-index: -1;
+	background: rgba(57, 56, 56, 0.55);
+	/* Safari (and all iOS browsers) will stay on this non-blurred fallback */
+	backdrop-filter: none;
+	-webkit-backdrop-filter: none;
+	isolation: isolate;
+}
+
+/* Enable blur/tint on non-Safari browsers */
+@supports not (-webkit-touch-callout: none) {
+	.glass {
+		background: rgba(57, 56, 56, 0.48);
+		backdrop-filter: blur(0px) saturate(100%);
+		-webkit-backdrop-filter: blur(0px) saturate(100%);
+		animation: delayed-blur 0.8s ease-out 0.2s forwards;
+	}
+}
+
+@keyframes delayed-blur {
+	to {
+		backdrop-filter: blur(13px) saturate(150%);
+		-webkit-backdrop-filter: blur(13px) saturate(150%);
+	}
+}
+
+/* Safari fix for overflow-hidden containers with transforming children */
+.safari-overflow-fix {
+	-webkit-mask-image: -webkit-radial-gradient(white, black);
+	mask-image: radial-gradient(white, black);
 }
 
 .shadow {
@@ -77,18 +102,19 @@ a.link {
 
 @keyframes fade-and-grow {
 	0% {
-		scale: 0.985;
+		transform: scale(0.985) translate3d(0, 0, 0);
 		opacity: 0.6;
 	}
 
 	100% {
-		scale: 1;
+		transform: scale(1) translate3d(0, 0, 0);
 		opacity: 1;
 	}
 }
 
 .appear-smoothly {
 	animation: fade-and-grow 0.6s ease;
+	will-change: transform, opacity;
 }
 
 @keyframes fadein {
