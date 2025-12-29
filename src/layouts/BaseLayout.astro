@@ -21,7 +21,6 @@ const gtmId = siteConfig.gtmId
 
 <html lang='en' class='scroll-smooth'>
 	<head>
-		<script type='module' src='/scripts/fouc-fix.js'></script>
 		<BaseHead title={title} description={description} ogImage={image} articleDate={articleDate} />
 		<ProviderTheme />
 		<ProviderAnimations />
@@ -39,7 +38,7 @@ const gtmId = siteConfig.gtmId
 		<!-- End Google Tag Manager (noscript) -->
 		<div
 			transition:animate='none'
-			class='sticky top-0 z-50 w-full backdrop-blur-md bg-white/70 dark:bg-[#0a0910]/70 border-b border-transparent transition-colors duration-300'
+			class='sticky top-0 z-50 w-full backdrop-blur-md bg-white/70 dark:bg-[#0a0910]/70 border-b border-transparent'
 		>
 			<Header activeCategory={activeCategory} />
 		</div>
