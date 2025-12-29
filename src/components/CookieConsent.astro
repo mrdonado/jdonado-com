@@ -222,18 +222,31 @@ const gtmId = siteConfig.gtmId
 
 	///////////////////////////////////////////////////
 	////////// EVENT LISTENERS //////////
+	let listenersBound = false
+
 	const addEventListeners = () => {
+		if (listenersBound) return
 		const acceptOnlyRequiredButton = document.getElementById('accept-only-required')
 		const acceptAllCookiesButton = document.getElementById('accept-all-cookies')
 
 		if (acceptOnlyRequiredButton && acceptAllCookiesButton) {
 			acceptOnlyRequiredButton.addEventListener('click', clickedOnOnlyRequired)
 			acceptAllCookiesButton.addEventListener('click', clickedOnAcceptAll)
+			listenersBound = true
 		}
 	}
 
-	document.addEventListener('astro:page-load', () => {
+	const initConsent = () => {
 		addEventListeners()
 		checkCookieConsent()
-	})
+	}
+
+	if (document.readyState !== 'loading') {
+		initConsent()
+	} else {
+		document.addEventListener('DOMContentLoaded', initConsent, { once: true })
+	}
+
+	document.addEventListener('astro:page-load', initConsent)
+	document.addEventListener('astro:after-swap', initConsent)
 </script>

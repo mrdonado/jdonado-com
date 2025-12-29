@@ -62,27 +62,40 @@
 
 
 .glass {
-	background: rgba(57, 56, 56, 0.55);
-	/* Safari (and all iOS browsers) will stay on this non-blurred fallback */
+	/* Base: static tint everywhere */
+	--glass-blur-start: 0px;
+	--glass-blur-end: 13px;
+	--glass-sat-start: 1;
+	--glass-sat-end: 1.5;
+	background: rgba(27, 26, 26, 0.705);
 	backdrop-filter: none;
 	-webkit-backdrop-filter: none;
 	isolation: isolate;
 }
 
-/* Enable blur/tint on non-Safari browsers */
-@supports not (-webkit-touch-callout: none) {
+/* Apply animated blur only on browsers that support backdrop-filter and are not Safari/iOS */
+@supports ((backdrop-filter: blur(1px)) and (not (-webkit-touch-callout: none))) {
 	.glass {
-		background: rgba(57, 56, 56, 0.48);
-		backdrop-filter: blur(0px) saturate(100%);
-		-webkit-backdrop-filter: blur(0px) saturate(100%);
+		backdrop-filter: blur(var(--glass-blur-start)) saturate(var(--glass-sat-start));
+		-webkit-backdrop-filter: blur(var(--glass-blur-start)) saturate(var(--glass-sat-start));
 		animation: delayed-blur 0.8s ease-out 0.2s forwards;
+	}
+}
+
+/* Safari/iOS stays on static tint (no blur) */
+@supports (-webkit-touch-callout: none) {
+	.glass {
+		animation: none;
+		backdrop-filter: none;
+		-webkit-backdrop-filter: none;
+		background: rgba(27, 26, 26, 0.705);
 	}
 }
 
 @keyframes delayed-blur {
 	to {
-		backdrop-filter: blur(13px) saturate(150%);
-		-webkit-backdrop-filter: blur(13px) saturate(150%);
+		backdrop-filter: blur(var(--glass-blur-end)) saturate(var(--glass-sat-end));
+		-webkit-backdrop-filter: blur(var(--glass-blur-end)) saturate(var(--glass-sat-end));
 	}
 }
 
