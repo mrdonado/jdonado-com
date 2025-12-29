@@ -1,7 +1,6 @@
 ---
 import { siteConfig } from '@/site-config'
 import '../styles/global.css'
-import { ClientRouter } from 'astro:transitions'
 
 export interface Props {
 	title: string
@@ -127,9 +126,6 @@ import { AstroFont } from 'astro-font'
 
 <!-- JSON-LD Structured Data -->
 <script type='application/ld+json' set:html={JSON.stringify(jsonLdData)} />
-
-<!-- ClientRouter (formerly ViewTransitions) -->
-<ClientRouter />
 
 <!-- SEO -->
 <meta name='title' content={siteTitle} />

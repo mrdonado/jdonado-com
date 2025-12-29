@@ -40,14 +40,15 @@ const { stats } = Astro.props
 </div>
 
 <script>
-	document.addEventListener('astro:page-load', () => {
+	// Ensure counters re-init both on initial load and on client navigations.
+	const initCounters = () => {
 		const observerOptions = {
 			root: null,
 			rootMargin: '0px',
 			threshold: 0.1
 		}
 
-		const observer = new IntersectionObserver((entries, observer) => {
+		const observer = new IntersectionObserver((entries, observerRef) => {
 			entries.forEach((entry) => {
 				if (entry.isIntersecting) {
 					const counter = entry.target as HTMLElement
@@ -75,14 +76,29 @@ const { stats } = Astro.props
 					}
 
 					requestAnimationFrame(updateCount)
-					observer.unobserve(counter)
+					observerRef.unobserve(counter)
 				}
 			})
 		}, observerOptions)
 
 		document.querySelectorAll('.js-counter').forEach((counter) => {
-			;(counter as HTMLElement).innerText = '0' // Reset to 0 ensuring animation plays again
-			observer.observe(counter)
+			const el = counter as HTMLElement
+			el.innerText = '0' // Reset so animation plays each time
+			observer.observe(el)
 		})
-	})
+	}
+
+	const start = () => {
+		// Re-run on navigations; guard to avoid multiple observers in quick succession.
+		initCounters()
+	}
+
+	if (document.readyState !== 'loading') {
+		start()
+	} else {
+		document.addEventListener('DOMContentLoaded', start, { once: true })
+	}
+
+	document.addEventListener('astro:page-load', start)
+	document.addEventListener('astro:after-swap', start)
 </script>
