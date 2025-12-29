@@ -1,54 +1,38 @@
-const initCounters = () => {
-	const observerOptions = {
-		root: null,
-		rootMargin: '0px',
-		threshold: 0.1
-	}
-
-	const observer = new IntersectionObserver((entries, observerRef) => {
-		entries.forEach((entry) => {
-			if (entry.isIntersecting) {
-				const counter = entry.target
-				const target = parseInt(counter.dataset.target || '0', 10)
-				const duration = Math.floor(Math.random() * (2500 - 1500 + 1) + 1500)
-				const start = 0
-				const startTime = performance.now()
-
-				const updateCount = (currentTime) => {
-					const elapsed = currentTime - startTime
-					const progress = Math.min(elapsed / duration, 1)
-					const easeOut = 1 - Math.pow(1 - progress, 3)
-					const current = Math.floor(start + (target - start) * easeOut)
-					counter.innerText = current.toString()
-					if (progress < 1) {
-						requestAnimationFrame(updateCount)
-					} else {
-						counter.innerText = target.toString()
-					}
-				}
-
-				requestAnimationFrame(updateCount)
-				observerRef.unobserve(counter)
-			}
-		})
-	}, observerOptions)
-
-	document.querySelectorAll('.js-counter').forEach((counter) => {
-		const el = counter
-		el.innerText = '0'
-		observer.observe(el)
-	})
-}
-
-const start = () => {
-	initCounters()
-}
-
-if (document.readyState !== 'loading') {
-	start()
-} else {
-	document.addEventListener('DOMContentLoaded', start, { once: true })
-}
-
-document.addEventListener('astro:page-load', start)
-document.addEventListener('astro:after-swap', start)
+'use strict'
+;(() => {
+	const v = () => {
+			const d = { root: null, rootMargin: '0px', threshold: 0.1 },
+				u = new IntersectionObserver((o, t) => {
+					o.forEach((r) => {
+						if (r.isIntersecting) {
+							const e = r.target,
+								s = parseInt(e.dataset.target || '0', 10),
+								l = Math.floor(Math.random() * 1001 + 1500),
+								a = 0,
+								m = performance.now(),
+								c = (g) => {
+									const p = g - m,
+										i = Math.min(p / l, 1),
+										f = 1 - Math.pow(1 - i, 3),
+										h = Math.floor(a + (s - a) * f)
+									;((e.innerText = h.toString()),
+										i < 1 ? requestAnimationFrame(c) : (e.innerText = s.toString()))
+								}
+							;(requestAnimationFrame(c), t.unobserve(e))
+						}
+					})
+				}, d)
+			document.querySelectorAll('.js-counter').forEach((o) => {
+				const t = o
+				;((t.innerText = '0'), u.observe(t))
+			})
+		},
+		n = () => {
+			v()
+		}
+	document.readyState !== 'loading'
+		? n()
+		: document.addEventListener('DOMContentLoaded', n, { once: !0 })
+	document.addEventListener('astro:page-load', n)
+	document.addEventListener('astro:after-swap', n)
+})()

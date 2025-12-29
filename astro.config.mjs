@@ -7,6 +7,7 @@ import { siteConfig } from './src/data/site.config'
 import remarkRehype from 'remark-rehype'
 import { visit } from 'unist-util-visit'
 import { astroImageTools } from "astro-imagetools";
+import compileScriptsPlugin from './plugins/compile-scripts.js'
 
 // https://astro.build/config
 export default defineConfig({
@@ -19,7 +20,7 @@ export default defineConfig({
 		inlineStylesheets: 'always',
 	},
 	vite: {
-		plugins: [tailwindcss()],
+		plugins: [tailwindcss(), compileScriptsPlugin()],
 		build: {
 			cssCodeSplit: true,
 			minify: 'esbuild',

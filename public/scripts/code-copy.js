@@ -1,29 +1,25 @@
-const bindCopyButtons = () => {
-	const codeBlocks = document.querySelectorAll('pre')
-	codeBlocks.forEach((code) => {
-		const button = code.querySelector('.copy-button')
-		const check = code.querySelector('.check-span')
-		if (!button) return
-		button.addEventListener('click', () => {
-			navigator.clipboard.writeText(code.textContent?.trim() || '')
-			check?.classList.remove('opacity-0')
-			button?.classList.add('opacity-0')
-			setTimeout(() => {
-				check?.classList.add('opacity-0')
-				button?.classList.remove('opacity-0')
-			}, 2000)
-		})
-	})
-}
-
-const start = () => {
-	bindCopyButtons()
-}
-
-if (document.readyState !== 'loading') {
-	start()
-} else {
-	document.addEventListener('DOMContentLoaded', start, { once: true })
-}
-
-document.addEventListener('astro:after-swap', start)
+'use strict'
+;(() => {
+	const s = () => {
+			document.querySelectorAll('pre').forEach((e) => {
+				const t = e.querySelector('.copy-button'),
+					c = e.querySelector('.check-span')
+				t &&
+					t.addEventListener('click', () => {
+						;(navigator.clipboard.writeText(e.textContent?.trim() || ''),
+							c?.classList.remove('opacity-0'),
+							t?.classList.add('opacity-0'),
+							setTimeout(() => {
+								;(c?.classList.add('opacity-0'), t?.classList.remove('opacity-0'))
+							}, 2e3))
+					})
+			})
+		},
+		o = () => {
+			s()
+		}
+	document.readyState !== 'loading'
+		? o()
+		: document.addEventListener('DOMContentLoaded', o, { once: !0 })
+	document.addEventListener('astro:after-swap', o)
+})()

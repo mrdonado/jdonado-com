@@ -1,45 +1,36 @@
-class ThemeToggle extends HTMLElement {
-	constructor() {
-		super()
-		const button = this.querySelector('button')
-		if (button) {
-			button.addEventListener('click', (e) => {
-				const current = e.currentTarget
-				if (!(current instanceof HTMLButtonElement)) return
-				const isPressed = current.getAttribute('aria-pressed') === 'true'
-				const themeChangeEvent = new CustomEvent('theme-change', {
-					detail: { theme: isPressed ? 'light' : 'dark' }
+'use strict'
+;(() => {
+	class d extends HTMLElement {
+		constructor() {
+			super()
+			const e = this.querySelector('button')
+			e &&
+				e.addEventListener('click', (r) => {
+					const s = r.currentTarget
+					if (!(s instanceof HTMLButtonElement)) return
+					const o = s.getAttribute('aria-pressed') === 'true',
+						c = new CustomEvent('theme-change', { detail: { theme: o ? 'light' : 'dark' } })
+					;(document.dispatchEvent(c), s.setAttribute('aria-pressed', String(!o)))
 				})
-				document.dispatchEvent(themeChangeEvent)
-				current.setAttribute('aria-pressed', String(!isPressed))
-			})
 		}
 	}
-}
-
-const registerElement = () => {
-	if ('customElements' in window && !customElements.get('theme-toggle')) {
-		customElements.define('theme-toggle', ThemeToggle)
-	}
-}
-
-const syncButtonPressed = () => {
-	const button = document.getElementById('toggle-theme')
-	if (!button) return
-	const isDark = document.documentElement.classList.contains('dark')
-	button.setAttribute('aria-pressed', String(isDark))
-}
-
-const start = () => {
-	registerElement()
-	syncButtonPressed()
-}
-
-if (document.readyState === 'loading') {
-	document.addEventListener('DOMContentLoaded', start, { once: true })
-} else {
-	start()
-}
-
-document.addEventListener('astro:page-load', start)
-document.addEventListener('astro:after-swap', start)
+	const a = () => {
+			'customElements' in window &&
+				!customElements.get('theme-toggle') &&
+				customElements.define('theme-toggle', d)
+		},
+		i = () => {
+			const n = document.getElementById('toggle-theme')
+			if (!n) return
+			const e = document.documentElement.classList.contains('dark')
+			n.setAttribute('aria-pressed', String(e))
+		},
+		t = () => {
+			;(a(), i())
+		}
+	document.readyState === 'loading'
+		? document.addEventListener('DOMContentLoaded', t, { once: !0 })
+		: t()
+	document.addEventListener('astro:page-load', t)
+	document.addEventListener('astro:after-swap', t)
+})()

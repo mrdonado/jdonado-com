@@ -40,10 +40,8 @@
 		bindThemeChangeListener()
 	}
 
-	// Run immediately (blocking)
 	start()
 
-	// Re-apply on navigation lifecycle events
 	document.addEventListener('astro:page-load', start)
 	document.addEventListener('astro:after-swap', start)
 })()
