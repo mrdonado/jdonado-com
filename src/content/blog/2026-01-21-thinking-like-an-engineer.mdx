@@ -1,0 +1,131 @@
+---
+title: 'Thinking Like an Engineer: Avoiding Pitfalls'
+description: 'How engineering principles can help us manage complex systems effectively by recognizing and avoiding common design pitfalls'
+pubDate: 'Jan 21, 2026'
+heroImage: '/src/assets/images/state-org-chart.jpg'
+category: 'Beyond Code'
+tags: ['perspectives', 'leadership', 'product-development']
+youTubeThread: ''
+xComThread: ''
+linkedInThread: ''
+---
+
+I remember the feeling of running into undergraduate calculus and physics problem sets for the first time. I would carefully apply every rule I knew, move step by step, and reach a result I felt pretty confident about. When I checked the solution, it was plain wrong.
+
+That's common the first time you do something. No matter how smart you think you are, chances are you're going to get it wrong—often without realizing it.
+
+As Wendell Phillips put it:
+
+> What is defeat? Nothing but education; nothing but the first step to something better.
+> ― [Wendell Phillips](https://www.goodreads.com/quotes/62529-what-is-defeat-nothing-but-education-nothing-but-the-first) (not Bruce Lee, as you might have thought!)
+
+Sure, the realization is uncomfortable, but it is healthy. It forces you to accept that smarts and effort are not enough. **You need feedback as well**. You need to understand how things actually work. In fact, being right the first time can be a curse. If your early successes are driven by luck or by a forgiving environment, you internalize the wrong lesson. You repeat the same approach with more confidence until the system stops forgiving you. Nicholas Taleb wrote about this in Fooled by Randomness when he said that the most dangerous investors are those who were lucky in the past.
+
+While I was struggling with calculus and physics, trying to understand why my answers were wrong, I remember watching political debates on TV, too. The contrast was striking. People spoke with enormous confidence about genuinely complex topics, with no mechanism to receive objective feedback. No equivalent of "checking the solution" to find out how wrong you might be. No clear signal to tell them whether their reasoning actually produced the intended outcome.
+
+That’s the hard part: in most real-world problems, there’s no answer key. But we don’t want to be like those debaters, do we? So how can we tell whether we’re right or wrong?
+
+## How Do Engineers Think About Complex Systems?
+
+Engineers design, build, and maintain complex systems all the time. Distributed, critical software systems with high traffic are a great example. They are made of many interacting components, they evolve over time, and they often behave in unexpected ways.
+
+Even though human systems are arguably even more challenging to manage than digital ones, **many lessons from software architecture and systems design transfer directly to management**—whether in private companies or public administration. Not as metaphors, but as structural insights about how complex systems behave, how they evolve, and how we can manage them effectively.
+
+In the following sections I'd like to share some of these insights, starting with the pitfalls we should avoid. **Because sometimes understanding what not to do is more important than knowing what to do**.
+
+## Measure What Matters But Beware of Metrics
+
+> “Statistics are like bikinis. What they reveal is suggestive, but what they conceal is vital.”
+> ― [Aaron Levenstein](https://www.goodreads.com/quotes/130178-statistics-are-like-bikinis-what-they-reveal-is-suggestive-but)
+
+In software architecture, when systems grow beyond trivial size, intuition stops scaling. We need something called observability. Observability is the ability to understand what a system is doing from its outputs. Its classical pillars are: **Logs** (what happened and when), **Metrics** (numerical indicators of performance and behavior), and **Traces** (records of how requests flow through the system).
+
+Observability is the foundation for understanding reality rather than narratives. It allows you to see where the system is slow, where it fails, and where it behaves in unexpected ways. Without it, you are managing by assumption and intuition. Metrics are a key part of observability. They provide quantitative signals that can be tracked over time, compared against targets, and alerted on when they deviate from expected ranges.
+
+But metrics can also be dangerous. When you optimize for a specific metric, you risk distorting the system's behavior in unintended ways. This is known as [Goodhart's Law](https://en.wikipedia.org/wiki/Goodhart%27s_law): "When a measure becomes a target, it ceases to be a good measure."
+
+Observability is arguably not unique to software. Economies, organizations, and public policies rely on indicators. GDP is a common example. It tries to measure economic success, but it also creates perverse incentives. If you break your arm and go to the hospital, GDP goes up. Economic activity increases. **From the metric’s perspective, broken arms are good**.
+
+The point isn't to abandon metrics—it’s to treat them as instruments, not objectives.
+
+[Donella H. Meadows](https://en.wikipedia.org/wiki/Donella_Meadows) explores many such examples in [Thinking in Systems](https://www.goodreads.com/book/show/3828902-thinking-in-systems), showing how optimizing for a single metric often leads systems to behave in absurd or harmful ways. Another beautiful example had to do with traffic in New York City. Due to an event, certain streets were closed to cars. The result? Overall traffic improved, because drivers adapted their routes and avoided congested areas. **Closing streets made traffic flow better**, contrary to intuition.
+
+## Recognize the Symptoms of Poor Design
+
+Observability, even when well-designed, is necessary but not sufficient. Seeing what's happening doesn't automatically produce good systems. You also need principles that guide how systems should be structured and evolved.
+
+In software, these principles did not emerge from theory alone. They were distilled by people who built systems, broke them, maintained them, and suffered the consequences. Over time, they captured their experience in guidelines, best practices, and design patterns.
+
+[Robert C. Martin](https://en.wikipedia.org/wiki/Robert_C._Martin), also known as Uncle Bob, described the symptoms of poor software design in [Agile Software Development, Principles, Patterns, and Practices](https://www.goodreads.com/book/show/84985.Agile_Software_Development_Principles_Patterns_and_Practices). The interesting question is whether these symptoms are specific to software, or whether they apply to any complex system, including organizations and institutions. Let's have a look.
+
+### Rigidity
+
+_**The system is difficult to change. Small modifications require disproportionate effort and coordination**_.
+
+Do you recognize this in your organization? Even minor changes require long approval processes, multiple committees, and extensive documentation. The result is that change becomes so costly that people avoid it altogether. It's not about ideology, but about the structure of the system itself.
+
+Ensuring modularity and clear interfaces can help reduce rigidity. In organizations, this could mean defining clear roles and responsibilities, decentralizing decision-making, and empowering teams to make changes within their domains without excessive oversight.
+
+Corruption loves rigidity because it creates opaque, entangled systems where power can be abused without accountability. Clear separation of powers helps reduce rigidity and promote transparency.
+
+### Fragility
+
+_**Changes tend to break things in unexpected places**_.
+
+This one can be tricky, because traceability is often poor in human systems. When something breaks, it's hard to know why. **The lack of clear feedback loops means that people often cannot learn from failures**, leading to a culture of fear and avoidance.
+
+The way we avoid fragile systems in software is by writing tests that verify that changes don't introduce regressions. In organizations, this could translate to pilot programs, feedback sessions, and iterative approaches that allow for safe experimentation. Each change should be accompanied by mechanisms to monitor its impact and quickly revert if necessary. How nice would it be if every law or policy came with built-in review periods and success metrics?
+
+Modularity helps, too. When components are loosely coupled, changes in one area are less likely to impact others. Systems that are too large, complex, and tightly entangled tend to be more fragile.
+
+### Immobility
+
+_**Functionality is so entangled that it cannot be reused elsewhere. Every new initiative starts from scratch.**_
+
+This is common in organizations where departments operate in silos, duplicating efforts instead of sharing knowledge and resources. Encouraging collaboration, sharing knowledge, and creating reusable processes can help mitigate immobility. This has as much to do with organizational culture as it does with structure.
+
+A learning organization that values knowledge sharing is less likely to suffer from immobility. Following [Westrum](https://en.wikipedia.org/wiki/Ron_Westrum)'s [Organisational Culture](https://psychsafety.com/psychological-safety-81-westrums-cultural-typologies/) model, generative cultures that promote cooperation and information flow are better equipped to reuse and adapt existing solutions.
+
+### Viscosity
+
+_**Doing the right thing is harder than doing the wrong thing. Workarounds become the norm because the system resists good practices.**_
+
+When your code is hard to test, developers might skip writing tests altogether. When deployment processes are cumbersome, teams might avoid frequent releases.
+
+Viscosity often arises from bureaucratic hurdles, rigid procedures, and a lack of support for best practices. When the path of least resistance leads to suboptimal outcomes, people will naturally gravitate towards it, even if they know better. Shortcuts, informal agreements, and bending the rules become commonplace.
+
+**To reduce viscosity, systems should be designed to make the right choices easier**. This could involve streamlining processes, reducing unnecessary bureaucracy, and providing incentives for following best practices. Rules are important, but they should not become obstacles to doing what is right.
+
+### Needless Complexity
+
+_**Complexity without clear justification, often introduced to signal sophistication rather than to solve real problems**_.
+
+> "An idiot admires complexity, a genius admires simplicity."
+>
+> - [Terry Davis](https://www.goodreads.com/quotes/10480697-an-idiot-admires-complexity-a-genius-admires-simplicity-a-physicist), creator of TempleOS
+
+Complex systems are often the result of incremental changes made without a clear overarching design. Over time, layers of complexity accumulate, making it difficult to understand and manage the system. If you keep adding features, exceptions, and special cases without refactoring or simplifying, the system becomes a tangled mess.
+
+Again, this shouldn't be a matter of ideology. I know that politicians who advocate for a smaller public sector are often found on only one side of the spectrum. **Maybe it's time for the other side to start thinking about what we could achieve with less**. A smaller, well-designed system is almost always more effective than a large, complex one.
+
+### Needless Repetition
+
+_**The same concepts and processes are duplicated because the system does not support reuse**_.
+
+This often happens when there is a lack of standardization and shared resources. Different teams or departments might develop their own solutions to similar problems, leading to duplication of effort and inconsistency. Encouraging the use of shared libraries, templates, and best practices can help reduce needless repetition.
+
+In organizations, this could mean creating centralized knowledge bases, standard operating procedures, and promoting cross-functional collaboration. When people reinvent the wheel instead of reusing existing solutions, productivity suffers.
+
+### Opacity
+
+_**The system is difficult to understand. Even its operators cannot explain how it actually works**_.
+
+Opacity is a common issue in complex systems, where the interactions between components are not well documented or understood. This can lead to confusion, miscommunication, and errors. When people cannot see how their actions impact the system, they are less likely to make informed decisions. Transparency is key to reducing opacity. Clear documentation, open communication, and accessible information can help people understand the system better.
+
+This is especially important in organizations, where lack of transparency can lead to mistrust and disengagement. When people do not understand how decisions are made or how processes work, they are less likely to feel invested in the system.
+
+---
+
+Thinking like an engineer often starts with noticing signals of weak design and getting curious about why they appear. When we lean on ideas like modularity, transparency, and feedback, we open up options for building systems that hold up better over time and adapt more easily.
+
+A practical way in could be to focus on a single anti-pattern that stands out to you and explore it together through two questions: what kind of feedback would make it easier to notice, and what small structural shift could make the better action the more natural one?
