@@ -10,7 +10,7 @@ xComThread: ''
 linkedInThread: ''
 ---
 
-I remember the feeling of running into undergraduate calculus and physics problem sets for the first time. I would carefully apply every rule I knew, move step by step, and reach a result I felt pretty confident about. When I checked the solution, it was plain wrong.
+I still remember coming across undergraduate calculus and physics problem sets for the first time. I would carefully apply every rule, work through the steps methodically, and arrive at a result that felt solid. Then I would check the solution. Plain wrong.
 
 That's common the first time you do something. No matter how smart you think you are, chances are you're going to get it wrong—often without realizing it.
 
@@ -21,15 +21,15 @@ As Wendell Phillips put it:
 
 Sure, the realization is uncomfortable, but it is healthy. It forces you to accept that smarts and effort are not enough. **You need feedback as well**. You need to understand how things actually work. In fact, being right the first time can be a curse. If your early successes are driven by luck or by a forgiving environment, you internalize the wrong lesson. You repeat the same approach with more confidence until the system stops forgiving you. Nicholas Taleb wrote about this in Fooled by Randomness when he said that the most dangerous investors are those who were lucky in the past.
 
-While I was struggling with calculus and physics, trying to understand why my answers were wrong, I remember watching political debates on TV, too. The contrast was striking. People spoke with enormous confidence about genuinely complex topics, with no mechanism to receive objective feedback. No equivalent of "checking the solution" to find out how wrong you might be. No clear signal to tell them whether their reasoning actually produced the intended outcome.
+While I was struggling with calculus and physics, trying to understand why my answers were wrong, I remember watching political debates on TV, too. The contrast was striking. People spoke with enormous confidence about genuinely complex topics, with no mechanism to receive objective feedback. No equivalent of "checking the solution" to find out how wrong you might be.
 
 That’s the hard part: in most real-world problems, there’s no answer key. But we don’t want to be like those debaters, do we? So how can we tell whether we’re right or wrong?
 
 ## How Do Engineers Think About Complex Systems?
 
-Engineers design, build, and maintain complex systems all the time. Distributed, critical software systems with high traffic are a great example. They are made of many interacting components, they evolve over time, and they often behave in unexpected ways.
+Engineers design, build, and maintain complex systems all the time. Distributed, critical software systems with high traffic are a great example. They are made of many interacting components, they evolve over time, and they often behave in unexpected ways. And these systems work remarkably well most of the time.
 
-Even though human systems are arguably even more challenging to manage than digital ones, **many lessons from software architecture and systems design transfer directly to management**—whether in private companies or public administration. Not as metaphors, but as structural insights about how complex systems behave, how they evolve, and how we can manage them effectively.
+Even though _human systems_ are arguably even more challenging to manage than digital ones, I'd argue that **many lessons from software architecture and systems design transfer directly to management**—whether in private companies or public administration. Not as metaphors, but as structural insights about how complex systems behave, how they evolve, and how we can manage them effectively.
 
 In the following sections I'd like to share some of these insights, starting with the pitfalls we should avoid. **Because sometimes understanding what not to do is more important than knowing what to do**.
 
@@ -44,11 +44,11 @@ Observability is the foundation for understanding reality rather than narratives
 
 But metrics can also be dangerous. When you optimize for a specific metric, you risk distorting the system's behavior in unintended ways. This is known as [Goodhart's Law](https://en.wikipedia.org/wiki/Goodhart%27s_law): "When a measure becomes a target, it ceases to be a good measure."
 
-Observability is arguably not unique to software. Economies, organizations, and public policies rely on indicators. GDP is a common example. It tries to measure economic success, but it also creates perverse incentives. If you break your arm and go to the hospital, GDP goes up. Economic activity increases. **From the metric’s perspective, broken arms are good**.
+Observability is arguably not unique to software. Economies, organizations, and public policies rely on indicators. GDP is a common example. It tries to measure economic success, but it also creates perverse incentives. If you break your arm and go to the hospital, GDP goes up. Economic activity increases. **From the metric’s perspective, broken arms are good**. It's an extreme example, but it illustrates the point.
 
-The point isn't to abandon metrics—it’s to treat them as instruments, not objectives.
+The key isn't to abandon metrics—it’s to treat them as instruments, not objectives, and to be aware of their limitations, checking in regularly to see whether they still reflect the underlying reality you care about.
 
-[Donella H. Meadows](https://en.wikipedia.org/wiki/Donella_Meadows) explores many such examples in [Thinking in Systems](https://www.goodreads.com/book/show/3828902-thinking-in-systems), showing how optimizing for a single metric often leads systems to behave in absurd or harmful ways. Another beautiful example had to do with traffic in New York City. Due to an event, certain streets were closed to cars. The result? Overall traffic improved, because drivers adapted their routes and avoided congested areas. **Closing streets made traffic flow better**, contrary to intuition.
+[Donella H. Meadows](https://en.wikipedia.org/wiki/Donella_Meadows) explores many such examples in [Thinking in Systems](https://www.goodreads.com/book/show/3828902-thinking-in-systems), showing how optimizing for a single metric often leads systems to behave in absurd or harmful ways. Another beautiful example in this book had to do with traffic in New York City. Due to an event, certain streets were closed to cars. The result? Overall traffic improved. Contrary to intuition, **closing streets made traffic flow better**. This is something that you can actually model mathematically.
 
 ## Recognize the Symptoms of Poor Design
 
@@ -56,7 +56,7 @@ Observability, even when well-designed, is necessary but not sufficient. Seeing 
 
 In software, these principles did not emerge from theory alone. They were distilled by people who built systems, broke them, maintained them, and suffered the consequences. Over time, they captured their experience in guidelines, best practices, and design patterns.
 
-[Robert C. Martin](https://en.wikipedia.org/wiki/Robert_C._Martin), also known as Uncle Bob, described the symptoms of poor software design in [Agile Software Development, Principles, Patterns, and Practices](https://www.goodreads.com/book/show/84985.Agile_Software_Development_Principles_Patterns_and_Practices). The interesting question is whether these symptoms are specific to software, or whether they apply to any complex system, including organizations and institutions. Let's have a look.
+[Robert C. Martin](https://en.wikipedia.org/wiki/Robert_C._Martin), also known as Uncle Bob, is a well-known software engineer and author. He didn't just focus on describing best practices. He also described the symptoms of poor software design in [Agile Software Development, Principles, Patterns, and Practices](https://www.goodreads.com/book/show/84985.Agile_Software_Development_Principles_Patterns_and_Practices). The interesting question is whether these symptoms are specific to software, or whether they apply to any complex system, including organizations and institutions. Let's have a look.
 
 ### Rigidity
 
@@ -72,7 +72,7 @@ Corruption loves rigidity because it creates opaque, entangled systems where pow
 
 _**Changes tend to break things in unexpected places**_.
 
-This one can be tricky, because traceability is often poor in human systems. When something breaks, it's hard to know why. **The lack of clear feedback loops means that people often cannot learn from failures**, leading to a culture of fear and avoidance.
+This one can be tricky, because traceability is often challenging in human systems. When something breaks, it's often hard to know exactly why. **The lack of clear feedback loops means that people often cannot learn from failures**, leading to a culture of fear and avoidance.
 
 The way we avoid fragile systems in software is by writing tests that verify that changes don't introduce regressions. In organizations, this could translate to pilot programs, feedback sessions, and iterative approaches that allow for safe experimentation. Each change should be accompanied by mechanisms to monitor its impact and quickly revert if necessary. How nice would it be if every law or policy came with built-in review periods and success metrics?
 
@@ -126,6 +126,8 @@ This is especially important in organizations, where lack of transparency can le
 
 ---
 
-Thinking like an engineer often starts with noticing signals of weak design and getting curious about why they appear. When we lean on ideas like modularity, transparency, and feedback, we open up options for building systems that hold up better over time and adapt more easily.
+## Conclusion
 
-A practical way in could be to focus on a single anti-pattern that stands out to you and explore it together through two questions: what kind of feedback would make it easier to notice, and what small structural shift could make the better action the more natural one?
+Even though _Agile Software Development, Principles, Patterns, and Practices_ was first published in 2002, it is arguably still a relatively young discipline. I believe it’s only a matter of time before principles from software engineering become mainstream in other domains, as they address universal challenges of complexity, change, and systemic behavior, and software provides an ideal playground for experimenting with these ideas. I don’t think it’s a coincidence that many of the most successful organizations today come from the tech sector.
+
+Do you recognize any of these anti-patterns in your organization? Which ones stand out the most?
