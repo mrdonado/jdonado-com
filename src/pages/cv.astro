@@ -1,385 +1,433 @@
 ---
-import BaseLayout from '@/layouts/BaseLayout'
-import TitlePage from '@/components/TitlePage'
+import BaseHead from '@/components/BaseHead'
+import Header from '@/components/Header'
+import Footer from '@/components/Footer'
+import ProviderTheme from '@/components/ProviderTheme'
+import ProviderAnimations from '@/components/ProviderAnimations'
+import TwSizeIndicator from '@/components/TwSizeIndicator'
+import CookieConsent from '@/components/CookieConsent'
+import { siteConfig } from '@/data/site.config'
 import { cv } from '@/data/cv'
 
 const sectionHeading =
 	'text-xs font-semibold uppercase tracking-widest text-stone-500 dark:text-stone-400 mb-4 border-b border-stone-200 dark:border-stone-800 pb-2'
+const gtmId = siteConfig.gtmId
 ---
 
-<BaseLayout
-	title='CV – Javier Donado'
-	description='Professional CV of Javier Donado — Solution Architect, Software Architect and Engineering Lead with close to 20 years of experience.'
->
-	<TitlePage title='Curriculum Vitae' />
-
-	<!-- Action bar -->
-	<div class='flex flex-wrap gap-3 mb-10 not-print'>
-		<a
-			href='/cv/print'
-			target='_blank'
-			rel='noopener noreferrer'
-			class='inline-flex items-center gap-2 px-4 py-2 text-sm font-medium border border-current rounded-lg hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors'
+<!doctype html>
+<html lang='en' class='scroll-smooth'>
+	<head>
+		<BaseHead
+			title='CV – Javier Donado'
+			description='Professional CV of Javier Donado — Solution Architect, Software Architect and Engineering Lead with close to 20 years of experience.'
+		/>
+		<ProviderTheme />
+		<ProviderAnimations />
+	</head>
+	<body class='bg-white text-stone-950 dark:bg-[#0a0910] dark:text-white'>
+		<noscript
+			><iframe
+				src={`https://www.googletagmanager.com/ns.html?id=${gtmId}`}
+				height='0'
+				width='0'
+				style='display:none;visibility:hidden'></iframe></noscript
 		>
-			<svg
-				xmlns='http://www.w3.org/2000/svg'
-				width='16'
-				height='16'
-				viewBox='0 0 24 24'
-				fill='none'
-				stroke='currentColor'
-				stroke-width='2'
-				stroke-linecap='round'
-				stroke-linejoin='round'
-			>
-				<polyline points='6 9 6 2 18 2 18 9'></polyline>
-				<path d='M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2'></path>
-				<rect x='6' y='14' width='12' height='8'></rect>
-			</svg>
-			Print / PDF version
-		</a>
-		<a
-			href='/javier-donado-cv.pdf'
-			download
-			class='inline-flex items-center gap-2 px-4 py-2 text-sm font-medium bg-stone-950 dark:bg-white text-white dark:text-stone-950 rounded-lg hover:opacity-80 transition-opacity'
-		>
-			<svg
-				xmlns='http://www.w3.org/2000/svg'
-				width='16'
-				height='16'
-				viewBox='0 0 24 24'
-				fill='none'
-				stroke='currentColor'
-				stroke-width='2'
-				stroke-linecap='round'
-				stroke-linejoin='round'
-			>
-				<path d='M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4'></path>
-				<polyline points='7 10 12 15 17 10'></polyline>
-				<line x1='12' y1='15' x2='12' y2='3'></line>
-			</svg>
-			Download PDF
-		</a>
-	</div>
-
-	<!-- Header / Identity -->
-	<section class='mb-10'>
-		<h1 class='text-4xl md:text-5xl font-light mb-2'>{cv.name}</h1>
-		<p class='text-xl text-stone-600 dark:text-stone-400 mb-4 font-light'>{cv.title}</p>
 		<div
-			class='flex flex-wrap gap-x-6 gap-y-1 text-sm text-stone-600 dark:text-stone-400 font-light'
+			transition:animate='none'
+			class='sticky top-0 z-50 w-full backdrop-blur-md bg-white/70 dark:bg-[#0a0910]/70 border-b border-transparent'
 		>
-			<span>{cv.location}</span>
-			<span>{cv.citizenship}</span>
-			<a
-				href={`mailto:${cv.email}`}
-				class='hover:text-stone-950 dark:hover:text-white transition-colors'>{cv.email}</a
-			>
-			<a
-				href={cv.website}
-				target='_blank'
-				rel='noopener noreferrer'
-				class='hover:text-stone-950 dark:hover:text-white transition-colors'>{cv.website}</a
-			>
-			<a
-				href={cv.github}
-				target='_blank'
-				rel='noopener noreferrer'
-				class='hover:text-stone-950 dark:hover:text-white transition-colors'>{cv.github}</a
-			>
+			<Header />
 		</div>
-	</section>
 
-	<hr class='border-stone-200 dark:border-stone-800 mb-10' />
+		<main
+			id='main-content'
+			class='mx-auto max-w-6xl px-6 md:px-8 lg:px-10 antialiased mt-8 overflow-visible min-h-[85vh] mb-16'
+		>
+			<!-- Header / Identity -->
+			<section class='mb-10 relative'>
+				<!-- Subtle action buttons (web only) -->
+				<div class='absolute top-0 right-0 flex gap-2 print:hidden'>
+					<a
+						href='/cv/print'
+						target='_blank'
+						rel='noopener noreferrer'
+						title='Print / PDF version'
+						class='p-2 rounded-md border border-stone-200 dark:border-stone-700 text-stone-400 dark:text-stone-500 hover:text-stone-950 dark:hover:text-white hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors'
+					>
+						<svg
+							xmlns='http://www.w3.org/2000/svg'
+							width='15'
+							height='15'
+							viewBox='0 0 24 24'
+							fill='none'
+							stroke='currentColor'
+							stroke-width='2'
+							stroke-linecap='round'
+							stroke-linejoin='round'
+							aria-hidden='true'
+						>
+							<polyline points='6 9 6 2 18 2 18 9'></polyline>
+							<path d='M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2'
+							></path>
+							<rect x='6' y='14' width='12' height='8'></rect>
+						</svg>
+					</a>
+					<a
+						href='/javier-donado-cv.pdf'
+						download
+						title='Download PDF'
+						class='p-2 rounded-md border border-stone-200 dark:border-stone-700 text-stone-400 dark:text-stone-500 hover:text-stone-950 dark:hover:text-white hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors'
+					>
+						<svg
+							xmlns='http://www.w3.org/2000/svg'
+							width='15'
+							height='15'
+							viewBox='0 0 24 24'
+							fill='none'
+							stroke='currentColor'
+							stroke-width='2'
+							stroke-linecap='round'
+							stroke-linejoin='round'
+							aria-hidden='true'
+						>
+							<path d='M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4'></path>
+							<polyline points='7 10 12 15 17 10'></polyline>
+							<line x1='12' y1='15' x2='12' y2='3'></line>
+						</svg>
+					</a>
+				</div>
+				<h1 class='text-4xl md:text-5xl font-light mb-2'>{cv.name}</h1>
+				<p class='text-xl text-stone-600 dark:text-stone-400 mb-4 font-light'>{cv.title}</p>
+				<div
+					class='flex flex-wrap gap-x-6 gap-y-1 text-sm text-stone-600 dark:text-stone-400 font-light'
+				>
+					<span>{cv.location}</span>
+					<span>{cv.citizenship}</span>
+					<a
+						href={`mailto:${cv.email}`}
+						class='hover:text-stone-950 dark:hover:text-white transition-colors'>{cv.email}</a
+					>
+					<a
+						href={cv.website}
+						target='_blank'
+						rel='noopener noreferrer'
+						class='hover:text-stone-950 dark:hover:text-white transition-colors'>{cv.website}</a
+					>
+					<a
+						href={cv.github}
+						target='_blank'
+						rel='noopener noreferrer'
+						class='hover:text-stone-950 dark:hover:text-white transition-colors'>{cv.github}</a
+					>
+				</div>
+			</section>
 
-	<!-- Professional Summary -->
-	<section class='mb-10'>
-		<h2 class={sectionHeading}>Professional Summary</h2>
-		<p class='text-base leading-relaxed text-stone-700 dark:text-stone-300'>{cv.summary}</p>
-	</section>
+			<hr class='border-stone-200 dark:border-stone-800 mb-10' />
 
-	<!-- Selected Impact -->
-	<section class='mb-10'>
-		<h2 class={sectionHeading}>Selected Impact</h2>
-		<ul class='space-y-2'>
-			{
-				cv.impact.map((item) => (
-					<li class='flex gap-3 text-base text-stone-700 dark:text-stone-300'>
-						<span class='mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-stone-400 dark:bg-stone-500' />
-						{item}
-					</li>
-				))
-			}
-		</ul>
-	</section>
+			<!-- Professional Summary -->
+			<section class='mb-10'>
+				<h2 class={sectionHeading}>Professional Summary</h2>
+				<p class='text-base leading-relaxed text-stone-700 dark:text-stone-300'>{cv.summary}</p>
+			</section>
 
-	<!-- Core Competencies -->
-	<section class='mb-10'>
-		<h2 class={sectionHeading}>Core Competencies</h2>
-		<div class='grid grid-cols-1 md:grid-cols-2 gap-4'>
-			{
-				cv.competencies.map((comp) => (
-					<div class='p-4 rounded-lg border border-stone-200 dark:border-stone-800'>
-						<h3 class='font-semibold text-sm uppercase tracking-wider text-stone-500 dark:text-stone-400 mb-2'>
-							{comp.category}
-						</h3>
-						<p class='text-sm text-stone-700 dark:text-stone-300 leading-relaxed'>{comp.items}</p>
-					</div>
-				))
-			}
-		</div>
-	</section>
+			<!-- Selected Impact -->
+			<section class='mb-10'>
+				<h2 class={sectionHeading}>Selected Impact</h2>
+				<ul class='space-y-2'>
+					{
+						cv.impact.map((item) => (
+							<li class='flex gap-3 text-base text-stone-700 dark:text-stone-300'>
+								<span class='mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-stone-400 dark:bg-stone-500' />
+								{item}
+							</li>
+						))
+					}
+				</ul>
+			</section>
 
-	<hr class='border-stone-200 dark:border-stone-800 mb-10' />
+			<!-- Core Competencies -->
+			<section class='mb-10'>
+				<h2 class={sectionHeading}>Core Competencies</h2>
+				<div class='grid grid-cols-1 md:grid-cols-2 gap-4'>
+					{
+						cv.competencies.map((comp) => (
+							<div class='p-4 rounded-lg border border-stone-200 dark:border-stone-800'>
+								<h3 class='font-semibold text-sm uppercase tracking-wider text-stone-500 dark:text-stone-400 mb-2'>
+									{comp.category}
+								</h3>
+								<p class='text-sm text-stone-700 dark:text-stone-300 leading-relaxed'>
+									{comp.items}
+								</p>
+							</div>
+						))
+					}
+				</div>
+			</section>
 
-	<!-- Professional Experience -->
-	<section class='mb-10'>
-		<h2 class={sectionHeading}>Professional Experience</h2>
+			<hr class='border-stone-200 dark:border-stone-800 mb-10' />
 
-		<div class='space-y-12'>
-			{
-				cv.experience.map((company) => (
-					<div>
-						<div class='flex flex-wrap items-baseline justify-between gap-2 mb-1'>
-							<h3 class='text-xl font-semibold'>
-								<a
-									href={company.website}
-									target='_blank'
-									rel='noopener noreferrer'
-									class='hover:underline underline-offset-2'
-								>
-									{company.name}
-								</a>
-							</h3>
-							<span class='text-sm text-stone-500 dark:text-stone-400'>
-								{company.location} · {company.period}
-							</span>
-						</div>
+			<!-- Professional Experience -->
+			<section class='mb-10'>
+				<h2 class={sectionHeading}>Professional Experience</h2>
 
-						<div class='space-y-8 mt-4'>
-							{company.positions.map((pos) => (
-								<div class='pl-4 border-l-2 border-stone-200 dark:border-stone-700'>
-									<div class='flex flex-wrap items-baseline justify-between gap-2 mb-2'>
-										<h4 class='font-medium text-base'>{pos.title}</h4>
-										<span class='text-sm text-stone-500 dark:text-stone-400'>{pos.period}</span>
-									</div>
-									<p class='text-sm text-stone-600 dark:text-stone-400 mb-3 leading-relaxed'>
-										{pos.description}
-									</p>
-									<ul class='space-y-1 mb-3'>
-										{pos.responsibilities.map((r) => (
-											<li class='flex gap-3 text-sm text-stone-700 dark:text-stone-300'>
-												<span class='mt-1.5 h-1 w-1 shrink-0 rounded-full bg-stone-400' />
-												{r}
-											</li>
-										))}
-									</ul>
-									{pos.tags && (
-										<div class='flex flex-wrap gap-1.5 mt-3'>
-											{pos.tags.map((tech) => (
-												<span class='px-2 py-0.5 text-xs rounded-full bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-400'>
-													{tech}
-												</span>
-											))}
-										</div>
-									)}
-									{pos.industry && (
-										<p class='text-xs text-stone-500 dark:text-stone-500 mt-2'>
-											Industry: {pos.industry}
-										</p>
-									)}
-								</div>
-							))}
-						</div>
-					</div>
-				))
-			}
-		</div>
-	</section>
-
-	<!-- Earlier Experience -->
-	<section class='mb-10'>
-		<h2 class={sectionHeading}>Earlier Experience</h2>
-
-		<div class='space-y-8'>
-			{
-				cv.earlierExperience.map((company) => (
-					<div class='pl-4 border-l-2 border-stone-200 dark:border-stone-700'>
-						<div class='flex flex-wrap items-baseline justify-between gap-2 mb-1'>
-							<h3 class='font-semibold'>
-								<a
-									href={company.website}
-									target='_blank'
-									rel='noopener noreferrer'
-									class='hover:underline underline-offset-2'
-								>
-									{company.name}
-								</a>
-							</h3>
-							<span class='text-sm text-stone-500 dark:text-stone-400'>
-								{company.location} · {company.period}
-							</span>
-						</div>
-						{company.positions.map((pos) => (
-							<div class='mt-2'>
-								<div class='flex flex-wrap items-baseline justify-between gap-2 mb-2'>
-									<span class='text-sm font-medium text-stone-600 dark:text-stone-400'>
-										{pos.title}
+				<div class='space-y-12'>
+					{
+						cv.experience.map((company) => (
+							<div>
+								<div class='flex flex-wrap items-baseline justify-between gap-2 mb-1'>
+									<h3 class='text-xl font-semibold'>
+										<a
+											href={company.website}
+											target='_blank'
+											rel='noopener noreferrer'
+											class='hover:underline underline-offset-2'
+										>
+											{company.name}
+										</a>
+									</h3>
+									<span class='text-sm text-stone-500 dark:text-stone-400'>
+										{company.location} · {company.period}
 									</span>
 								</div>
-								<p class='text-sm text-stone-600 dark:text-stone-400 mb-2 leading-relaxed'>
-									{pos.description}
-								</p>
-								<ul class='space-y-1 mb-2'>
-									{pos.responsibilities.map((r) => (
-										<li class='flex gap-3 text-sm text-stone-700 dark:text-stone-300'>
-											<span class='mt-1.5 h-1 w-1 shrink-0 rounded-full bg-stone-400' />
-											{r}
-										</li>
+
+								<div class='space-y-8 mt-4'>
+									{company.positions.map((pos) => (
+										<div class='pl-4 border-l-2 border-stone-200 dark:border-stone-700'>
+											<div class='flex flex-wrap items-baseline justify-between gap-2 mb-2'>
+												<h4 class='font-medium text-base'>{pos.title}</h4>
+												<span class='text-sm text-stone-500 dark:text-stone-400'>{pos.period}</span>
+											</div>
+											<p class='text-sm text-stone-600 dark:text-stone-400 mb-3 leading-relaxed'>
+												{pos.description}
+											</p>
+											<ul class='space-y-1 mb-3'>
+												{pos.responsibilities.map((r) => (
+													<li class='flex gap-3 text-sm text-stone-700 dark:text-stone-300'>
+														<span class='mt-1.5 h-1 w-1 shrink-0 rounded-full bg-stone-400' />
+														{r}
+													</li>
+												))}
+											</ul>
+											{pos.tags && (
+												<div class='flex flex-wrap gap-1.5 mt-3'>
+													{pos.tags.map((tech) => (
+														<span class='px-2 py-0.5 text-xs rounded-full bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-400'>
+															{tech}
+														</span>
+													))}
+												</div>
+											)}
+											{pos.industry && (
+												<p class='text-xs text-stone-500 dark:text-stone-500 mt-2'>
+													Industry: {pos.industry}
+												</p>
+											)}
+										</div>
 									))}
-								</ul>
-								{pos.tags && (
-									<div class='flex flex-wrap gap-1.5 mt-2'>
-										{pos.tags.map((tech) => (
-											<span class='px-2 py-0.5 text-xs rounded-full bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-400'>
-												{tech}
-											</span>
-										))}
-									</div>
-								)}
-								{pos.industry && (
-									<p class='text-xs text-stone-500 dark:text-stone-500 mt-1'>
-										Industry: {pos.industry}
-									</p>
-								)}
+								</div>
 							</div>
-						))}
-					</div>
-				))
-			}
-		</div>
-	</section>
-
-	<hr class='border-stone-200 dark:border-stone-800 mb-10' />
-
-	<!-- Education -->
-	<section class='mb-10'>
-		<h2 class={sectionHeading}>Education</h2>
-
-		{
-			cv.education.map((edu) => (
-				<div class='pl-4 border-l-2 border-stone-200 dark:border-stone-700'>
-					<div class='flex flex-wrap items-baseline justify-between gap-2 mb-1'>
-						<h3 class='font-semibold'>
-							<a
-								href={edu.website}
-								target='_blank'
-								rel='noopener noreferrer'
-								class='hover:underline underline-offset-2'
-							>
-								{edu.institution}
-							</a>
-						</h3>
-						<span class='text-sm text-stone-500 dark:text-stone-400'>
-							{edu.location} · {edu.year}
-						</span>
-					</div>
-					<p class='font-medium text-sm mb-0.5'>{edu.degree}</p>
-					<p class='text-xs text-stone-500 dark:text-stone-400 mb-2'>{edu.degreeType}</p>
-					<p class='text-sm text-stone-600 dark:text-stone-400 mb-2 leading-relaxed'>
-						{edu.description}
-					</p>
-					{edu.thesis && (
-						<p class='text-sm text-stone-700 dark:text-stone-300 mb-1'>
-							<span class='font-medium'>Thesis:</span>{' '}
-							<a
-								href={edu.thesisUrl}
-								target='_blank'
-								rel='noopener noreferrer'
-								class='hover:underline underline-offset-2'
-							>
-								{edu.thesis}
-							</a>
-							{edu.grade && <span class='text-stone-500'> · {edu.grade}</span>}
-						</p>
-					)}
-					{edu.tags && (
-						<div class='flex flex-wrap gap-1.5 mt-2'>
-							{edu.tags.map((tech) => (
-								<span class='px-2 py-0.5 text-xs rounded-full bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-400'>
-									{tech}
-								</span>
-							))}
-						</div>
-					)}
+						))
+					}
 				</div>
-			))
-		}
-	</section>
+			</section>
 
-	<!-- Languages & Certifications -->
-	<div class='grid grid-cols-1 md:grid-cols-2 gap-10 mb-10'>
-		<section>
-			<h2 class={sectionHeading}>Languages</h2>
-			<div class='space-y-3'>
+			<!-- Earlier Experience -->
+			<section class='mb-10'>
+				<h2 class={sectionHeading}>Earlier Experience</h2>
+
+				<div class='space-y-8'>
+					{
+						cv.earlierExperience.map((company) => (
+							<div class='pl-4 border-l-2 border-stone-200 dark:border-stone-700'>
+								<div class='flex flex-wrap items-baseline justify-between gap-2 mb-1'>
+									<h3 class='font-semibold'>
+										<a
+											href={company.website}
+											target='_blank'
+											rel='noopener noreferrer'
+											class='hover:underline underline-offset-2'
+										>
+											{company.name}
+										</a>
+									</h3>
+									<span class='text-sm text-stone-500 dark:text-stone-400'>
+										{company.location} · {company.period}
+									</span>
+								</div>
+								{company.positions.map((pos) => (
+									<div class='mt-2'>
+										<div class='flex flex-wrap items-baseline justify-between gap-2 mb-2'>
+											<span class='text-sm font-medium text-stone-600 dark:text-stone-400'>
+												{pos.title}
+											</span>
+										</div>
+										<p class='text-sm text-stone-600 dark:text-stone-400 mb-2 leading-relaxed'>
+											{pos.description}
+										</p>
+										<ul class='space-y-1 mb-2'>
+											{pos.responsibilities.map((r) => (
+												<li class='flex gap-3 text-sm text-stone-700 dark:text-stone-300'>
+													<span class='mt-1.5 h-1 w-1 shrink-0 rounded-full bg-stone-400' />
+													{r}
+												</li>
+											))}
+										</ul>
+										{pos.tags && (
+											<div class='flex flex-wrap gap-1.5 mt-2'>
+												{pos.tags.map((tech) => (
+													<span class='px-2 py-0.5 text-xs rounded-full bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-400'>
+														{tech}
+													</span>
+												))}
+											</div>
+										)}
+										{pos.industry && (
+											<p class='text-xs text-stone-500 dark:text-stone-500 mt-1'>
+												Industry: {pos.industry}
+											</p>
+										)}
+									</div>
+								))}
+							</div>
+						))
+					}
+				</div>
+			</section>
+
+			<hr class='border-stone-200 dark:border-stone-800 mb-10' />
+
+			<!-- Education -->
+			<section class='mb-10'>
+				<h2 class={sectionHeading}>Education</h2>
+
 				{
-					cv.languages.map((lang) => (
-						<div class='flex items-center justify-between'>
-							<span class='font-medium text-sm'>{lang.name}</span>
-							<span class='text-sm text-stone-500 dark:text-stone-400'>
-								{lang.isNative ? 'Native' : lang.level}
-							</span>
+					cv.education.map((edu) => (
+						<div class='pl-4 border-l-2 border-stone-200 dark:border-stone-700'>
+							<div class='flex flex-wrap items-baseline justify-between gap-2 mb-1'>
+								<h3 class='font-semibold'>
+									<a
+										href={edu.website}
+										target='_blank'
+										rel='noopener noreferrer'
+										class='hover:underline underline-offset-2'
+									>
+										{edu.institution}
+									</a>
+								</h3>
+								<span class='text-sm text-stone-500 dark:text-stone-400'>
+									{edu.location} · {edu.year}
+								</span>
+							</div>
+							<p class='font-medium text-sm mb-0.5'>{edu.degree}</p>
+							<p class='text-xs text-stone-500 dark:text-stone-400 mb-2'>{edu.degreeType}</p>
+							<p class='text-sm text-stone-600 dark:text-stone-400 mb-2 leading-relaxed'>
+								{edu.description}
+							</p>
+							{edu.thesis && (
+								<p class='text-sm text-stone-700 dark:text-stone-300 mb-1'>
+									<span class='font-medium'>Thesis:</span>{' '}
+									<a
+										href={edu.thesisUrl}
+										target='_blank'
+										rel='noopener noreferrer'
+										class='hover:underline underline-offset-2'
+									>
+										{edu.thesis}
+									</a>
+									{edu.grade && <span class='text-stone-500'> · {edu.grade}</span>}
+								</p>
+							)}
+							{edu.tags && (
+								<div class='flex flex-wrap gap-1.5 mt-2'>
+									{edu.tags.map((tech) => (
+										<span class='px-2 py-0.5 text-xs rounded-full bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-400'>
+											{tech}
+										</span>
+									))}
+								</div>
+							)}
 						</div>
 					))
 				}
-			</div>
-			<p class='text-xs text-stone-500 dark:text-stone-400 mt-3 leading-relaxed'>
-				English certification: Certificate in Advanced English (CAE), University of Cambridge,
-				05/2011.
-			</p>
-		</section>
+			</section>
 
-		<section>
-			<h2 class={sectionHeading}>Certifications &amp; Training</h2>
-			<ul class='space-y-2'>
-				{
-					cv.certifications.map((cert) => (
-						<li class='text-sm text-stone-700 dark:text-stone-300'>
-							<span class='text-stone-500 dark:text-stone-400 mr-2'>{cert.year}</span>
-							{cert.url ? (
-								<a
-									href={cert.url}
-									target='_blank'
-									rel='noopener noreferrer'
-									class='hover:underline underline-offset-2'
-								>
-									{cert.name}
-								</a>
-							) : (
-								cert.name
-							)}
-							{cert.location && (
-								<span class='text-stone-500 dark:text-stone-400'>, {cert.location}</span>
-							)}
-						</li>
-					))
-				}
-			</ul>
-		</section>
-	</div>
+			<!-- Languages & Certifications -->
+			<div class='grid grid-cols-1 md:grid-cols-2 gap-10 mb-10'>
+				<section>
+					<h2 class={sectionHeading}>Languages</h2>
+					<div class='space-y-3'>
+						{
+							cv.languages.map((lang) => (
+								<div class='flex items-center justify-between'>
+									<span class='font-medium text-sm'>{lang.name}</span>
+									<span class='text-sm text-stone-500 dark:text-stone-400'>
+										{lang.isNative ? 'Native' : lang.level}
+									</span>
+								</div>
+							))
+						}
+					</div>
+					<p class='text-xs text-stone-500 dark:text-stone-400 mt-3 leading-relaxed'>
+						English certification: Certificate in Advanced English (CAE), University of Cambridge,
+						05/2011.
+					</p>
+				</section>
 
-	<!-- Additional Information -->
-	<section class='mb-10'>
-		<h2 class={sectionHeading}>Additional Information</h2>
-		<div class='grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-stone-700 dark:text-stone-300'>
-			<div>
-				<span class='font-medium'>Driving License:</span>
-				{cv.additionalInfo.drivingLicense}
+				<section>
+					<h2 class={sectionHeading}>Certifications &amp; Training</h2>
+					<ul class='space-y-2'>
+						{
+							cv.certifications.map((cert) => (
+								<li class='text-sm text-stone-700 dark:text-stone-300'>
+									<span class='text-stone-500 dark:text-stone-400 mr-2'>{cert.year}</span>
+									{cert.url ? (
+										<a
+											href={cert.url}
+											target='_blank'
+											rel='noopener noreferrer'
+											class='hover:underline underline-offset-2'
+										>
+											{cert.name}
+										</a>
+									) : (
+										cert.name
+									)}
+									{cert.location && (
+										<span class='text-stone-500 dark:text-stone-400'>, {cert.location}</span>
+									)}
+								</li>
+							))
+						}
+					</ul>
+				</section>
 			</div>
-			<div>
-				<span class='font-medium'>Personal Interests:</span>
-				{cv.additionalInfo.interests}
-			</div>
+
+			<!-- Additional Information -->
+			<section class='mb-10'>
+				<h2 class={sectionHeading}>Additional Information</h2>
+				<div
+					class='grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-stone-700 dark:text-stone-300'
+				>
+					<div>
+						<span class='font-medium'>Driving License:</span>
+						{cv.additionalInfo.drivingLicense}
+					</div>
+					<div>
+						<span class='font-medium'>Personal Interests:</span>
+						{cv.additionalInfo.interests}
+					</div>
+				</div>
+			</section>
+		</main>
+		<div class='px-5 sm:mx-auto sm:max-w-2xl sm:px-8 lg:px-0 md:max-w-6xl'>
+			<Footer />
 		</div>
-	</section>
-</BaseLayout>
+		<TwSizeIndicator />
+		<CookieConsent />
+		<style>
+			body {
+				margin-left: calc(100vw - 100%);
+			}
+		</style>
+	</body>
+</html>

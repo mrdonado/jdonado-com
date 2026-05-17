@@ -80,15 +80,15 @@ export const cv: CVData = {
 	github: 'https://github.com/mrdonado',
 
 	summary:
-		'Solution Architect and Engineering Lead with close to 20 years of experience in software architecture, digital product development, and technical leadership at scale. Applies systems thinking to identify hidden constraints, untangle inter-team dependencies, and design environments where teams can own and deliver end to end. Known for driving engineering culture as a strategic lever — from DORA metrics and communities of practice to feedback culture and AI-driven workflows. Experienced in leading teams of teams, influencing architecture across organisations, and aligning technical strategy with business goals.',
+		'Technical leader and Solution Architect who architects both the systems and the engineering organisations that build them — close to 20 years of experience in software architecture, digital product development, and leadership at scale. Applies systems thinking to identify hidden constraints, untangle inter-team dependencies, and design environments where teams can own and deliver end to end. Known for driving engineering culture as a strategic lever — from DORA metrics and communities of practice to feedback culture and AI-driven workflows. Experienced in leading teams of teams, influencing architecture across organisations, and aligning technical strategy with business goals.',
 
 	impact: [
 		'Led architecture and technical direction across multiple Porsche.com Agile Release Trains — including PCOM, Brand and Model, and Brand Platform — spanning 5 to 8 product and system teams.',
 		'Applied systems thinking to identify hidden bottlenecks — in content delivery chains, homepage dependencies, model pages, and technical data integrations — that silently prevented teams from working in parallel; redesigned both architecture and delivery processes to remove them.',
-		'Led the transformation of Porsche.com from a tightly coupled, on-premises setup where strong inter-team dependencies made independent delivery nearly impossible, to a cloud-native, verticalized architecture where teams own and ship their products end to end.',
+		'Led the architectural evolution of Porsche.com from a traditional on-premises monolith to a cloud-native, verticalized platform — unlocking independent delivery and end-to-end ownership across product and system teams.',
 		'Championed engineering culture as a strategic lever: established communities of practice, introduced DORA metrics and SRE practices, drove AI-driven workflows, normalised blameless post-mortems, and coached engineers on ownership, feedback, and trust.',
 		'Architectural patterns established for Porsche.com attracted cross-group interest, with active evaluation by Audi and alignment sessions with Volkswagen Group engineering teams.',
-		'Act as direct-line manager (People Lead) for eight colleagues specialised in AI and Software Engineering — conducting 1-on-1s, supporting career development, and writing performance reviews alongside the main Solution Architect role.',
+		'Act as direct-line manager (People Lead) for up to eight software engineers across a range of specialisations — conducting 1-on-1s, supporting career development, and writing performance reviews alongside the main Solution Architect role.',
 		'Conducted hundreds of technical interviews over the years for roles spanning junior frontend developer to senior architect, across backend, frontend, and all things software engineering — contributing directly to hiring quality and team growth.',
 		'Built and led teams of teams across multiple companies and industries over nearly two decades — consistently improving engineering practices and contributing to the delivery of impactful digital products.'
 	],
@@ -97,32 +97,32 @@ export const cv: CVData = {
 		{
 			category: 'Architecture',
 			items:
-				'Solution architecture, software architecture, cloud-native systems, frontend architecture, integration architecture, API design, platform modernization, system design, architecture alignment.'
+				'Solution architecture, software architecture, cloud-native systems, event-driven architecture, micro-frontend architecture, integration architecture, DDD, bounded contexts, Event Storming, API design, platform modernization, ADRs, architecture alignment across teams of teams.'
 		},
 		{
 			category: 'Systems Thinking & Culture',
 			items:
-				'Systems thinking, constraint identification, dependency mapping, organisational design, engineering culture, communities of practice, DORA metrics, SRE, blameless post-mortems, feedback culture, AI-driven workflows.'
+				'Systems thinking, constraint identification, dependency mapping, Team Topologies, organisational design, engineering culture, communities of practice, DORA metrics, SRE, blameless post-mortems, feedback culture.'
 		},
 		{
 			category: 'Technical Leadership',
 			items:
-				'Technical strategy, team leadership, mentoring, engineering coaching, architecture guidance, code quality, technical decision-making, stakeholder alignment, cross-functional collaboration, technical interviewing.'
+				'Technical strategy, team leadership, people management, mentoring, engineering coaching, code quality, technical decision-making, stakeholder alignment, cross-functional collaboration, technical interviewing.'
 		},
 		{
 			category: 'Product & Delivery',
 			items:
-				'Digital product development, Lean product development, experimentation, data-driven decision-making, customer-centric solutions, agile delivery, discovery-to-delivery alignment.'
+				'Digital product development, Lean product development, SAFe, experimentation, data-driven decision-making, customer-centric solutions, agile delivery, discovery-to-delivery alignment.'
 		},
 		{
 			category: 'Communication & Languages',
 			items:
-				'Stakeholder management, executive communication, storytelling, negotiation, technical writing. Native Spanish speaker, fluent in English and German, currently learning Greek.'
+				'Stakeholder management, executive communication, storytelling, negotiation, technical writing. Multilingual: native Spanish, fluent English and German (both C1), currently learning Greek.'
 		},
 		{
 			category: 'Engineering',
 			items:
-				'Web (full-stack) and mobile development, TypeScript, Python, TDD, cloud development, DevOps practices, automation, quality assurance, software integration. Familiar with most mainstream frameworks and tooling across the stack.'
+				'Web (full-stack) and mobile development, TypeScript, Python, TDD, cloud development, CI/CD, DevOps, containerisation, AI-driven workflows, automation, quality assurance, software integration. Familiar with most mainstream frameworks and tooling across the stack.'
 		}
 	],
 
@@ -147,7 +147,7 @@ export const cv: CVData = {
 						'Managed the adoption of modern frontend and cloud technologies, practices, and architecture patterns.',
 						'Contributed to significant improvements in performance, accessibility, and reliability.',
 						'Helped position Porsche.com as a leading digital platform within the automotive industry.',
-						'Act as direct-line manager (People Lead) for eight colleagues specialised in AI and Software Engineering — conducting 1-on-1s, supporting career development, and writing performance reviews alongside the main Solution Architect role.',
+						'Act as direct-line manager (People Lead) for up to eight software engineers across a range of specialisations — conducting 1-on-1s, supporting career development, and writing performance reviews alongside the main Solution Architect role.',
 						'Support colleagues ranging from junior professionals to seasoned experts with over 20 years of experience.'
 					],
 					tags: [
@@ -164,7 +164,7 @@ export const cv: CVData = {
 						'Event Storming',
 						'Micro-frontends',
 						'CI/CD',
-						'Next.js',
+						'Vercel',
 						'React',
 						'TypeScript',
 						'SSR',
@@ -192,7 +192,7 @@ export const cv: CVData = {
 					tags: [
 						'iOS development',
 						'React Native',
-						'React.js',
+						'React',
 						'Spring Boot',
 						'Node.js',
 						'AWS Cognito',
@@ -244,7 +244,7 @@ export const cv: CVData = {
 						'jQuery',
 						'Lodash',
 						'Meteor',
-						'd3.js',
+						'D3.js',
 						'SASS',
 						'Docker',
 						'C#',
@@ -423,7 +423,7 @@ export const cv: CVData = {
 			name: 'Hands-on exploration of AI-driven workflows, LLMs, prompt engineering, agentic workflows (OpenClaw, Hermes, and others), and AI-assisted development — applied to professional projects and personal experiments.'
 		},
 		{
-			year: '2023–present',
+			year: '2022–present',
 			name: 'Personal knowledge management with Obsidian — structured note-taking, idea linking, and maintaining a personal knowledge base.',
 			url: 'https://obsidian.md'
 		},
@@ -449,6 +449,6 @@ export const cv: CVData = {
 	additionalInfo: {
 		drivingLicense: 'Category B',
 		interests:
-			'Science and technology, travel (34 countries and counting), music, photography, guitar playing, music composition, home recording, and foosball (Kicker! ⚽).'
+			'Science and technology, geopolitics, markets and investing, quantified self and personal analytics, travel (34 countries and counting), music, photography, guitar playing, music composition, home recording, and foosball (Kicker! ⚽).'
 	}
 }
