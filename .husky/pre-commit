@@ -1,5 +1,0 @@
-# npm
-# npx lint-staged
-
-# pnpm
-pnpm exec lint-staged

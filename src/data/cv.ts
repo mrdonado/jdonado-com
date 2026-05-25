@@ -56,6 +56,8 @@ export interface CVData {
 	email: string
 	website: string
 	github: string
+	linkedin: string
+	x: string
 	summary: string
 	impact: string[]
 	competencies: CompetencyArea[]
@@ -78,6 +80,8 @@ export const cv: CVData = {
 	email: 'jdonado@jdonado.com',
 	website: 'https://www.jdonado.com',
 	github: 'https://github.com/mrdonado',
+	linkedin: 'https://www.linkedin.com/in/f-javier-r-donado',
+	x: 'https://x.com/jdonado',
 
 	summary:
 		'Technical leader and Solution Architect who architects both the systems and the engineering organisations that build them — close to 20 years of experience in software architecture, digital product development, and leadership at scale. Applies systems thinking to identify hidden constraints, untangle inter-team dependencies, and design environments where teams can own and deliver end to end. Known for driving engineering culture as a strategic lever — from DORA metrics and communities of practice to feedback culture and AI-driven workflows. Experienced in leading teams of teams, influencing architecture across organisations, and aligning technical strategy with business goals.',

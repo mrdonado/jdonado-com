@@ -24,7 +24,6 @@
 		"format": "prettier --plugin-search-dir=. --write .",
 		"lint": "eslint .",
 		"pre-commit": "lint-staged",
-		"prepare": "husky install",
 		"generate-cv": "node scripts/generate-cv-pdf.mjs"
 	},
 	"dependencies": {
@@ -51,7 +50,6 @@
 		"eslint": "^9.39.4",
 		"eslint-plugin-astro": "^1.7.0",
 		"eslint-plugin-jsx-a11y": "^6.10.2",
-		"husky": "^9.1.7",
 		"lint-staged": "^16.4.0",
 		"mdast-util-to-string": "^4.0.0",
 		"motion": "^12.40.0",
