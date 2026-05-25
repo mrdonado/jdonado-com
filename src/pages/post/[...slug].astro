@@ -1,5 +1,5 @@
 ---
-import { type CollectionEntry, getCollection } from 'astro:content'
+import { type CollectionEntry, getCollection, render } from 'astro:content'
 import BlogPost from '@/layouts/BlogPost'
 import Code from '@/components/mdx/Code'
 import ListRelatedPosts from '@/components/ListRelatedPosts'
@@ -9,7 +9,7 @@ import { getPosts } from '@/utils'
 import SButton from '@/components/mdx/SButton'
 import { disqusConfig } from '@/data/disqus.config'
 import TwitterIcon from '@/components/icons/TwitterIcon'
-import LinkedinIcon from '@/components/icons/LinkedInIcon'
+import LinkedinIcon from '@/components/icons/linkedinIcon'
 import YouTubeIcon from '@/components/icons/YouTubeIcon'
 import InstagramIcon from '@/components/icons/InstagramIcon'
 import TikTokIcon from '@/components/icons/TikTokIcon'
@@ -37,7 +37,7 @@ const getRelatedPosts = (post: Props) => {
 
 const relatedPosts = getRelatedPosts(post)
 
-const { Content, headings, remarkPluginFrontmatter } = await post.render()
+const { Content, headings, remarkPluginFrontmatter } = await render(post)
 
 const disqusEnabled = disqusConfig.enabled
 ---

@@ -25,7 +25,11 @@ const allPosts = [
 				.sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime())
 				.map((post) => (
 					<a
-						href={post.isApp ? `/apps/${post.slug}` : `/post/${post.slug}`}
+						href={
+							post.isApp
+								? `/apps/${post.id.replace(/\.[^/.]+$/, '')}`
+								: `/post/${post.id.replace(/\.[^/.]+$/, '')}`
+						}
 						aria-label={`${post.displayTitle} - Read more`}
 						class='flex items-center gap-4 bg-gray-200/60 dark:bg-gray-700/60 p-4 transition-all hover:shadow-lg hover:bg-gray-300/70 dark:hover:bg-gray-600/70 appear-smoothly w-full'
 					>

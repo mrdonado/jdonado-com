@@ -1,5 +1,5 @@
 ---
-import { type CollectionEntry, getCollection } from 'astro:content'
+import { type CollectionEntry, getCollection, render } from 'astro:content'
 import App from '@/layouts/App'
 import Code from '@/components/mdx/Code'
 import { getApps } from '@/utils'
@@ -18,7 +18,7 @@ type Props = CollectionEntry<'app'>
 
 const app = Astro.props
 
-const { Content, headings, remarkPluginFrontmatter } = await app.render()
+const { Content, headings, remarkPluginFrontmatter } = await render(app)
 ---
 
 <App id={app.id} data={app.data} headings={headings} readTime={remarkPluginFrontmatter.minutesRead}>

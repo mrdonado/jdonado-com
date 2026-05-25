@@ -18,7 +18,7 @@ const isRightAligned = variant === 'right-aligned'
 		(items || []).map((item) => {
 			const isPost = 'title' in item.data
 			const title = isPost ? item.data.title : item.data.name
-			const itemUrl = `/${isPost ? 'post' : 'apps'}/${item.slug}/`
+			const itemUrl = `/${isPost ? 'post' : 'apps'}/${item.id.replace(/\.[^/.]+$/, '')}/`
 			const pubDate = item.data.pubDate
 
 			return (

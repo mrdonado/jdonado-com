@@ -1,0 +1,20 @@
+diff --git a/plugin/index.js b/plugin/index.js
+index f45f36f162cca65859ce580220b6ac3ae6b4d767..2fce0e3bb8c169b23ce254b89e8dd8133d880909 100644
+--- a/plugin/index.js
++++ b/plugin/index.js
+@@ -30,11 +30,11 @@ const vitePluginAstroImageTools = {
+ 
+     const { outDir, sourcemap } = config.build;
+ 
++    const rawAssetFileNames = config.build.rollupOptions.output?.assetFileNames;
+     let inheritedPattern =
+-      config.build.rollupOptions.output?.assetFileNames?.replace(
+-        "[name]",
+-        "[name]@[width]"
+-      );
++      typeof rawAssetFileNames === 'string'
++        ? rawAssetFileNames.replace("[name]", "[name]@[width]")
++        : undefined;
+ 
+     let assetFileNames = path.normalize(
+       GlobalConfigOptions.assetFileNames ||

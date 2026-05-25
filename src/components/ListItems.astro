@@ -1,5 +1,5 @@
 ---
-import type { CollectionEntry } from 'astro:content'
+import { type CollectionEntry, render } from 'astro:content'
 import ContentCard from '@/components/ContentCard'
 import { cn } from '@/utils'
 
@@ -21,14 +21,14 @@ const { items, FirstBig = false } = Astro.props
 >
 	{
 		(items || []).map(async (item, index) => {
-			const { remarkPluginFrontmatter } = await item.render()
+			const { remarkPluginFrontmatter } = await render(item)
 
 			return (
 				<ContentCard
 					id={item.id}
 					index={index}
 					data={item.data}
-					slug={item.slug}
+					slug={item.id.replace(/\.[^/.]+$/, '')}
 					readTime={remarkPluginFrontmatter.minutesRead}
 				/>
 			)
