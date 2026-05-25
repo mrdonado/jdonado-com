@@ -1,0 +1,156 @@
+---
+title: "AI Accelerates Software Development - That's Why You Should Think Slow"
+description: 'AI coding tools are already making parts of software development dramatically faster. The risk is that implementation accelerates faster than review, architecture, maintainability, and product judgment.'
+pubDate: 'May 25 2026'
+heroImage: '/src/assets/images/ai-software-engineering.jpg'
+category: 'Writing Software'
+xComThread: ''
+linkedInThread: ''
+tags:
+  [
+    'ai',
+    'software-engineering',
+    'architecture',
+    'product-development',
+    'leadership',
+    'productivity'
+  ]
+---
+
+AI is accelerating software development.
+
+That part is no longer theoretical. Many of us have already seen tasks that used to take hours, sometimes days, completed in minutes. A migration script, a bugfix, a test suite draft, a refactor, a first implementation using an unfamiliar API, a small internal tool, a debugging hypothesis. The speedup is undeniable.
+
+I do not think we are going back to the old way of writing software. And honestly, I do not think we should.
+
+But I think there is a trap hidden inside that acceleration:
+
+> AI accelerates some parts of software development much more than others.
+
+It accelerates implementation very well.
+
+But the parts it accelerates most easily are not necessarily the parts that make software successful. Understanding still takes time. Product judgment still requires context. Architecture still needs coherence. Systems still have to be cost-effective, and code still has to remain maintainable after the first impressive demo.
+
+This distinction matters, because software development was never only about producing code.
+
+## The Bottleneck Moves
+
+For a long time, writing code was one of the most visible parts of software development. It was the thing managers tried to estimate, developers were hired to do, and tools were built to optimize.
+
+So it is natural to assume that if code becomes cheaper, software becomes cheaper too. Sometimes that will be true.
+
+If a developer can generate a useful script in five minutes instead of spending half a day on it, that is a clear improvement. If a team can explore alternatives faster, understand an unfamiliar library sooner, or remove repetitive work from the process, that is valuable. We should not pretend otherwise just to sound cautious.
+
+The more interesting question is what happens after the code appears.
+
+Someone still has to decide whether it should exist. Someone has to understand how it fits into the system. Someone has to review it, maintain it, operate it, pay for it, and explain it six months later when the original context has disappeared.
+
+This is where the bottleneck shifts. However, that does not necessarily mean developers will have less to do while other roles suddenly have more. It simply means that the nature of the work may change. We need to learn and adapt.
+
+If implementation becomes faster than review, review becomes the constraint. If prototyping becomes faster than product discovery, product judgment becomes the constraint. If local coding becomes faster while token usage and cloud usage quietly grow, cost ownership becomes the constraint.
+
+The speed is real. But it is not evenly distributed across the work.
+
+## The Token Bill Is the New Cloud Bill
+
+One of the first places where this becomes visible is cost.
+
+Recently, AI coding tools have started to produce the kind of budget conversations that cloud teams know very well. [Business Insider reported that Uber had already exceeded its 2026 Claude Code budget](https://www.businessinsider.com/uber-coo-andrew-macdonald-ai-token-spending-harder-justify-2026-5), with leadership questioning whether high token usage was clearly translating into more useful consumer features.
+
+Microsoft has also reportedly started cancelling internal Claude Code licenses, moving thousands of developers toward GitHub Copilot CLI instead. [The Verge reported the internal tooling shift](https://www.theverge.com/tech/930447/microsoft-claude-code-discontinued-notepad), while [Fortune connected that pullback to the broader cost pressure of AI usage at enterprise scale](https://fortune.com/2026/05/22/microsoft-ai-cost-problem-tokens-agents/).
+
+Even Anthropic’s own Claude Code documentation treats cost management as a first-class concern. It recommends tracking token usage, setting team spend limits, and reducing costs through context management, model choice, extended-thinking settings, and preprocessing hooks. Anthropic’s API documentation also distinguishes spend limits from rate limits, which is another reminder that usage needs governance once it reaches organizational scale.
+
+This does not mean AI coding tools are too expensive. It does not mean those companies are rejecting them. It does not even mean Claude is uniquely problematic.
+
+The point is subtler and more interesting:
+
+> AI-assisted development is not only a productivity story. It is also an infrastructure story.
+
+That should sound familiar.
+
+Cloud also began, for many teams, as a story about speed and flexibility. Later, the bill arrived. And when it did, many organizations discovered that cost was not merely a finance problem. It was an architecture problem, an ownership problem, and often a product problem.
+
+AI-assisted development may follow a similar path.
+
+At small scale, it feels like a personal productivity tool. At organizational scale, it becomes an economic system. And economic systems need visibility, ownership, and constraints.
+
+## Faster Code Can Create Slower Conversations
+
+There is another cost that is harder to measure: coordination.
+
+A team may generate more code, more pull requests, more prototypes, and more possible solutions. That can feel productive. It can also create more things that need to be discussed.
+
+The implementation may have taken minutes. The meeting to understand whether it is the right implementation may still take an hour. Or several hours. With several people.
+
+This is not a joke. Meetings are expensive, but they rarely appear in the same mental category as cloud bills or AI bills. A company may worry about token usage while casually putting eight people in a recurring meeting to understand work that was generated too quickly for the team to absorb.
+
+Of course, the answer is not to remove meetings. That would be simplistic. Software development is collaborative. Alignment matters. Product context matters. Architecture decisions often need discussion.
+
+But if AI reduces implementation time while increasing review, coordination, or explanation time, then the productivity equation becomes less obvious.
+
+The work did not disappear. It moved.
+
+## Review Becomes More Important, Not Less
+
+If machines become very good at producing code, humans need to become better at evaluating code.
+
+This has always been true. Code review has always been a place where quality, knowledge sharing, and design judgment meet. But AI increases the speed and volume of what can enter the codebase, which makes review more important, not less.
+
+The key question is no longer only whether the code compiles or whether the tests pass. It is whether the change belongs in the system. Whether the abstraction is right. Whether the team understands the trade-off. Whether the cost is acceptable. Whether the implementation solves the actual product problem.
+
+This is where experienced engineers may become more valuable, not less. This is why less experienced engineers still need to learn how things work and why they do.
+
+Not because they type faster. Because they can judge what should be accepted, rejected, simplified, or redesigned.
+
+Machines can definitely help here as well, but my point is that removing humans from the equation can be dangerous, especially when the work still requires judgment, context, and accountability.
+
+## The Unattended Codebase Problem
+
+One of the more interesting questions is what happens when AI can generate large parts of a system with very little human involvement.
+
+At first, that sounds exciting. And maybe, eventually, it will be.
+
+But imagine a large codebase developed mostly unattended. It works for a while. Features are added quickly. The demos look impressive. Then something breaks in a way the AI cannot fix.
+
+Can humans step in? Can they understand the system? Can they reason about its boundaries? Can they safely change it? How do we get back to a point where they can?
+
+If the answer is no, then the system is not autonomous. It is abandoned with better tooling.
+
+That does not mean fully automated development will be impossible forever. I can imagine us gradually moving closer to that point. But getting there will require more than better code generation, and I believe human skill will still matter, even if the nature of that skill changes. In that sense, this is nothing new for software developers.
+
+The system should remain understandable. The architecture should remain explainable. The cost should remain visible. Ownership should remain clear. The product intent should remain connected to the implementation.
+
+The code should not merely work today. It should remain possible to change tomorrow.
+
+## Spec-Driven Development Might Be the Interesting Part
+
+This is why I find the emergence of spec-driven development particularly interesting.
+
+If implementation becomes cheaper, the quality of the input matters more. What exactly are we asking the machine to build? Which constraints should it respect? What should it optimize for? What should it avoid? Which assumptions should be explicit?
+
+This may move software engineering closer to specification, architecture, product thinking, and system design. That could be a good thing.
+
+Many teams already suffer because implementation starts before the problem is properly understood. AI could make that worse by making premature implementation almost frictionless.
+
+Or it could make it better by forcing us to become more explicit about intent.
+
+The difference will not come from the model alone. It will come from the discipline around it.
+
+## Beginner’s Mindset Beats Prophecy
+
+The honest answer is that this is still very new.
+
+We should experiment aggressively, but conclude carefully. AI coding tools are already useful. They already accelerate real tasks. They will almost certainly become part of normal software development.
+
+But we should be skeptical of simple narratives.
+
+AI will not make every team equally productive. It will not remove the need for architecture. It will not remove the need for product judgment. It will not remove the need for maintainability. It will not remove responsibility.
+
+The teams that benefit most will probably not be the teams that generate the most code. They will be the teams that learn how to combine acceleration with understanding.
+
+Because the danger is not that AI makes us faster.
+
+The danger is that it makes some parts of the work faster than our ability to responsibly absorb them.
+
+And that is how acceleration becomes a trap.
