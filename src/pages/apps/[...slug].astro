@@ -10,7 +10,7 @@ export async function getStaticPaths() {
 	const apps = await getApps()
 
 	return apps.map((app) => ({
-		params: { slug: app.slug },
+		params: { slug: app.id.replace(/\.[^/.]+$/, '') },
 		props: app
 	}))
 }
