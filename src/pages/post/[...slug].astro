@@ -1,5 +1,5 @@
 ---
-import { type CollectionEntry, getCollection, render } from 'astro:content'
+import { type CollectionEntry, render } from 'astro:content'
 import BlogPost from '@/layouts/BlogPost'
 import Code from '@/components/mdx/Code'
 import ListRelatedPosts from '@/components/ListRelatedPosts'
@@ -14,7 +14,7 @@ import YouTubeIcon from '@/components/icons/YouTubeIcon'
 import InstagramIcon from '@/components/icons/InstagramIcon'
 import TikTokIcon from '@/components/icons/TikTokIcon'
 
-const posts = await getCollection('blog')
+const posts = await getPosts()
 export async function getStaticPaths() {
 	const posts = await getPosts()
 
@@ -29,10 +29,16 @@ const post = Astro.props
 const MAX_POSTS = 3
 const getRelatedPosts = (post: Props) => {
 	const lowercaseTags = post.data.tags.map((tag) => tag.toLowerCase())
-	const relatedPosts = posts.filter(
-		(p) => p.id !== post.id && p.data.tags.some((t) => lowercaseTags.includes(t.toLowerCase()))
-	)
-	return relatedPosts.slice(0, MAX_POSTS)
+	return posts
+		.filter((p) => p.id !== post.id)
+		.map((p) => ({
+			post: p,
+			score: p.data.tags.filter((t) => lowercaseTags.includes(t.toLowerCase())).length
+		}))
+		.filter(({ score }) => score > 0)
+		.sort((a, b) => b.score - a.score)
+		.slice(0, MAX_POSTS)
+		.map(({ post }) => post)
 }
 
 const relatedPosts = getRelatedPosts(post)

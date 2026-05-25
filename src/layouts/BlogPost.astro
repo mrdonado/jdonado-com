@@ -7,8 +7,9 @@ import type { MarkdownHeading } from 'astro'
 import { Picture } from 'astro-imagetools/components'
 import { getApps } from '@/utils'
 import YouTubeIcon from '@/components/icons/YouTubeIcon'
+import { siteConfig } from '@/data/site.config'
 
-const lastApp = (await getApps(1))[0]
+const lastApp = siteConfig.showAppBanner ? (await getApps(1))[0] : null
 
 type Props = {
 	id: CollectionEntry<'blog'>['id']
@@ -43,34 +44,38 @@ const articleDate = pubDate.toISOString()
 				</p>
 			</div>
 
-			<div class='flex flex-wrap justify-center items-center gap-2 gap-y-4 md:gap-5'>
+			<div
+				class={`flex flex-wrap justify-center items-center gap-2 gap-y-4 md:gap-5${!lastApp ? ' mb-4' : ''}`}
+			>
 				{tags.map((tag) => <Tag tag={tag} />)}
 
-				<a
-					href={`/apps/${lastApp.id.replace(/\.[^/.]+$/, '')}`}
-					class='block dark:border-gray-600 rounded-lg text-gray-500 dark:text-gray-400 text-base md:text-lg mx-auto px-3 py-2 hover:border-gray-400 hover:dark:border-gray-500 hover:shadow transition-all'
-				>
-					<div class='flex items-center justify-center gap-4'>
-						<div class='relative w-[60px] h-[60px] overflow-hidden rounded-[5px]'>
-							<Picture
-								src={lastApp.data.icon}
-								alt={lastApp.data.name}
-								width={60}
-								quality={80}
-								placeholder='blurred'
-								layout='fill'
-								loading='lazy'
-							/>
-						</div>
+				{
+					lastApp && (
+						<a
+							href={`/apps/${lastApp.id.replace(/\.[^/.]+$/, '')}`}
+							class='block dark:border-gray-600 rounded-lg text-gray-500 dark:text-gray-400 text-base md:text-lg mx-auto px-3 py-2 hover:border-gray-400 hover:dark:border-gray-500 hover:shadow transition-all'
+						>
+							<div class='flex items-center justify-center gap-4'>
+								<div class='relative w-[60px] h-[60px] overflow-hidden rounded-[5px]'>
+									<Picture
+										src={lastApp.data.icon}
+										alt={lastApp.data.name}
+										width={60}
+										quality={80}
+										placeholder='blurred'
+										layout='fill'
+										loading='lazy'
+									/>
+								</div>
 
-						<div>
-							<p class='font-semibold text-gray-900 dark:text-gray-100'>
-								{lastApp.data.name}
-							</p>
-							<p class='text-sm md:text-base'>Free download available now!</p>
-						</div>
-					</div>
-				</a>
+								<div>
+									<p class='font-semibold text-gray-900 dark:text-gray-100'>{lastApp.data.name}</p>
+									<p class='text-sm md:text-base'>Free download available now!</p>
+								</div>
+							</div>
+						</a>
+					)
+				}
 			</div>
 		</header>
 
