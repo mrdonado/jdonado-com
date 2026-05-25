@@ -1,15 +1,17 @@
+import standardConfig from 'prettier-config-standard'
+
 /** @type {import("prettier").Config} */
-module.exports = {
+export default {
 	// i am just using the standard config, change if you need something else
-	...require('prettier-config-standard'),
+	...standardConfig,
 	printWidth: 100,
 	semi: false,
 	singleQuote: true,
-				jsxSingleQuote: true,
+	jsxSingleQuote: true,
 	tabWidth: 2,
 	useTabs: true,
 
-	plugins: [require.resolve('prettier-plugin-astro')],
+	plugins: ['prettier-plugin-astro'],
 	overrides: [
 		{
 			files: '*.astro',
