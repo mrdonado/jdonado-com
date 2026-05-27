@@ -1,0 +1,22 @@
+# Core inference (Steps 1 & 2) 
+# torch>=2.1.0
+# transformers>=4.51.0
+# accelerate>=0.30.0
+
+# Step 1 – Narration preparation
+python-frontmatter>=1.1.0
+
+# Step 2 – TTS
+# kokoro (pure Python) requires Python <3.13 so we use the ONNX variant instead.
+# kokoro-onnx works on any Python version and is faster at inference time.
+kokoro-onnx>=0.4.0
+soundfile>=0.12.1
+numpy>=1.26.0
+
+# GPU acceleration (optional):
+#   pip uninstall onnxruntime && pip install onnxruntime-gpu
+# onnxruntime is pulled in automatically by kokoro-onnx (CPU build).
+# The script detects CUDAExecutionProvider and advises you if it is missing.
+
+# (fzf binary is used directly — install via your package manager)
+# e.g. brew install fzf   /   sudo apt install fzf   /   sudo pacman -S fzf
