@@ -25,7 +25,9 @@
 		"lint": "eslint .",
 		"pre-commit": "lint-staged",
 		"generate-cv": "node scripts/generate-cv-pdf.mjs",
-		"generate-cover": "node scripts/generate-cover-image.mjs"
+		"generate-cover": "node scripts/generate-cover-image.mjs",
+		"generate-podcast-video": "node scripts/generate-podcast-video.mjs",
+		"build-podcast": "node scripts/build-podcast-video.mjs"
 	},
 	"dependencies": {
 		"@astrojs/rss": "4.0.18",

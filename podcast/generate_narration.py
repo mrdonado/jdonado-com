@@ -135,6 +135,30 @@ def load_posts() -> list[dict]:
     return posts
 
 
+def find_post(posts: list[dict], query: str) -> dict | None:
+    """Find a post by slug, exact file path, file name, or fuzzy title match."""
+    needle = query.strip().lower()
+    if not needle:
+        return None
+
+    for post in posts:
+        slug = post["path"].stem.lower()
+        if needle == slug:
+            return post
+
+        path_str = str(post["path"]).lower()
+        if needle == path_str or path_str.endswith(needle):
+            return post
+
+        if needle == post["path"].name.lower():
+            return post
+
+    fuzzy = [p for p in posts if needle in p["title"].lower() or needle in p["path"].stem.lower()]
+    if len(fuzzy) == 1:
+        return fuzzy[0]
+    return None
+
+
 # ---------------------------------------------------------------------------
 # Post selection (fzf with fallback)
 # ---------------------------------------------------------------------------
@@ -201,6 +225,11 @@ def main() -> None:
         description="Generate clean narration text from a markdown/MDX blog post."
     )
     parser.add_argument(
+        "--post",
+        metavar="SLUG_OR_PATH",
+        help="Select a post non-interactively by slug, file name, or path.",
+    )
+    parser.add_argument(
         "--output",
         metavar="FILE",
         help="Write narration to FILE instead of stdout.",
@@ -222,7 +251,14 @@ def main() -> None:
         print(f"No blog posts found in {BLOG_DIR}", file=sys.stderr)
         sys.exit(1)
 
-    post = select_post(posts)
+    if args.post:
+        post = find_post(posts, args.post)
+        if not post:
+            print(f"Could not find post matching: {args.post}", file=sys.stderr)
+            sys.exit(1)
+    else:
+        post = select_post(posts)
+
     print(f"\nPreparing narration for: {post['title']}\n", file=sys.stderr)
 
     narration = build_narration(

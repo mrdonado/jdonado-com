@@ -284,18 +284,6 @@ body::before {
 	pointer-events: none;
 }
 
-.visual-caption {
-	position: absolute;
-	top: 16px;
-	left: 50%;
-	transform: translateX(-50%);
-	z-index: 2;
-	font-size: 13px;
-	letter-spacing: 0.18em;
-	color: rgba(255, 255, 255, 0.74);
-	text-shadow: 0 4px 18px rgba(0, 0, 0, 0.22);
-}
-
 [data-ready='true'] .headline,
 [data-ready='true'] .subtitle,
 [data-ready='true'] .kicker,

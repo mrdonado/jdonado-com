@@ -4,6 +4,7 @@ Full podcast pipeline:
     1. generate_narration.py  →  narration.txt  (markdown cleaner)
   2. generate_audio.py      →  audio.wav      (Kokoro TTS)
   3. ffmpeg                 →  audio.mp3
+    4. ffmpeg                 →  podcast-video.mp4  (cover + audio)
 
 Each episode's files are written to output/<name>/.
 
@@ -74,6 +75,23 @@ def main() -> None:
         action="store_true",
         help="Skip Step 1 and reuse an existing narration.txt in the episode directory.",
     )
+    parser.add_argument(
+        "--skip-video",
+        action="store_true",
+        help="Skip Step 4 video generation.",
+    )
+    parser.add_argument(
+        "--video-fade-in",
+        type=float,
+        default=1.0,
+        help="Video fade-in duration in seconds (default: 1.0).",
+    )
+    parser.add_argument(
+        "--video-fade-out",
+        type=float,
+        default=1.2,
+        help="Video fade-out duration in seconds (default: 1.2).",
+    )
     args = parser.parse_args()
 
     # Resolve paths
@@ -83,6 +101,8 @@ def main() -> None:
     narration_file = episode_dir / "narration.txt"
     wav_file       = episode_dir / "audio.wav"
     mp3_file       = episode_dir / "audio.mp3"
+    cover_file     = episode_dir / "youtube-cover.png"
+    video_file     = episode_dir / "podcast-video.mp4"
 
     python = sys.executable
 
@@ -132,6 +152,25 @@ def main() -> None:
         str(mp3_file),
     ])
 
+    # ── Step 4: Cover + audio → MP4 ─────────────────────────────────────
+    if args.skip_video:
+        print("Skipping Step 4 — --skip-video provided.", flush=True)
+    elif not cover_file.exists():
+        print(
+            f"Warning: {cover_file} not found — skipping video generation.\n"
+            "Generate a cover first with: node ../scripts/generate-cover-image.mjs --post <slug>",
+            file=sys.stderr,
+        )
+    else:
+        banner("Step 4 / 4 — Cover + audio → MP4")
+        run([
+            "node", str(SCRIPT_DIR.parent / "scripts" / "generate-podcast-video.mjs"),
+            "--episode-dir", str(episode_dir),
+            "--fade-in", str(args.video_fade_in),
+            "--fade-out", str(args.video_fade_out),
+            "--output", str(video_file),
+        ])
+
     # ── Summary ────────────────────────────────────────────────────────────
     line = "\u2500" * 60
     wav_mb = wav_file.stat().st_size / 1e6
@@ -141,6 +180,9 @@ def main() -> None:
     print(f"  Narration : {narration_file}")
     print(f"  WAV       : {wav_file}  ({wav_mb:.1f} MB)")
     print(f"  MP3       : {mp3_file}  ({mp3_mb:.1f} MB)")
+    if video_file.exists():
+        video_mb = video_file.stat().st_size / 1e6
+        print(f"  Video     : {video_file}  ({video_mb:.1f} MB)")
     print(f"{line}\n")
 
 

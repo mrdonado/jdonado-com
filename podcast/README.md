@@ -5,6 +5,14 @@ Tools for generating a YouTube podcast video from a blog post.
 ## Quick start
 
 ```bash
+pnpm build-podcast                               # one command: select article -> narration -> audio -> cover -> video
+
+# Or from podcast/ directly:
+node ../scripts/build-podcast-video.mjs
+
+# Optional flags:
+node ../scripts/build-podcast-video.mjs --post thinking-like-an-engineer --voice am_michael --speed 0.95
+
 python podcast_pipeline.py                          # full run, timestamp-named episode
 python podcast_pipeline.py --name my-post-slug      # named episode
 python podcast_pipeline.py --name my-post-slug \
@@ -20,6 +28,7 @@ Output is written to `output/<name>/`:
 | `narration.txt` | Clean narration script |
 | `audio.wav` | Uncompressed audio (24 kHz) |
 | `audio.mp3` | Final podcast audio (~190 kbps VBR) |
+| `podcast-video.mp4` | Final video (cover + audio with fades) |
 
 ## Steps
 
@@ -29,6 +38,7 @@ Output is written to `output/<name>/`:
 | 2 | `generate_audio.py` | Narration script → WAV audio (Kokoro TTS) |
 | 2b | `preview_voices.py` | Generate short clips to compare voices quickly |
 | 3 | `generate-cover-image.mjs` | Standalone 16:9 YouTube cover image renderer |
+| 4 | `generate-podcast-video.mjs` | Build MP4 from cover + audio with intro/outro fades |
 | – | `podcast_pipeline.py` | Runs all steps end-to-end |
 | … | *(more steps to come)* | Video assembly, etc. |
 
@@ -164,19 +174,53 @@ node ../scripts/generate-cover-image.mjs --post thinking-like-an-engineer \
 
 If you prefer the repo-root shortcut, run `pnpm generate-cover` from the root of the repository.
 
-### Output
+### Cover output
 
 - `output/<slug>/youtube-cover.png` at `1920x1080`
 - The local preview page is in [podcast/cover/index.html](cover/index.html)
 
-### Notes
+### Audio and runtime notes
 
 - Output is a 24 kHz WAV file. Convert to MP3 with: `ffmpeg -i audio.wav -q:a 2 audio.mp3`
 - The Kokoro ONNX model (~300 MB) is downloaded automatically on first run.
 - Speed `0.9`–`1.05` tends to sound most natural for podcasts.
 - **CPU** inference is used by default (`onnxruntime`). For **GPU** acceleration:
-  ```bash
-  pip uninstall onnxruntime && pip install onnxruntime-gpu
-  ```
-  The script detects `CUDAExecutionProvider` automatically and prints a tip if
-  a CUDA GPU is found but `onnxruntime-gpu` is not installed.
+
+```bash
+pip uninstall onnxruntime && pip install onnxruntime-gpu
+```
+
+The script detects `CUDAExecutionProvider` automatically and prints a tip if
+a CUDA GPU is found but `onnxruntime-gpu` is not installed.
+
+---
+
+## Step 4 – Podcast video (cover + audio)
+
+Generates an MP4 that shows the cover image for the full audio duration, fades in from black at the beginning, and fades to black at the end.
+
+### Step 4 usage
+
+```bash
+# Use an episode folder from podcast/output
+node ../scripts/generate-podcast-video.mjs --episode 2026-01-21-thinking-like-an-engineer
+
+# Or provide explicit image + audio
+node ../scripts/generate-podcast-video.mjs \
+    --image output/my-episode/youtube-cover.png \
+    --audio output/my-episode/audio.mp3
+
+# Customize fade durations
+node ../scripts/generate-podcast-video.mjs --episode my-episode --fade-in 1.0 --fade-out 1.5
+```
+
+If you prefer the repo-root shortcut, run `pnpm generate-podcast-video` from the root of the repository.
+
+### Step 4 output
+
+- `output/<episode>/podcast-video.mp4` (H.264 + AAC, `1920x1080`)
+
+### Step 4 pipeline notes
+
+- `podcast_pipeline.py` now includes Step 4 automatically if `output/<name>/youtube-cover.png` exists.
+- Use `--skip-video` to disable this final step.
