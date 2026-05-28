@@ -24,7 +24,8 @@
 		"format": "prettier --plugin-search-dir=. --write .",
 		"lint": "eslint .",
 		"pre-commit": "lint-staged",
-		"generate-cv": "node scripts/generate-cv-pdf.mjs"
+		"generate-cv": "node scripts/generate-cv-pdf.mjs",
+		"generate-cover": "node scripts/generate-cover-image.mjs"
 	},
 	"dependencies": {
 		"@astrojs/rss": "4.0.18",

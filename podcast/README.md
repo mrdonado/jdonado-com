@@ -28,6 +28,7 @@ Output is written to `output/<name>/`:
 | 1 | `generate_narration.py` | Post → clean narration script (programmatic markdown cleaner) |
 | 2 | `generate_audio.py` | Narration script → WAV audio (Kokoro TTS) |
 | 2b | `preview_voices.py` | Generate short clips to compare voices quickly |
+| 3 | `generate-cover-image.mjs` | Standalone 16:9 YouTube cover image renderer |
 | – | `podcast_pipeline.py` | Runs all steps end-to-end |
 | … | *(more steps to come)* | Video assembly, etc. |
 
@@ -138,6 +139,35 @@ The utility writes files to `output/voice-preview-<timestamp>/`:
 - `am_michael.wav`, `af_bella.wav`, etc.
 - `combined.wav` (all selected voices back-to-back)
 - `manifest.txt` (voice metadata + sample text)
+
+---
+
+## Step 3 – YouTube cover image
+
+This step uses a standalone mini site in [podcast/cover/](cover/) so it stays
+separate from the main Astro site. The render script opens the local page and
+writes a full HD PNG to the episode output folder.
+
+### Usage
+
+```bash
+# Interactive post picker → output/<slug>/youtube-cover.png
+node ../scripts/generate-cover-image.mjs
+
+# Render a specific post
+node ../scripts/generate-cover-image.mjs --post thinking-like-an-engineer
+
+# Override the text if you want a custom cover
+node ../scripts/generate-cover-image.mjs --post thinking-like-an-engineer \
+    --headline "Avoiding Pitfalls" --subtitle "How to think clearly about complex systems"
+```
+
+If you prefer the repo-root shortcut, run `pnpm generate-cover` from the root of the repository.
+
+### Output
+
+- `output/<slug>/youtube-cover.png` at `1920x1080`
+- The local preview page is in [podcast/cover/index.html](cover/index.html)
 
 ### Notes
 
