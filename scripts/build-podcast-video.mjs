@@ -32,6 +32,7 @@ function parseArgs(argv) {
   const args = {
     post: null,
     name: null,
+    youtubeTitle: null,
     voice: 'af_heart',
     speed: 1.0,
     fadeIn: 1.0,
@@ -43,6 +44,7 @@ function parseArgs(argv) {
     const value = argv[i]
     if (value === '--post' || value === '-p') args.post = argv[++i]
     else if (value === '--name' || value === '-n') args.name = argv[++i]
+    else if (value === '--youtube-title') args.youtubeTitle = argv[++i]
     else if (value === '--voice' || value === '-v') args.voice = argv[++i]
     else if (value === '--speed' || value === '-s') args.speed = Number(argv[++i])
     else if (value === '--fade-in') args.fadeIn = Number(argv[++i])
@@ -55,7 +57,7 @@ function parseArgs(argv) {
 }
 
 function helpText() {
-  return `Usage: node scripts/build-podcast-video.mjs [options]\n\nOptions:\n  -p, --post <slug|file>   Select a post by slug or file path\n  -n, --name <episode>     Output episode directory name (default: post slug)\n  -v, --voice <voice>      Kokoro voice ID (default: af_heart)\n  -s, --speed <number>     TTS speed multiplier (default: 1.0)\n      --fade-in <seconds>  Video fade-in duration (default: 1.0)\n      --fade-out <seconds> Video fade-out duration (default: 1.2)\n      --python <command>   Python executable (default: PODCAST_PYTHON env or python)\n  -h, --help               Show this help text\n`
+  return `Usage: node scripts/build-podcast-video.mjs [options]\n\nOptions:\n  -p, --post <slug|file>   Select a post by slug or file path\n  -n, --name <episode>     Output episode directory name (default: post slug)\n      --youtube-title <t>  Override title for the simple YouTube-only cover\n  -v, --voice <voice>      Kokoro voice ID (default: af_heart)\n  -s, --speed <number>     TTS speed multiplier (default: 1.0)\n      --fade-in <seconds>  Video fade-in duration (default: 1.0)\n      --fade-out <seconds> Video fade-out duration (default: 1.2)\n      --python <command>   Python executable (default: PODCAST_PYTHON env or python)\n  -h, --help               Show this help text\n`
 }
 
 function banner(title) {
@@ -195,6 +197,7 @@ async function main() {
   const wavFile = resolve(episodeDir, 'audio.wav')
   const mp3File = resolve(episodeDir, 'audio.mp3')
   const coverFile = resolve(episodeDir, 'youtube-cover.png')
+  const youtubeSimpleCoverFile = resolve(episodeDir, 'youtube-cover-simple.png')
   const videoFile = resolve(episodeDir, 'podcast-video.mp4')
 
   console.log(`\nSelected post : ${selected.title}`)
@@ -226,14 +229,25 @@ async function main() {
     mp3File,
   ], 'Converting WAV to MP3...')
 
-  banner('Step 4 / 5 - Cover image')
+  banner('Step 4 / 6 - Cover image (video)')
   run('node', [
     resolve(ROOT, 'scripts', 'generate-cover-image.mjs'),
     '--post', selected.slug,
     '--output', coverFile,
   ], 'Rendering YouTube cover image...')
 
-  banner('Step 5 / 5 - Final MP4')
+  banner('Step 5 / 6 - Cover image (YouTube simple)')
+  const simpleCoverArgs = [
+    resolve(ROOT, 'scripts', 'generate-youtube-simple-cover-image.mjs'),
+    '--post', selected.slug,
+    '--output', youtubeSimpleCoverFile,
+  ]
+  if (args.youtubeTitle && args.youtubeTitle.trim()) {
+    simpleCoverArgs.push('--title', args.youtubeTitle.trim())
+  }
+  run('node', simpleCoverArgs, 'Rendering simplified YouTube-only cover image...')
+
+  banner('Step 6 / 6 - Final MP4')
   run('node', [
     resolve(ROOT, 'scripts', 'generate-podcast-video.mjs'),
     '--episode-dir', episodeDir,
@@ -251,6 +265,7 @@ async function main() {
   console.log(`  WAV       : ${wavFile}`)
   console.log(`  MP3       : ${mp3File}`)
   console.log(`  Cover     : ${coverFile}`)
+  console.log(`  YT Cover  : ${youtubeSimpleCoverFile}`)
   console.log(`  Video     : ${videoFile}`)
   console.log(`${line}\n`)
 }

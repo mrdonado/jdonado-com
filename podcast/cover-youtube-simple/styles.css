@@ -1,0 +1,151 @@
+:root {
+  color-scheme: dark;
+  --bg: #030815;
+  --panel: #071124;
+  --stroke: rgba(255, 255, 255, 0.18);
+  --text: #f8fbff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 20% 12%, rgba(56, 189, 248, 0.22), transparent 32%),
+    radial-gradient(circle at 86% 10%, rgba(59, 130, 246, 0.24), transparent 36%),
+    linear-gradient(150deg, #02060f 0%, var(--bg) 60%, #01040a 100%);
+  font-family: "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.frame {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  padding: 28px;
+  isolation: isolate;
+}
+
+.podcast-badge {
+  position: absolute;
+  top: 34px;
+  right: 36px;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  padding: 18px 28px;
+  border-radius: 999px;
+  background: rgba(5, 12, 24, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.26);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.32);
+  backdrop-filter: blur(6px);
+}
+
+.badge-icon {
+  width: 52px;
+  height: 52px;
+  fill: #eaf2ff;
+  display: block;
+}
+
+.badge-text {
+  color: #eaf2ff;
+  font-size: 82px;
+  letter-spacing: 0.08em;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.hero-shell {
+  position: absolute;
+  inset: 28px 28px 294px 28px;
+  border-radius: 30px;
+  border: 2px solid var(--stroke);
+  background: var(--panel);
+  overflow: hidden;
+  box-shadow:
+    0 32px 52px rgba(0, 0, 0, 0.42),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+}
+
+.hero-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: saturate(1.06) contrast(1.03);
+  transform: scale(1.01);
+}
+
+.hero-fade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, transparent 0%, transparent 80%, rgba(2, 7, 16, 0.38) 94%, rgba(2, 7, 16, 0.64) 100%),
+    linear-gradient(90deg, rgba(2, 7, 16, 0.12) 0%, transparent 20%, transparent 80%, rgba(2, 7, 16, 0.2) 100%);
+}
+
+.title-zone {
+  position: absolute;
+  left: 34px;
+  right: 34px;
+  bottom: 36px;
+  height: 242px;
+  z-index: 2;
+  display: grid;
+  align-items: center;
+}
+
+.headline {
+  margin: 0;
+  max-width: 100%;
+  color: var(--text);
+  font-size: var(--headline-size, clamp(122px, 14.3vw, 320px));
+  line-height: 1;
+  letter-spacing: -0.04em;
+  font-weight: 800;
+  text-align: center;
+  text-wrap: balance;
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+  padding-bottom: 0.06em;
+  overflow: hidden;
+  text-shadow:
+    0 10px 24px rgba(0, 0, 0, 0.7),
+    0 0 44px rgba(2, 6, 18, 0.8);
+}
+
+[data-ready='true'] .podcast-badge,
+[data-ready='true'] .hero-shell,
+[data-ready='true'] .headline {
+  animation: rise 420ms ease-out both;
+}
+
+[data-ready='true'] .podcast-badge {
+  animation-delay: 70ms;
+}
+
+[data-ready='true'] .headline {
+  animation-delay: 110ms;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

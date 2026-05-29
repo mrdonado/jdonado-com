@@ -13,6 +13,12 @@ node ../scripts/build-podcast-video.mjs
 # Optional flags:
 node ../scripts/build-podcast-video.mjs --post thinking-like-an-engineer --voice am_michael --speed 0.95
 
+# Generate only the additional simple YouTube cover (big title)
+pnpm generate-cover-simple -- --post thinking-like-an-engineer
+
+# Override the simple cover title (defaults to post title)
+pnpm generate-cover-simple -- --post thinking-like-an-engineer --title "My YouTube Title"
+
 python podcast_pipeline.py                          # full run, timestamp-named episode
 python podcast_pipeline.py --name my-post-slug      # named episode
 python podcast_pipeline.py --name my-post-slug \
