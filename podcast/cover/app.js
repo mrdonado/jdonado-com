@@ -1,5 +1,4 @@
 const DEFAULTS = {
-  kicker: 'Engineering Notes',
   headline: 'Thinking Like an Engineer',
   subtitle: 'Avoiding the traps that show up when systems get complex.',
 }
@@ -7,7 +6,6 @@ const DEFAULTS = {
 function readParams() {
   const params = new URLSearchParams(window.location.search)
   return {
-    kicker: params.get('kicker') || DEFAULTS.kicker,
     headline: params.get('headline') || DEFAULTS.headline,
     subtitle: params.get('subtitle') || DEFAULTS.subtitle,
   }
@@ -49,17 +47,20 @@ function fitText(element, { min, max, fitCheck = fitsInBox }) {
 
 function fitCopyBlock() {
   const copy = document.querySelector('.copy')
-  const kicker = document.querySelector('[data-kicker]')
   const headline = document.querySelector('[data-headline]')
   const subtitle = document.querySelector('[data-subtitle]')
   const socialPanel = document.querySelector('.social-panel')
+  const podcastBadge = document.querySelector('.podcast-badge')
   const heroPanel = document.querySelector('.visual-panel')
-  if (!copy || !kicker || !headline || !subtitle || !socialPanel || !heroPanel) return
+  if (!copy || !headline || !subtitle || !socialPanel || !heroPanel) return
 
   const heroRect = heroPanel.getBoundingClientRect()
-  const initialSocialRect = socialPanel.getBoundingClientRect()
-  const alignedTop = heroRect.top + heroRect.height / 2 - initialSocialRect.height / 2
+  const socialRectForHeight = socialPanel.getBoundingClientRect()
+  const alignedTop = heroRect.bottom - socialRectForHeight.height - 22
   socialPanel.style.top = `${Math.round(alignedTop)}px`
+  if (podcastBadge) {
+    podcastBadge.style.top = `${Math.round(alignedTop)}px`
+  }
 
   const copyRect = copy.getBoundingClientRect()
   const socialRect = socialPanel.getBoundingClientRect()
@@ -79,18 +80,17 @@ function fitCopyBlock() {
     fitCheck: fitsSingleLineWidth,
   })
 
-  const kickerHeight = kicker.getBoundingClientRect().height
   const headlineHeight = headline.getBoundingClientRect().height
-  const used = kickerHeight + headlineHeight + gap * 2
-  const subtitleMaxHeight = Math.max(56, maxCopyHeight - used)
+  const used = headlineHeight + gap
+  const subtitleMaxHeight = Math.max(64, maxCopyHeight - used)
 
   subtitle.style.maxHeight = `${subtitleMaxHeight}px`
   fitText(subtitle, {
-    min: 32,
-    max: 72,
+    min: 36,
+    max: 84,
   })
 
-  while (subtitle.scrollHeight > subtitleMaxHeight && parseFloat(subtitle.style.fontSize) > 32) {
+  while (subtitle.scrollHeight > subtitleMaxHeight && parseFloat(subtitle.style.fontSize) > 36) {
     subtitle.style.fontSize = `${Math.floor(parseFloat(subtitle.style.fontSize) - 1)}px`
   }
 }
@@ -105,7 +105,6 @@ window.addEventListener('resize', scheduleFit)
 
 function main() {
   const data = readParams()
-  setText('[data-kicker]', data.kicker)
   setText('[data-headline]', data.headline)
   setText('[data-subtitle]', data.subtitle)
   scheduleFit()

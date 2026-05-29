@@ -125,19 +125,11 @@ body::before {
 .copy {
 	position: absolute;
 	inset: 4.6% 6.4% auto 6.8%;
-	max-height: 34vh;
+	max-height: 38vh;
 	display: grid;
-	gap: 12px;
+	gap: 14px;
 	align-content: start;
 	z-index: 3;
-}
-
-.kicker {
-	margin: 0 0 14px;
-	font-size: clamp(16px, 1.7vw, 22px);
-	letter-spacing: 0.02em;
-	color: rgba(255, 255, 255, 0.9);
-	text-shadow: 0 0 24px rgba(255, 255, 255, 0.26);
 }
 
 .headline {
@@ -158,11 +150,42 @@ body::before {
 .subtitle {
 	margin: 0;
 	max-width: 100%;
-	font-size: var(--subtitle-size, clamp(34px, 3.25vw, 64px));
-	line-height: 1.12;
+	font-size: var(--subtitle-size, clamp(42px, 3.7vw, 72px));
+	line-height: 1.1;
 	font-weight: 500;
 	color: var(--muted);
 	overflow: hidden;
+}
+
+.podcast-badge {
+	position: absolute;
+	top: 34px;
+	right: calc(6.8% - 10px);
+	z-index: 3;
+	display: inline-flex;
+	align-items: center;
+	gap: 18px;
+	padding: 18px 28px;
+	border-radius: 999px;
+	background: rgba(5, 12, 24, 0.72);
+	border: 1px solid rgba(255, 255, 255, 0.26);
+	box-shadow: 0 12px 24px rgba(0, 0, 0, 0.32);
+	backdrop-filter: blur(6px);
+}
+
+.badge-icon {
+	width: 52px;
+	height: 52px;
+	fill: #eaf2ff;
+	display: block;
+}
+
+.badge-text {
+	color: #eaf2ff;
+	font-size: 82px;
+	letter-spacing: 0.08em;
+	font-weight: 800;
+	line-height: 1;
 }
 
 .social-panel {
@@ -171,8 +194,10 @@ body::before {
 	top: 42.6%;
 	z-index: 3;
 	display: grid;
-	gap: 20px;
-	padding: 20px 22px;
+	grid-template-columns: max-content max-content;
+	column-gap: 34px;
+	row-gap: 20px;
+	padding: 20px 24px;
 	border-radius: 26px;
 	background: linear-gradient(180deg, rgba(8, 13, 28, 0.18), rgba(8, 13, 28, 0.02));
 	backdrop-filter: blur(8px);
@@ -181,8 +206,8 @@ body::before {
 .social-row {
 	display: flex;
 	align-items: center;
-	gap: 16px;
-	font-size: 36px;
+	gap: 14px;
+	font-size: 32px;
 	font-weight: 800;
 	letter-spacing: -0.03em;
 	color: rgba(255, 255, 255, 0.94);
@@ -214,16 +239,13 @@ body::before {
 
 .visual-panel {
 	position: absolute;
-	right: 6.4%;
-	bottom: 13.2%;
-	width: min(56vw, 1000px);
-	height: min(46vh, 510px);
-	border-radius: 28px;
-	background: linear-gradient(135deg, rgba(19, 28, 52, 0.42), rgba(4, 10, 24, 0.18));
-	border: 1px solid rgba(220, 232, 255, 0.14);
+	inset: 28px;
+	border-radius: 30px;
+	background: linear-gradient(135deg, rgba(19, 28, 52, 0.4), rgba(4, 10, 24, 0.2));
+	border: 2px solid rgba(220, 232, 255, 0.18);
 	box-shadow:
 		0 24px 52px rgba(0, 0, 0, 0.34),
-		inset 0 1px 0 rgba(255, 255, 255, 0.08);
+		inset 0 1px 0 rgba(255, 255, 255, 0.12);
 	overflow: hidden;
 }
 
@@ -279,14 +301,14 @@ body::before {
 	position: absolute;
 	inset: 0;
 	background:
-		linear-gradient(90deg, rgba(5, 8, 16, 0.08) 0%, rgba(5, 8, 16, 0.02) 38%, rgba(5, 8, 16, 0.26) 100%),
-		linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, transparent 24%, transparent 74%, rgba(5, 8, 16, 0.44) 100%);
+		linear-gradient(180deg, rgba(2, 7, 16, 0.48) 0%, rgba(2, 7, 16, 0.36) 42%, rgba(2, 7, 16, 0.58) 100%),
+		linear-gradient(90deg, rgba(2, 7, 16, 0.38) 0%, rgba(2, 7, 16, 0.22) 35%, rgba(2, 7, 16, 0.42) 100%);
 	pointer-events: none;
 }
 
 [data-ready='true'] .headline,
 [data-ready='true'] .subtitle,
-[data-ready='true'] .kicker,
+[data-ready='true'] .podcast-badge,
 [data-ready='true'] .social-panel,
 [data-ready='true'] .visual-panel {
 	animation: rise 420ms ease-out both;
@@ -318,7 +340,6 @@ body::before {
 	}
 
 	.visual-panel {
-		width: 52vw;
-		height: 42vh;
+		inset: 24px;
 	}
 }
