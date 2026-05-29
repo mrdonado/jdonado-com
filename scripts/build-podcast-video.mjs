@@ -37,6 +37,7 @@ function parseArgs(argv) {
     speed: 1.0,
     fadeIn: 1.0,
     fadeOut: 1.2,
+    waveform: true,
     python: process.env.PODCAST_PYTHON || 'python',
   }
 
@@ -49,6 +50,7 @@ function parseArgs(argv) {
     else if (value === '--speed' || value === '-s') args.speed = Number(argv[++i])
     else if (value === '--fade-in') args.fadeIn = Number(argv[++i])
     else if (value === '--fade-out') args.fadeOut = Number(argv[++i])
+    else if (value === '--no-waveform') args.waveform = false
     else if (value === '--python') args.python = argv[++i]
     else if (value === '--help' || value === '-h') args.help = true
   }
@@ -57,7 +59,7 @@ function parseArgs(argv) {
 }
 
 function helpText() {
-  return `Usage: node scripts/build-podcast-video.mjs [options]\n\nOptions:\n  -p, --post <slug|file>   Select a post by slug or file path\n  -n, --name <episode>     Output episode directory name (default: post slug)\n      --youtube-title <t>  Override title for the simple YouTube-only cover\n  -v, --voice <voice>      Kokoro voice ID (default: af_heart)\n  -s, --speed <number>     TTS speed multiplier (default: 1.0)\n      --fade-in <seconds>  Video fade-in duration (default: 1.0)\n      --fade-out <seconds> Video fade-out duration (default: 1.2)\n      --python <command>   Python executable (default: PODCAST_PYTHON env or python)\n  -h, --help               Show this help text\n`
+  return `Usage: node scripts/build-podcast-video.mjs [options]\n\nOptions:\n  -p, --post <slug|file>   Select a post by slug or file path\n  -n, --name <episode>     Output episode directory name (default: post slug)\n      --youtube-title <t>  Override title for the simple YouTube-only cover\n  -v, --voice <voice>      Kokoro voice ID (default: af_heart)\n  -s, --speed <number>     TTS speed multiplier (default: 1.0)\n      --fade-in <seconds>  Video fade-in duration (default: 1.0)\n      --fade-out <seconds> Video fade-out duration (default: 1.2)\n      --no-waveform        Disable waveform visualization overlay\n      --python <command>   Python executable (default: PODCAST_PYTHON env or python)\n  -h, --help               Show this help text\n`
 }
 
 function banner(title) {
@@ -248,7 +250,7 @@ async function main() {
   run('node', simpleCoverArgs, 'Rendering simplified YouTube-only cover image...')
 
   banner('Step 6 / 6 - Final MP4')
-  run('node', [
+  const videoArgs = [
     resolve(ROOT, 'scripts', 'generate-podcast-video.mjs'),
     '--episode-dir', episodeDir,
     '--image', coverFile,
@@ -256,7 +258,11 @@ async function main() {
     '--fade-in', String(args.fadeIn),
     '--fade-out', String(args.fadeOut),
     '--output', videoFile,
-  ], 'Building final YouTube-ready video...')
+  ]
+  if (!args.waveform) {
+    videoArgs.push('--no-waveform')
+  }
+  run('node', videoArgs, 'Building final YouTube-ready video...')
 
   const line = '-'.repeat(64)
   console.log(`\n${line}`)
@@ -267,6 +273,7 @@ async function main() {
   console.log(`  Cover     : ${coverFile}`)
   console.log(`  YT Cover  : ${youtubeSimpleCoverFile}`)
   console.log(`  Video     : ${videoFile}`)
+  console.log(`  Waveform  : ${args.waveform ? 'enabled' : 'disabled'}`)
   console.log(`${line}\n`)
 }
 
