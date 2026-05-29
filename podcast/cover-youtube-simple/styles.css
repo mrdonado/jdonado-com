@@ -118,7 +118,7 @@ body {
   text-wrap: balance;
   white-space: pre-line;
   overflow-wrap: anywhere;
-  padding-bottom: 0.06em;
+  padding-bottom: 0.1em;
   overflow: hidden;
   text-shadow:
     0 10px 24px rgba(0, 0, 0, 0.7),

@@ -34,8 +34,9 @@ function fitHeadline() {
   if (!titleZone || !headline) return
 
   const zoneHeight = Math.max(190, Math.floor(window.innerHeight * 0.24))
+  const descenderSafety = Math.max(12, Math.floor(zoneHeight * 0.07))
   titleZone.style.height = `${zoneHeight}px`
-  headline.style.maxHeight = `${zoneHeight}px`
+  headline.style.maxHeight = `${zoneHeight - descenderSafety}px`
 
   let low = 96
   let high = 460

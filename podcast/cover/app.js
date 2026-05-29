@@ -1,13 +1,11 @@
 const DEFAULTS = {
   headline: 'Thinking Like an Engineer',
-  subtitle: 'Avoiding the traps that show up when systems get complex.',
 }
 
 function readParams() {
   const params = new URLSearchParams(window.location.search)
   return {
     headline: params.get('headline') || DEFAULTS.headline,
-    subtitle: params.get('subtitle') || DEFAULTS.subtitle,
   }
 }
 
@@ -21,9 +19,23 @@ function fitsInBox(element, fontSizePx) {
   return element.scrollWidth <= element.clientWidth && element.scrollHeight <= element.clientHeight
 }
 
-function fitsSingleLineWidth(element, fontSizePx) {
+function formatHeadline(rawHeadline) {
+  const compact = rawHeadline.replace(/\s+/g, ' ').trim()
+  // Turn separator hyphens into explicit line breaks for clearer two-line titles.
+  return compact.replace(/\s[-–—]\s/g, '\n')
+}
+
+function fitsHeadline(element, fontSizePx) {
   element.style.fontSize = `${fontSizePx}px`
-  return element.scrollWidth <= element.clientWidth
+  const computed = window.getComputedStyle(element)
+  const lineHeight = Number.parseFloat(computed.lineHeight)
+  const lines = lineHeight > 0 ? Math.round(element.scrollHeight / lineHeight) : 99
+
+  return (
+    element.scrollHeight <= element.clientHeight &&
+    element.scrollWidth <= element.clientWidth &&
+    lines <= 2
+  )
 }
 
 function fitText(element, { min, max, fitCheck = fitsInBox }) {
@@ -48,11 +60,10 @@ function fitText(element, { min, max, fitCheck = fitsInBox }) {
 function fitCopyBlock() {
   const copy = document.querySelector('.copy')
   const headline = document.querySelector('[data-headline]')
-  const subtitle = document.querySelector('[data-subtitle]')
   const socialPanel = document.querySelector('.social-panel')
   const podcastBadge = document.querySelector('.podcast-badge')
   const heroPanel = document.querySelector('.visual-panel')
-  if (!copy || !headline || !subtitle || !socialPanel || !heroPanel) return
+  if (!copy || !headline || !socialPanel || !heroPanel) return
 
   const heroRect = heroPanel.getBoundingClientRect()
   const socialRectForHeight = socialPanel.getBoundingClientRect()
@@ -62,37 +73,16 @@ function fitCopyBlock() {
     podcastBadge.style.top = `${Math.round(alignedTop)}px`
   }
 
-  const copyRect = copy.getBoundingClientRect()
-  const socialRect = socialPanel.getBoundingClientRect()
-  const styles = getComputedStyle(copy)
-  const gap = parseFloat(styles.gap) || 0
-
-  const safeBottom = socialRect.top - 24
-  const maxCopyHeight = Math.max(180, safeBottom - copyRect.top)
-  copy.style.maxHeight = `${maxCopyHeight}px`
-
-  headline.style.maxWidth = `${copy.clientWidth}px`
-  subtitle.style.maxWidth = `${copy.clientWidth}px`
+  const zoneHeight = Math.max(190, Math.floor(window.innerHeight * 0.24))
+  const descenderSafety = Math.max(12, Math.floor(zoneHeight * 0.07))
+  copy.style.height = `${zoneHeight}px`
+  headline.style.maxHeight = `${zoneHeight - descenderSafety}px`
 
   fitText(headline, {
-    min: 34,
-    max: 150,
-    fitCheck: fitsSingleLineWidth,
+    min: 96,
+    max: 460,
+    fitCheck: fitsHeadline,
   })
-
-  const headlineHeight = headline.getBoundingClientRect().height
-  const used = headlineHeight + gap
-  const subtitleMaxHeight = Math.max(64, maxCopyHeight - used)
-
-  subtitle.style.maxHeight = `${subtitleMaxHeight}px`
-  fitText(subtitle, {
-    min: 36,
-    max: 84,
-  })
-
-  while (subtitle.scrollHeight > subtitleMaxHeight && parseFloat(subtitle.style.fontSize) > 36) {
-    subtitle.style.fontSize = `${Math.floor(parseFloat(subtitle.style.fontSize) - 1)}px`
-  }
 }
 
 function scheduleFit() {
@@ -105,8 +95,7 @@ window.addEventListener('resize', scheduleFit)
 
 function main() {
   const data = readParams()
-  setText('[data-headline]', data.headline)
-  setText('[data-subtitle]', data.subtitle)
+  setText('[data-headline]', formatHeadline(data.headline))
   scheduleFit()
   document.title = `${data.headline} – Cover Builder`
   document.documentElement.dataset.ready = 'true'
