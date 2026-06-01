@@ -308,12 +308,14 @@ export const cv: CVData = {
 					title: 'Software Analyst',
 					period: '05/2011 – 08/2012',
 					description:
-						'At Daedalus, I worked on the design, development, and maintenance of products and R&D projects in the field of Natural Language Processing.',
+						'At Daedalus (later MeaningCloud), I worked on the design, development, and maintenance of NLP products and R&D initiatives focused on text analytics and semantic processing services.',
 					responsibilities: [
-						'Contributed to NLP products and R&D projects involving both frontend and backend development.',
+						'Contributed to cloud-based NLP products and R&D projects, including API-driven text analytics capabilities designed for integration into third-party systems.',
 						'Worked across product development, maintenance, and research-oriented implementation tasks.',
+						'Supported delivery in deployment models spanning SaaS and enterprise/on-premises environments.',
 						'Applied a broad technical stack across Java, Linux, databases, web technologies, and service integrations.',
-						'Succeeded in an R&D-heavy environment by combining analytical thinking, software engineering, and adaptability across different parts of the stack.'
+						'Succeeded in an R&D-heavy environment by combining analytical thinking, software engineering, and adaptability across different parts of the stack.',
+						'The company was later rebranded as MeaningCloud and acquired by Reddit in 2022.'
 					],
 					tags: [
 						'Java',
@@ -329,7 +331,7 @@ export const cv: CVData = {
 						'REST',
 						'SOAP web services'
 					],
-					industry: 'Natural Language and Data Processing'
+					industry: 'Natural Language Processing (NLP), Text Analytics, Semantic AI'
 				}
 			]
 		},
@@ -372,6 +374,14 @@ export const cv: CVData = {
 						'Worked on projects including SESAMO and BAIP2020.',
 						'Contributed to research involving satellite mobility systems and wireless sensor networks.',
 						'Gained early experience in high-tech engineering environments where rigor, technical curiosity, and structured problem-solving were essential.'
+					],
+					tags: [
+						'R&D',
+						'Satellite Communications',
+						'Maritime Communications',
+						'Wireless Sensor Networks',
+						'Network Systems',
+						'System Integration'
 					],
 					industry: 'Space Sector, High-Tech Projects'
 				}
