@@ -16,6 +16,7 @@
 	"scripts": {
 		"dev": "astro dev --host",
 		"dev:portless": "pnpm exec portless jdonado-com --force -- sh -c 'pnpm exec astro dev --host \"$HOST\" --port \"$PORT\"'",
+		"dev:portless:http": "pnpm exec portless proxy stop; pnpm exec portless proxy start --no-tls && pnpm exec portless jdonado-com --force -- sh -c 'pnpm exec astro dev --host \"$HOST\" --port \"$PORT\"'",
 		"start": "astro dev",
 		"build": "astro build",
 		"sync": "astro sync",
