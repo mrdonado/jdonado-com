@@ -15,6 +15,7 @@
 	],
 	"scripts": {
 		"dev": "astro dev --host",
+		"dev:portless": "pnpm exec portless jdonado-com --force -- sh -c 'pnpm exec astro dev --host \"$HOST\" --port \"$PORT\"'",
 		"start": "astro dev",
 		"build": "astro build",
 		"sync": "astro sync",
@@ -58,6 +59,7 @@
 		"mdast-util-to-string": "^4.0.0",
 		"motion": "^12.40.0",
 		"pagefind": "^1.5.2",
+		"portless": "^0.14.0",
 		"prettier": "^3.8.3",
 		"prettier-config-standard": "^7.0.0",
 		"prettier-plugin-astro": "^0.14.1",
@@ -74,6 +76,7 @@
 	},
 	"pnpm": {
 		"overrides": {
+			"vite": "^7",
 			"mermaid": "10.9.3",
 			"sharp": "0.34.5",
 			"imagetools-core>sharp": "0.34.5",
@@ -84,7 +87,8 @@
 		},
 		"supportedArchitectures": {
 			"libc": [
-				"musl"
+				"musl",
+				"glibc"
 			]
 		},
 		"onlyBuiltDependencies": [
@@ -92,7 +96,8 @@
 			"sharp"
 		],
 		"patchedDependencies": {
-			"astro-imagetools@0.9.0": "patches/astro-imagetools@0.9.0.patch"
+			"astro-imagetools@0.9.0": "patches/astro-imagetools@0.9.0.patch",
+			"portless@0.14.0": "patches/portless@0.14.0.patch"
 		}
 	}
 }

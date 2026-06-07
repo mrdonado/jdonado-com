@@ -5,6 +5,7 @@ settings:
   excludeLinksFromLockfile: false
 
 overrides:
+  vite: ^7
   mermaid: 10.9.3
   sharp: 0.34.5
   imagetools-core>sharp: 0.34.5
@@ -17,6 +18,9 @@ patchedDependencies:
   astro-imagetools@0.9.0:
     hash: f168c21ade4b9e8aabb8d0ba464f4f48caf84e2b54fec6d61e95631ea3ba8cbe
     path: patches/astro-imagetools@0.9.0.patch
+  portless@0.14.0:
+    hash: ad24b788e5e6da707af7aa8baac1dbcfba4739ea8af5b40702fa08e44719c09f
+    path: patches/portless@0.14.0.patch
 
 importers:
 
@@ -86,9 +90,6 @@ importers:
       eslint-plugin-jsx-a11y:
         specifier: ^6.10.2
         version: 6.10.2(eslint@9.39.4(jiti@2.7.0))
-      husky:
-        specifier: ^9.1.7
-        version: 9.1.7
       lint-staged:
         specifier: ^16.4.0
         version: 16.4.0
@@ -101,6 +102,9 @@ importers:
       pagefind:
         specifier: ^1.5.2
         version: 1.5.2
+      portless:
+        specifier: ^0.14.0
+        version: 0.14.0(patch_hash=ad24b788e5e6da707af7aa8baac1dbcfba4739ea8af5b40702fa08e44719c09f)
       prettier:
         specifier: ^3.8.3
         version: 3.8.3
@@ -1144,7 +1148,7 @@ packages:
   '@tailwindcss/vite@4.3.0':
     resolution: {integrity: sha512-t6J3OrB5Fc0ExuhohouH0fWUGMYL6PTLhW+E7zIk/pdbnJARZDCwjBznFnkh5ynRnIRSI4YjtTH0t6USjJISrw==}
     peerDependencies:
-      vite: ^5.2.0 || ^6 || ^7 || ^8
+      vite: ^7
 
   '@tokenizer/token@0.3.0':
     resolution: {integrity: sha512-OvjF+z51L3ov0OyAU0duzsYuvO01PH7x4t6DJx+guahgTnBHkhJdG7soQeTSFLWN3efnHyibZ4Z8l2EuWwJN3A==}
@@ -2269,11 +2273,6 @@ packages:
     resolution: {integrity: sha512-vK9P5/iUfdl95AI+JVyUuIcVtd4ofvtrOr3HNtM2yxC9bnMbEdp3x01OhQNnjb8IJYi38VlTE3mBXwcfvywuSw==}
     engines: {node: '>= 14'}
 
-  husky@9.1.7:
-    resolution: {integrity: sha512-5gs5ytaNjBrh5Ow3zrvdUUY+0VxIuWVL4i9irt6friV+BqdCfmV11CQTWMiBYWHbXhco+J1kHfTOUkePhCDvMA==}
-    engines: {node: '>=18'}
-    hasBin: true
-
   ieee754@1.2.1:
     resolution: {integrity: sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA==}
 
@@ -3123,6 +3122,12 @@ packages:
     resolution: {integrity: sha512-NCrCHhWmnQklfH4MtJMRjZ2a8c80qXeMlQMv2uVp9ISJMTt562SbGd6n2oq0PaPgKm7Z6pL9E2UlLIhC+SHL3w==}
     engines: {node: '>=4.0.0'}
 
+  portless@0.14.0:
+    resolution: {integrity: sha512-kKxmxB1DQ9gI8t+V13VhuwTXu31io5nbFubvZAE82AxzXBsvcJV7qQJbmomrQUpbVxo2UVHqs14iX4YK0BClmQ==}
+    engines: {node: '>=24'}
+    os: [darwin, linux, win32]
+    hasBin: true
+
   possible-typed-array-names@1.1.0:
     resolution: {integrity: sha512-/+5VFTchJDoVj3bhoqi6UeymcD00DAwb1nJwamzPvHEszJ4FpF6SNNbUbOS8yI56qHzdV8eK0qEfOSiodkTdxg==}
     engines: {node: '>= 0.4'}
@@ -3843,7 +3848,7 @@ packages:
   vitefu@1.1.3:
     resolution: {integrity: sha512-ub4okH7Z5KLjb6hDyjqrGXqWtWvoYdU3IGm/NorpgHncKoLTCfRIbvlhBm7r0YstIaQRYlp4yEbFqDcKSzXSSg==}
     peerDependencies:
-      vite: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0
+      vite: ^7
     peerDependenciesMeta:
       vite:
         optional: true
@@ -6512,8 +6517,6 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  husky@9.1.7: {}
-
   ieee754@1.2.1: {}
 
   ignore@5.3.2: {}
@@ -7607,6 +7610,8 @@ snapshots:
       find-up: 4.1.0
 
   pngjs@3.4.0: {}
+
+  portless@0.14.0(patch_hash=ad24b788e5e6da707af7aa8baac1dbcfba4739ea8af5b40702fa08e44719c09f): {}
 
   possible-typed-array-names@1.1.0: {}
 

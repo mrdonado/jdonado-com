@@ -20,6 +20,11 @@ export default defineConfig({
 		inlineStylesheets: 'always',
 	},
 	vite: {
+		server: {
+			allowedHosts: ['astro.localhost', 
+'jdonado-com.localhost'
+			],
+		},
 		plugins: [tailwindcss(), compileScriptsPlugin()],
 		build: {
 			cssCodeSplit: true,

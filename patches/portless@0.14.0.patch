@@ -1,0 +1,21 @@
+diff --git a/dist/cli.js b/dist/cli.js
+index 2a0080db609ce4d3ed79ab0ac1cd9a9ee9d54e75..7a6c0b9b5553b37ee9e7700b2c0ff441a4bf6838 100755
+--- a/dist/cli.js
++++ b/dist/cli.js
+@@ -1356,7 +1356,15 @@ import * as readline from "readline";
+ import { execSync, spawn as spawn2 } from "child_process";
+ var isWindows = process.platform === "win32";
+ var FALLBACK_PROXY_PORT = 1355;
+-var PRIVILEGED_PORT_THRESHOLD = 1024;
++var PRIVILEGED_PORT_THRESHOLD = (() => {
++  if (process.platform === "linux") {
++    try {
++      const val = parseInt(fs3.readFileSync("/proc/sys/net/ipv4/ip_unprivileged_port_start", "utf-8").trim(), 10);
++      if (!isNaN(val)) return val;
++    } catch {}
++  }
++  return 1024;
++})();
+ var INTERNAL_LAN_IP_ENV = "PORTLESS_INTERNAL_LAN_IP";
+ var INTERNAL_LAN_IP_FLAG = "--lan-ip-auto";
+ var LEGACY_SYSTEM_STATE_DIR = isWindows ? path3.join(os.tmpdir(), "portless") : "/tmp/portless";
