@@ -1,61 +1,69 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout'
-import { Picture } from 'astro-imagetools/components'
 import TitlePage from '@/components/TitlePage'
 import ListCategories from '@/components/ListCategories'
-import FormattedDate from '@/components/FormattedDate'
+import MinimalList from '@/components/MinimalList'
 import { getApps, getPosts } from '@/utils'
 
 const posts = await getPosts()
 const apps = await getApps()
-
-// Normalize data structure - map everything to have a consistent 'title' property
-const allPosts = [
-	...posts.map((p) => ({ ...p, displayTitle: p.data.title, isApp: false })),
-	...apps.map((a) => ({ ...a, displayTitle: a.data.name, isApp: true }))
-]
+const allPosts = [...posts, ...apps].sort(
+	(a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
+)
+const archiveYears = allPosts.map((post) => new Date(post.data.pubDate).getFullYear())
+const newestYear = Math.max(...archiveYears)
+const oldestYear = Math.min(...archiveYears)
+const postsByYear = allPosts.reduce(
+	(groups, post) => {
+		const year = new Date(post.data.pubDate).getFullYear()
+		groups[year] = [...(groups[year] || []), post]
+		return groups
+	},
+	{} as Record<number, typeof allPosts>
+)
+const archiveGroups = Object.entries(postsByYear)
+	.map(([year, items]) => ({ year: Number(year), items }))
+	.sort((a, b) => b.year - a.year)
 ---
 
 <BaseLayout title='Archive'>
 	<TitlePage title='Archive' />
 	<ListCategories />
-	<div class='grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-8 mt-3'>
-		{
-			allPosts
-				.sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime())
-				.map((post) => (
-					<a
-						href={
-							post.isApp
-								? `/apps/${post.id.replace(/\.[^/.]+$/, '')}`
-								: `/post/${post.id.replace(/\.[^/.]+$/, '')}`
-						}
-						aria-label={`${post.displayTitle} - Read more`}
-						class='flex items-center gap-4 bg-gray-200/60 dark:bg-gray-700/60 p-4 transition-all hover:shadow-lg hover:bg-gray-300/70 dark:hover:bg-gray-600/70 appear-smoothly w-full'
-					>
-						<div class='relative w-24 h-20 rounded-lg overflow-hidden'>
-							<Picture
-								src={post.data.heroImage}
-								alt={`Image of ${post.displayTitle}`}
-								width={100}
-								sizes='96px'
-								placeholder='blurred'
-								layout='fill'
-								loading='lazy'
-							/>
-						</div>
+	<section class='mt-8 overflow-hidden border border-stone-300 shadow-[6px_6px_0_rgba(0,0,0,0.08)] dark:border-stone-700 dark:shadow-[6px_6px_0_rgba(255,255,255,0.05)]'>
+		<header class='border-b border-stone-300 px-4 py-3 dark:border-stone-700 md:px-6'>
+			<div class='flex items-end justify-between gap-4 font-mono text-xs uppercase tracking-[0.24em] text-stone-700 dark:text-stone-300'>
+				<span>Time Cabinet</span>
+				<span>{oldestYear}-{newestYear}</span>
+			</div>
+		</header>
+		<div class='px-4 py-4 md:px-6 md:py-5'>
+			{
+				archiveGroups.map((group, groupIndex) => {
+					const animationOffset = archiveGroups
+						.slice(0, groupIndex)
+						.reduce((total, previousGroup) => total + previousGroup.items.length, 0)
 
-						<div class='flex flex-col w-full overflow-hidden'>
-							<h2 class='text-lg font-semibold truncate'>{post.displayTitle}</h2>
-							<p class='text-sm text-gray-600 dark:text-gray-300'>
-								<FormattedDate date={post.data.pubDate} />
-							</p>
-							<p class='text-sm text-gray-700/90 dark:text-gray-300/80 max-w-[80%] whitespace-nowrap overflow-hidden text-ellipsis'>
-								{post.data.description}
-							</p>
-						</div>
-					</a>
-				))
-		}
-	</div>
+					return (
+						<section class='mb-7 last:mb-0'>
+							<div class='mb-3 flex items-center gap-4'>
+								<h2 class='font-mono text-sm font-normal tracking-[0.2em] text-stone-500 dark:text-stone-400'>
+									{group.year}
+								</h2>
+								<span class='flex flex-1 flex-col gap-1'>
+									<span class='h-px bg-stone-400 dark:bg-stone-500'></span>
+									<span class='h-px bg-stone-400/80 dark:bg-stone-500/80'></span>
+								</span>
+							</div>
+							<MinimalList
+								items={group.items}
+								showThumbnail
+								drawerAnimation
+								animationOffset={animationOffset}
+							/>
+						</section>
+					)
+				})
+			}
+		</div>
+	</section>
 </BaseLayout>

@@ -165,6 +165,32 @@ a.link {
 	animation: fadein 0.6s ease;
 }
 
+@keyframes archive-drawer-entry {
+	0% {
+		clip-path: inset(0 0 100% 0);
+		opacity: 0;
+		transform: translateY(-10px);
+	}
+
+	100% {
+		clip-path: inset(0 0 0 0);
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.archive-drawer-entry {
+	animation: archive-drawer-entry 0.48s cubic-bezier(0.16, 1, 0.3, 1) both;
+	animation-delay: calc(var(--archive-entry-index) * 42ms);
+	will-change: clip-path, opacity, transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.archive-drawer-entry {
+		animation: none;
+	}
+}
+
 a,
 .manipulation {
 	touch-action: manipulation;
