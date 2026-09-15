@@ -201,3 +201,8 @@ a {
 	pointer-events: auto;
 	cursor: pointer;
 }
+
+:focus-visible {
+	outline: 3px solid #2563eb;
+	outline-offset: 3px;
+}
