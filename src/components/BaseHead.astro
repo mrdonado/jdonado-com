@@ -40,13 +40,17 @@ interface JsonLd {
 	url?: string
 	headline?: string
 	description?: string
-	author?: { '@type': string; name: string }
+	author?: { '@type'?: string; '@id'?: string; name?: string }
 	datePublished?: string
 	alternateName?: string
 	image?: string
 	logo?: string
 	mainEntityOfPage?: { '@type': string; '@id': string }
 	publisher?: { '@type': string; name: string }
+	jobTitle?: string
+	email?: string
+	sameAs?: string[]
+	address?: { '@type': string; addressLocality: string; addressCountry: string }
 }
 
 const jsonLdData: JsonLd = {
@@ -57,12 +61,25 @@ const jsonLdData: JsonLd = {
 	logo: siteConfig.logo
 }
 
-const organizationJsonLd: JsonLd = {
+const personJsonLd: JsonLd = {
 	'@context': 'https://schema.org',
-	'@type': 'Organization',
-	name: siteConfig.applicationName,
+	'@type': 'Person',
+	name: siteConfig.author,
 	url: siteConfig.site,
-	logo: siteConfig.logo
+	image: siteConfig.logo,
+	description: siteConfig.description,
+	jobTitle: 'Solution Architect and Product Engineer',
+	email: 'mailto:jdonado@jdonado.com',
+	sameAs: [
+		'https://github.com/mrdonado',
+		'https://www.linkedin.com/in/f-javier-r-donado',
+		'https://x.com/jdonado'
+	],
+	address: {
+		'@type': 'PostalAddress',
+		addressLocality: 'Stuttgart',
+		addressCountry: 'DE'
+	}
 }
 
 // Extra fields for WebSite
@@ -76,7 +93,7 @@ if (pageType === 'WebSite') {
 if (pageType === 'BlogPosting') {
 	jsonLdData.headline = title
 	jsonLdData.description = description
-	jsonLdData.author = { '@type': 'Person', name: siteConfig.author }
+	jsonLdData.author = { '@id': `${siteConfig.site}#person` }
 	jsonLdData.datePublished = articleDate || ''
 	jsonLdData.image = socialImageURL
 	jsonLdData.mainEntityOfPage = {
@@ -121,8 +138,11 @@ import { AstroFont } from 'astro-font'
 <!-- Primary Meta Tags -->
 <title>{siteTitle}</title>
 
-<!-- JSON-LD Structured Data: Organization (static on all pages) -->
-<script type='application/ld+json' set:html={JSON.stringify(organizationJsonLd)}></script>
+<!-- JSON-LD Structured Data: site owner (static on all pages) -->
+<script
+	type='application/ld+json'
+	set:html={JSON.stringify({ ...personJsonLd, '@id': `${siteConfig.site}#person` })}
+></script>
 <!-- JSON-LD Structured Data -->
 <script type='application/ld+json' set:html={JSON.stringify(jsonLdData)}></script>
 <!-- SEO -->

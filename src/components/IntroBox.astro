@@ -76,9 +76,9 @@
 		</svg>
 	</a>
 	<div class='flex flex-col j-donado'>
-		<p class='text-3xl name'>
+		<h1 class='text-3xl name'>
 			<a class='font-bold' aria-label='Javier Donado' href='/about'>Javier Donado</a>
-		</p>
+		</h1>
 		<p class='subtitle'>
 			<a aria-label='Product Engineering' href='/pulse'>PRODUCT ENGINEERING</a>
 		</p>
@@ -246,16 +246,18 @@
 		animation-delay: 3.2s, 3.1s;
 		opacity: 0;
 	}
+	.j-donado .name,
 	.j-donado p {
 		text-align: center;
 	}
+	.j-donado .name a,
 	.j-donado p a {
 		text-decoration: underline;
 		text-decoration-thickness: 1px;
 		text-underline-offset: 0.1em;
 		text-decoration-color: color-mix(in srgb, var(--pagefind-ui-text) 50%, transparent);
 	}
-	.j-donado p.name {
+	.j-donado .name {
 		font-size: 3.12rem;
 	}
 	.j-donado p.subtitle {
@@ -288,7 +290,7 @@
 	}
 
 	@media (max-width: 64rem) and (orientation: landscape) {
-		.j-donado p.name {
+		.j-donado .name {
 			font-size: clamp(1.1rem, 5vw, 3.12rem);
 		}
 		.j-donado p.subtitle {
@@ -321,7 +323,7 @@
 		}
 
 		/* Adjust fonts */
-		.j-donado p.name {
+		.j-donado .name {
 			font-size: 2.5rem;
 		}
 		.j-donado p.subtitle {

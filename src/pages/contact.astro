@@ -1,0 +1,19 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import { render } from 'astro:content'
+import { getDoc } from '@/utils'
+import TitlePage from '@/components/TitlePage'
+
+const doc = await getDoc('contact.md')
+const { Content } = await render(doc)
+---
+
+<BaseLayout
+	title='Contact'
+	description='Contact Javier Donado about product engineering, software architecture, apps, and this website.'
+>
+	<TitlePage title='Contact' />
+	<div class='fadein prose prose-lg md:prose-xl dark:prose-invert mb-12'>
+		<Content />
+	</div>
+</BaseLayout>
