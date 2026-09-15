@@ -1,4 +1,4 @@
-import standardConfig from 'prettier-config-standard'
+import standardConfig from 'prettier-config-standard' with { type: 'json' }
 
 /** @type {import("prettier").Config} */
 export default {

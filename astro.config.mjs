@@ -6,7 +6,7 @@ import { remarkReadingTime } from './src/utils/readTime.ts'
 import { siteConfig } from './src/data/site.config'
 import remarkRehype from 'remark-rehype'
 import { visit } from 'unist-util-visit'
-import { astroImageTools } from "astro-imagetools";
+import { astroImageTools } from 'astro-imagetools'
 import compileScriptsPlugin from './plugins/compile-scripts.js'
 
 // https://astro.build/config
@@ -17,38 +17,28 @@ export default defineConfig({
 	},
 	site: siteConfig.site,
 	build: {
-		inlineStylesheets: 'always',
+		inlineStylesheets: 'always'
 	},
 	vite: {
 		server: {
-			allowedHosts: ['astro.localhost', 
-'jdonado-com.localhost'
-			],
+			allowedHosts: ['astro.localhost', 'jdonado-com.localhost']
 		},
-		plugins: [tailwindcss(), compileScriptsPlugin()],
-		build: {
-			cssCodeSplit: true,
-			minify: 'esbuild',
-			assetsInlineLimit: 4096,
-		}
+		plugins: [tailwindcss(), compileScriptsPlugin()]
 	},
 	markdown: {
-		remarkPlugins: [
-			remarkReadingTime,
-			remarkRehype,
-		],
+		remarkPlugins: [remarkReadingTime, remarkRehype],
 		rehypePlugins: [
 			() => (tree) => {
 				// Walk through the tree to process `a` elements
 				visit(tree, 'element', (node) => {
 					if (node.tagName === 'a' && node.properties && node.properties.href) {
-						const isExternal = /^https?:\/\//.test(node.properties.href);
+						const isExternal = /^https?:\/\//.test(node.properties.href)
 						if (isExternal) {
-							node.properties.target = '_blank';
-							node.properties.rel = 'noopener noreferrer';
+							node.properties.target = '_blank'
+							node.properties.rel = 'noopener noreferrer'
 						}
 					}
-				});
+				})
 			}
 		],
 		drafts: true,
@@ -63,7 +53,7 @@ export default defineConfig({
 			shikiConfig: {
 				experimentalThemes: {
 					light: 'vitesse-light',
-					dark: 'material-theme-palenight',
+					dark: 'material-theme-palenight'
 				},
 				wrap: true
 			},
