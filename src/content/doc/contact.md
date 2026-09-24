@@ -1,17 +1,17 @@
 ---
 title: 'Contact'
-description: 'Contact Javier Donado about product engineering, software architecture, apps, and this website.'
+description: 'Contact Javier Donado about engineering leadership, technical strategy, product engineering, apps, and this website.'
 ---
 
-I'm Javier Donado, a solution architect and product engineer based in Stuttgart, Germany. The best way to reach me depends on what you would like to discuss.
+Choose the channel that best matches what you would like to discuss. This keeps professional conversations, public work, app support, and privacy requests in the right place.
 
-## Product engineering and professional enquiries
+## Engineering leadership and professional enquiries
 
-For conversations about software architecture, technical leadership, product engineering, or professional collaboration, connect with me on [LinkedIn](https://www.linkedin.com/in/f-javier-r-donado). Please include enough context for me to understand the topic and how I may be able to help.
+For conversations about technical strategy, engineering organisations, leadership at scale, architecture across teams of teams, engineering culture, product engineering, or professional collaboration, connect with me on [LinkedIn](https://www.linkedin.com/in/f-javier-r-donado). Please include enough context for me to understand the challenge, the organisation involved, and how I may be able to help.
 
-## Website and general enquiries
+## Writing, projects, and public work
 
-For questions about my articles, projects, photography, music, or this website, email [jdonado@jdonado.com](mailto:jdonado@jdonado.com). You can also find my public software projects and contributions on [GitHub](https://github.com/mrdonado).
+For discussions about my articles, public projects, photography, music, or this website, contact me on [X (Twitter)](https://x.com/jdonado). You can explore my public software projects and contributions on [GitHub](https://github.com/mrdonado), but use X when you would like to start a conversation.
 
 ## App support and privacy
 

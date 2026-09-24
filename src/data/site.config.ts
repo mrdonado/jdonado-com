@@ -18,9 +18,9 @@ export const siteConfig: SiteConfig = {
 	author: 'Javier Donado', // Site author
 	applicationName: 'Javier Donado', // Application name
 	logo: 'https://www.jdonado.com/favicon.svg', // Write here your website url
-	title: 'Javier Donado - Product Engineering - Apps | Posts | Music', // Site title.
+	title: 'Javier Donado - Engineering Leadership & Product Engineering', // Site title.
 	description:
-		'Javier Donado - Product Engineering - Web and mobile apps (iOS and Android) - Photos - Music', // Description to display in the meta tags
+		'Javier Donado is an engineering and people leader, solution architect, and product engineer working across technical strategy, organisations, and digital products.', // Description to display in the meta tags
 	lang: 'en-GB',
 	ogLocale: 'en_GB',
 	shareMessage: 'Sharing this with you:', // Message to share a post on social media

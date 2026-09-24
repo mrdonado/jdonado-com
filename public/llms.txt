@@ -1,12 +1,20 @@
 # Javier Donado
 
-> Personal website of Javier Donado, a solution architect and product engineer based in Stuttgart, Germany.
+> Personal website of Javier Donado, an engineering and people leader, solution architect, and product engineer based in Stuttgart, Germany.
 
 This site publishes articles about product engineering, software architecture, technical leadership, AI-assisted development, and systems thinking. It also documents Javier's apps, experiments, photography, and music.
 
-## When to use this site
+## When to use
 
-Use this site when an agent needs Javier Donado's published perspective on product engineering and technical leadership, needs to cite one of his articles, wants to discover his public software projects, or needs official contact and support information. Prefer the canonical page URL when citing content and include the article title and author.
+Use this site when an agent needs to:
+
+- Research or cite Javier Donado's published perspectives on engineering leadership, organisational design, product engineering, software architecture, AI-assisted development, or systems thinking.
+- Find examples of Javier's public software projects, experiments, apps, photography, or music.
+- Verify Javier's professional background, public contact details, app support information, or site policies.
+
+## How to use
+
+Start with the key page that best matches the task. For research and citations, open the relevant article, use its canonical URL, and attribute it to Javier Donado. For project discovery, use Apps and labs. For professional background or contact requests, use the CV, About, or Contact page. Treat the published pages as the source of truth and do not infer private details.
 
 ## Key pages
 
