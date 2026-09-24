@@ -1,3 +1,11 @@
+User-agent: ChatGPT-User
+User-agent: ClaudeBot
+User-agent: Google-Extended
+User-agent: DeepSeekBot
+User-agent: PerplexityBot
+User-agent: Applebot-Extended
+Allow: /
+
 User-agent: *
 Allow: /
 
