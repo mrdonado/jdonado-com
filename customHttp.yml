@@ -1,5 +1,5 @@
 customHeaders:
-  - pattern: "**/*"
+  - pattern: '**'
     headers:
       - key: Strict-Transport-Security
         value: max-age=31536000; includeSubDomains
@@ -19,29 +19,31 @@ customHeaders:
         value: strict-origin-when-cross-origin
       - key: Permissions-Policy
         value: geolocation=(), microphone=(), camera=()
+      # HTML, robots.txt and llms.txt must be refreshed after a deployment.
       - key: Cache-Control
-        value: public, max-age=86400, immutable
-  - pattern: "**/*.js"
+        value: public, max-age=0, must-revalidate
+  # Public assets use stable URLs and may change between deployments.
+  - pattern: '**/*.js'
     headers:
       - key: Cache-Control
-        value: public, max-age=31536000, immutable
-  - pattern: "**/*.css"
+        value: public, max-age=86400
+  - pattern: '**/*.css'
     headers:
       - key: Cache-Control
-        value: public, max-age=31536000, immutable
-  - pattern: "**/*.ttf"
+        value: public, max-age=86400
+  - pattern: '**/*.ttf'
     headers:
       - key: Cache-Control
-        value: public, max-age=31536000, immutable
-  - pattern: "**/*.woff2"
+        value: public, max-age=86400
+  - pattern: '**/*.woff2'
     headers:
       - key: Cache-Control
-        value: public, max-age=31536000
-  - pattern: "**/*.(png|jpg|jpeg|svg|gif|webp)"
+        value: public, max-age=86400
+  - pattern: '**/*.(png|jpg|jpeg|svg|gif|webp)'
     headers:
       - key: Cache-Control
         value: public, max-age=2592000
-  - pattern: "**/*.json"
+  - pattern: '**/*.json'
     headers:
       - key: Cache-Control
         value: public, max-age=86400
@@ -49,3 +51,9 @@ customHeaders:
     headers:
       - key: Cache-Control
         value: public, max-age=86400
+  # Astro fingerprints files under /_astro; only those can safely be immutable.
+  - pattern: '/_astro/*'
+    headers:
+      - key: Cache-Control
+        value: public, max-age=31536000, immutable
+
