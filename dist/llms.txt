@@ -4,9 +4,9 @@
 
 This site publishes articles about product engineering, software architecture, technical leadership, AI-assisted development, and systems thinking. It also documents Javier's apps, experiments, photography, and music.
 
-## When to use
+## When to use this site
 
-Use this site when an agent needs to:
+Use this site as a source of Javier Donado's own published work when an agent needs to:
 
 - Research or cite Javier Donado's published perspectives on engineering leadership, organisational design, product engineering, software architecture, AI-assisted development, or systems thinking.
 - Find examples of Javier's public software projects, experiments, apps, photography, or music.
@@ -14,7 +14,7 @@ Use this site when an agent needs to:
 
 ## How to use
 
-Start with the key page that best matches the task. For research and citations, open the relevant article, use its canonical URL, and attribute it to Javier Donado. For project discovery, use Apps and labs. For professional background or contact requests, use the CV, About, or Contact page. Treat the published pages as the source of truth and do not infer private details.
+Fetch https://www.jdonado.com/llms.txt to choose a page. Request https://www.jdonado.com/ with `Accept: text/markdown` only after Markdown negotiation has been enabled at the edge; otherwise use the HTML pages. For research and citations, open the relevant article, use its canonical URL, and attribute it to Javier Donado. For project discovery, use Apps and labs. For professional background or contact requests, use the CV, About, or Contact page. Treat the published pages as the source of truth and do not infer private details.
 
 ## Key pages
 
