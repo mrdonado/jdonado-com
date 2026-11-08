@@ -1,0 +1,22 @@
+overrides:
+  astro-imagetools>file-type: ^21.3.1
+  imagetools-core>sharp: 0.35.5
+  '@jimp/core>phin': ^3.7.1
+  '@tailwindcss/typography>postcss-selector-parser': ^6.1.5
+  'minimatch@>=7 <11': ^11.0.1
+
+supportedArchitectures:
+  libc:
+    - musl
+    - glibc
+
+allowBuilds:
+  esbuild: true
+  sharp: true
+  puppeteer: false
+
+patchedDependencies:
+  astro-imagetools@0.9.0: patches/astro-imagetools@0.9.0.patch
+
+shamefullyHoist: true
+enablePrePostScripts: true
