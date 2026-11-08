@@ -77,4 +77,15 @@ test('crawler instructions and built public files remain available', () => {
 	assert.match(markdown, /https:\/\/www\.jdonado\.com\/post\//)
 	assert.match(read('../dist/index.html'), /<html lang="en"/)
 	assert.match(read('../dist/index.html'), /https:\/\/www\.jdonado\.com\//)
+	const jsonLd = [
+		...read('../dist/index.html').matchAll(
+			/<script type="application\/ld\+json">([^<]+)<\/script>/g
+		)
+	].map((match) => JSON.parse(match[1]))
+	const person = jsonLd.find((entry) => entry['@type'] === 'Person')
+	assert.deepEqual(person.knowsAbout, [
+		'Product Engineering',
+		'Engineering Leadership',
+		'Software Architecture'
+	])
 })

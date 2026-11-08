@@ -50,6 +50,7 @@ interface JsonLd {
 	jobTitle?: string
 	email?: string
 	sameAs?: string[]
+	knowsAbout?: string[]
 	address?: { '@type': string; addressLocality: string; addressCountry: string }
 }
 
@@ -69,6 +70,7 @@ const personJsonLd: JsonLd = {
 	image: siteConfig.logo,
 	description: siteConfig.description,
 	jobTitle: 'Engineering and People Leader, Solution Architect',
+	knowsAbout: ['Product Engineering', 'Engineering Leadership', 'Software Architecture'],
 	sameAs: [
 		'https://github.com/mrdonado',
 		'https://www.linkedin.com/in/f-javier-r-donado',

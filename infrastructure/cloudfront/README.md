@@ -5,6 +5,10 @@ on `Accept`. The site's build provides `/index.md`, but **deploying the site alo
 not enable negotiation**. Do not set `Vary: Accept` on the homepage until a request-aware
 edge layer is active.
 
+These two CloudFront Functions handle only the homepage. CloudFront viewer-response
+functions cannot replace the body of a 404; use request-aware server-side compute or
+the optional proxy in `../worker/` if Markdown 404 responses are required.
+
 To enable the homepage check, a person with AWS and DNS access must put a separately
 managed CloudFront distribution in front of the existing Amplify origin. Configure its
 origin to use the app's `*.amplifyapp.com` hostname (HTTPS only; use the origin hostname
