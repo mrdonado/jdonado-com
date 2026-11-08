@@ -11,32 +11,28 @@ const { stats } = Astro.props
 ---
 
 <div class='flex flex-wrap items-center justify-center gap-x-8 gap-y-4 text-center'>
-	{
-		stats.map((stat, index) => (
-			<>
-				<a
-					href={stat.href}
-					class='group flex flex-col items-center hover:opacity-70 transition-opacity'
-					aria-label={stat.label}
+	{stats.map((stat, index) => (
+		<>
+			<a
+				href={stat.href}
+				class='group flex flex-col items-center hover:opacity-70 transition-opacity'
+				aria-label={stat.label}
+			>
+				<span
+					class='js-counter text-4xl md:text-5xl font-light text-stone-950 dark:text-white mb-1'
+					data-target={stat.value}
 				>
-					<span
-						class='js-counter text-4xl md:text-5xl font-light text-stone-950 dark:text-white mb-1'
-						data-target={stat.value}
-					>
-						0
-					</span>
-					<span class='text-sm md:text-base text-gray-500 dark:text-gray-400 font-normal group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors'>
-						{stat.label}
-					</span>
-				</a>
-				{index < stats.length - 1 && (
-					<span class='hidden md:inline text-gray-300 dark:text-gray-700 text-2xl font-light'>
-						|
-					</span>
-				)}
-			</>
-		))
-	}
+					0
+				</span>
+				<span class='text-sm md:text-base text-gray-500 dark:text-gray-400 font-normal group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors'>
+					{stat.label}
+				</span>
+			</a>
+			{index < stats.length - 1 && (
+				<span class='hidden md:inline text-gray-300 dark:text-gray-700 text-2xl font-light'>|</span>
+			)}
+		</>
+	))}
 </div>
 
 <script type='module' src='/scripts/stats-highlight.js'></script>

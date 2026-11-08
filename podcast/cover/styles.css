@@ -27,7 +27,7 @@ body {
 		radial-gradient(circle at 20% 18%, rgba(29, 78, 216, 0.28), transparent 25%),
 		radial-gradient(circle at 85% 15%, rgba(139, 92, 246, 0.2), transparent 22%),
 		linear-gradient(135deg, var(--bg) 0%, #081122 48%, #030710 100%);
-	font-family: Inter, "Avenir Next", "Segoe UI", system-ui, sans-serif;
+	font-family: Inter, 'Avenir Next', 'Segoe UI', system-ui, sans-serif;
 	-webkit-font-smoothing: antialiased;
 	text-rendering: geometricPrecision;
 }
@@ -274,7 +274,12 @@ body::before {
 	top: -24%;
 	width: 42%;
 	height: 80%;
-	background: linear-gradient(125deg, rgba(255, 255, 255, 0.82), rgba(255, 255, 255, 0.1) 35%, transparent 70%);
+	background: linear-gradient(
+		125deg,
+		rgba(255, 255, 255, 0.82),
+		rgba(255, 255, 255, 0.1) 35%,
+		transparent 70%
+	);
 	filter: blur(4px);
 	opacity: 0.45;
 	transform: rotate(8deg);
@@ -296,8 +301,18 @@ body::before {
 	position: absolute;
 	inset: 0;
 	background:
-		linear-gradient(180deg, rgba(2, 7, 16, 0.48) 0%, rgba(2, 7, 16, 0.36) 42%, rgba(2, 7, 16, 0.58) 100%),
-		linear-gradient(90deg, rgba(2, 7, 16, 0.38) 0%, rgba(2, 7, 16, 0.22) 35%, rgba(2, 7, 16, 0.42) 100%);
+		linear-gradient(
+			180deg,
+			rgba(2, 7, 16, 0.48) 0%,
+			rgba(2, 7, 16, 0.36) 42%,
+			rgba(2, 7, 16, 0.58) 100%
+		),
+		linear-gradient(
+			90deg,
+			rgba(2, 7, 16, 0.38) 0%,
+			rgba(2, 7, 16, 0.22) 35%,
+			rgba(2, 7, 16, 0.42) 100%
+		);
 	pointer-events: none;
 }
 

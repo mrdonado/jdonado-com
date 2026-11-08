@@ -27,16 +27,14 @@ tags.forEach((tag) => {
 	<ListCategories />
 	<div class='flex flex-col min-h-[45vh] justify-center items-center pt-10'>
 		<div class='flex flex-wrap justify-center gap-4 md:gap-8 max-w-3xl appear-smoothly'>
-			{
-				tags.sort().map((tag) => (
-					<a
-						href={`/tags/${tag}`}
-						class='inline-block bg-gray-200 dark:bg-gray-800 rounded-full px-6 py-3 text-sm md:text-lg font-semibold text-gray-800 dark:text-gray-200 transition-all hover:bg-gray-300 dark:hover:bg-gray-700 hover:scale-105'
-					>
-						#{tag} ({tagsWithCount[tag]})
-					</a>
-				))
-			}
+			{tags.sort().map((tag) => (
+				<a
+					href={`/tags/${tag}`}
+					class='inline-block bg-gray-200 dark:bg-gray-800 rounded-full px-6 py-3 text-sm md:text-lg font-semibold text-gray-800 dark:text-gray-200 transition-all hover:bg-gray-300 dark:hover:bg-gray-700 hover:scale-105'
+				>
+					#{tag} ({tagsWithCount[tag]})
+				</a>
+			))}
 		</div>
 	</div>
 </BaseLayout>

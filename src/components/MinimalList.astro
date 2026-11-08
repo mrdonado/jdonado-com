@@ -24,111 +24,109 @@ const isRightAligned = variant === 'right-aligned'
 ---
 
 <ul class:list={[drawerAnimation ? 'space-y-1.5 md:space-y-2' : 'space-y-4']}>
-	{
-		(items || []).map((item, index) => {
-			const isPost = 'title' in item.data
-			const title = isPost ? item.data.title : item.data.name
-			const itemUrl = `/${isPost ? 'post' : 'apps'}/${item.id.replace(/\.[^/.]+$/, '')}/`
-			const pubDate = item.data.pubDate
-			const heroImage = item.data.heroImage
+	{(items || []).map((item, index) => {
+		const isPost = 'title' in item.data
+		const title = isPost ? item.data.title : item.data.name
+		const itemUrl = `/${isPost ? 'post' : 'apps'}/${item.id.replace(/\.[^/.]+$/, '')}/`
+		const pubDate = item.data.pubDate
+		const heroImage = item.data.heroImage
 
-			return (
-				<li
+		return (
+			<li
+				class:list={[
+					'group',
+					drawerAnimation &&
+						'archive-drawer-entry border-b border-gray-300/70 py-2.5 last:border-b-0 dark:border-gray-700/70'
+				]}
+				style={drawerAnimation ? `--archive-entry-index: ${index + animationOffset}` : undefined}
+			>
+				<a
+					href={itemUrl}
 					class:list={[
-						'group',
-						drawerAnimation &&
-							'archive-drawer-entry border-b border-gray-300/70 py-2.5 last:border-b-0 dark:border-gray-700/70'
+						'flex justify-between gap-4 transition-opacity',
+						drawerAnimation ? 'hover:opacity-80' : 'hover:opacity-70',
+						showThumbnail ? 'items-center md:items-end' : 'items-baseline'
 					]}
-					style={drawerAnimation ? `--archive-entry-index: ${index + animationOffset}` : undefined}
 				>
-					<a
-						href={itemUrl}
-						class:list={[
-							'flex justify-between gap-4 transition-opacity',
-							drawerAnimation ? 'hover:opacity-80' : 'hover:opacity-70',
-							showThumbnail ? 'items-center md:items-end' : 'items-baseline'
-						]}
-					>
-						{showThumbnail && heroImage && (
-							<span class='flex w-16 shrink-0 flex-col items-center gap-1.5 md:w-12'>
-								<span class='relative block h-12 w-12 overflow-hidden rounded-full border border-gray-200/80 bg-gray-100/60 shadow-sm transition-colors safari-overflow-fix group-hover:border-gray-400/70 dark:border-gray-700 dark:bg-gray-800/60 dark:group-hover:border-gray-500'>
-									<Picture
-										src={heroImage}
-										alt={`Image of ${title}`}
-										width={100}
-										sizes='(max-width: 768px) 80px, 96px'
-										quality={70}
-										placeholder='blurred'
-										layout='fill'
-										loading='lazy'
-									/>
-								</span>
-								{pubDate && (
-									<time
-										datetime={pubDate.toISOString()}
-										class='text-center text-[0.65rem] leading-tight text-gray-500 dark:text-gray-400 md:hidden'
-									>
-										<FormattedDate date={pubDate} />
-									</time>
-								)}
+					{showThumbnail && heroImage && (
+						<span class='flex w-16 shrink-0 flex-col items-center gap-1.5 md:w-12'>
+							<span class='relative block h-12 w-12 overflow-hidden rounded-full border border-gray-200/80 bg-gray-100/60 shadow-sm transition-colors safari-overflow-fix group-hover:border-gray-400/70 dark:border-gray-700 dark:bg-gray-800/60 dark:group-hover:border-gray-500'>
+								<Picture
+									src={heroImage}
+									alt={`Image of ${title}`}
+									width={100}
+									sizes='(max-width: 768px) 80px, 96px'
+									quality={70}
+									placeholder='blurred'
+									layout='fill'
+									loading='lazy'
+								/>
 							</span>
-						)}
-						{isRightAligned ? (
-							<>
-								{/* Mobile: Standard layout */}
-								<span class='text-lg font-normal flex-1 line-clamp-1 md:hidden'>{title}</span>
-								{pubDate && (
-									<time
-										datetime={pubDate.toISOString()}
-										class='text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap md:hidden'
-									>
-										<FormattedDate date={pubDate} />
-									</time>
-								)}
-
-								{/* Desktop: Right-aligned layout */}
-								{pubDate ? (
-									<time
-										datetime={pubDate.toISOString()}
-										class='text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap hidden md:block'
-									>
-										<FormattedDate date={pubDate} />
-									</time>
-								) : (
-									<span class='text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap invisible hidden md:block'>
-										--
-									</span>
-								)}
-								<span class='text-lg font-normal flex-1 line-clamp-1 text-right hidden md:block'>
-									{title}
-								</span>
-							</>
-						) : (
-							<>
-								<span
-									class:list={[
-										'font-normal flex-1',
-										showThumbnail ? 'text-xl md:line-clamp-1' : 'text-lg line-clamp-1'
-									]}
+							{pubDate && (
+								<time
+									datetime={pubDate.toISOString()}
+									class='text-center text-[0.65rem] leading-tight text-gray-500 dark:text-gray-400 md:hidden'
 								>
-									{title}
+									<FormattedDate date={pubDate} />
+								</time>
+							)}
+						</span>
+					)}
+					{isRightAligned ? (
+						<>
+							{/* Mobile: Standard layout */}
+							<span class='text-lg font-normal flex-1 line-clamp-1 md:hidden'>{title}</span>
+							{pubDate && (
+								<time
+									datetime={pubDate.toISOString()}
+									class='text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap md:hidden'
+								>
+									<FormattedDate date={pubDate} />
+								</time>
+							)}
+
+							{/* Desktop: Right-aligned layout */}
+							{pubDate ? (
+								<time
+									datetime={pubDate.toISOString()}
+									class='text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap hidden md:block'
+								>
+									<FormattedDate date={pubDate} />
+								</time>
+							) : (
+								<span class='text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap invisible hidden md:block'>
+									--
 								</span>
-								{pubDate && (
-									<time
-										datetime={pubDate.toISOString()}
+							)}
+							<span class='text-lg font-normal flex-1 line-clamp-1 text-right hidden md:block'>
+								{title}
+							</span>
+						</>
+					) : (
+						<>
+							<span
+								class:list={[
+									'font-normal flex-1',
+									showThumbnail ? 'text-xl md:line-clamp-1' : 'text-lg line-clamp-1'
+								]}
+							>
+								{title}
+							</span>
+							{pubDate && (
+								<time
+									datetime={pubDate.toISOString()}
 									class:list={[
 										'text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap',
 										showThumbnail && 'hidden md:block'
 									]}
-									>
-										<FormattedDate date={pubDate} />
-									</time>
-								)}
-							</>
-						)}
-					</a>
-				</li>
-			)
-		})
-	}
+								>
+									<FormattedDate date={pubDate} />
+								</time>
+							)}
+						</>
+					)}
+				</a>
+			</li>
+		)
+	})}
 </ul>

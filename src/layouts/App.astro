@@ -29,9 +29,7 @@ const articleDate = pubDate.toISOString()
 
 		<header class='fadein mb-3 flex flex-col justify-center items-center gap-6'>
 			<div class='flex flex-col gap-1'>
-				<div
-					class='relative w-[120px] h-[120px] md:w-[200px] md:h-[200px] mx-auto mb-2 overflow-hidden rounded-lg'
-				>
+				<div class='relative w-[120px] h-[120px] md:w-[200px] md:h-[200px] mx-auto mb-2 overflow-hidden rounded-lg'>
 					<Picture
 						src={icon}
 						alt={`img of ${name}`}
@@ -52,31 +50,25 @@ const articleDate = pubDate.toISOString()
 					<Share message={`Check out this app: ${name}`} />
 				</div>
 
-				<div
-					class='mb-6 flex items-center justify-center gap-y-4 gap-x-4 mx-auto flex-col max-w-[180px] md:max-w-[420px] md:flex-row'
-				>
-					{
-						appStore ? (
-							<a href={appStore} class='max-w-[420px]' target='_blank' rel='noopener'>
-								<AppStoreIcon />
-							</a>
-						) : (
-							<div class='max-w-[420px]'>
-								<AppStoreComingIcon />
-							</div>
-						)
-					}
-					{
-						playStore ? (
-							<a class='sm:w-34 md:w-[330px]' href={playStore} target='_blank' rel='noopener'>
-								<GooglePlayIcon />
-							</a>
-						) : (
-							<div class='sm:w-34 md:w-[330px]'>
-								<GooglePlayIconComing />
-							</div>
-						)
-					}
+				<div class='mb-6 flex items-center justify-center gap-y-4 gap-x-4 mx-auto flex-col max-w-[180px] md:max-w-[420px] md:flex-row'>
+					{appStore ? (
+						<a href={appStore} class='max-w-[420px]' target='_blank' rel='noopener'>
+							<AppStoreIcon />
+						</a>
+					) : (
+						<div class='max-w-[420px]'>
+							<AppStoreComingIcon />
+						</div>
+					)}
+					{playStore ? (
+						<a class='sm:w-34 md:w-[330px]' href={playStore} target='_blank' rel='noopener'>
+							<GooglePlayIcon />
+						</a>
+					) : (
+						<div class='sm:w-34 md:w-[330px]'>
+							<GooglePlayIconComing />
+						</div>
+					)}
 				</div>
 			</div>
 		</header>
@@ -87,34 +79,32 @@ const articleDate = pubDate.toISOString()
 			<slot />
 		</div>
 
-		{
-			screenShots && (
-				<section class='mb-3 flex flex-col justify-center items-center gap-6'>
-					<div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6'>
-						{screenShots.map((screenshot) => (
-							<div class='relative w-[200px] overflow-hidden rounded-lg'>
-								<Picture
-									src={screenshot}
-									alt={`screenshot of ${name}`}
-									width={200}
-									placeholder='blurred'
-									fadeInTransition={{
-										delay: '0.0s',
-										duration: '0.2s',
-										timingFunction: 'ease-out'
-									}}
-									layout='fill'
-									loading='lazy'
-								/>
-							</div>
-						))}
-					</div>
-				</section>
-			)
-		}
+		{screenShots && (
+			<section class='mb-3 flex flex-col justify-center items-center gap-6'>
+				<div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6'>
+					{screenShots.map((screenshot) => (
+						<div class='relative w-[200px] overflow-hidden rounded-lg'>
+							<Picture
+								src={screenshot}
+								alt={`screenshot of ${name}`}
+								width={200}
+								placeholder='blurred'
+								fadeInTransition={{
+									delay: '0.0s',
+									duration: '0.2s',
+									timingFunction: 'ease-out'
+								}}
+								layout='fill'
+								loading='lazy'
+							/>
+						</div>
+					))}
+				</div>
+			</section>
+		)}
 
-		<a href='#top' class='underline text-sm text-gray-500 dark:text-gray-400 mt-4 block'
-			>Back to top</a
-		>
+		<a href='#top' class='underline text-sm text-gray-500 dark:text-gray-400 mt-4 block'>
+			Back to top
+		</a>
 	</article>
 </BaseLayout>

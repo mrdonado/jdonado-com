@@ -7,6 +7,7 @@ import { siteConfig } from './src/data/site.config'
 import remarkRehype from 'remark-rehype'
 import { visit } from 'unist-util-visit'
 import { astroImageTools } from 'astro-imagetools'
+import { unified } from '@astrojs/markdown-remark'
 import compileScriptsPlugin from './plugins/compile-scripts.js'
 
 // https://astro.build/config
@@ -26,21 +27,23 @@ export default defineConfig({
 		plugins: [tailwindcss(), compileScriptsPlugin()]
 	},
 	markdown: {
-		remarkPlugins: [remarkReadingTime, remarkRehype],
-		rehypePlugins: [
-			() => (tree) => {
-				// Walk through the tree to process `a` elements
-				visit(tree, 'element', (node) => {
-					if (node.tagName === 'a' && node.properties && node.properties.href) {
-						const isExternal = /^https?:\/\//.test(node.properties.href)
-						if (isExternal) {
-							node.properties.target = '_blank'
-							node.properties.rel = 'noopener noreferrer'
+		processor: unified({
+			remarkPlugins: [remarkReadingTime, remarkRehype],
+			rehypePlugins: [
+				() => (tree) => {
+					// Walk through the tree to process `a` elements
+					visit(tree, 'element', (node) => {
+						if (node.tagName === 'a' && node.properties && node.properties.href) {
+							const isExternal = /^https?:\/\//.test(node.properties.href)
+							if (isExternal) {
+								node.properties.target = '_blank'
+								node.properties.rel = 'noopener noreferrer'
+							}
 						}
-					}
-				})
-			}
-		],
+					})
+				}
+			]
+		}),
 		drafts: true,
 		shikiConfig: {
 			theme: 'material-theme-palenight',

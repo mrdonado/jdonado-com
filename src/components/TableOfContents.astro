@@ -33,7 +33,9 @@ function buildToc(headings: TableOfContent[]) {
 		<a href='#top'>Index</a>
 	</p>
 	<ul class='[text-wrap:balance] flex flex-col gap-1'>
-		{toc.map((heading) => <TableOfContentsHeading heading={heading} />)}
+		{toc.map((heading) => (
+			<TableOfContentsHeading heading={heading} />
+		))}
 	</ul>
 </nav>
 

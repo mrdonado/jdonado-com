@@ -54,7 +54,8 @@
 				<path
 					class='fade-in-element'
 					d='M468.549,45.527L468.549,464.099L31.88,464.099L31.88,45.527L468.549,45.527ZM400.707,110.557L99.722,110.557L99.722,399.069L400.707,399.069L400.707,110.557Z'
-					style='fill:rgb(39,36,64);'></path>
+					style='fill:rgb(39,36,64);'
+				></path>
 			</g>
 
 			<!-- Animated Vertical Rectangles -->
@@ -65,30 +66,36 @@
 					y='60.595'
 					width='48.887'
 					height='382.137'
-					style='fill:rgb(39,36,64);'></rect>
+					style='fill:rgb(39,36,64);'
+				></rect>
 			</g>
 			<g transform='matrix(0.586257,-0.586257,0.611603,0.611603,-46.5342,246.846)'>
 				<path
 					class='slide-in-element'
 					d='M31.88,45.527L416.615,45.527L348.774,110.557L99.722,110.557L31.88,45.527Z'
-					style='fill:rgb(214,212,231, 0.9);'></path>
+					style='fill:rgb(214,212,231, 0.9);'
+				></path>
 			</g>
 		</svg>
 	</a>
 	<div class='flex flex-col j-donado'>
 		<h1 class='text-3xl name'>
-			<a class='font-bold' aria-label='Javier Donado' href='/about'>Javier Donado</a>
+			<a class='font-bold' aria-label='Javier Donado' href='/about'>
+				Javier Donado
+			</a>
 		</h1>
 		<p class='subtitle'>
-			<a aria-label='Product Engineering' href='/pulse'>PRODUCT ENGINEERING</a>
+			<a aria-label='Product Engineering' href='/pulse'>
+				PRODUCT ENGINEERING
+			</a>
 		</p>
 	</div>
 </div>
 
 <style>
 	/* --------------------------------------------
-   Base Animations
--------------------------------------------- */
+	   Base Animations
+	-------------------------------------------- */
 	@keyframes slideInFromLeft {
 		0% {
 			transform: translateX(-100%);
@@ -173,8 +180,8 @@
 	}
 
 	/* --------------------------------------------
-   Base Styling
--------------------------------------------- */
+	   Base Styling
+	-------------------------------------------- */
 	.intro-box {
 		width: 100%;
 		height: 80vh;
@@ -265,16 +272,16 @@
 	}
 
 	/* --------------------------------------------
-   Overwrites for smaller screens: 
-   Logo is full width and slides UP instead of left
--------------------------------------------- */
+	   Overwrites for smaller screens:
+	   Logo is full width and slides UP instead of left
+	-------------------------------------------- */
 	@keyframes moveUp {
 		0% {
 			transform: translate3d(-50%, -50%, 0);
 		}
 		100% {
-			/* Slide upward to reveal text below; 
-       adjust the final Y so it’s far enough up */
+			/* Slide upward to reveal text below;
+	       adjust the final Y so it’s far enough up */
 			transform: translate3d(-50%, calc(-50% - 3rem), 0);
 		}
 	}

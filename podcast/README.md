@@ -29,24 +29,24 @@ python podcast_pipeline.py --name my-post-slug \
 
 Output is written to `output/<name>/`:
 
-| File | Contents |
-|------|----------|
-| `narration.txt` | Clean narration script |
-| `audio.wav` | Uncompressed audio (24 kHz) |
-| `audio.mp3` | Final podcast audio (~190 kbps VBR) |
+| File                | Contents                               |
+| ------------------- | -------------------------------------- |
+| `narration.txt`     | Clean narration script                 |
+| `audio.wav`         | Uncompressed audio (24 kHz)            |
+| `audio.mp3`         | Final podcast audio (~190 kbps VBR)    |
 | `podcast-video.mp4` | Final video (cover + audio with fades) |
 
 ## Steps
 
-| # | Script | Purpose |
-|---|--------|---------|
-| 1 | `generate_narration.py` | Post → clean narration script (programmatic markdown cleaner) |
-| 2 | `generate_audio.py` | Narration script → WAV audio (Kokoro TTS) |
-| 2b | `preview_voices.py` | Generate short clips to compare voices quickly |
-| 3 | `generate-cover-image.mjs` | Standalone 16:9 YouTube cover image renderer |
-| 4 | `generate-podcast-video.mjs` | Build MP4 from cover + audio with intro/outro fades |
-| – | `podcast_pipeline.py` | Runs all steps end-to-end |
-| … | *(more steps to come)* | Video assembly, etc. |
+| #   | Script                       | Purpose                                                       |
+| --- | ---------------------------- | ------------------------------------------------------------- |
+| 1   | `generate_narration.py`      | Post → clean narration script (programmatic markdown cleaner) |
+| 2   | `generate_audio.py`          | Narration script → WAV audio (Kokoro TTS)                     |
+| 2b  | `preview_voices.py`          | Generate short clips to compare voices quickly                |
+| 3   | `generate-cover-image.mjs`   | Standalone 16:9 YouTube cover image renderer                  |
+| 4   | `generate-podcast-video.mjs` | Build MP4 from cover + audio with intro/outro fades           |
+| –   | `podcast_pipeline.py`        | Runs all steps end-to-end                                     |
+| …   | _(more steps to come)_       | Video assembly, etc.                                          |
 
 ---
 
@@ -122,15 +122,15 @@ python generate_audio.py --input output/narration.txt --voice af_bella --speed 0
 
 ### Voice options
 
-| Voice | Description |
-|-------|-------------|
-| `am_michael` *(default)* | American male, neutral — podcast-friendly |
-| `am_adam` | American male, deep |
-| `af_heart` | American female, warm and expressive |
-| `af_bella` | American female, bright |
-| `af_sarah` | American female, clear |
-| `bm_george` | British male |
-| `bf_emma` | British female |
+| Voice                    | Description                               |
+| ------------------------ | ----------------------------------------- |
+| `am_michael` _(default)_ | American male, neutral — podcast-friendly |
+| `am_adam`                | American male, deep                       |
+| `af_heart`               | American female, warm and expressive      |
+| `af_bella`               | American female, bright                   |
+| `af_sarah`               | American female, clear                    |
+| `bm_george`              | British male                              |
+| `bf_emma`                | British female                            |
 
 Run `--list-voices` for the full list.
 

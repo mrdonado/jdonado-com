@@ -493,40 +493,34 @@ import { cv } from '@/data/cv'
 					<!-- Core Competencies -->
 					<section>
 						<div class='section-heading'>Core Competencies</div>
-						{
-							cv.competencies.map((comp) => (
-								<div class='competency-item'>
-									<div class='competency-cat'>{comp.category}</div>
-									<div class='competency-items'>{comp.items}</div>
-								</div>
-							))
-						}
+						{cv.competencies.map((comp) => (
+							<div class='competency-item'>
+								<div class='competency-cat'>{comp.category}</div>
+								<div class='competency-items'>{comp.items}</div>
+							</div>
+						))}
 					</section>
 
 					<!-- Languages -->
 					<section>
 						<div class='section-heading'>Languages</div>
-						{
-							cv.languages.map((lang) => (
-								<div class='lang-row'>
-									<span>{lang.name}</span>
-									<span class='lang-level'>{lang.isNative ? 'Native' : lang.level}</span>
-								</div>
-							))
-						}
+						{cv.languages.map((lang) => (
+							<div class='lang-row'>
+								<span>{lang.name}</span>
+								<span class='lang-level'>{lang.isNative ? 'Native' : lang.level}</span>
+							</div>
+						))}
 					</section>
 
 					<!-- Certifications -->
 					<section>
 						<div class='section-heading'>Certifications &amp; Training</div>
-						{
-							cv.certifications.map((cert) => (
-								<div class='cert-item'>
-									<span class='cert-year'>{cert.year}</span> <span>{cert.name}</span>
-									{cert.location && <span style='color:#a8a29e;'>, {cert.location}</span>}
-								</div>
-							))
-						}
+						{cv.certifications.map((cert) => (
+							<div class='cert-item'>
+								<span class='cert-year'>{cert.year}</span> <span>{cert.name}</span>
+								{cert.location && <span style='color:#a8a29e;'>, {cert.location}</span>}
+							</div>
+						))}
 					</section>
 
 					<!-- Additional Info -->
@@ -549,7 +543,9 @@ import { cv } from '@/data/cv'
 					<section>
 						<div class='section-heading'>Selected Impact</div>
 						<ul class='responsibilities'>
-							{cv.impact.map((item) => <li>{item}</li>)}
+							{cv.impact.map((item) => (
+								<li>{item}</li>
+							))}
 						</ul>
 					</section>
 
@@ -557,102 +553,96 @@ import { cv } from '@/data/cv'
 					<section>
 						<div class='section-heading'>Professional Experience</div>
 
-						{
-							cv.experience.map((company) => (
-								<div style='margin-bottom:4mm;'>
-									<div class='company-name'>{company.name}</div>
-									<div class='company-meta'>
-										{company.location} · {company.period}
-									</div>
-									{company.positions.map((pos) => (
-										<div class='position'>
-											<div class='position-header'>
-												<span class='position-title'>{pos.title}</span>
-												<span class='position-period'>{pos.period}</span>
-											</div>
-											<p class='position-desc'>{pos.description}</p>
-											<ul class='responsibilities'>
-												{pos.responsibilities.map((r) => (
-													<li>{r}</li>
-												))}
-											</ul>
-											{pos.tags && (
-												<div class='tech-tags'>
-													{pos.tags.map((tech) => (
-														<span class='tech-tag'>{tech}</span>
-													))}
-												</div>
-											)}
-										</div>
-									))}
+						{cv.experience.map((company) => (
+							<div style='margin-bottom:4mm;'>
+								<div class='company-name'>{company.name}</div>
+								<div class='company-meta'>
+									{company.location} · {company.period}
 								</div>
-							))
-						}
+								{company.positions.map((pos) => (
+									<div class='position'>
+										<div class='position-header'>
+											<span class='position-title'>{pos.title}</span>
+											<span class='position-period'>{pos.period}</span>
+										</div>
+										<p class='position-desc'>{pos.description}</p>
+										<ul class='responsibilities'>
+											{pos.responsibilities.map((r) => (
+												<li>{r}</li>
+											))}
+										</ul>
+										{pos.tags && (
+											<div class='tech-tags'>
+												{pos.tags.map((tech) => (
+													<span class='tech-tag'>{tech}</span>
+												))}
+											</div>
+										)}
+									</div>
+								))}
+							</div>
+						))}
 					</section>
 
 					<!-- Earlier Experience -->
 					<section>
 						<div class='section-heading'>Earlier Experience</div>
-						{
-							cv.earlierExperience.map((company) => (
-								<div class='earlier-item'>
-									<div class='earlier-header'>
-										<span class='earlier-name'>{company.name}</span>
-										<span class='earlier-period'>
-											{company.location} · {company.period}
-										</span>
-									</div>
-									{company.positions.map((pos) => (
-										<div>
-											<div class='earlier-role'>{pos.title}</div>
-											<ul class='responsibilities'>
-												{pos.responsibilities.map((r) => (
-													<li>{r}</li>
-												))}
-											</ul>
-											{pos.tags && (
-												<div class='tech-tags'>
-													{pos.tags.map((tech) => (
-														<span class='tech-tag'>{tech}</span>
-													))}
-												</div>
-											)}
-										</div>
-									))}
+						{cv.earlierExperience.map((company) => (
+							<div class='earlier-item'>
+								<div class='earlier-header'>
+									<span class='earlier-name'>{company.name}</span>
+									<span class='earlier-period'>
+										{company.location} · {company.period}
+									</span>
 								</div>
-							))
-						}
+								{company.positions.map((pos) => (
+									<div>
+										<div class='earlier-role'>{pos.title}</div>
+										<ul class='responsibilities'>
+											{pos.responsibilities.map((r) => (
+												<li>{r}</li>
+											))}
+										</ul>
+										{pos.tags && (
+											<div class='tech-tags'>
+												{pos.tags.map((tech) => (
+													<span class='tech-tag'>{tech}</span>
+												))}
+											</div>
+										)}
+									</div>
+								))}
+							</div>
+						))}
 					</section>
 
 					<!-- Education -->
 					<section>
 						<div class='section-heading'>Education</div>
-						{
-							cv.education.map((edu) => (
-								<div class='edu-block'>
-									<div class='edu-institution'>{edu.institution}</div>
-									<div class='edu-meta'>
-										{edu.location} · {edu.year}
-									</div>
-									<div class='edu-degree'>{edu.degree}</div>
-									<div class='edu-type'>{edu.degreeType}</div>
-									<p class='edu-desc'>{edu.description}</p>
-									{edu.thesis && (
-										<div class='edu-thesis'>
-											<strong>Thesis:</strong> {edu.thesis}
-											{edu.grade && <span style='color:#a8a29e;'> · {edu.grade}</span>}
-										</div>
-									)}
-									{edu.tags && (
-										<div class='tech-tags' style='margin-top:1.5mm;'>
-											{edu.tags.map((tech) => (
-												<span class='tech-tag'>{tech}</span>
-											))}
-										</div>
-									)}
+						{cv.education.map((edu) => (
+							<div class='edu-block'>
+								<div class='edu-institution'>{edu.institution}</div>
+								<div class='edu-meta'>
+									{edu.location} · {edu.year}
 								</div>
-							))
-						}
+								<div class='edu-degree'>{edu.degree}</div>
+								<div class='edu-type'>{edu.degreeType}</div>
+								<p class='edu-desc'>{edu.description}</p>
+								{edu.thesis && (
+									<div class='edu-thesis'>
+										<strong>Thesis:</strong> {edu.thesis}
+										{edu.grade && <span style='color:#a8a29e;'> · {edu.grade}</span>}
+									</div>
+								)}
+								{edu.tags && (
+									<div class='tech-tags' style='margin-top:1.5mm;'>
+										{edu.tags.map((tech) => (
+											<span class='tech-tag'>{tech}</span>
+										))}
+									</div>
+								)}
+							</div>
+						))}
 					</section>
 				</main>
 			</div>

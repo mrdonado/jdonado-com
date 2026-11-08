@@ -17,9 +17,7 @@ const itemUrl = `/${isPost ? 'post' : 'apps'}/${slug}/`
 
 <article class='appear-smoothly grid grid-rows-[300px_auto] group isolate'>
 	<a class='relative overflow-hidden rounded-xl safari-overflow-fix' href={itemUrl}>
-		<div
-			class='relative w-full h-full rounded-xs transform transition-transform duration-3000 ease-in-out hover:scale-[1.05]'
-		>
+		<div class='relative w-full h-full rounded-xs transform transition-transform duration-3000 ease-in-out hover:scale-[1.05]'>
 			<Picture
 				src={heroImage}
 				alt={`img of ${title}`}
@@ -40,21 +38,19 @@ const itemUrl = `/${isPost ? 'post' : 'apps'}/${slug}/`
 		<div class='z-30 absolute bottom-0 w-full h-20'>
 			<div class='-z-10 absolute bottom-0 glass w-full min-h-full'></div>
 			<div class='flex items-center justify-between gap-x-1 text-white px-6 py-4'>
-				{
-					isPost ? (
-						<>
-							<div class='flex flex-col gap-1 items-center justify-center'>
-								<FormattedDate date={pubDate} />
-								<span class='text-sm'>{readTime}</span>
-							</div>
-							<span class='pb-4'>{category}</span>
-						</>
-					) : (
+				{isPost ? (
+					<>
 						<div class='flex flex-col gap-1 items-center justify-center'>
-							<span class='text-sm line-clamp-2'>{description}</span>
+							<FormattedDate date={pubDate} />
+							<span class='text-sm'>{readTime}</span>
 						</div>
-					)
-				}
+						<span class='pb-4'>{category}</span>
+					</>
+				) : (
+					<div class='flex flex-col gap-1 items-center justify-center'>
+						<span class='text-sm line-clamp-2'>{description}</span>
+					</div>
+				)}
 			</div>
 		</div>
 	</a>
@@ -67,13 +63,11 @@ const itemUrl = `/${isPost ? 'post' : 'apps'}/${slug}/`
 				</a>
 			</div>
 
-			{
-				isPost && (
-					<p class='overflow-hidden line-clamp-3 text-gray-700 dark:text-white mb-2 font-normal md:pr-[15%]'>
-						{description}
-					</p>
-				)
-			}
+			{isPost && (
+				<p class='overflow-hidden line-clamp-3 text-gray-700 dark:text-white mb-2 font-normal md:pr-[15%]'>
+					{description}
+				</p>
+			)}
 		</div>
 
 		<footer class='flex justify-between items-center'>

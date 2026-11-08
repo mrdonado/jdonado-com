@@ -33,37 +33,37 @@ const archiveGroups = Object.entries(postsByYear)
 		<header class='border-b border-stone-300 px-4 py-3 dark:border-stone-700 md:px-6'>
 			<div class='flex items-end justify-between gap-4 font-mono text-xs uppercase tracking-[0.24em] text-stone-700 dark:text-stone-300'>
 				<span>Time Cabinet</span>
-				<span>{oldestYear}-{newestYear}</span>
+				<span>
+					{oldestYear}-{newestYear}
+				</span>
 			</div>
 		</header>
 		<div class='px-4 py-4 md:px-6 md:py-5'>
-			{
-				archiveGroups.map((group, groupIndex) => {
-					const animationOffset = archiveGroups
-						.slice(0, groupIndex)
-						.reduce((total, previousGroup) => total + previousGroup.items.length, 0)
+			{archiveGroups.map((group, groupIndex) => {
+				const animationOffset = archiveGroups
+					.slice(0, groupIndex)
+					.reduce((total, previousGroup) => total + previousGroup.items.length, 0)
 
-					return (
-						<section class='mb-7 last:mb-0'>
-							<div class='mb-3 flex items-center gap-4'>
-								<h2 class='font-mono text-sm font-normal tracking-[0.2em] text-stone-500 dark:text-stone-400'>
-									{group.year}
-								</h2>
-								<span class='flex flex-1 flex-col gap-1'>
-									<span class='h-px bg-stone-400 dark:bg-stone-500'></span>
-									<span class='h-px bg-stone-400/80 dark:bg-stone-500/80'></span>
-								</span>
-							</div>
-							<MinimalList
-								items={group.items}
-								showThumbnail
-								drawerAnimation
-								animationOffset={animationOffset}
-							/>
-						</section>
-					)
-				})
-			}
+				return (
+					<section class='mb-7 last:mb-0'>
+						<div class='mb-3 flex items-center gap-4'>
+							<h2 class='font-mono text-sm font-normal tracking-[0.2em] text-stone-500 dark:text-stone-400'>
+								{group.year}
+							</h2>
+							<span class='flex flex-1 flex-col gap-1'>
+								<span class='h-px bg-stone-400 dark:bg-stone-500'></span>
+								<span class='h-px bg-stone-400/80 dark:bg-stone-500/80'></span>
+							</span>
+						</div>
+						<MinimalList
+							items={group.items}
+							showThumbnail
+							drawerAnimation
+							animationOffset={animationOffset}
+						/>
+					</section>
+				)
+			})}
 		</div>
 	</section>
 </BaseLayout>

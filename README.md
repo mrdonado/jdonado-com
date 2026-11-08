@@ -7,7 +7,7 @@ Repository containing the personal website and blog of F. Javier R. Donado.
 - **Astro**: A blazing-fast web framework.
 - **Tailwind CSS**: For styling.
 - **TypeScript**: Enhancing code quality.
-- Various tools like **Prettier**, **Eslint**, and **Motion** for animations.
+- Various tools like **Prettier** and **ESLint** for code quality.
 
 ## ⚙️ Setup & Run Locally
 

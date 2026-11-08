@@ -19,19 +19,17 @@ const { items, FirstBig = false } = Astro.props
 		FirstBig && `md:[&>*:first-child]:col-span-2`
 	)}
 >
-	{
-		(items || []).map(async (item, index) => {
-			const { remarkPluginFrontmatter } = await render(item)
+	{(items || []).map(async (item, index) => {
+		const { remarkPluginFrontmatter } = await render(item)
 
-			return (
-				<ContentCard
-					id={item.id}
-					index={index}
-					data={item.data}
-					slug={item.id.replace(/\.[^/.]+$/, '')}
-					readTime={remarkPluginFrontmatter.minutesRead}
-				/>
-			)
-		})
-	}
+		return (
+			<ContentCard
+				id={item.id}
+				index={index}
+				data={item.data}
+				slug={item.id.replace(/\.[^/.]+$/, '')}
+				readTime={remarkPluginFrontmatter.minutesRead}
+			/>
+		)
+	})}
 </section>

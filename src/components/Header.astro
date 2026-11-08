@@ -74,10 +74,12 @@ const translateClass = 'opacity-0 pointer-events-none scale-95 invisible'
 		<a class='text-lg mr-5' href='/' aria-label='Home' id='nav-home'>
 			<HomeIcon filled={isHome} />
 		</a>
-		<a class={`text-lg mr-5 ${isPulse ? 'font-bold' : ''}`} href='/pulse' id='nav-pulse'>Pulse</a>
-		<a class={`text-lg mr-auto ${isApps ? 'font-bold' : ''}`} href='/apps' id='nav-apps'
-			>Apps & More</a
-		>
+		<a class={`text-lg mr-5 ${isPulse ? 'font-bold' : ''}`} href='/pulse' id='nav-pulse'>
+			Pulse
+		</a>
+		<a class={`text-lg mr-auto ${isApps ? 'font-bold' : ''}`} href='/apps' id='nav-apps'>
+			Apps & More
+		</a>
 
 		<nav
 			id='astro-header-drawer'
@@ -93,18 +95,16 @@ const translateClass = 'opacity-0 pointer-events-none scale-95 invisible'
 			</button>
 
 			<div class='grid grid-cols-3 gap-8 md:flex md:gap-3'>
-				{
-					SOCIALNETWORKS.filter((network) => !network.hidden).map((network) => (
-						<HeaderLink
-							class='flex items-center justify-center p-3 hover:bg-gray-100/30 dark:hover:bg-gray-800/30 rounded-lg transition-colors scale-125 md:scale-100'
-							href={network.url}
-							target='_blank'
-							aria-label={network.name}
-						>
-							<span class='flex items-center justify-center'>{<network.icon />}</span>
-						</HeaderLink>
-					))
-				}
+				{SOCIALNETWORKS.filter((network) => !network.hidden).map((network) => (
+					<HeaderLink
+						class='flex items-center justify-center p-3 hover:bg-gray-100/30 dark:hover:bg-gray-800/30 rounded-lg transition-colors scale-125 md:scale-100'
+						href={network.url}
+						target='_blank'
+						aria-label={network.name}
+					>
+						<span class='flex items-center justify-center'>{<network.icon />}</span>
+					</HeaderLink>
+				))}
 			</div>
 		</nav>
 
