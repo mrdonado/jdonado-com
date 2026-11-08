@@ -57,7 +57,7 @@
 		"eslint-plugin-astro": "^3.2.1",
 		"lint-staged": "^17.6.0",
 		"mdast-util-to-string": "^4.0.0",
-		"motion": "^13.5.1",
+		"motion": "^14.9.1",
 		"pagefind": "1.5.2",
 		"portless": "^0.15.13",
 		"prettier": "^3.9.10",
