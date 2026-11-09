@@ -61,8 +61,8 @@ importers:
         specifier: 3.7.4
         version: 3.7.4
       '@pagefind/default-ui':
-        specifier: 1.5.2
-        version: 1.5.2
+        specifier: 1.6.0
+        version: 1.6.0
       '@tailwindcss/typography':
         specifier: 0.5.20
         version: 0.5.20(tailwindcss@4.3.5)
@@ -91,8 +91,8 @@ importers:
         specifier: 1.5.2
         version: 1.5.2
       portless:
-        specifier: ^0.15.13
-        version: 0.15.13
+        specifier: ^0.16.0
+        version: 0.16.0
       prettier:
         specifier: ^3.9.10
         version: 3.9.10
@@ -1009,8 +1009,8 @@ packages:
     cpu: [x64]
     os: [darwin]
 
-  '@pagefind/default-ui@1.5.2':
-    resolution: {integrity: sha512-pm1LMnQg8N2B3n2TnjKlhaFihpz6zTiA4HiGQ6/slKO/+8K9CAU5kcjdSSPgpuk1PMuuN4hxLipUIifnrkl3Sg==}
+  '@pagefind/default-ui@1.6.0':
+    resolution: {integrity: sha512-Wj93IzlLnaYYrMpOYrsqUerzA7+Vrs5Ri1U78hBh3zuKHNVkcjApNo5DUM99MzAam6f437VGG64jDenAObIt+w==}
 
   '@pagefind/freebsd-x64@1.5.2':
     resolution: {integrity: sha512-7EVzo9+0w+2cbe671BtMj10UlNo83I+HrLVLfRxO731svHRJKUfJ/mo05gU14pe9PCfpKNQT8FS3Xc/oDN6pOA==}
@@ -3046,8 +3046,8 @@ packages:
     resolution: {integrity: sha512-NCrCHhWmnQklfH4MtJMRjZ2a8c80qXeMlQMv2uVp9ISJMTt562SbGd6n2oq0PaPgKm7Z6pL9E2UlLIhC+SHL3w==}
     engines: {node: '>=4.0.0'}
 
-  portless@0.15.13:
-    resolution: {integrity: sha512-eqeJvpeZHfN72snOE1IOBPrgyOloH+L0ce5UEStMuG5Fq55byTELfUn4x7mil2EU029PQkHsayRpySiy0djPpA==}
+  portless@0.16.0:
+    resolution: {integrity: sha512-qklO8w/OhLGLKYoeAi8HOFFnd2JQYenWzbev0rvDcyAZ3xDpMg9tqb/aKlz8qrd6NIEJB5bSiDxGURaq0+YLkA==}
     engines: {node: '>=24'}
     os: [darwin, linux, win32]
     hasBin: true
@@ -4820,7 +4820,7 @@ snapshots:
   '@pagefind/darwin-x64@1.5.2':
     optional: true
 
-  '@pagefind/default-ui@1.5.2': {}
+  '@pagefind/default-ui@1.6.0': {}
 
   '@pagefind/freebsd-x64@1.5.2':
     optional: true
@@ -7419,7 +7419,7 @@ snapshots:
 
   pngjs@3.4.0: {}
 
-  portless@0.15.13: {}
+  portless@0.16.0: {}
 
   possible-typed-array-names@1.1.0:
     optional: true
